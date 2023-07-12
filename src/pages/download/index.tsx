@@ -35,7 +35,7 @@ export default function DownloadFile({
     downloadFile(videoRecordUrl);
   };
 
-	console.log('>>> errorData', errorData);
+  console.log('>>> errorData', errorData);
 
   return (
     <div className="no-drag select-none w-screen h-screen flex justify-center app-content">
