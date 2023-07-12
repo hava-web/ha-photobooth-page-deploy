@@ -1,0 +1,47 @@
+.download-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem 2rem;
+}
+
+.download-logo {
+  width: 12rem;
+  height: 8.172rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.download-title {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  margin-bottom: 3.5rem;
+}
+
+.result-image {
+  margin-bottom: 3.5rem;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 0;
+}
+
+.download-action {
+  margin-bottom: 2rem;
+}
+
+.download-action button {
+  width: 16rem;
+  height: 4.4rem;
+  border-radius: 1rem;
+}
+
+.download-action button * {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+  text-align: center;
+}
+
+.download-action > *:not(:last-child) {
+  margin-right: 2rem;
+}

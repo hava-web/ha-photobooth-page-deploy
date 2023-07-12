@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 100;
+    src: url('/fonts/Inter-Thin.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 200;
+    src: url('/fonts/Inter-ExtraLight.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 300;
+    src: url('/fonts/Inter-Light.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    src: url('/fonts/Inter-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 500;
+    src: url('/fonts/Inter-Medium.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 600;
+    src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 700;
+    src: url('/fonts/Inter-Bold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 800;
+    src: url('/fonts/Inter-ExtraBold.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-weight: 900;
+    src: url('/fonts/Inter-Black.ttf') format('truetype');
+  }
+}
+
+html,
+body {
+  font-size: 62.5%;
+  overscroll-behavior-x: none;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.root,
+:root,
+#root,
+#docs-root {
+  --primary-color: #f16d94;
+  --second-primary-color: #1a83c0;
+  --secondary-color: #979797;
+  --secondary-text-color: #595959;
+  --border-color: #7b7b7b;
+  --border-active-img-color: #bcbcbc;
+  --active-color: #1a83c0;
+  --info-color: #28ace2;
+  --inactive-color: #cdcdcd;
+  --support-text-color: gray;
+
+  --bg-primary-color: #fdeeef;
+  --dark-bg-primary-color: #fabacf;
+  --lighter-bg-primary-color: #ffd9e5;
+
+  --z-index-retake-result: 1000;
+  --z-index-backdrop: 1300;
+  --z-index-button-on-backdrop: 1300;
+  --z-index-freeze-webcam-loading: 1200;
+  --z-index-loading: 1200;
+  --z-index-popup: 1400;
+  --z-index-popover: 1400;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.no-drag {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.transition-img {
+  /* Todo: fix transition */
+  transition: all 0.5s;
+}
+
+.blink-opacity {
+  opacity: 1;
+  -webkit-animation: blink-animation 1s linear infinite;
+  animation: blink-animation 1s linear infinite;
+}
+
+.blink-medium-opacity {
+  opacity: 1;
+  -webkit-animation: blink-medium-animation 1s linear infinite;
+  animation: blink-medium-animation 1s linear infinite;
+}
+
+.blink-take-photo {
+  opacity: 1;
+  -webkit-animation: blink-take-photo 0.1s linear infinite;
+  animation: blink-take-photo 0.1s linear infinite;
+}
+
+@media only screen and (max-width: 425px) {
+  html, body {
+    font-size: 8px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  html, body {
+    font-size: 7px;
+  }
+}
+
+
+@-webkit-keyframes blink-medium-animation {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-medium-animation {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes blink-take-photo {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink-take-photo {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

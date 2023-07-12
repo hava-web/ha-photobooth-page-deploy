@@ -1,0 +1,41 @@
+.pb-button {
+  width: 20.4rem;
+  height: 7.5rem;
+  border-radius: 2rem;
+}
+
+.pb-button .pb-button-text {
+  color: white;
+}
+
+.pb-button-text::first-letter {
+  text-transform: uppercase;
+}
+
+.pb-button-info {
+  background: var(--info-color);
+  font-weight: 700;
+}
+
+.pb-button-primary {
+  background: var(--primary-color);
+  font-weight: 700;
+}
+
+.pb-button-default {
+  background: var(--secondary-color);
+  font-weight: 500;
+}
+
+.pb-button-transparent {
+  background: transparent;
+}
+
+.pb-button.pb-button-transparent .pb-button-text {
+  color: var(--secondary-text-color);
+  font-weight: 400;
+}
+
+.pb-button-disabled {
+  opacity: 0.4;
+}

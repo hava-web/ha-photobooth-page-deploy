@@ -1,0 +1,19 @@
+{
+  "ok": "ok",
+  "noData": "Không có dữ liệu",
+  "back": "quay lại",
+  "continue": "tiếp tục",
+  "start": "bắt đầu",
+  "picture": "ảnh",
+  "finish": "kết thúc",
+  "print": "In ảnh",
+  "no": "không",
+  "yes": "có",
+  "downloadImage": "Tải ảnh",
+  "downloadVideo": "Tải video",
+
+  "somethingWrong": "Có lỗi xảy ra!",
+  "billAcceptorError": "Có lỗi bộ đếm tiền!",
+  "noCameraFound": "Lỗi không tìm thấy camera!",
+  "doYouNeedMoreTime": "Bạn có cần thêm thời gian để tiếp tục sử dụng dịch vụ không?"
+}

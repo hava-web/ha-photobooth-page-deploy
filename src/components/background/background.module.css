@@ -1,0 +1,29 @@
+.bg-image {
+  transition: all 0.4s;
+}
+
+.bg-image-frame,
+.bg-image-layout,
+.bg-image-payment {
+  background-image: url('/images/background_frame.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-image-layout {
+  background-image: url('/images/background_layout.png');
+}
+
+.bg-image-payment {
+  background-image: url('/images/background_payment.png');
+}
+
+@media only screen and (max-width: 600px) {
+  .bg-image-frame,
+  .bg-image-layout,
+  .bg-image-payment {
+    background-image: url('/images/background_frame_phone.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}

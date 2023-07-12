@@ -1,0 +1,7 @@
+.pb-typography {
+  color: var(--secondary-text-color);
+}
+
+.pb-typography-firstCapCase::first-letter {
+  text-transform: uppercase;
+}
