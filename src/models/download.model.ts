@@ -20,5 +20,6 @@ export type GetDownloadDataResponseModel = {
 
 export interface DownloadDataStateModel {
   downloadData: DObject<DownloadModel | null>;
+  errorData: any;
   loading: boolean;
 }

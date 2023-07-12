@@ -15,7 +15,10 @@ import { QUERY_STRING } from 'constants/route.const';
 import { getDownloadData } from 'api/photo/download.api';
 import { DownloadDataStateModel } from 'models/download.model';
 
-export default function DownloadFile({ downloadData }: DownloadDataStateModel) {
+export default function DownloadFile({
+  downloadData,
+  errorData,
+}: DownloadDataStateModel) {
   const { t } = useTranslation();
   const photoTakenUrl = find(downloadData?.data, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
@@ -31,6 +34,8 @@ export default function DownloadFile({ downloadData }: DownloadDataStateModel) {
   const handleDownloadVideo = () => {
     downloadFile(videoRecordUrl);
   };
+
+	console.log('>>> errorData', errorData);
 
   return (
     <div className="no-drag select-none w-screen h-screen flex justify-center app-content">
@@ -91,7 +96,9 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: { downloadData: downloadResponse },
     };
   } catch (err) {
-    //
+    return {
+      props: { downloadData: null, errorData: err },
+    };
   }
 
   return {
