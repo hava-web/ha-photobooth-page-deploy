@@ -44,7 +44,7 @@ pipeline {
                   build job: 'FunStudio-Gitops', parameters: [
                      string(name: 'IMAGE_TAG', value: BUILD_TAG),
                      string(name: 'REPOSITORY_NAME', value: env.FUN_UI_WEBSITE),
-                     string(name: 'DEPL_FILE_PATH', value: './ui/booth/depl.yaml')
+                     string(name: 'DEPL_FILE_PATH', value: './ui/client-site/depl.yaml')
                   ]
               }
         }
