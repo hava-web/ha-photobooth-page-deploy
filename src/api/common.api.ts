@@ -10,6 +10,7 @@ export function downloadFile(
       fetch(fileUrl, {
         headers: {
           responseType: 'blob',
+          'Cache-Control': 'no-cache, no-store, max-age=0',
         },
       })
         .then((res) => res.blob())
