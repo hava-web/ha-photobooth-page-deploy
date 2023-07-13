@@ -8,7 +8,7 @@ import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
 import Button from 'components/button/Button';
 import { downloadFile } from 'api/common.api';
 import { isEqualVal } from 'helpers/string.helper';
-import { CONTENT_TYPES } from 'constants/file.const';
+import { CONTENT_TYPES, FILE_IMAGE_DOWNLOAD, FILE_VIDEO_DOWNLOAD } from 'constants/file.const';
 import Loader from 'components/loader/Loader';
 import { GetServerSideProps } from 'next';
 import { QUERY_STRING } from 'constants/route.const';
@@ -29,10 +29,10 @@ export default function DownloadFile({
   )?.url;
 
   const handleDownloadImage = () => {
-    downloadFile(photoTakenUrl);
+    downloadFile(photoTakenUrl, FILE_IMAGE_DOWNLOAD);
   };
   const handleDownloadVideo = () => {
-    downloadFile(videoRecordUrl);
+    downloadFile(videoRecordUrl, FILE_VIDEO_DOWNLOAD);
   };
 
   console.log('>>> errorData', errorData);
@@ -97,7 +97,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     };
   } catch (err) {
     return {
-      props: { downloadData: null, errorData: err },
+      props: { downloadData: null, errorData: JSON.parse(JSON.stringify(err)) },
     };
   }
 
