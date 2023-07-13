@@ -10,6 +10,7 @@ const nextConfig = nextTranslate({
 			},
 		],
 	},
+	output: 'standalone'
 });
 
 module.exports = nextConfig;
