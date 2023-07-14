@@ -1,13 +1,13 @@
 import { saveAs } from 'file-saver';
 import { FILE_NAME_DOWNLOAD } from 'constants/file.const';
 
-export function downloadFile(
+export async function downloadFile(
   fileUrl: string | undefined,
   displayName: string = FILE_NAME_DOWNLOAD,
 ) {
   if (fileUrl) {
     try {
-      fetch(fileUrl, {
+      await fetch(fileUrl, {
         headers: {
           responseType: 'blob',
           'Cache-Control': 'no-cache, no-store, max-age=0',
