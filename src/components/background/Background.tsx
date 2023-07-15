@@ -20,7 +20,7 @@ const Background: FC<Props> = ({
   <div
     {...rest}
     className={cx(
-      'w-full h-full absolute top-0 left-0 -z-50 object-cover bg-image',
+      'w-screen h-screen fixed top-0 left-0 -z-50 object-cover bg-image',
       classes['bg-image'],
       {
         [classes['bg-image-frame']]: type === BackgroundTypes.FRAME || !type,
