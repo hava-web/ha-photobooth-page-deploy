@@ -1,3 +1,7 @@
+.download-page-container {
+  overflow: auto;
+}
+
 .download-page {
   display: flex;
   flex-direction: column;

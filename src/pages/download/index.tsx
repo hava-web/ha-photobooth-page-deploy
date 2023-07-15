@@ -47,7 +47,7 @@ export default function DownloadFile({
   console.log('>>> errorData', errorData);
 
   return (
-    <div className="no-drag w-screen h-screen flex justify-center app-content">
+    <div className="w-screen h-screen flex justify-center download-page-container">
       <Background />
       <Loader loading={loading} className="download-page">
         <img
