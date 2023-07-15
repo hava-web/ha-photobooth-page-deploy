@@ -25,11 +25,12 @@ export default function DownloadFile({
 }: DownloadDataStateModel) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const photoTakenUrl = find(downloadData?.data, (o) =>
+
+  const photoTakenUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
   )?.url;
 
-  const videoRecordUrl = find(downloadData?.data, (o) =>
+  const videoRecordUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.MP4),
   )?.url;
 
@@ -43,8 +44,6 @@ export default function DownloadFile({
     await downloadFile(videoRecordUrl, FILE_VIDEO_DOWNLOAD);
     setLoading(false);
   };
-
-  console.log('>>> errorData', errorData);
 
   return (
     <div className="w-screen h-screen flex justify-center download-page-container">
@@ -61,37 +60,52 @@ export default function DownloadFile({
         >
           {t('download:bringLoveToYourLife')}
         </Typography>
-        {photoTakenUrl ? (
-          <img src={photoTakenUrl} alt="result" className="result-image" />
-        ) : (
+        {!downloadData || !!downloadData?.isExpired ? (
           <Typography
             variant={TYPOGRAPHY_VARIANTS.SMALL}
             className="text-center result-image"
           >
-            {t('download:dataIsUploading')}
+            {!!downloadData?.isExpired
+              ? t('download:dataExpired')
+              : t('download:noData')}
           </Typography>
+        ) : (
+          <>
+            {!!photoTakenUrl ? (
+              <img src={photoTakenUrl} alt="result" className="result-image" />
+            ) : (
+              <Typography
+                variant={TYPOGRAPHY_VARIANTS.SMALL}
+                className="text-center result-image"
+              >
+                {t('download:dataIsUploading')}
+              </Typography>
+            )}
+            <div className="download-action">
+              <Button
+                color="default"
+                onClick={handleDownloadImage}
+                disabled={!photoTakenUrl || loading}
+              >
+                {t('common:downloadImage')}
+              </Button>
+              {!!downloadData?.hasVideo && videoRecordUrl && (
+                <Button
+                  onClick={handleDownloadVideo}
+                  disabled={!videoRecordUrl || loading}
+                >
+                  {t('common:downloadVideo')}
+                </Button>
+              )}
+            </div>
+            <Typography
+              variant={TYPOGRAPHY_VARIANTS.SMALL}
+              className="text-center font-bold"
+            >
+              {t('download:linkExpireInFiveDays')}
+            </Typography>
+          </>
         )}
-        <div className="download-action">
-          <Button
-            color="default"
-            onClick={handleDownloadImage}
-            disabled={!photoTakenUrl || loading}
-          >
-            {t('common:downloadImage')}
-          </Button>
-          <Button
-            onClick={handleDownloadVideo}
-            disabled={!photoTakenUrl || loading}
-          >
-            {t('common:downloadVideo')}
-          </Button>
-        </div>
-        <Typography
-          variant={TYPOGRAPHY_VARIANTS.SMALL}
-          className="text-center font-bold"
-        >
-          {t('download:linkExpireInFiveDays')}
-        </Typography>
       </Loader>
     </div>
   );
@@ -105,15 +119,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       id: transactionId as string,
     });
     return {
-      props: { downloadData: downloadResponse },
+      props: { downloadData: downloadResponse?.data },
     };
   } catch (err) {
     return {
       props: { downloadData: null, errorData: JSON.parse(JSON.stringify(err)) },
     };
   }
-
-  return {
-    props: { downloadData: null },
-  };
 };

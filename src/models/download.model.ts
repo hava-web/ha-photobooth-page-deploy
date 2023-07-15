@@ -1,15 +1,19 @@
 import { DObject } from 'models/common.model';
 
-export type DownloadModel = [
-  {
-    contentType: string;
-    url: string;
-  },
-  {
-    contentType: string;
-    url: string;
-  },
-];
+export type DownloadModel = {
+  isExpired: boolean;
+  hasVideo: boolean;
+  resources: [
+    {
+      contentType: string;
+      url: string;
+    },
+    {
+      contentType: string;
+      url: string;
+    },
+  ];
+};
 
 export type GetDownloadDataRequestModel = {
   id: string;
@@ -19,7 +23,7 @@ export type GetDownloadDataResponseModel = {
 };
 
 export interface DownloadDataStateModel {
-  downloadData: DObject<DownloadModel | null>;
+  downloadData: DownloadModel | null;
   errorData: any;
   loading: boolean;
 }
