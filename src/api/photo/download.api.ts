@@ -8,5 +8,5 @@ export function getDownloadData(payload: GetDownloadDataRequestModel) {
   return downloadRequest.get<
     GetDownloadDataResponseModel,
     GetDownloadDataResponseModel
-  >(`/general/transaction/${payload?.id}/resources`);
+  >(`/general/transactions/${payload?.id}/resources`);
 }
