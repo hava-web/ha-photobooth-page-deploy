@@ -2,10 +2,7 @@
 import React, { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { find, get } from 'lodash';
-import Background from 'components/background/Background';
-import Typography from 'components/typography/Typography';
-import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
-import Button from 'components/button/Button';
+import { GetServerSideProps } from 'next';
 import { downloadFile } from 'api/common.api';
 import { isEqualVal } from 'helpers/string.helper';
 import {
@@ -13,8 +10,11 @@ import {
   FILE_IMAGE_DOWNLOAD,
   FILE_VIDEO_DOWNLOAD,
 } from 'constants/file.const';
+import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
+import Background from 'components/background/Background';
+import Typography from 'components/typography/Typography';
+import Button from 'components/button/Button';
 import Loader from 'components/loader/Loader';
-import { GetServerSideProps } from 'next';
 import { QUERY_STRING } from 'constants/route.const';
 import { getDownloadData } from 'api/photo/download.api';
 import { DownloadDataStateModel } from 'models/download.model';
@@ -26,7 +26,7 @@ export default function DownloadFile({
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
-  console.log(">>> downloadData", downloadData, errorData);
+  console.log('>>> downloadData', downloadData, errorData);
 
   const photoTakenUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
@@ -73,15 +73,28 @@ export default function DownloadFile({
           </Typography>
         ) : (
           <>
-            {!!photoTakenUrl ? (
-              <img src={photoTakenUrl} alt="result" className="result-image" />
+            {videoRecordUrl ? (
+              <video className="result-image" autoPlay loop muted>
+                <track kind="captions" />
+                <source src={videoRecordUrl} type="video/mp4" />
+              </video>
             ) : (
-              <Typography
-                variant={TYPOGRAPHY_VARIANTS.SMALL}
-                className="text-center result-image"
-              >
-                {t('download:dataIsUploading')}
-              </Typography>
+              <>
+                {!!photoTakenUrl ? (
+                  <img
+                    src={photoTakenUrl}
+                    alt="result"
+                    className="result-image"
+                  />
+                ) : (
+                  <Typography
+                    variant={TYPOGRAPHY_VARIANTS.SMALL}
+                    className="text-center result-image"
+                  >
+                    {t('download:dataIsUploading')}
+                  </Typography>
+                )}
+              </>
             )}
             <div className="download-action">
               <Button
