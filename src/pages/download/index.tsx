@@ -26,6 +26,8 @@ export default function DownloadFile({
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
+  console.log(">>> downloadData", downloadData, errorData);
+
   const photoTakenUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
   )?.url;

@@ -5,7 +5,6 @@ const downloadRequest: AxiosInstance = axios.create({
   baseURL: process.env.REACT_APP_DOWNLOAD_FILE_URL,
   headers: {
     'Content-Type': 'application/json',
-    'x-booth-client': 'tdb7ZS^)2$OP2bmO',
   },
   timeout: TIME_OUT_API,
 });
