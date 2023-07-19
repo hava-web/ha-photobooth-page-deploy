@@ -60,7 +60,7 @@ export default function DownloadFile({
           variant={TYPOGRAPHY_VARIANTS.SMALL}
           className="text-center font-semibold download-title"
         >
-          {t('download:bringLoveToYourLife')}
+          {t('download:funStudioSlogan')}
         </Typography>
         {!downloadData || !!downloadData?.isExpired ? (
           <Typography
