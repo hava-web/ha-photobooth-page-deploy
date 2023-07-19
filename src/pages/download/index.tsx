@@ -74,7 +74,7 @@ export default function DownloadFile({
         ) : (
           <>
             {videoRecordUrl ? (
-              <video className="result-image" autoPlay loop muted>
+              <video className="result-image" poster={photoTakenUrl} autoPlay loop muted>
                 <track kind="captions" />
                 <source src={videoRecordUrl} type="video/mp4" />
               </video>
