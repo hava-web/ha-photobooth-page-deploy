@@ -50,7 +50,17 @@ export default function DownloadFile({
   return (
     <div className="w-screen h-screen flex justify-center download-page-container">
       <Background />
-      <Loader loading={loading} className="download-page">
+      <Loader
+        loading={loading}
+        className="download-page"
+        spin={
+          <img
+            src="/images/fun_studio_logo.png"
+            alt="logo loading"
+            className="download-logo-loading"
+          />
+        }
+      >
         <img
           src="/images/fun_studio_logo.png"
           alt="logo"
@@ -74,7 +84,14 @@ export default function DownloadFile({
         ) : (
           <>
             {videoRecordUrl ? (
-              <video className="result-image" poster={photoTakenUrl} autoPlay loop muted>
+              <video
+                className="result-image"
+                poster={photoTakenUrl}
+                onCanPlay={() => console.log('ttt can play 123!!!')}
+                autoPlay
+                loop
+                muted
+              >
                 <track kind="captions" />
                 <source src={videoRecordUrl} type="video/mp4" />
               </video>
