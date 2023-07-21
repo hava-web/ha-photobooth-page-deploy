@@ -87,10 +87,10 @@ export default function DownloadFile({
               <video
                 className="result-image"
                 poster={photoTakenUrl}
-                onCanPlay={() => console.log('ttt can play 123!!!')}
                 autoPlay
                 loop
                 muted
+                playsInline
               >
                 <track kind="captions" />
                 <source src={videoRecordUrl} type="video/mp4" />
