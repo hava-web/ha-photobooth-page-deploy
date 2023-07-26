@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { find, get } from 'lodash';
+import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import { downloadFile } from 'api/common.api';
 import { isEqualVal } from 'helpers/string.helper';
@@ -26,7 +27,7 @@ export default function DownloadFile({
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
-  console.log('>>> downloadData', downloadData, errorData);
+  console.log('ttt downloadData', downloadData, errorData);
 
   const photoTakenUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
@@ -38,12 +39,18 @@ export default function DownloadFile({
 
   const handleDownloadImage = async () => {
     setLoading(true);
-    await downloadFile(photoTakenUrl, FILE_IMAGE_DOWNLOAD);
+    await downloadFile(
+      photoTakenUrl,
+      `${FILE_IMAGE_DOWNLOAD}-${moment().unix()}`,
+    );
     setLoading(false);
   };
   const handleDownloadVideo = async () => {
     setLoading(true);
-    await downloadFile(videoRecordUrl, FILE_VIDEO_DOWNLOAD);
+    await downloadFile(
+      videoRecordUrl,
+      `${FILE_VIDEO_DOWNLOAD}-${moment().unix()}`,
+    );
     setLoading(false);
   };
 
