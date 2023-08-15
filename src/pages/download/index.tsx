@@ -19,6 +19,7 @@ import Loader from 'components/loader/Loader';
 import { QUERY_STRING } from 'constants/route.const';
 import { getDownloadData } from 'api/photo/download.api';
 import { DownloadDataStateModel } from 'models/download.model';
+import { DATE_FORMAT, HOUR_MINUTE_FORMAT } from 'constants/time.const';
 
 export default function DownloadFile({
   downloadData,
@@ -137,6 +138,16 @@ export default function DownloadFile({
                 </Button>
               )}
             </div>
+            <Typography
+              variant={TYPOGRAPHY_VARIANTS.SMALL}
+              className="text-center machine-info-text"
+            >
+              {`${
+                moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) || '_'
+              } ngày ${
+                moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
+              }, máy ${downloadData?.device}`}
+            </Typography>
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
               className="text-center font-bold"

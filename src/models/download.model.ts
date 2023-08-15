@@ -1,8 +1,10 @@
 import { DObject } from 'models/common.model';
 
 export type DownloadModel = {
+  device: string;
   isExpired: boolean;
   hasVideo: boolean;
+  recordAt: string;
   resources: [
     {
       contentType: string;
