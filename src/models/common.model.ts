@@ -1,3 +1,28 @@
+import React, { ReactElement } from 'react';
+import { AppContext, AppInitialProps } from 'next/app';
+
+declare function appGetInitialProps({
+  Component,
+  ctx,
+}: AppContext): Promise<AppInitialProps>;
+
+export interface ComponentStatic {
+  getInitialProps: typeof appGetInitialProps;
+}
+
+export interface PageWithLayout {
+  renderLayout?: ({ children }: { children: ReactElement }) => ReactElement;
+}
+
+export interface MenuItemProps {
+  id?: number;
+  name: string;
+  href: string;
+  badge?: number;
+  icon?: string;
+  props?: any;
+}
+
 export interface DListResponse<Data = any> {
   code: number;
   message: string;

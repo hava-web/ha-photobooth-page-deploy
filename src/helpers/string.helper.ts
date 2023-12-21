@@ -1,4 +1,4 @@
-import { toString } from 'lodash';
+import { filter, size, toString } from 'lodash';
 
 function convertViToEn(str: string, toUpperCase = false) {
   if (typeof str !== 'string') return '';
@@ -42,4 +42,17 @@ function isEqualVal(
   return !!toString(v1) && toString(v1) === toString(v2);
 }
 
-export { convertViToEn, isEqualVal };
+const includesId = (
+  array: (string | number)[],
+  id: Parameters<typeof isEqualVal>[0],
+): boolean => !!size(filter(array, (o) => isEqualVal(o, id)));
+
+function capitalizeFirstLetter(str: string): string {
+  if (typeof str !== 'string' || !str) {
+    return str;
+  }
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+export { convertViToEn, isEqualVal, includesId, capitalizeFirstLetter };

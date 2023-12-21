@@ -1,0 +1,14 @@
+.footer {
+}
+
+.footerItem {
+  display: flex;
+  align-items: center;
+  color: var(--lp-secondary-color);
+}
+
+.footerItem img,
+.footerItem svg {
+  border-radius: 10px;
+  margin-right: 10px;
+}

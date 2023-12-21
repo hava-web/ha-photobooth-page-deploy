@@ -1,15 +1,22 @@
-import React, { FC, HtmlHTMLAttributes } from 'react';
+import React, { FC, HtmlHTMLAttributes, PropsWithChildren } from 'react';
 import cx from 'classnames';
 import { TYPOGRAPHY_COMPONENT, TYPOGRAPHY_VARIANTS } from './typography-utils';
 import classes from './typography.module.css';
 
-export type Props = HtmlHTMLAttributes<HTMLParagraphElement> & {
-  variant?: string;
-  component?: string;
-  normalCase?: boolean;
-  upperCase?: boolean;
-  firstCapCase?: boolean;
-};
+export type Props = HtmlHTMLAttributes<HTMLParagraphElement> &
+  any & {
+    variant?: string;
+    component?: string;
+    normalCase?: boolean;
+    upperCase?: boolean;
+    firstCapCase?: boolean;
+  };
+
+const DynamicComponent: FC<PropsWithChildren<Props>> = ({
+  component = TYPOGRAPHY_COMPONENT.DIV,
+  children,
+  ...rest
+}) => React.createElement(component, rest, children) as any;
 
 const Typography: FC<Props> = ({
   className,
@@ -38,11 +45,5 @@ const Typography: FC<Props> = ({
     )}
   />
 );
-
-const DynamicComponent: FC<Props> = ({
-  component = TYPOGRAPHY_COMPONENT.DIV,
-  children,
-  ...rest
-}) => React.createElement(component, rest, children) as any;
 
 export default Typography;

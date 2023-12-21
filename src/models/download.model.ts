@@ -1,5 +1,3 @@
-import { DObject } from 'models/common.model';
-
 export type DownloadModel = {
   device: string;
   isExpired: boolean;

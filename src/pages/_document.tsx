@@ -1,16 +1,26 @@
+import React from 'react';
+import { NextPageContext } from 'next';
 import Document, {
   Html,
   Head,
   Main,
   NextScript,
   DocumentContext,
-  DocumentInitialProps,
 } from 'next/document';
 
-export default class MyDocument extends Document {
-  static async getInitialProps(
-    ctx: DocumentContext,
-  ): Promise<DocumentInitialProps> {
+export const i18nPropsFromCtx = (ctx: NextPageContext): Object => {
+  if (!(ctx && ctx.req && (ctx.req as any).language)) return {};
+  const req = ctx.req as any;
+  return {
+    lang: req.language,
+    dir: req.i18n && req.i18n.dir(req.language),
+  };
+};
+
+export default class MyDocument extends Document<{
+  i18nDocumentProps: Object;
+}> {
+  static async getInitialProps(ctx: DocumentContext) {
     const originalRenderPage = ctx.renderPage;
 
     // Run the React rendering logic synchronously
@@ -24,8 +34,12 @@ export default class MyDocument extends Document {
 
     // Run the parent `getInitialProps`, it now includes the custom `renderPage`
     const initialProps = await Document.getInitialProps(ctx);
+    const i18nDocumentProps = i18nPropsFromCtx(ctx);
 
-    return initialProps;
+    return {
+      ...initialProps,
+      i18nDocumentProps,
+    };
   }
 
   render() {

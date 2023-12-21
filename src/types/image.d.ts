@@ -1,3 +1,5 @@
+import React from 'react';
+
 declare module '*.component.svg' {
   import { ComponentType } from 'react';
 

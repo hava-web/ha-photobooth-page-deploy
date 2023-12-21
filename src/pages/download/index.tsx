@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+/* eslint-disable react/jsx-no-useless-fragment */
+import React, { Fragment, useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import { find, get } from 'lodash';
 import moment from 'moment';
@@ -85,7 +85,7 @@ export default function DownloadFile({
             variant={TYPOGRAPHY_VARIANTS.SMALL}
             className="text-center result-image"
           >
-            {!!downloadData?.isExpired
+            {downloadData?.isExpired
               ? t('download:dataExpired')
               : t('download:noData')}
           </Typography>
@@ -105,7 +105,7 @@ export default function DownloadFile({
               </video>
             ) : (
               <>
-                {!!photoTakenUrl ? (
+                {photoTakenUrl ? (
                   <img
                     src={photoTakenUrl}
                     alt="result"

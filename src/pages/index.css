@@ -7,46 +7,63 @@
     font-family: 'Inter';
     font-weight: 100;
     src: url('/fonts/Inter-Thin.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-Thin.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 200;
     src: url('/fonts/Inter-ExtraLight.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-ExtraLight.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 300;
     src: url('/fonts/Inter-Light.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-Light.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 400;
     src: url('/fonts/Inter-Regular.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 500;
     src: url('/fonts/Inter-Medium.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-Medium.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 600;
     src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-SemiBold.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 700;
     src: url('/fonts/Inter-Bold.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-Bold.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 800;
     src: url('/fonts/Inter-ExtraBold.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-ExtraBold.ttf') format('truetype'); */
   }
+
   @font-face {
     font-family: 'Inter';
     font-weight: 900;
     src: url('/fonts/Inter-Black.ttf') format('truetype');
+    /* src: url('/fonts/montserrat/Montserrat-Black.ttf') format('truetype'); */
   }
 }
 
@@ -77,6 +94,13 @@ body {
   --dark-bg-primary-color: #fabacf;
   --lighter-bg-primary-color: #ffd9e5;
 
+  --lp-primary-color: #eb5a6f;
+  --lp-lighter-primary-color: #ef909b;
+  --lp-lighter2-primary-color: #f5ced5;
+  --lp-secondary-color: #3a80bf;
+  --lp-gold-color: #ffbd0e;
+
+  --z-index-header: 999;
   --z-index-retake-result: 1000;
   --z-index-backdrop: 1300;
   --z-index-button-on-backdrop: 1300;
@@ -84,6 +108,8 @@ body {
   --z-index-loading: 1200;
   --z-index-popup: 1400;
   --z-index-popover: 1400;
+
+  --height-of-header: 54px;
 }
 
 img {
@@ -139,18 +165,23 @@ img {
   animation: blink-take-photo 0.1s linear infinite;
 }
 
+.border-image {
+  border: 10px solid white;
+}
+
 @media only screen and (max-width: 425px) {
-  html, body {
+  html,
+  body {
     font-size: 8px;
   }
 }
 
 @media only screen and (max-width: 320px) {
-  html, body {
+  html,
+  body {
     font-size: 7px;
   }
 }
-
 
 @-webkit-keyframes blink-medium-animation {
   0% {

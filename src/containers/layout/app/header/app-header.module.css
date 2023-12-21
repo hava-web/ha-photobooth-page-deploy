@@ -1,0 +1,12 @@
+.header {}
+
+.header-navbar {}
+
+.header-nav-link {
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.header .header-placeholder {
+  height: var(--height-of-header);
+}
