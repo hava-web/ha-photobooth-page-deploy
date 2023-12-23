@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   } = useTranslation();
 
   useEffect(() => {
-    document.documentElement.lang = language;
+    document.documentElement.lang = language || 'vi';
   }, [language]);
 
   const renderApp = () => {

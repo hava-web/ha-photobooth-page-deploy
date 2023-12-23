@@ -7,63 +7,149 @@
     font-family: 'Inter';
     font-weight: 100;
     src: url('/fonts/Inter-Thin.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-Thin.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 200;
     src: url('/fonts/Inter-ExtraLight.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-ExtraLight.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 300;
     src: url('/fonts/Inter-Light.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-Light.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 400;
     src: url('/fonts/Inter-Regular.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 500;
     src: url('/fonts/Inter-Medium.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-Medium.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 600;
     src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-SemiBold.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 700;
     src: url('/fonts/Inter-Bold.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-Bold.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 800;
     src: url('/fonts/Inter-ExtraBold.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-ExtraBold.ttf') format('truetype'); */
+    font-display: swap;
   }
 
   @font-face {
     font-family: 'Inter';
     font-weight: 900;
     src: url('/fonts/Inter-Black.ttf') format('truetype');
-    /* src: url('/fonts/montserrat/Montserrat-Black.ttf') format('truetype'); */
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 100;
+    src: url('/fonts/montserrat/Montserrat-Thin.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 200;
+    src: url('/fonts/montserrat/Montserrat-ExtraLight.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    src: url('/fonts/montserrat/Montserrat-Light.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    src: url('/fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    src: url('/fonts/montserrat/Montserrat-Medium.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 600;
+    src: url('/fonts/montserrat/Montserrat-SemiBold.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 700;
+    src: url('/fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 800;
+    src: url('/fonts/montserrat/Montserrat-ExtraBold.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    src: url('/fonts/montserrat/Montserrat-Black.ttf') format('truetype');
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .banner-title {
+    @apply uppercase w-[50%] absolute bottom-[2rem] object-cover text-lp-primary-color text-[5.4rem] font-[800];
+    text-shadow:
+      2px 0 #fff,
+      -2px 0 #fff,
+      0 2px #fff,
+      0 -2px #fff,
+      1px 1px #fff,
+      -1px -1px #fff,
+      1px -1px #fff,
+      -1px 1px #fff;
+  }
+
+  .dot-slider {
+    @apply w-[3rem] h-[3rem] rounded-full border-lp-primary-color border-[0.2rem] bg-white mx-[1rem];
+  }
+
+  .dot-slider-active {
+    @apply bg-lp-primary-color mx-[1rem];
   }
 }
 
@@ -100,7 +186,9 @@ body {
   --lp-secondary-color: #3a80bf;
   --lp-gold-color: #ffbd0e;
 
-  --z-index-header: 999;
+  --z-index-header: 1000;
+  --z-index-banner-dot: 999;
+  --z-index-floating-button: 1000;
   --z-index-retake-result: 1000;
   --z-index-backdrop: 1300;
   --z-index-button-on-backdrop: 1300;
@@ -110,14 +198,6 @@ body {
   --z-index-popover: 1400;
 
   --height-of-header: 54px;
-}
-
-img {
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
 }
 
 .no-select {
@@ -134,35 +214,9 @@ img {
   /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
-.no-drag {
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
-  user-drag: none;
-}
-
 .transition-img {
   /* Todo: fix transition */
   transition: all 0.5s;
-}
-
-.blink-opacity {
-  opacity: 1;
-  -webkit-animation: blink-animation 1s linear infinite;
-  animation: blink-animation 1s linear infinite;
-}
-
-.blink-medium-opacity {
-  opacity: 1;
-  -webkit-animation: blink-medium-animation 1s linear infinite;
-  animation: blink-medium-animation 1s linear infinite;
-}
-
-.blink-take-photo {
-  opacity: 1;
-  -webkit-animation: blink-take-photo 0.1s linear infinite;
-  animation: blink-take-photo 0.1s linear infinite;
 }
 
 .border-image {
@@ -180,81 +234,5 @@ img {
   html,
   body {
     font-size: 7px;
-  }
-}
-
-@-webkit-keyframes blink-medium-animation {
-  0% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 0.75;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink-medium-animation {
-  0% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 0.75;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes blink-animation {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink-animation {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes blink-take-photo {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink-take-photo {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }

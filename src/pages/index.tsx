@@ -7,6 +7,7 @@ import Services from 'containers/app/home/Services';
 import CustomerTalkAboutUs from 'containers/app/home/CustomerTalkAboutUs';
 import CooperationProcess from 'containers/app/home/CooperationProcess';
 import FunStores from 'containers/app/home/FunStores';
+import StrengthOfFun from 'containers/app/home/StrengthOfFun';
 import { PageWithLayout } from 'models/common.model';
 import { renderMainLayout } from 'containers/layout/app/AppLayout';
 import { funBanners, funStores } from 'store/static-data/static-data.data';
@@ -23,15 +24,16 @@ const Home: PageWithLayout &
   banners,
   stores,
 }) => (
-  <>
+  <section className="font-Montserrat">
     <BannerSlider banners={banners} />
     <Introduction />
     <EnsureOpportunity />
+    <StrengthOfFun />
     <Services />
     <CustomerTalkAboutUs />
     <CooperationProcess />
     <FunStores stores={stores} />
-  </>
+  </section>
 );
 
 Home.renderLayout = renderMainLayout;

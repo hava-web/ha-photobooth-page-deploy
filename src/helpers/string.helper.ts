@@ -36,8 +36,8 @@ function convertViToEn(str: string, toUpperCase = false) {
  *
  */
 function isEqualVal(
-  v1: string | number | null,
-  v2: string | number | null,
+  v1: string | number | null | undefined,
+  v2: string | number | null | undefined,
 ): boolean {
   return !!toString(v1) && toString(v1) === toString(v2);
 }

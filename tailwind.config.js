@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Inter: ['Inter', 'sans-serif'],
+        Montserrat: ['Montserrat', 'sans-serif'],
       },
       fontSize: {
         'pb-h1': ['4.8rem', '5.8rem'],
@@ -20,8 +21,7 @@ module.exports = {
 
         'lp-h1': ['4.8rem', '5.8rem'],
         'lp-h2': ['4.7rem', '5.8rem'],
-        'lp-h3': ['2.7rem', '3.4rem'],
-        'lp-body': ['1.9rem', '2.4rem'],
+        'lp-body': ['2.7rem', '3.4rem'],
         'lp-small': ['1.6rem', '2rem'],
 
         'lp-section-title': [
@@ -74,12 +74,14 @@ module.exports = {
       },
       zIndex: {
         'z-index-header': 'var(--z-index-header)',
+        'z-index-banner-dot': 'var(--z-index-banner-dot)',
         'z-index-retake-result': 'var(--z-index-retake-result)',
         'z-index-backdrop': 'var(--z-index-backdrop)',
         'z-index-button-on-backdrop': 'var(--z-index-button-on-backdrop)',
         'z-index-freeze-webcam-loading': 'var(--z-index-freeze-webcam-loading)',
         'z-index-loading': 'var(--z-index-loading)',
         'z-index-popup': 'var(--z-index-popup)',
+        'z-index-floating-button': 'var(--z-index-floating-button)',
         'z-index-popover': 'var(--z-index-popover)',
       },
       spacing: {
@@ -100,6 +102,7 @@ module.exports = {
       },
       boxShadow: {
         navbar: '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+        box: '0 5px 10px 0px rgba(0, 0, 0, 0.2)',
       },
       keyframes: {
         'scale-pulse': {

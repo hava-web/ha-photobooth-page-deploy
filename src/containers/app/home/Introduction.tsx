@@ -4,7 +4,7 @@ import Container from 'components/grid/Container';
 import { useTranslation } from 'hooks/useTranslation';
 import Grid from 'components/grid/Grid';
 import GridItem from 'components/grid/GridItem';
-import Image from 'next/image';
+import Image from 'components/image/Image';
 
 const Introduction = () => {
   const { T } = useTranslation();
@@ -15,19 +15,19 @@ const Introduction = () => {
       className="flex w-full bg-lp-lighter2-primary-color"
     >
       <Container className="py-[4rem] pb-[8rem] text-lp-body text-center">
-        <h2 className="mb-4 text-lp-section-title-2 uppercase text-lp-primary-color whitespace-pre-wrap">
+        <h2 className="mb-4 text-lp-section-title-2 text-lp-primary-color uppercase whitespace-pre-wrap">
           {T(
             'fun studio là thương hiệu chụp ảnh tự động\n theo phong cách hàn quốc',
           )}
         </h2>
         <Grid className="mx-auto gap-2 grid-cols-2 grid-rows-1 w-[110rem] text-[#565656]">
-          <GridItem className="relative">
-            <p className="text-left text-lp-h3">
+          <GridItem className="relative text-left">
+            <p>
               Mô hình tự chụp ảnh lấy liền đã và đang trở thành một trào lưu
               thịnh hành đối với giới trẻ Hàn Quốc.
             </p>
             <br />
-            <p className="text-left text-lp-h3">
+            <p>
               Vào đầu năm 2023, Fun Studio đã mang mô hình này về Việt Nam với
               những giải pháp ưu Việt, giản tiện hơn, dễ dàng sử dụng, đặc biệt
               chi phí vận hành rất thấp. Tuy mới thành lập và hoạt động trong
@@ -35,7 +35,7 @@ const Introduction = () => {
               đắc địa.
             </p>
             <br />
-            <p className="text-left text-lp-h3">
+            <p>
               Nhắm đến khách hàng là những đối tượng trẻ và nhiều sáng tạo, Fun
               Studio đang mang tới cho các bạn có niềm yêu thích về chụp ảnh
               theo phong cách Hàn Quốc những trải nghiệm thật vui vẻ và đáng
@@ -47,18 +47,20 @@ const Introduction = () => {
           </GridItem>
           <GridItem className="relative">
             <Image
-              className="absolute left-0 border-image h-[40rem]"
-              src="/images/banner-images/1.jpg"
+              className="object-cover absolute left-0 border-image h-[40rem]"
+              src="/images/home/nui_truc2.jpg"
               width={400}
               height={400}
               alt="introduce 1"
+              quality={75}
             />
             <Image
-              className="absolute right-0 border-image h-[35rem] bottom-0"
-              src="/images/banner-images/1.jpg"
+              className="object-cover absolute right-0 border-image h-[35rem] bottom-0"
+              src="/images/home/dhsp3.jpg"
               width={350}
               height={350}
               alt="introduce 2"
+              quality={75}
             />
           </GridItem>
         </Grid>
