@@ -45,9 +45,10 @@ const AppHeader: FC = () => (
           {map(headerNavBarLinks, (item) => (
             <Link
               key={item?.value}
+              href={`#${item?.value}`}
+              to={item?.value}
               className="font-[600] mr-1 flex-1 text-center whitespace-pre-line cursor-pointer text-lp-small text-lp-lighter-primary-color"
               activeClass="active"
-              to={item?.value}
               spy={true}
               smooth={true}
               offset={-54}

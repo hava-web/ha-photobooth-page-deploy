@@ -3,6 +3,8 @@ import squareFacebookIcon from 'assets/icons/square_facebook.png';
 import squareLocationIcon from 'assets/icons/square_location.png';
 import squarePhoneIcon from 'assets/icons/square_phone.png';
 import squareInstagramIcon from 'assets/icons/square_instagram.png';
+import squareEmailIcon from 'assets/icons/square_email.png';
+import squareTiktokIcon from 'assets/icons/square_tiktok.png';
 
 import homeSearchIcon from 'assets/icons/home_search.png';
 import growIcon from 'assets/icons/grow.png';
@@ -37,7 +39,7 @@ export const funStores = [
     label: 'Complex 01 ngõ 167 Tây Sơn, Đống Đa, Hà Nội',
     labelIndex: 'Fun Studio 1',
     value: 1,
-    image: '/images/banner-images/1.jpg',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -45,7 +47,7 @@ export const funStores = [
     label: '207 Tân Lập, Hùng Vương, Phú Thọ',
     labelIndex: 'Fun Studio 4',
     value: 2,
-    image: '/images/banner-images/1.jpg',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -53,7 +55,7 @@ export const funStores = [
     label: 'Kiot 4 Đại học Sư Phạm Hà Nội, Xuân Thủy, Cầu Giấy, Hà Nội',
     labelIndex: 'Fun Studio 2',
     value: 3,
-    image: '/images/banner-images/1.jpg',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -61,7 +63,7 @@ export const funStores = [
     label: '20 Chu Văn An, Vĩnh Yên, Vĩnh Phúc',
     labelIndex: 'Fun Studio 5',
     value: 4,
-    image: '/images/banner-images/1.jpg',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -69,7 +71,7 @@ export const funStores = [
     label: '57 Núi Trúc, Ba Đình, Hà Nội',
     labelIndex: 'Fun Studio 3',
     value: 5,
-    image: '/images/banner-images/1.jpg',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -79,25 +81,25 @@ export const funBanners = [
   {
     label: 'Mô hình chụp ảnh tự động, phong cách Hàn Quốc',
     value: 1,
-    image: '/images/banner-images/dhsp1.jpg',
+    image: '/images/banner-images/banner_1.jpg',
     alt: 'korea styles',
   },
   {
     label: 'Mô hình ưu Việt, dễ dàng sử dụng',
     value: 2,
-    image: '/images/banner-images/dhsp2.jpg',
+    image: '/images/banner-images/banner_2.jpg',
     alt: 'easy to úe',
   },
   {
     label: 'Chi phí đầu tư ban đầu thấp, lợi nhuận cao',
     value: 3,
-    image: '/images/banner-images/dhsp1.jpg',
+    image: '/images/banner-images/banner_3.jpg',
     alt: 'low risk high profit',
   },
   {
     label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
     value: 4,
-    image: '/images/banner-images/dhsp2.jpg',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'genz trending',
   },
 ];
@@ -106,14 +108,16 @@ export const FOOTER_ITEMS = [
   {
     label: 'fun@funstudio.com.vn',
     value: 1,
-    image: squareInstagramIcon,
+    image: squareEmailIcon,
     alt: 'footer email icon',
+    href: 'mailto:fun@funstudio.com.vn',
   },
   {
     label: 'Fun Studio',
     value: 2,
     image: squareFacebookIcon,
     alt: 'footer facebook icon',
+    href: process.env.NEXT_PUBLIC_FACEBOOK_URL,
   },
   {
     label: 'Số 3, Ngõ 31 Dịch vọng, Cầu Giấy, Hà Nội',
@@ -124,20 +128,23 @@ export const FOOTER_ITEMS = [
   {
     label: '@funatfunstudio',
     value: 4,
-    image: squareFacebookIcon,
+    image: squareTiktokIcon,
     alt: 'footer tiktok icon',
+    href: process.env.NEXT_PUBLIC_TIKTOK_URL,
   },
   {
     label: 'Mr. Duy 0975338244',
     value: 5,
     image: squarePhoneIcon,
     alt: 'footer phone icon',
+    href: 'tel:0975338244',
   },
   {
     label: 'funstudio__',
     value: 6,
     image: squareInstagramIcon,
     alt: 'footer instagram icon',
+    href: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
   },
 ];
 
@@ -245,25 +252,29 @@ export const NEWS_MESSAGES = [
   {
     label: 'báo công luận',
     value: 1,
-    image: '/images/banner-images/1.jpg',
+    href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
+    image: '/images/home/cong_luan.jpg',
     alt: 'cong luan news',
   },
   {
-    label: 'radio 4 tên',
+    label: 'radio 4 teen',
     value: 2,
-    image: '/images/banner-images/1.jpg',
+    href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'radio 4 teens',
   },
   {
-    label: 'báo công luận 1',
+    label: 'báo công luận',
     value: 3,
-    image: '/images/banner-images/1.jpg',
+    href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
+    image: '/images/home/cong_luan.jpg',
     alt: 'cong luan news',
   },
   {
-    label: 'radio 4 tên 1',
+    label: 'radio 4 teen',
     value: 4,
-    image: '/images/banner-images/1.jpg',
+    href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
+    image: '/images/banner-images/banner_4.jpg',
     alt: 'radio 4 teens',
   },
 ];
@@ -274,7 +285,6 @@ export const STRENGTH_ITEMS = [
     description:
       'Đồng hành triển khai và tư vấn bởi Đội ngũ chuyên môn cao dày dặn kinh nghiệm trong việc triển khai chuỗi cửa hàng',
     value: 1,
-    image: '/images/banner-images/1.jpg',
     alt: 'cong luan news',
   },
   {
@@ -282,7 +292,6 @@ export const STRENGTH_ITEMS = [
     description:
       'Tự phát triển phần mềm bởi đội ngũ chuyên gia kĩ thuật chuyên nghiệp',
     value: 2,
-    image: '/images/banner-images/1.jpg',
     alt: 'radio 4 teens',
   },
   {
@@ -290,7 +299,6 @@ export const STRENGTH_ITEMS = [
     description:
       'Luôn cập nhật những frame độc quyền, phụ kiện độc đáo và độ bắt trend nhanh chóng.',
     value: 3,
-    image: '/images/banner-images/1.jpg',
     alt: 'cong luan news',
   },
   {
@@ -298,7 +306,6 @@ export const STRENGTH_ITEMS = [
     description:
       'Mô hình tinh gọn, tiết kiệm chi phí, dễ sử dụng, thời gian triển khai nhanh chóng, thời gian hoàn vốn cấp tốc',
     value: 4,
-    image: '/images/banner-images/1.jpg',
     alt: 'radio 4 teens',
   },
 ];

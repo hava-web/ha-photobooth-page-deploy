@@ -44,13 +44,22 @@ export default class MyDocument extends Document<{
 
   render() {
     return (
-      <Html className="notranslate" translate="no" lang="en">
+      <Html className="notranslate" translate="no" lang="vi">
         <Head>
           <meta charSet="utf-8" />
           <meta name="google" content="notranslate" />
           <meta name="theme-color" content="#000000" />
-          <meta name="description" content="fun studio landing page" />
+          <meta content="vi-VN" itemProp="inLanguage" />
+          <meta
+            name="description"
+            content="Fun Studio landing page. Korean-Style Self Photo Studio"
+          />
+          <meta
+            name="keywords"
+            content="fun studio, funstudio, photobooth, korean style, fyp"
+          />
           <meta name="build-version" content="v0.0.1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="shortcut icon" href="/fun_studio_logo.ico" />
         </Head>
         <body>

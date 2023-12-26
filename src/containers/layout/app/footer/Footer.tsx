@@ -18,8 +18,22 @@ const Footer: FC = () => (
         </GridItem>
         {map(FOOTER_ITEMS, (item) => (
           <GridItem key={item?.value} className="flex items-center">
-            <Image src={item?.image} width={50} alt={item?.alt} />
-            <p className="ml-[10px]">{item?.label}</p>
+            {item?.href ? (
+              <a
+                target="_blank"
+                href={item?.href}
+                className="flex items-center"
+                rel="noreferrer"
+              >
+                <Image src={item?.image} width={50} alt={item?.alt} />
+                <p className="ml-[10px]">{item?.label}</p>
+              </a>
+            ) : (
+              <>
+                <Image src={item?.image} width={50} alt={item?.alt} />
+                <p className="ml-[10px]">{item?.label}</p>
+              </>
+            )}
           </GridItem>
         ))}
       </Grid>

@@ -38,8 +38,7 @@ const CustomerTalkAboutUs = () => {
   const handleSlideTo = useCallback(
     (index: number) => {
       if (newsSwiper) {
-        newsSwiper.slideTo(index * 2);
-        setNewsSwiperIndex(index);
+        newsSwiper.slideToLoop(index * 2);
       }
     },
     [newsSwiper],
@@ -130,25 +129,30 @@ const CustomerTalkAboutUs = () => {
               slidesPerGroup={2}
               autoplay={{ delay: 5000 }}
               onSwiper={setNewsSwiper}
-              onSlideChange={(swiperData) =>
+              onRealIndexChange={(swiperData) =>
                 setNewsSwiperIndex((swiperData?.realIndex || 0) / 2)
               }
               loop
             >
               {map(NEWS_MESSAGES, (news) => (
                 <SwiperSlide key={`${news?.value}`}>
-                  <div className={classes?.['news-swiper-card']}>
+                  <a
+                    target="_blank"
+                    href={news?.href}
+                    className={classes?.['news-swiper-card']}
+                    rel="noreferrer"
+                  >
                     <Image
-                      className="border-image"
-                      width={450}
-                      height={300}
+                      className="border-image object-cover w-[40rem] h-[25rem]"
+                      width={400}
+                      height={250}
                       src={news?.image}
                       alt={news?.alt}
                     />
                     <p className="text-white uppercase py-[2rem] text-lp-card-title">
                       {news?.label}
                     </p>
-                  </div>
+                  </a>
                 </SwiperSlide>
               ))}
             </Swiper>

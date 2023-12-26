@@ -7,7 +7,7 @@ import { useTranslation } from 'hooks/useTranslation';
 import p1Image from 'assets/images/process/p1.png';
 import p2Image from 'assets/images/process/p2.png';
 import p3Image from 'assets/images/process/p3.png';
-// import p4Image from 'assets/images/process/p4.png';
+import p4Image from 'assets/images/process/p4.png';
 import p5Image from 'assets/images/process/p5.png';
 import p6Image from 'assets/images/process/p6.png';
 import whiteRightArrowIcon from 'assets/icons/white_right_arrow.png';
@@ -45,7 +45,7 @@ const CooperationProcess = () => {
             <Image width={300} src={p3Image} alt="step 3" />
           </div>
           <div className="flex items-center justify-center">
-            <Image width={300} src={p1Image} alt="step 1" />
+            <Image width={300} src={p4Image} alt="step 4" />
             <Image
               className="h-[4rem] px-[4rem]"
               src={whiteRightArrowIcon}

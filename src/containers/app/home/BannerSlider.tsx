@@ -13,8 +13,7 @@ const BannerSlider: FC<any> = ({ banners }) => {
   const handleSlideTo = useCallback(
     (index: number) => {
       if (newsSwiper) {
-        newsSwiper.slideTo(index);
-        setNewsSwiperIndex(index);
+        newsSwiper.slideToLoop(index);
       }
     },
     [newsSwiper],
@@ -28,23 +27,24 @@ const BannerSlider: FC<any> = ({ banners }) => {
         scrollbar={{ draggable: true }}
         autoplay={{ delay: 5000 }}
         onSwiper={setNewsSwiper}
-        onSlideChange={(swiperData) =>
+        onRealIndexChange={(swiperData) =>
           setNewsSwiperIndex(swiperData?.realIndex || 0)
         }
         loop
       >
-        {map(banners, (item) => (
+        {map(banners, (item, ind: number) => (
           <SwiperSlide
             className="flex w-full h-full items-center justify-center text-center"
             key={`${item?.value}`}
           >
             <div title={item?.label} className="w-full h-full">
               <Image
+                {...(!ind && { rel: 'preload' })}
                 className="w-full h-full object-cover"
                 src={item?.image}
                 alt={item?.alt}
                 sizes="100vw"
-                quality={75}
+                quality={70}
                 fill
               />
               <p className="banner-title">{item?.label}</p>

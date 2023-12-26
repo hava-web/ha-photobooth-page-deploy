@@ -56,7 +56,7 @@ const Introduction = () => {
             />
             <Image
               className="object-cover absolute right-0 border-image h-[35rem] bottom-0"
-              src="/images/home/dhsp3.jpg"
+              src="/images/home/dhsp.jpg"
               width={350}
               height={350}
               alt="introduce 2"

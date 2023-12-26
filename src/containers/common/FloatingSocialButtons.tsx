@@ -20,7 +20,7 @@ const FloatingSocialButtons = () => {
         <Image src={zaloIcon} height={60} alt="zalo" />
       </button>
       <a
-        href="https://m.me/funatfunstudio"
+        href={process.env.NEXT_PUBLIC_MESSENGER_URL}
         target="_blank"
         className="animate-scale-pulse mt-2"
         title={T('Tin nhắn facebook')}
@@ -38,7 +38,7 @@ const FloatingSocialButtons = () => {
         <Image src={phoneIcon} height={60} alt="phone" />
       </a>
       <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSdhZTiNbOgLeODzxVVe-R4BWPrr5Outp_0_poL0f6pkoGZirA/viewform"
+        href={process.env.NEXT_PUBLIC_FRANCHISE_FORM_REGISTER_URL}
         target="_blank"
         className="animate-tilt-shaking mt-2"
         title={T('nhượng quyền')}

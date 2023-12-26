@@ -39,7 +39,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     <StoreProvider>
       <Head>
         <title>Fun studio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Fun Studio landing page" />
+        <meta
+          property="og:description"
+          content="Fun Studio landing page. Korean-Style Self Photo Studio"
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_APP_URL}/images/fun_studio_logo.png`}
+        />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} />
       </Head>
       <PersistGate loading={null} persistor={persistor}>
         {renderApp}
