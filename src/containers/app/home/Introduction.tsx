@@ -5,6 +5,8 @@ import { useTranslation } from 'hooks/useTranslation';
 import Grid from 'components/grid/Grid';
 import GridItem from 'components/grid/GridItem';
 import Image from 'components/image/Image';
+import nuiTruc2Image from 'assets/images/home/nui_truc2.jpg';
+import dhspImage from 'assets/images/home/dhsp.jpg';
 
 const Introduction = () => {
   const { T } = useTranslation();
@@ -48,7 +50,7 @@ const Introduction = () => {
           <GridItem className="relative">
             <Image
               className="object-cover absolute left-0 border-image h-[40rem]"
-              src="/images/home/nui_truc2.jpg"
+              src={nuiTruc2Image}
               width={400}
               height={400}
               alt="introduce 1"
@@ -56,7 +58,7 @@ const Introduction = () => {
             />
             <Image
               className="object-cover absolute right-0 border-image h-[35rem] bottom-0"
-              src="/images/home/dhsp.jpg"
+              src={dhspImage}
               width={350}
               height={350}
               alt="introduce 2"

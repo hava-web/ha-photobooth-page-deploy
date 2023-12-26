@@ -8,6 +8,8 @@ import Container from 'components/grid/Container';
 import Grid from 'components/grid/Grid';
 import GridItem from 'components/grid/GridItem';
 import { OPPORTUNITY_ITEMS } from 'store/static-data/static-data.data';
+import nhuongQuyen1Image from 'assets/images/home/nhuong_quyen_1.jpg';
+import nhuongQuyen2Image from 'assets/images/home/nhuong_quyen_2.jpg';
 import classes from './home.module.css';
 
 const EnsureOpportunity = () => {
@@ -35,14 +37,14 @@ const EnsureOpportunity = () => {
           <div className="flex">
             <Image
               className="object-cover object-bottom border-image h-[40rem] z-[1]"
-              src="/images/home/nhuong_quyen_1.jpg"
+              src={nhuongQuyen1Image}
               width={500}
               height={400}
               alt="opportunity 1"
             />
             <Image
               className="object-cover border-image h-[40rem] z-[1]"
-              src="/images/home/nhuong_quyen_2.jpg"
+              src={nhuongQuyen2Image}
               width={500}
               height={400}
               alt="opportunity 2"

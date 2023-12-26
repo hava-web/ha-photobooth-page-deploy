@@ -16,6 +16,13 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
+import banner1Image from 'assets/images/banner-images/banner_1.jpg';
+import congluanImage from 'assets/images/home/cong_luan.jpg';
+
+import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.jpg';
+import duyLeImage from 'assets/images/customers/duy_le.jpg';
+import hongNhungImage from 'assets/images/customers/hong_nhung.jpg';
+
 export const headerNavBarLinks = [
   {
     value: HOME_PAGE_SECTIONS.INTRODUCTION,
@@ -39,7 +46,6 @@ export const funStores = [
     label: 'Complex 01 ngõ 167 Tây Sơn, Đống Đa, Hà Nội',
     labelIndex: 'Fun Studio 1',
     value: 1,
-    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -47,7 +53,6 @@ export const funStores = [
     label: '207 Tân Lập, Hùng Vương, Phú Thọ',
     labelIndex: 'Fun Studio 4',
     value: 2,
-    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -55,7 +60,6 @@ export const funStores = [
     label: 'Kiot 4 Đại học Sư Phạm Hà Nội, Xuân Thủy, Cầu Giấy, Hà Nội',
     labelIndex: 'Fun Studio 2',
     value: 3,
-    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -63,7 +67,6 @@ export const funStores = [
     label: '20 Chu Văn An, Vĩnh Yên, Vĩnh Phúc',
     labelIndex: 'Fun Studio 5',
     value: 4,
-    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -71,7 +74,6 @@ export const funStores = [
     label: '57 Núi Trúc, Ba Đình, Hà Nội',
     labelIndex: 'Fun Studio 3',
     value: 5,
-    image: '/images/banner-images/banner_4.jpg',
     alt: 'Complex',
     href: '#',
   },
@@ -81,7 +83,7 @@ export const funBanners = [
   {
     label: 'Mô hình chụp ảnh tự động, phong cách Hàn Quốc',
     value: 1,
-    image: '/images/banner-images/banner_1.jpg',
+    image: banner1Image,
     alt: 'korea styles',
   },
   {
@@ -219,7 +221,7 @@ export const CUSTOMER_MESSAGES = [
     description:
       'Siêu mê sốp nha, ảnh vừa đẹp, phụ kiện quá tuyệt vời, hẹn sốp lần thứ 10.',
     value: 1,
-    image: '/images/customers/hoai_anh_le.jpg',
+    image: hoaiAnhLeImage,
     alt: 'customer messages',
   },
   {
@@ -227,7 +229,7 @@ export const CUSTOMER_MESSAGES = [
     description:
       'KPI mỗi tháng chúng mình qua 1 lần. Ước sốp làm quà cho Đại học Thăng Long',
     value: 2,
-    image: '/images/customers/duy_le.jpg',
+    image: duyLeImage,
     alt: 'customer messages',
   },
   {
@@ -235,7 +237,7 @@ export const CUSTOMER_MESSAGES = [
     description:
       'Chị Huyền làm ca sáng ở Tây Sơn rất chu đáo, em vote 10 saooo',
     value: 3,
-    image: '/images/customers/hong_nhung.jpg',
+    image: hongNhungImage,
     alt: 'customer messages',
   },
   {
@@ -243,7 +245,7 @@ export const CUSTOMER_MESSAGES = [
     description:
       'Mấy chị nhân viên siêu cute luôn ý ạ, giá còn rẻ nữa ạ. Em chụp tới lần thứ 9 rùi đó',
     value: 4,
-    image: '/images/customers/hoai_anh_le.jpg',
+    image: hoaiAnhLeImage,
     alt: 'customer messages',
   },
 ];
@@ -253,7 +255,7 @@ export const NEWS_MESSAGES = [
     label: 'báo công luận',
     value: 1,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
-    image: '/images/home/cong_luan.jpg',
+    image: congluanImage,
     alt: 'cong luan news',
   },
   {
@@ -267,7 +269,7 @@ export const NEWS_MESSAGES = [
     label: 'báo công luận',
     value: 3,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
-    image: '/images/home/cong_luan.jpg',
+    image: congluanImage,
     alt: 'cong luan news',
   },
   {

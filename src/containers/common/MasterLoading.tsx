@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'hooks/useTranslation';
 import Image from 'components/image/Image';
 import { useSpring, animated } from '@react-spring/web';
+import funlogo from 'assets/images/fun_studio_logo.png';
 
 const MasterLoading = () => {
   useTranslation();
@@ -29,9 +30,8 @@ const MasterLoading = () => {
     >
       <Image
         className="animate-scale-pulse no-select"
-        src="/images/fun_studio_logo.png"
+        src={funlogo}
         width={150}
-        height={102.48}
         alt="loading icon"
       />
     </animated.div>

@@ -7,6 +7,9 @@ import Grid from 'components/grid/Grid';
 import GridItem from 'components/grid/GridItem';
 import { map } from 'lodash';
 import { SERVICE_ITEMS } from 'store/static-data/static-data.data';
+import service1Image from 'assets/images/home/services_1.jpg';
+import service2Image from 'assets/images/home/services_2.jpg';
+import service3Image from 'assets/images/home/services_3.jpg';
 
 const Services = () => {
   const { T } = useTranslation();
@@ -34,21 +37,21 @@ const Services = () => {
           <div className="mx-auto relative">
             <Image
               className="object-cover border-image top-0 h-[500px]"
-              src="/images/home/services_1.jpg"
+              src={service1Image}
               width={500}
               height={500}
               alt="service 1"
             />
             <Image
               className="object-cover absolute border-image left-[35px] h-[250px] bottom-[3rem]"
-              src="/images/home/services_2.jpg"
+              src={service2Image}
               width={210}
               height={200}
               alt="service 2"
             />
             <Image
               className="object-cover absolute border-image left-[265px] h-[250px] bottom-[3rem]"
-              src="/images/home/services_3.jpg"
+              src={service3Image}
               width={210}
               height={200}
               alt="service 3"
