@@ -44,7 +44,7 @@ const BannerSlider: FC<any> = ({ banners }) => {
                 src={item?.image}
                 alt={item?.alt}
                 sizes="100vw"
-                quality={70}
+                quality={!ind ? 100 : 70}
                 fill
               />
               <p className="banner-title">{item?.label}</p>

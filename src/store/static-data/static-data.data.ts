@@ -16,7 +16,7 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
-import banner1Image from 'assets/images/banner-images/banner_1.jpg';
+import banner1Image from 'assets/images/banner-images/nui_truc_logo.jpg';
 import congluanImage from 'assets/images/home/cong_luan.jpg';
 
 import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.jpg';
