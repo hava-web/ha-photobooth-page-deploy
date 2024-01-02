@@ -31,7 +31,7 @@ pipeline {
                 script {
                     checkout scm
                     
-                    configFileProvider([configFile(fileId: TARGET_CONFIG_FILE_ID, targetLocation: './.env')]){
+                    configFileProvider([configFile(fileId: TARGET_CONFIG_FILE_ID, targetLocation: './.env.production')]){
                         docker.withRegistry("https://" + PCR, "ecr:ap-southeast-1:" + ECR_CREDENTIAL_ID){
                             def dockerImage = docker.build(IMAGE_COMPLETE_NAME)
                             dockerImage.push()
