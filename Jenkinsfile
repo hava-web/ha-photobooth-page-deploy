@@ -8,6 +8,7 @@ pipeline {
     environment {
         IMAGE_COMPLETE_NAME = ''
         ECR_CREDENTIAL_ID = 'aws-ecr'
+        TARGET_CONFIG_FILE_ID = ''
         BUILD_TAG = ''
     }
 
@@ -20,6 +21,7 @@ pipeline {
                         .format(DateTimeFormatter.ofPattern('yyyyMMdd'))
                     BUILD_TAG = "${currentDate}-${shortCommitHash}"
                     IMAGE_COMPLETE_NAME = "${PCR}/${FUN_UI_WEBSITE}:${BUILD_TAG}"
+                    TARGET_CONFIG_FILE_ID = "ui-client-website-config-${UI_TARGET_ENV}"
                 }
             }
         }
@@ -29,9 +31,11 @@ pipeline {
                 script {
                     checkout scm
                     
-                    docker.withRegistry("https://" + PCR, "ecr:ap-southeast-1:" + ECR_CREDENTIAL_ID){
-                        def dockerImage = docker.build(IMAGE_COMPLETE_NAME)
-                        dockerImage.push()
+                    configFileProvider([configFile(fileId: TARGET_CONFIG_FILE_ID, targetLocation: './.env')]){
+                        docker.withRegistry("https://" + PCR, "ecr:ap-southeast-1:" + ECR_CREDENTIAL_ID){
+                            def dockerImage = docker.build(IMAGE_COMPLETE_NAME)
+                            dockerImage.push()
+                        }
                     }
 
                     sh "docker rmi ${IMAGE_COMPLETE_NAME}"
