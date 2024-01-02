@@ -19,6 +19,7 @@ import moneyIcon from 'assets/icons/money.png';
 import banner1Image from 'assets/images/banner-images/nui_truc_logo.jpg';
 import congluanImage from 'assets/images/home/cong_luan.jpg';
 
+import buiLanPhuongImage from 'assets/images/customers/bui_lan_phuong.jpg';
 import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.jpg';
 import duyLeImage from 'assets/images/customers/duy_le.jpg';
 import hongNhungImage from 'assets/images/customers/hong_nhung.jpg';
@@ -221,7 +222,7 @@ export const CUSTOMER_MESSAGES = [
     description:
       'Siêu mê sốp nha, ảnh vừa đẹp, phụ kiện quá tuyệt vời, hẹn sốp lần thứ 10.',
     value: 1,
-    image: hoaiAnhLeImage,
+    image: buiLanPhuongImage,
     alt: 'customer messages',
   },
   {
