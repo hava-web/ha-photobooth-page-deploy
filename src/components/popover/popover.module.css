@@ -1,0 +1,93 @@
+/* Popover style */
+.pb-popover {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--z-index-popover);
+}
+
+.pb-popover-box {
+  position: absolute;
+  height: auto;
+  max-height: 70vh;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  padding: 1.5rem;
+  border: 0.3rem solid white;
+  text-align: center;
+  border-radius: 2rem;
+  box-shadow: 0.2rem 0.6rem 1.2rem 0.2rem #49494920;
+}
+
+.pb-popover-actions {
+  margin-top: 3rem;
+}
+
+.pb-popover-actions > *:not(:last-child) {
+  margin-right: 3rem;
+}
+
+.pb-popover-close-icon {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  cursor: pointer;
+  background: white;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  line-height: 4rem;
+  text-align: center;
+  border: 0.3rem solid var(--primary-color);
+  font-size: 4rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.pb-popover .pb-popover-content > * {
+  font-weight: 700;
+}
+
+.pb-popover .pb-popover-arrow {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background-color: white;
+}
+
+.pb-popover .pb-popover-arrow-al {
+  right: -0.1rem;
+  top: 50%;
+  border-right: 0.3rem solid white;
+  border-top: 0.3rem solid white;
+  transform: translate(50%, -50%) rotate(45deg);
+}
+
+.pb-popover .pb-popover-arrow-ar {
+  left: -0.1rem;
+  top: 50%;
+  border-bottom: 0.3rem solid white;
+  border-left: 0.3rem solid white;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pb-popover .pb-popover-arrow-at {
+  bottom: -2.25rem;
+  left: 50%;
+  border-bottom: 0.3rem solid white;
+  border-right: 0.3rem solid white;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pb-popover .pb-popover-arrow-ab {
+  left: 50%;
+  top: 0;
+  border-left: 0.3rem solid white;
+  border-top: 0.3rem solid white;
+  transform: translate(-50%, -50%) rotate(45deg);
+}

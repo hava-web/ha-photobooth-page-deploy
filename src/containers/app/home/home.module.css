@@ -74,9 +74,6 @@
   background-size: 230rem;
 }
 
-.strength-of-fun-wrapper {
-}
-
 .strength-of-fun-wrapper .strength-item-over::before {
   content: '""';
   position: absolute;
@@ -84,9 +81,30 @@
   top: -1.5rem;
   border: 1.5rem solid var(--lp-primary-color);
   width: calc(100% + 3rem);
-  border-radius: 3rem;
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
   border-bottom: none;
   height: 12rem;
+}
+
+.strength-of-fun-wrapper .triangle-border-left,
+.strength-of-fun-wrapper .triangle-border-right {
+  position: absolute;
+  left: -1.5rem;
+  top: 10.5rem;
+  width: 0;
+  height: 0;
+  border-top: 1.5rem solid var(--lp-primary-color);
+}
+
+.strength-of-fun-wrapper .triangle-border-left {
+  border-right: 1.5rem solid transparent;
+}
+
+.strength-of-fun-wrapper .triangle-border-right {
+  border-left: 1.5rem solid transparent;
+  left: unset;
+  right: -1.5rem;
 }
 
 .strength-of-fun-wrapper .strength-item-under::before {
@@ -96,9 +114,30 @@
   bottom: -1.5rem;
   border: 1.5rem solid var(--lp-primary-color);
   width: calc(100% + 3rem);
-  border-radius: 3rem;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
   border-top: none;
   height: 12rem;
+}
+
+.strength-of-fun-wrapper .strength-item-under .triangle-border-left,
+.strength-of-fun-wrapper .strength-item-under .triangle-border-right {
+  bottom: 10.5rem;
+  top: unset;
+  border-top: unset;
+  border-bottom: 1.5rem solid var(--lp-primary-color);
+}
+
+.strength-of-fun-wrapper .strength-item-under .triangle-border-left {
+  border-right: 1.5rem solid transparent;
+  border-left: unset;
+}
+
+.strength-of-fun-wrapper .strength-item-under .triangle-border-right {
+  border-left: 1.5rem solid transparent;
+  border-right: unset;
+  left: unset;
+  right: -1.5rem;
 }
 
 .strength-of-fun-wrapper .strength-index {

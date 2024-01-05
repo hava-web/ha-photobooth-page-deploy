@@ -151,6 +151,17 @@
   .dot-slider-active {
     @apply bg-lp-primary-color mx-[1rem];
   }
+
+  .shadow-white-bg {
+    width: 80%;
+    height: 80%;
+    border-radius: 148rem;
+    transform: rotate(15deg);
+    bottom: -65%;
+    left: -30%;
+    box-shadow: 4rem 5rem 4rem 14rem white;
+    opacity: 0.9;
+  }
 }
 
 html,

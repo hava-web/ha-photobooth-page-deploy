@@ -17,7 +17,7 @@ export const headerNavBarLinks = [
     label: 'giới thiệu\n funstudio',
   },
   { value: HOME_PAGE_SECTIONS.ENSURE_OPPORTUNITY, label: 'mô hình\n bền vững' },
-  { value: HOME_PAGE_SECTIONS.SERVICES, label: 'dịch vụ' },
+  { value: HOME_PAGE_SECTIONS.SERVICES, label: 'dịch vụ\n miễn phí' },
   {
     value: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
     label: 'khách hàng\n nói về chúng tôi',

@@ -14,7 +14,7 @@ const Introduction = () => {
   return (
     <section
       id={HOME_PAGE_SECTIONS.INTRODUCTION}
-      className="flex w-full bg-lp-lighter2-primary-color"
+      className="flex w-full bg-lp-lighter2-primary-color border-t-[3rem] border-lp-lighter-primary-color"
     >
       <Container className="py-[4rem] pb-[8rem] text-lp-body text-center">
         <h2 className="mb-4 text-lp-section-title-2 text-lp-primary-color uppercase whitespace-pre-wrap">
@@ -22,8 +22,8 @@ const Introduction = () => {
             'fun studio là thương hiệu chụp ảnh tự động\n theo phong cách hàn quốc',
           )}
         </h2>
-        <Grid className="mx-auto gap-2 grid-cols-2 grid-rows-1 w-[110rem] text-[#565656]">
-          <GridItem className="relative text-left">
+        <Grid className="mx-auto gap-[4rem] grid-cols-2 grid-rows-1 w-[110rem] text-[#565656]">
+          <GridItem className="relative text-justify">
             <p>
               Mô hình tự chụp ảnh lấy liền đã và đang trở thành một trào lưu
               thịnh hành đối với giới trẻ Hàn Quốc.
@@ -44,8 +44,8 @@ const Introduction = () => {
               nhớ. Tất cả đều được chứa đựng trong từng sản phẩm và các khâu vận
               hành của Fun Studio.
             </p>
-            <div className="absolute w-[8rem] h-[8rem] -top-[2rem] -left-[3rem] border-white border-t-[1rem] border-l-[1rem]" />
-            <div className="absolute w-[8rem] h-[8rem] -right-[2rem] -bottom-[3rem] border-white border-b-[1rem] border-r-[1rem]" />
+            <div className="absolute w-[8rem] h-[8rem] -top-[2rem] -left-[3.5rem] border-white border-t-[1rem] border-l-[1rem]" />
+            <div className="absolute w-[8rem] h-[8rem] -right-[3rem] bottom-0 border-white border-b-[1rem] border-r-[1rem]" />
           </GridItem>
           <GridItem className="relative">
             <Image

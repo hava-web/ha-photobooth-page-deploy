@@ -32,22 +32,22 @@ const BannerSlider: FC<any> = ({ banners }) => {
         }
         loop
       >
-        {map(banners, (item, ind: number) => (
+        {map(banners, (item) => (
           <SwiperSlide
-            className="flex w-full h-full items-center justify-center text-center"
+            className="flex w-full h-full items-center justify-center text-center overflow-hidden"
             key={`${item?.value}`}
           >
             <div title={item?.label} className="w-full h-full">
               <Image
-                {...(!ind && { rel: 'preload' })}
                 className="w-full h-full object-cover"
                 src={item?.image}
                 alt={item?.alt}
                 sizes="100vw"
-                quality={!ind ? 100 : 70}
+                quality={70}
                 fill
               />
-              <p className="banner-title">{item?.label}</p>
+              <p className="banner-title z-[1]">{item?.label}</p>
+              <div className="absolute shadow-white-bg bg-white" />
             </div>
           </SwiperSlide>
         ))}

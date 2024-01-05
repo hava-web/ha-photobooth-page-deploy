@@ -29,7 +29,7 @@ const CooperationProcess = () => {
           {T('trình tự đăng ký')}
         </h2>
         <div className="mx-auto">
-          <div className="mb-[10rem] flex items-center justify-center">
+          <div className="relative mb-[5rem] flex items-center justify-center">
             <Image width={300} src={p1Image} alt="step 1" />
             <Image
               className="h-[4rem] px-[4rem]"
@@ -44,20 +44,32 @@ const CooperationProcess = () => {
             />
             <Image width={300} src={p3Image} alt="step 3" />
           </div>
-          <div className="flex items-center justify-center">
-            <Image width={300} src={p4Image} alt="step 4" />
+          <div className="relative mb-[5rem] flex items-center justify-center">
             <Image
-              className="h-[4rem] px-[4rem]"
+              className="h-[4rem] mr-[72rem] px-[4rem] -rotate-90"
+              src={whiteRightArrowIcon}
+              alt="right arrow"
+            />
+            <Image
+              className="h-[4rem] px-[4rem] rotate-90"
+              src={whiteRightArrowIcon}
+              alt="right arrow"
+            />
+          </div>
+          <div className="relative flex items-center justify-center">
+            <Image width={300} src={p6Image} alt="step 6" />
+            <Image
+              className="rotate-180 h-[4rem] px-[4rem]"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
             <Image width={300} src={p5Image} alt="step 5" />
             <Image
-              className="h-[4rem] px-[4rem]"
+              className="rotate-180 h-[4rem] px-[4rem]"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
-            <Image width={300} src={p6Image} alt="step 6" />
+            <Image width={300} src={p4Image} alt="step 4" />
           </div>
         </div>
       </Container>

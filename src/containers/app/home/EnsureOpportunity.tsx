@@ -18,18 +18,18 @@ const EnsureOpportunity = () => {
   return (
     <section
       id={HOME_PAGE_SECTIONS.ENSURE_OPPORTUNITY}
-      className="flex flex-col w-full bg-lp-primary-color"
+      className="flex flex-col w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color"
     >
       <Container className="py-[4rem] text-lp-body text-white text-center">
         <h2 className="mb-4 text-lp-section-title-2 uppercase font-[800]">
           {T('cơ hội nhượng quyền thương mại bền vững')}
         </h2>
-        <Grid className="mx-auto gap-x-[2rem] grid-cols-2 grid-rows-2 text-[2rem] w-[110rem]">
+        <Grid className="mx-auto gap-x-[4rem] gap-y-[2rem] grid-cols-2 grid-rows-2 grid-rows-[auto,_1fr] text-[2rem] w-[110rem]">
           {map(OPPORTUNITY_ITEMS, (item) => (
             <GridItem className="text-left">
               <Image src={item?.image} width={60} alt={item?.alt} />
               <strong className="block my-[2rem]">{item?.label}</strong>
-              <p>{item?.description}</p>
+              <p className="text-justify">{item?.description}</p>
             </GridItem>
           ))}
         </Grid>

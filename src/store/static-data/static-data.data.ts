@@ -16,13 +16,25 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
-import banner1Image from 'assets/images/banner-images/nui_truc_logo.jpg';
-import congluanImage from 'assets/images/home/cong_luan.jpg';
+import banner1Image from 'assets/images/banner-images/banner_1.jpg';
+import banner2Image from 'assets/images/banner-images/banner_2.jpg';
+import banner3Image from 'assets/images/banner-images/banner_3.jpg';
+import banner4Image from 'assets/images/banner-images/banner_4.jpg';
+import banner5Image from 'assets/images/banner-images/banner_5.jpg';
+import banner6Image from 'assets/images/banner-images/banner_6.jpg';
+import banner7Image from 'assets/images/banner-images/banner_7.jpg';
+
+import congluanImage from 'assets/images/home/bao_cong_luan.jpg';
+import radio4TeenImage from 'assets/images/home/radio_4_teen.jpg';
 
 import buiLanPhuongImage from 'assets/images/customers/bui_lan_phuong.jpg';
 import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.jpg';
 import duyLeImage from 'assets/images/customers/duy_le.jpg';
 import hongNhungImage from 'assets/images/customers/hong_nhung.jpg';
+
+import hoangThuPhuongImage from 'assets/images/customers/hoang_thu_phuong.jpg';
+import yenNhiImage from 'assets/images/customers/yen_nhi.jpg';
+import nguyenThuImage from 'assets/images/customers/nguyen_thu.jpg';
 
 export const headerNavBarLinks = [
   {
@@ -88,22 +100,40 @@ export const funBanners = [
     alt: 'korea styles',
   },
   {
-    label: 'Mô hình ưu Việt, dễ dàng sử dụng',
+    label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
     value: 2,
-    image: '/images/banner-images/banner_2.jpg',
-    alt: 'easy to úe',
+    image: banner2Image,
+    alt: 'easy to use',
   },
   {
-    label: 'Chi phí đầu tư ban đầu thấp, lợi nhuận cao',
+    label: 'Mô hình ưu Việt, dễ dàng sử dụng',
     value: 3,
-    image: '/images/banner-images/banner_3.jpg',
+    image: banner3Image,
     alt: 'low risk high profit',
   },
   {
-    label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
+    label: 'Chi phí đầu tư ban đầu thấp, lợi nhuận cao',
     value: 4,
-    image: '/images/banner-images/banner_4.jpg',
+    image: banner4Image,
     alt: 'genz trending',
+  },
+  {
+    label: 'Thu hồi vốn nhanh chóng 8 - 10 tháng',
+    value: 5,
+    image: banner5Image,
+    alt: 'get budget',
+  },
+  {
+    label: 'Chi phí vận hành thấp',
+    value: 6,
+    image: banner6Image,
+    alt: 'low operation cost',
+  },
+  {
+    label: 'Thi công nhanh chóng tròng vòng 20 - 25 ngày',
+    value: 7,
+    image: banner7Image,
+    alt: 'quick building',
   },
 ];
 
@@ -129,7 +159,7 @@ export const FOOTER_ITEMS = [
     alt: 'footer location icon',
   },
   {
-    label: '@funatfunstudio',
+    label: 'funstudio__',
     value: 4,
     image: squareTiktokIcon,
     alt: 'footer tiktok icon',
@@ -143,7 +173,7 @@ export const FOOTER_ITEMS = [
     href: 'tel:0975338244',
   },
   {
-    label: 'funstudio__',
+    label: '@funatfunstudio',
     value: 6,
     image: squareInstagramIcon,
     alt: 'footer instagram icon',
@@ -201,7 +231,7 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn muốn có cửa hàng nhưng chưa biết cách quản lý',
     description:
-      'Rất nhiều người rất muốn kinh doanh nhưng không có kinh nghiệm, không dám làm vì không có kinh nghiệm, nguồn lực để làm. Nhưng đến với Pozaa thì bạn hoàn toàn có thể, cửa hàng kinh doanh là của bạn, nhưng toàn bộ hoạt động vận hành, quản lý là do tổng công ty điều hành và hỗ trợ cho bạn.',
+      'Rất nhiều người rất muốn kinh doanh nhưng không có kinh nghiệm, không dám làm vì không có kinh nghiệm, nguồn lực để làm. Nhưng đến với Fun Studio thì bạn hoàn toàn có thể, cửa hàng kinh doanh là của bạn, nhưng toàn bộ hoạt động vận hành, quản lý là do tổng công ty điều hành và hỗ trợ cho bạn.',
     value: 3,
     image: handIcon,
     alt: 'hand icon',
@@ -249,6 +279,30 @@ export const CUSTOMER_MESSAGES = [
     image: hoaiAnhLeImage,
     alt: 'customer messages',
   },
+  {
+    label: 'Hoàng Thu Phương',
+    description:
+      'Ở Fun bắt trend siêu nhanh luôn, làm em tới lần thứ 10 rùi mà chưa chụp được hết frame',
+    value: 5,
+    image: hoangThuPhuongImage,
+    alt: 'customer messages',
+  },
+  {
+    label: 'Yến Nhi',
+    description:
+      'Chưa thấy ở đâu chụp ảnh rẻ như ở Fun, rẻ nhưng vẫn vô cùng chất lượng, lại còn nhiều trang phục xinh nữa. Em sẽ quay lại dài dàiii',
+    value: 6,
+    image: yenNhiImage,
+    alt: 'customer messages',
+  },
+  {
+    label: 'Nguyễn Thu',
+    description:
+      'Mê nhất là seri frame trường ở đây vì có cả trường cấp 3 và Đại học em đang học lun, cực mê lun',
+    value: 7,
+    image: nguyenThuImage,
+    alt: 'customer messages',
+  },
 ];
 
 export const NEWS_MESSAGES = [
@@ -263,7 +317,7 @@ export const NEWS_MESSAGES = [
     label: 'radio 4 teen',
     value: 2,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
-    image: '/images/banner-images/banner_4.jpg',
+    image: radio4TeenImage,
     alt: 'radio 4 teens',
   },
   {
@@ -277,35 +331,35 @@ export const NEWS_MESSAGES = [
     label: 'radio 4 teen',
     value: 4,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
-    image: '/images/banner-images/banner_4.jpg',
+    image: radio4TeenImage,
     alt: 'radio 4 teens',
   },
 ];
 
 export const STRENGTH_ITEMS = [
   {
-    label: 'đội ngũ giày dạn kinh nghiệm',
+    label: 'đội ngũ\n dày dặn\n kinh nghiệm',
     description:
       'Đồng hành triển khai và tư vấn bởi Đội ngũ chuyên môn cao dày dặn kinh nghiệm trong việc triển khai chuỗi cửa hàng',
     value: 1,
     alt: 'cong luan news',
   },
   {
-    label: 'đội ngũ kỹ thuật chuyên nghiệp',
+    label: 'đội ngũ\n kỹ thuật\n chuyên nghiệp',
     description:
       'Tự phát triển phần mềm bởi đội ngũ chuyên gia kĩ thuật chuyên nghiệp',
     value: 2,
     alt: 'radio 4 teens',
   },
   {
-    label: 'bắt trend nhanh chóng và sáng tạo',
+    label: 'bắt trend\n nhanh chóng\n và sáng tạo',
     description:
       'Luôn cập nhật những frame độc quyền, phụ kiện độc đáo và độ bắt trend nhanh chóng.',
     value: 3,
     alt: 'cong luan news',
   },
   {
-    label: 'mô hình ưu việt',
+    label: 'mô hình\n ưu việt',
     description:
       'Mô hình tinh gọn, tiết kiệm chi phí, dễ sử dụng, thời gian triển khai nhanh chóng, thời gian hoàn vốn cấp tốc',
     value: 4,

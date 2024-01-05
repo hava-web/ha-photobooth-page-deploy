@@ -19,7 +19,7 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   return (
     <section
       id={HOME_PAGE_SECTIONS.FUN_STORES}
-      className="flex w-full bg-lp-primary-color"
+      className="flex w-full bg-lp-primary-color border-t-[3rem] border-white"
     >
       <Container className="py-[4rem] text-white text-center">
         <h2 className="mb-[4rem] text-lp-section-title uppercase font-[800] text-white">

@@ -23,12 +23,12 @@ const Services = () => {
         <h2 className="mb-4 text-lp-section-title whitespace-pre-line uppercase text-white">
           {T('4 dịch vụ miễn phí\n khi hợp tác cùng fun studio')}
         </h2>
-        <Grid className="mx-auto gap-2 grid-cols-2 grid-rows-1 w-[120rem]">
-          <Grid className="gap-2 grid-cols-1 grid-rows-4">
+        <Grid className="mx-auto gap-[4rem] grid-cols-2 grid-rows-[auto,1lr] w-[115rem]">
+          <Grid className="gap-y-[4rem]">
             {map(SERVICE_ITEMS, (item) => (
               <GridItem className="flex items-center">
                 <Image src={item?.image} width={60} alt={item?.alt} />
-                <p className="text-left ml-[2rem]">
+                <p className="text-justify ml-[2rem]">
                   <strong>Miễn phí</strong> {item?.label}
                 </p>
               </GridItem>

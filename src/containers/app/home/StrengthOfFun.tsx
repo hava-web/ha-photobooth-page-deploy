@@ -13,7 +13,7 @@ const StrengthOfFun = () => {
   return (
     <section
       id={HOME_PAGE_SECTIONS.STRENGTH_OF_FUN}
-      className="flex w-full bg-gradient-pink"
+      className="flex w-full bg-gradient-pink border-t-[3rem] border-lp-lighter-primary-color"
     >
       <Container className="flex flex-col py-[4rem] pb-[5rem] text-lp-body text-white text-center">
         <h2 className="mb-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase">
@@ -29,7 +29,7 @@ const StrengthOfFun = () => {
             <div
               className={cx(
                 classes?.['strength-item'],
-                `relative shadow-box flex items-center h-[45rem] w-[25rem] bg-white rounded-[1rem] mx-[0.75rem] ${
+                `whitespace-pre-line relative shadow-box flex items-center h-[45rem] w-[27rem] bg-white rounded-[1rem] mx-[0.75rem] ${
                   ind % 2 === 0 ? `self-end` : 'self-start'
                 }`,
                 ind % 2 === 0
@@ -37,7 +37,7 @@ const StrengthOfFun = () => {
                   : classes?.['strength-item-over'],
               )}
             >
-              <div className="bg-white w-full h-full z-[1] rounded-[3rem] p-[2rem]">
+              <div className="relative bg-white w-full h-full z-[1] rounded-[3rem] p-[2rem] text-center">
                 <span className={classes?.['strength-index']}>{ind + 1}</span>
                 <strong className="text-lp-primary-color mb-2rem uppercase">
                   {item?.label}
@@ -46,6 +46,8 @@ const StrengthOfFun = () => {
                 <p className="text-lp-primary-color text-[22px]">
                   {item?.description}
                 </p>
+                <div className={classes['triangle-border-left']} />
+                <div className={classes['triangle-border-right']} />
               </div>
             </div>
           ))}
