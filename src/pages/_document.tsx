@@ -52,7 +52,7 @@ export default class MyDocument extends Document<{
           <meta content="vi-VN" itemProp="inLanguage" />
           <meta
             name="description"
-            content="Fun Studio landing page. Korean-Style Self Photo Studio"
+            content="Studio tự chụp ảnh phong cách Hàn Quốc"
           />
           <meta
             name="keywords"

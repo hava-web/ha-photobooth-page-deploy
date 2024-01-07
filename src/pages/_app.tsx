@@ -39,14 +39,14 @@ function MyApp({ Component, pageProps }: AppProps) {
     <StoreProvider>
       <Head>
         <title>Fun studio</title>
-        <meta property="og:title" content="Fun Studio landing page" />
+        <meta property="og:title" content="Fun Studio" />
         <meta
           property="og:description"
-          content="Fun Studio landing page. Korean-Style Self Photo Studio"
+          content="Studio tự chụp ảnh phong cách Hàn Quốc"
         />
         <meta
           property="og:image"
-          content={`${process.env.NEXT_PUBLIC_APP_URL}/images/fun_studio_logo.png`}
+          content={`${process.env.NEXT_PUBLIC_APP_URL}/images/og_fun_studio_image.png`}
         />
         <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} />
       </Head>

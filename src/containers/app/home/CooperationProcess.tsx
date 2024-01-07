@@ -46,7 +46,7 @@ const CooperationProcess = () => {
           </div>
           <div className="relative mb-[5rem] flex items-center justify-center">
             <Image
-              className="h-[4rem] mr-[72rem] px-[4rem] -rotate-90"
+              className="h-[4rem] mr-[72rem] px-[4rem] -rotate-90 invisible"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />

@@ -46,7 +46,9 @@ const BannerSlider: FC<any> = ({ banners }) => {
                 quality={70}
                 fill
               />
-              <p className="banner-title z-[1]">{item?.label}</p>
+              <p className="banner-title z-[1] whitespace-pre-line">
+                {item?.label}
+              </p>
               <div className="absolute shadow-white-bg bg-white" />
             </div>
           </SwiperSlide>

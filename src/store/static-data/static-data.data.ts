@@ -94,7 +94,7 @@ export const funStores = [
 
 export const funBanners = [
   {
-    label: 'Mô hình chụp ảnh tự động, phong cách Hàn Quốc',
+    label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
     value: 1,
     image: banner1Image,
     alt: 'korea styles',
@@ -106,31 +106,31 @@ export const funBanners = [
     alt: 'easy to use',
   },
   {
-    label: 'Mô hình ưu Việt, dễ dàng sử dụng',
+    label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
     value: 3,
     image: banner3Image,
     alt: 'low risk high profit',
   },
   {
-    label: 'Chi phí đầu tư ban đầu thấp, lợi nhuận cao',
+    label: 'Chi phí đầu tư ban đầu thấp,\n lợi nhuận cao',
     value: 4,
     image: banner4Image,
     alt: 'genz trending',
   },
   {
-    label: 'Thu hồi vốn nhanh chóng 8 - 10 tháng',
+    label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
     value: 5,
     image: banner5Image,
     alt: 'get budget',
   },
   {
-    label: 'Chi phí vận hành thấp',
+    label: 'Chi phí vận hành thấp,\n tự động hóa cao,\n sử dụng ít nhân sự',
     value: 6,
     image: banner6Image,
     alt: 'low operation cost',
   },
   {
-    label: 'Thi công nhanh chóng tròng vòng 20 - 25 ngày',
+    label: 'Thời gian triển khai nhanh chóng với chi phí tối ưu',
     value: 7,
     image: banner7Image,
     alt: 'quick building',
