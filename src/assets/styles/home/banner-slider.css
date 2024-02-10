@@ -1,0 +1,187 @@
+.banner-slider {
+  @apply flex relative;
+  width: 100%;
+  height: calc(100vh - var(--height-of-header));
+
+  .swiper {
+    @apply w-full h-full;
+
+    .swiper-slide {
+      @apply flex w-full h-full items-center justify-center text-center overflow-hidden;
+
+      .swiper-slide-image {
+        @apply w-full h-full object-cover;
+      }
+
+      .swiper-slide-wrapper {
+        @apply w-full h-full;
+      }
+
+      .label-title {
+        @apply uppercase w-[50%] absolute bottom-[4rem] object-cover text-lp-primary-color text-[5.4rem] font-[800] z-[1] whitespace-pre-line;
+        text-shadow:
+          2px 0 #fff,
+          -2px 0 #fff,
+          0 2px #fff,
+          0 -2px #fff,
+          1px 1px #fff,
+          -1px -1px #fff,
+          1px -1px #fff,
+          -1px 1px #fff;
+      }
+
+      .shadow-white-bg {
+        @apply absolute bg-white;
+        width: 80%;
+        height: 80%;
+        border-radius: 148rem;
+        transform: rotate(15deg);
+        bottom: -65%;
+        left: -30%;
+        box-shadow: 4rem 5rem 4rem 14rem white;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .swiper-dot-wrapper {
+    @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+  }
+}
+
+@media screen('less-sm') {
+  .banner-slider {
+    @apply flex relative w-full;
+
+    .swiper {
+      @apply w-full h-full;
+
+      .swiper-slide {
+        @apply flex w-full h-full items-center justify-center text-center overflow-hidden;
+
+        .swiper-slide-image {
+          @apply w-full h-full object-cover;
+        }
+
+        .swiper-slide-wrapper {
+          @apply w-full h-full;
+        }
+
+        .label-title {
+          @apply text-[4rem] w-full bottom-[8rem];
+        }
+
+        .shadow-white-bg {
+          @apply absolute bg-white;
+          width: 100%;
+          height: 80%;
+          border-radius: 0;
+          transform: rotate(0deg);
+          bottom: -55%;
+          left: 0;
+          box-shadow: 4rem 5rem 4rem 14rem white;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .swiper-dot-wrapper {
+      @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+    }
+  }
+}
+
+@media screen('sm') {
+  .banner-slider {
+    @apply flex relative w-full;
+
+    .swiper {
+      @apply w-full h-full;
+
+      .swiper-slide {
+        @apply flex w-full h-full items-center justify-center text-center overflow-hidden;
+
+        .swiper-slide-image {
+          @apply w-full h-full object-cover;
+        }
+
+        .swiper-slide-wrapper {
+          @apply w-full h-full;
+        }
+
+        .label-title {
+          @apply w-[65%] text-[4rem] bottom-[8rem];
+        }
+
+        .shadow-white-bg {
+          @apply absolute bg-white;
+          width: 50%;
+          height: 80%;
+          border-radius: 0;
+          transform: rotate(0deg);
+          bottom: -55%;
+          left: 0;
+          box-shadow: 4rem 5rem 4rem 14rem white;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .swiper-dot-wrapper {
+      @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+    }
+  }
+}
+
+@media screen('xl') {
+  .banner-slider {
+    @apply flex relative;
+    width: 100%;
+    height: calc(100vh - var(--height-of-header));
+
+    .swiper {
+      @apply w-full h-full;
+
+      .swiper-slide {
+        @apply flex w-full h-full items-center justify-center text-center overflow-hidden;
+
+        .swiper-slide-image {
+          @apply w-full h-full object-cover;
+        }
+
+        .swiper-slide-wrapper {
+          @apply w-full h-full;
+        }
+
+        .label-title {
+          @apply uppercase w-[50%] absolute bottom-[4rem] object-cover text-lp-primary-color text-[5.4rem] font-[800] z-[1] whitespace-pre-line;
+          text-shadow:
+            2px 0 #fff,
+            -2px 0 #fff,
+            0 2px #fff,
+            0 -2px #fff,
+            1px 1px #fff,
+            -1px -1px #fff,
+            1px -1px #fff,
+            -1px 1px #fff;
+        }
+
+        .shadow-white-bg {
+          @apply absolute bg-white;
+          width: 80%;
+          height: 80%;
+          border-radius: 148rem;
+          transform: rotate(15deg);
+          bottom: -65%;
+          left: -30%;
+          box-shadow: 4rem 5rem 4rem 14rem white;
+          opacity: 0.9;
+        }
+      }
+    }
+
+    .swiper-dot-wrapper {
+      @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+    }
+  }
+}

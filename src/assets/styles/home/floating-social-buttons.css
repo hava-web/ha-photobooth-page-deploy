@@ -1,0 +1,47 @@
+.floating-social-buttons {
+  @apply flex items-end fixed flex-col right-2 bottom-[3rem] pointer-events-none z-z-index-floating-button;
+  .floating-button {
+    @apply mt-2 pointer-events-auto;
+    transition: 0.3s all;
+  }
+  .zalo-popover {
+    @apply pointer-events-auto;
+    .zalo-popover-box {
+    }
+  }
+  .btn-show-more {
+    @apply hidden animate-scale-pulse;
+    img {
+      transition: 0.2s all;
+      @apply rotate-0;
+    }
+  }
+}
+
+@media screen('less-sm') {
+  .floating-social-buttons {
+    .zalo-popover {
+      .zalo-popover-box {
+        left: unset !important;
+        top: unset !important;
+      }
+    }
+    .floating-button {
+      @apply -translate-y-[2rem];
+      opacity: 0;
+      pointer-events: none;
+    }
+    .btn-show-more {
+      @apply block opacity-100 pointer-events-auto !important;
+    }
+
+    &.show-in-mobile {
+      .floating-button {
+        @apply block opacity-100 pointer-events-auto translate-y-0 !important;
+      }
+      .btn-show-more img {
+        @apply rotate-45;
+      }
+    }
+  }
+}

@@ -39,18 +39,21 @@ import nguyenThuImage from 'assets/images/customers/nguyen_thu.jpg';
 export const headerNavBarLinks = [
   {
     value: HOME_PAGE_SECTIONS.INTRODUCTION,
-    label: 'giới thiệu funstudio',
+    label: 'giới thiệu\n funstudio',
   },
-  { value: HOME_PAGE_SECTIONS.ENSURE_OPPORTUNITY, abel: 'mô hình bền vững' },
-  { value: HOME_PAGE_SECTIONS.SERVICES, label: 'dịch vụ' },
+  { value: HOME_PAGE_SECTIONS.ENSURE_OPPORTUNITY, label: 'mô hình\n bền vững' },
+  { value: HOME_PAGE_SECTIONS.SERVICES, label: 'dịch vụ\n miễn phí' },
   {
     value: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
-    label: 'khách hàng nói về chúng tôi',
+    label: 'khách hàng\n nói về chúng tôi',
   },
-  { value: HOME_PAGE_SECTIONS.COOPERATION_PROCESS, label: 'quy trình hợp tác' },
+  {
+    value: HOME_PAGE_SECTIONS.COOPERATION_PROCESS,
+    label: 'quy trình\n hợp tác',
+  },
   {
     value: HOME_PAGE_SECTIONS.FUN_STORES,
-    label: 'danh sách cửa hàng',
+    label: 'danh sách\n cửa hàng',
   },
 ];
 

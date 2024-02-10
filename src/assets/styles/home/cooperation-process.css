@@ -1,0 +1,126 @@
+.cooperation-process {
+  background-image: url('/images/background/cartoon_trang.png');
+  background-size: 230rem;
+  @apply flex w-full bg-lp-lighter-primary-color;
+
+  .cooperation-process-container {
+    @apply py-[6rem] text-lp-body text-white text-center;
+
+    .section-title {
+      @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white;
+    }
+
+    .cooperation-process-row {
+      @apply relative mb-[5rem] flex items-center justify-center;
+    }
+
+    .cooperation-process-row-arrow {
+      @apply flex relative mb-[5rem] items-center justify-center;
+    }
+
+    .cooperation-process-1-row-arrow {
+      @apply hidden;
+    }
+
+    .cooperation-process-arrow {
+      @apply h-[4rem] px-[4rem];
+    }
+  }
+}
+
+@media screen('less-sm') {
+  .cooperation-process {
+    .cooperation-process-container {
+      .section-title {
+        @apply text-lp-section-title-2;
+      }
+      .cooperation-process-row {
+        @apply flex-col;
+      }
+
+      .cooperation-process-arrow {
+        @apply h-[unset] m-[4rem] px-[4rem] rotate-90;
+      }
+
+      .cooperation-process-row-2 {
+        @apply flex-col-reverse;
+      }
+
+      .cooperation-process-row-arrow {
+        @apply hidden;
+      }
+
+      .cooperation-process-1-row-arrow {
+        @apply block;
+
+        .cooperation-process-arrow {
+          @apply my-[4rem] mx-[auto];
+        }
+      }
+    }
+  }
+}
+
+@media screen('sm') {
+  .cooperation-process {
+    .cooperation-process-container {
+      .cooperation-process-row {
+        @apply flex-col;
+      }
+
+      .cooperation-process-arrow {
+        @apply h-[unset] m-[4rem] px-[4rem] rotate-90;
+      }
+
+      .cooperation-process-row-2 {
+        @apply flex-col-reverse;
+      }
+
+      .cooperation-process-row-arrow {
+        @apply hidden;
+      }
+
+      .cooperation-process-1-row-arrow {
+        @apply block;
+
+        .cooperation-process-arrow {
+          @apply my-[4rem] mx-[auto];
+        }
+      }
+    }
+  }
+}
+
+@media screen('xl') {
+  .cooperation-process {
+    @apply flex w-full bg-lp-lighter-primary-color;
+
+    .cooperation-process-container {
+      @apply py-[6rem] text-lp-body text-white text-center;
+
+      .section-title {
+        @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white;
+      }
+
+      .cooperation-process-row {
+        @apply flex-row relative mb-[5rem] flex items-center justify-center;
+      }
+
+      .cooperation-process-1-row-arrow {
+        @apply hidden;
+      }
+
+      .cooperation-process-arrow {
+        @apply h-[4rem] px-[4rem] rotate-[unset] m-[unset];
+      }
+
+      .cooperation-process-row-arrow {
+        @apply flex relative mb-[5rem] items-center justify-center;
+
+        .cooperation-process-arrow {
+          @apply h-[4rem] px-[4rem] rotate-90;
+        }
+      }
+    }
+  }
+}

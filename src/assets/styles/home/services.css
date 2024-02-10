@@ -1,0 +1,186 @@
+.service-section {
+  @apply flex w-full bg-lp-lighter-primary-color;
+
+  .service-container {
+    @apply py-[4rem] text-lp-body text-white text-center;
+
+    .section-title {
+      @apply mb-4 text-lp-section-title whitespace-pre-line uppercase text-white;
+    }
+
+    .service-grid {
+      @apply mx-auto gap-[4rem] grid-cols-2 grid-rows-[auto,1lr] w-[115rem];
+
+      .service-description-grid {
+        @apply gap-y-[4rem];
+
+        .service-description-item {
+          @apply flex items-center;
+
+          .service-description-item-title {
+            @apply text-justify ml-[2rem];
+          }
+        }
+      }
+
+      .service-image-wrapper {
+        @apply mx-auto relative;
+
+        .service-image-primary {
+          @apply object-cover border-image top-0 h-[50rem] w-[50rem];
+        }
+
+        .service-image-secondary-1 {
+          @apply object-cover absolute border-image left-[35px] h-[20rem] w-[21rem] bottom-[3rem];
+        }
+
+        .service-image-secondary-2 {
+          @apply object-cover absolute border-image left-[26rem] h-[20rem] w-[21rem] bottom-[3rem];
+        }
+      }
+    }
+  }
+}
+
+@media screen('less-sm') {
+  .service-section {
+    .service-container {
+      @apply px-[4rem];
+
+      .section-title {
+        font-size: 3.6rem;
+      }
+
+      .service-grid {
+        @apply grid-cols-1;
+        width: unset !important;
+
+        .service-description-grid {
+          @apply gap-y-[4rem];
+
+          .service-description-item {
+            @apply flex items-center;
+
+            .service-description-item-title {
+              @apply text-justify ml-[2rem];
+            }
+          }
+        }
+
+        .service-image-wrapper {
+          @apply mx-auto relative;
+
+          .service-image-primary {
+            @apply object-cover top-0 h-[35rem] w-full;
+          }
+
+          .service-image-secondary-1 {
+            @apply inline relative h-[auto] w-[50%];
+            left: unset;
+            bottom: unset;
+          }
+
+          .service-image-secondary-2 {
+            @apply inline relative h-[auto] w-[50%];
+            left: unset;
+            bottom: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen('sm') {
+  .service-section {
+    .service-container {
+      @apply px-[4rem];
+
+      .section-title {
+      }
+
+      .service-grid {
+        @apply grid-cols-1;
+        width: unset !important;
+
+        .service-description-grid {
+          @apply gap-y-[4rem];
+
+          .service-description-item {
+            @apply flex items-center;
+
+            .service-description-item-title {
+              @apply text-justify ml-[2rem];
+            }
+          }
+        }
+
+        .service-image-wrapper {
+          @apply mx-auto relative;
+
+          .service-image-primary {
+            @apply object-cover top-0 h-[50rem] w-full;
+          }
+
+          .service-image-secondary-1 {
+            @apply inline relative h-[auto] w-[50%];
+            left: unset;
+            bottom: unset;
+          }
+
+          .service-image-secondary-2 {
+            @apply inline relative h-[auto] w-[50%];
+            left: unset;
+            bottom: unset;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen('xl') {
+  .service-section {
+    @apply flex w-full bg-lp-lighter-primary-color;
+
+    .service-container {
+      @apply py-[4rem] text-lp-body text-white text-center;
+
+      .section-title {
+        @apply mb-4 text-lp-section-title whitespace-pre-line uppercase text-white;
+      }
+
+      .service-grid {
+        @apply mx-auto gap-[4rem] grid-cols-2 grid-rows-[auto,1lr] w-[115rem];
+
+        .service-description-grid {
+          @apply gap-y-[4rem];
+
+          .service-description-item {
+            @apply flex items-center;
+
+            .service-description-item-title {
+              @apply text-justify ml-[2rem];
+            }
+          }
+        }
+
+        .service-image-wrapper {
+          @apply mx-auto relative;
+
+          .service-image-primary {
+            @apply object-cover border-image top-0 h-[50rem] w-[50rem];
+          }
+
+          .service-image-secondary-1 {
+            @apply object-cover absolute border-image left-[35px] h-[20rem] w-[21rem] bottom-[3rem];
+          }
+
+          .service-image-secondary-2 {
+            @apply object-cover absolute border-image left-[26rem] h-[20rem] w-[21rem] bottom-[3rem];
+          }
+        }
+      }
+    }
+  }
+}

@@ -17,27 +17,20 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   const { T } = useTranslation();
 
   return (
-    <section
-      id={HOME_PAGE_SECTIONS.FUN_STORES}
-      className="flex w-full bg-lp-primary-color border-t-[3rem] border-white"
-    >
-      <Container className="py-[4rem] text-white text-center">
-        <h2 className="mb-[4rem] text-lp-section-title uppercase font-[800] text-white">
-          {T('danh sách cửa hàng')}
-        </h2>
-        <Grid className="gap-[2rem] grid-cols-2 text-lp-body">
+    <section id={HOME_PAGE_SECTIONS.FUN_STORES} className="fun-stores">
+      <Container className="fun-stores-container">
+        <h2 className="section-title">{T('danh sách cửa hàng')}</h2>
+        <Grid className="fun-stores-grid">
           {map(stores, (item) => (
-            <GridItem key={item?.value} className="flex items-center">
+            <GridItem key={item?.value} className="fun-stores-item">
               <Image
                 className="rounded-[10px]"
                 src={storeIcon}
-                width={60}
                 alt="store icon"
                 quality={75}
               />
-              <p className="text-left ml-[10px]">
-                {item?.labelIndex}:{' '}
-                <strong className="font-[600]">{item?.label}</strong>
+              <p className="fun-stores-item-title">
+                {item?.labelIndex}: <strong>{item?.label}</strong>
               </p>
             </GridItem>
           ))}

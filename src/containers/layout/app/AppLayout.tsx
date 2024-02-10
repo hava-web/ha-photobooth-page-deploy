@@ -14,6 +14,7 @@ interface AppLayoutProps {
 }
 
 const AppLayout: FC<AppLayoutProps> = ({ children, ...rest }) => {
+  // eslint-disable-next-line no-console
   console.log('>>> AppLayout', rest);
   useWow();
 

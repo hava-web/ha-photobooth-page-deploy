@@ -1,7 +1,7 @@
-import React from 'react';
-import { map } from 'lodash';
+import React, { useCallback, useState } from 'react';
+import { map, range, size } from 'lodash';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import Image from 'components/image/Image';
-import cx from 'classnames';
 import { useTranslation } from 'hooks/useTranslation';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 import Container from 'components/grid/Container';
@@ -10,7 +10,66 @@ import GridItem from 'components/grid/GridItem';
 import { OPPORTUNITY_ITEMS } from 'store/static-data/static-data.data';
 import nhuongQuyen1Image from 'assets/images/home/nhuong_quyen_1.jpg';
 import nhuongQuyen2Image from 'assets/images/home/nhuong_quyen_2.jpg';
-import classes from './home.module.css';
+import { isEqualVal } from 'helpers/string.helper';
+
+const EnsureOpportunityMobileSwiper = () => {
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const [swiperIndex, setSwiperIndex] = useState(0);
+
+  const handleSlideTo = useCallback(
+    (index: number) => {
+      if (swiper) {
+        swiper.slideToLoop(index);
+      }
+    },
+    [swiper],
+  );
+
+  return (
+    <div className="ensure-opportunity-swiper-wrapper">
+      <Swiper
+        autoHeight
+        spaceBetween={50}
+        scrollbar={{ draggable: true }}
+        slidesPerView={1}
+        slidesPerGroup={1}
+        autoplay={{ delay: 5000 }}
+        onSwiper={setSwiper}
+        onRealIndexChange={(swiperData) =>
+          setSwiperIndex(swiperData?.realIndex || 0)
+        }
+        loop
+      >
+        {map(OPPORTUNITY_ITEMS, (item) => (
+          <SwiperSlide key={`${item?.value}`} className="customer-swiper-slide">
+            <GridItem className="ensure-opportunity-item">
+              <Image src={item?.image} width={60} alt={item?.alt} />
+              <strong className="ensure-opportunity-item-title">
+                {item?.label}
+              </strong>
+              <p className="ensure-opportunity-item-description">
+                {item?.description}
+              </p>
+            </GridItem>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div className="swiper-dots">
+        {map(range(size(OPPORTUNITY_ITEMS)), (slideIndex: number) => (
+          <button
+            onClick={() => handleSlideTo(slideIndex)}
+            type="button"
+            className={`dot-slider ${
+              isEqualVal(swiperIndex, slideIndex) ? 'dot-slider-active' : ''
+            }`}
+            title="trước"
+            aria-label="dot slider"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const EnsureOpportunity = () => {
   const { T } = useTranslation();
@@ -18,49 +77,45 @@ const EnsureOpportunity = () => {
   return (
     <section
       id={HOME_PAGE_SECTIONS.ENSURE_OPPORTUNITY}
-      className="flex flex-col w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color"
+      className="ensure-opportunity"
     >
-      <Container className="py-[4rem] text-lp-body text-white text-center">
-        <h2 className="mb-4 text-lp-section-title-2 uppercase font-[800]">
+      <Container className="ensure-opportunity-container">
+        <h2 className="section-title">
           {T('cơ hội nhượng quyền thương mại bền vững')}
         </h2>
-        <Grid className="mx-auto gap-x-[4rem] gap-y-[2rem] grid-cols-2 grid-rows-2 grid-rows-[auto,_1fr] text-[2rem] w-[110rem]">
+        <Grid className="ensure-opportunity-grid">
           {map(OPPORTUNITY_ITEMS, (item) => (
-            <GridItem className="text-left">
+            <GridItem className="ensure-opportunity-item">
               <Image src={item?.image} width={60} alt={item?.alt} />
-              <strong className="block my-[2rem]">{item?.label}</strong>
-              <p className="text-justify">{item?.description}</p>
+              <strong className="ensure-opportunity-item-title">
+                {item?.label}
+              </strong>
+              <p className="ensure-opportunity-item-description">
+                {item?.description}
+              </p>
             </GridItem>
           ))}
         </Grid>
-        <div className="flex flex-col items-center mx-auto mt-[4rem] h-[20rem]">
-          <div className="flex">
+        <EnsureOpportunityMobileSwiper />
+        <div className="ensure-opportunity-wrapper">
+          <div className="ensure-opportunity-image-wrapper">
             <Image
-              className="object-cover object-bottom border-image h-[40rem] z-[1]"
+              className="ensure-opportunity-image object-bottom"
               src={nhuongQuyen1Image}
-              width={500}
-              height={400}
               alt="opportunity 1"
             />
             <Image
-              className="object-cover border-image h-[40rem] z-[1]"
+              className="ensure-opportunity-image"
               src={nhuongQuyen2Image}
-              width={500}
-              height={400}
               alt="opportunity 2"
             />
           </div>
-          <i className="text-lp-lighter-primary-color text-[2rem] mt-[2rem] z-[1]">
+          <i className="ensure-opportunity-description">
             Ký kết hợp đồng cùng đối tác nhượng quyền
           </i>
         </div>
       </Container>
-      <div
-        className={cx(
-          classes?.['ensure-opportunity-bottom-div'],
-          'bg-white h-[250px] w-full',
-        )}
-      />
+      <div className="ensure-opportunity-bottom-div" />
     </section>
   );
 };

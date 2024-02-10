@@ -4,7 +4,6 @@ import { map, range, size } from 'lodash';
 import Image from 'components/image/Image';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 import { isEqualVal } from 'helpers/string.helper';
-import classes from './home.module.css';
 
 const BannerSlider: FC<any> = ({ banners }) => {
   const [newsSwiper, setNewsSwiper] = useState<SwiperClass | null>(null);
@@ -20,9 +19,9 @@ const BannerSlider: FC<any> = ({ banners }) => {
   );
 
   return (
-    <section id={HOME_PAGE_SECTIONS.BANNER_SLIDER} className={classes.banner}>
+    <section id={HOME_PAGE_SECTIONS.BANNER_SLIDER} className="banner-slider">
       <Swiper
-        className="w-full h-full"
+        className="swiper"
         spaceBetween={0}
         scrollbar={{ draggable: true }}
         autoplay={{ delay: 5000 }}
@@ -33,28 +32,23 @@ const BannerSlider: FC<any> = ({ banners }) => {
         loop
       >
         {map(banners, (item) => (
-          <SwiperSlide
-            className="flex w-full h-full items-center justify-center text-center overflow-hidden"
-            key={`${item?.value}`}
-          >
-            <div title={item?.label} className="w-full h-full">
+          <SwiperSlide className="swiper-slide" key={`${item?.value}`}>
+            <div title={item?.label} className="swiper-slide-wrapper">
               <Image
-                className="w-full h-full object-cover"
+                className="swiper-slide-image"
                 src={item?.image}
                 alt={item?.alt}
                 sizes="100vw"
                 quality={70}
                 fill
               />
-              <p className="banner-title z-[1] whitespace-pre-line">
-                {item?.label}
-              </p>
-              <div className="absolute shadow-white-bg bg-white" />
+              <p className="label-title">{item?.label}</p>
+              <div className="shadow-white-bg" />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute w-full bottom-[1rem] text-center z-z-index-banner-dot">
+      <div className="swiper-dot-wrapper">
         {map(range(size(banners)), (groupSlideIndex: number) => (
           <button
             onClick={() => handleSlideTo(groupSlideIndex)}
@@ -64,7 +58,7 @@ const BannerSlider: FC<any> = ({ banners }) => {
                 ? 'dot-slider-active'
                 : ''
             }`}
-            title="trước"
+            title="bấm chuyển"
             aria-label="dot slider"
           />
         ))}

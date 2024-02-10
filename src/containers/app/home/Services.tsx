@@ -15,45 +15,36 @@ const Services = () => {
   const { T } = useTranslation();
 
   return (
-    <section
-      id={HOME_PAGE_SECTIONS.SERVICES}
-      className="flex w-full bg-lp-lighter-primary-color"
-    >
-      <Container className="py-[4rem] text-lp-body text-white text-center">
-        <h2 className="mb-4 text-lp-section-title whitespace-pre-line uppercase text-white">
+    <section id={HOME_PAGE_SECTIONS.SERVICES} className="service-section">
+      <Container className="service-container">
+        <h2 className="section-title">
           {T('4 dịch vụ miễn phí\n khi hợp tác cùng fun studio')}
         </h2>
-        <Grid className="mx-auto gap-[4rem] grid-cols-2 grid-rows-[auto,1lr] w-[115rem]">
-          <Grid className="gap-y-[4rem]">
+        <Grid className="service-grid">
+          <Grid className="service-description-grid">
             {map(SERVICE_ITEMS, (item) => (
-              <GridItem className="flex items-center">
+              <GridItem className="service-description-item">
                 <Image src={item?.image} width={60} alt={item?.alt} />
-                <p className="text-justify ml-[2rem]">
+                <p className="service-description-item-title">
                   <strong>Miễn phí</strong> {item?.label}
                 </p>
               </GridItem>
             ))}
           </Grid>
-          <div className="mx-auto relative">
+          <div className="service-image-wrapper">
             <Image
-              className="object-cover border-image top-0 h-[500px]"
+              className="service-image-primary"
               src={service1Image}
-              width={500}
-              height={500}
               alt="service 1"
             />
             <Image
-              className="object-cover absolute border-image left-[35px] h-[250px] bottom-[3rem]"
+              className="service-image-secondary-1"
               src={service2Image}
-              width={210}
-              height={200}
               alt="service 2"
             />
             <Image
-              className="object-cover absolute border-image left-[265px] h-[250px] bottom-[3rem]"
+              className="service-image-secondary-2"
               src={service3Image}
-              width={210}
-              height={200}
               alt="service 3"
             />
           </div>

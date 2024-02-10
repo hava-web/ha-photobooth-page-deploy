@@ -1,6 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import '../assets/styles/index.css';
 
 @layer base {
   @font-face {
@@ -131,19 +132,6 @@
 }
 
 @layer components {
-  .banner-title {
-    @apply uppercase w-[50%] absolute bottom-[2rem] object-cover text-lp-primary-color text-[5.4rem] font-[800];
-    text-shadow:
-      2px 0 #fff,
-      -2px 0 #fff,
-      0 2px #fff,
-      0 -2px #fff,
-      1px 1px #fff,
-      -1px -1px #fff,
-      1px -1px #fff,
-      -1px 1px #fff;
-  }
-
   .dot-slider {
     @apply w-[3rem] h-[3rem] rounded-full border-lp-primary-color border-[0.2rem] bg-white mx-[1rem];
   }
@@ -152,15 +140,19 @@
     @apply bg-lp-primary-color mx-[1rem];
   }
 
-  .shadow-white-bg {
-    width: 80%;
-    height: 80%;
-    border-radius: 148rem;
-    transform: rotate(15deg);
-    bottom: -65%;
-    left: -30%;
-    box-shadow: 4rem 5rem 4rem 14rem white;
-    opacity: 0.9;
+  .border-image {
+    border: 1rem solid white;
+  }
+
+  @media screen('less-sm') {
+    html,
+    body {
+      font-size: 8px;
+    }
+
+    .border-image {
+      border: 0.6rem solid white;
+    }
   }
 }
 
@@ -168,7 +160,7 @@ html,
 body {
   font-size: 62.5%;
   overscroll-behavior-x: none;
-  touch-action: none;
+  /* touch-action: none; */
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -197,8 +189,8 @@ body {
   --lp-secondary-color: #3a80bf;
   --lp-gold-color: #ffbd0e;
 
-  --z-index-header: 1000;
   --z-index-banner-dot: 999;
+  --z-index-header: 1100;
   --z-index-floating-button: 1000;
   --z-index-retake-result: 1000;
   --z-index-backdrop: 1300;
@@ -228,10 +220,6 @@ body {
 .transition-img {
   /* Todo: fix transition */
   transition: all 0.5s;
-}
-
-.border-image {
-  border: 10px solid white;
 }
 
 @media only screen and (max-width: 425px) {

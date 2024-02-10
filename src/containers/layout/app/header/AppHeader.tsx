@@ -1,75 +1,75 @@
-import React, { FC } from 'react';
-import { map } from 'lodash';
-import Image from 'components/image/Image';
-import NextLink from 'next/link';
-import { Link } from 'react-scroll/modules';
-import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
+import React, { useCallback, useState } from 'react';
+import menuIcon from 'assets/icons/icon-menu.png';
 import logoIcon from 'assets/icons/logo.png';
 import Container from 'components/grid/Container';
-
-import classes from './app-header.module.css';
+import Image from 'components/image/Image';
+import { I18nNamespace } from 'constants/i18n.const';
+import { useTranslation } from 'hooks/useTranslation';
+import { map } from 'lodash';
+import NextLink from 'next/link';
+import { Link } from 'react-scroll/modules';
+import { headerNavBarLinks } from 'store/static-data/static-data.data';
+import MobileSidebarHeader from './MobileSidebarHeader';
 
 export interface INavbarProps {}
 
-export const headerNavBarLinks = [
-  {
-    value: HOME_PAGE_SECTIONS.INTRODUCTION,
-    label: 'giới thiệu\n funstudio',
-  },
-  { value: HOME_PAGE_SECTIONS.ENSURE_OPPORTUNITY, label: 'mô hình\n bền vững' },
-  { value: HOME_PAGE_SECTIONS.SERVICES, label: 'dịch vụ\n miễn phí' },
-  {
-    value: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
-    label: 'khách hàng\n nói về chúng tôi',
-  },
-  {
-    value: HOME_PAGE_SECTIONS.COOPERATION_PROCESS,
-    label: 'quy trình\n hợp tác',
-  },
-  {
-    value: HOME_PAGE_SECTIONS.FUN_STORES,
-    label: 'danh sách\n cửa hàng',
-  },
-];
+const AppHeader: React.FC = () => {
+  const { T } = useTranslation(I18nNamespace.COMMON);
+  const [isShowMobileNavbar, setIsShowMobileNavbar] = useState(false);
 
-const AppHeader: FC = () => (
-  <header className={classes.header}>
-    <div className="font-Montserrat w-screen bg-white fixed z-z-index-header shadow-navbar">
-      <Container className="uppercase flex w-full items-center py-1">
-        <div>
+  const handleToggleShowMobileNavbar = useCallback(() => {
+    setIsShowMobileNavbar((o) => !o);
+  }, []);
+
+  const handleCloseShowMobileNavbar = useCallback(() => {
+    setIsShowMobileNavbar(false);
+  }, []);
+
+  return (
+    <header className="header">
+      <div className="header-section">
+        <Container className="header-container">
           <NextLink href="/">
             <Image src={logoIcon} width={100} alt="fun header logo" />
           </NextLink>
-        </div>
-        <div className="flex flex-1 mx-[10rem] items-center">
-          {map(headerNavBarLinks, (item) => (
-            <Link
-              key={item?.value}
-              href={`#${item?.value}`}
-              to={item?.value}
-              className="font-[600] mr-1 flex-1 text-center whitespace-pre-line cursor-pointer text-lp-small text-lp-lighter-primary-color"
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              offset={-54}
-              duration={500}
-            >
-              {item?.label}
-            </Link>
-          ))}
-        </div>
-        <div>
-          <a
-            className="font-[700] text-lp-small p-[0.4rem] px-[1rem] rounded-[2rem] bg-second-primary-color text-white"
-            href="tel:0975338244"
-          >
+          <div className="header-navbar">
+            {map(headerNavBarLinks, (item) => (
+              <Link
+                key={item?.value}
+                href={`#${item?.value}`}
+                to={item?.value}
+                className="header-navbar-link"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                offset={-54}
+                duration={500}
+              >
+                {item?.label}
+              </Link>
+            ))}
+          </div>
+          <a className="btn-hotline" href="tel:0975338244">
             hotline
           </a>
-        </div>
-      </Container>
-    </div>
-    <div className={classes?.['header-placeholder']} />
-  </header>
-);
+          <button
+            type="button"
+            className="btn-show-sidebar"
+            aria-label="more"
+            title={T('more')}
+            onClick={handleToggleShowMobileNavbar}
+          >
+            <Image src={menuIcon} height={25} alt="more" />
+          </button>
+          <MobileSidebarHeader
+            open={isShowMobileNavbar}
+            onClose={handleCloseShowMobileNavbar}
+          />
+        </Container>
+      </div>
+      <div className="header-placeholder" />
+    </header>
+  );
+};
 
 export default AppHeader;

@@ -1,0 +1,65 @@
+.about-photobooth {
+  background-image: url('/images/background/cartoon_trang.png');
+  background-size: 230rem;
+  @apply flex w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color;
+
+  .about-photobooth-container {
+    @apply pt-[6rem] pb-[8rem] text-lp-body text-white text-center;
+
+    .section-title {
+      @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white whitespace-pre-line;
+    }
+
+    .about-photobooth-video-frame {
+      @apply mx-auto;
+      aspect-ratio: 16 / 9;
+      width: 89rem;
+    }
+  }
+}
+
+@media screen('less-sm') {
+  .about-photobooth {
+    .about-photobooth-container {
+      .section-title {
+        font-size: 3.2rem;
+      }
+
+      .about-photobooth-video-frame {
+        width: calc(100% - 4rem);
+      }
+    }
+  }
+}
+
+@media screen('sm') {
+  .about-photobooth {
+    .about-photobooth-container {
+      .about-photobooth-video-frame {
+        width: calc(100% - 8rem);
+      }
+    }
+  }
+}
+
+@media screen('xl') {
+  .about-photobooth {
+    background-image: url('/images/background/cartoon_trang.png');
+    background-size: 230rem;
+    @apply flex w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color;
+
+    .about-photobooth-container {
+      @apply pt-[6rem] pb-[8rem] text-lp-body text-white text-center;
+
+      .section-title {
+        @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white whitespace-pre-line;
+      }
+
+      .about-photobooth-video-frame {
+        @apply mx-auto;
+        aspect-ratio: 16 / 9;
+        width: 89rem;
+      }
+    }
+  }
+}

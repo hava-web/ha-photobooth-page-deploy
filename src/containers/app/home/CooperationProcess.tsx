@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 import Container from 'components/grid/Container';
 import Image from 'components/image/Image';
@@ -11,7 +10,6 @@ import p4Image from 'assets/images/process/p4.png';
 import p5Image from 'assets/images/process/p5.png';
 import p6Image from 'assets/images/process/p6.png';
 import whiteRightArrowIcon from 'assets/icons/white_right_arrow.png';
-import classes from './home.module.css';
 
 const CooperationProcess = () => {
   const { T } = useTranslation();
@@ -19,53 +17,55 @@ const CooperationProcess = () => {
   return (
     <section
       id={HOME_PAGE_SECTIONS.COOPERATION_PROCESS}
-      className={cx(
-        classes?.['cooperation-process'],
-        'flex w-full bg-lp-lighter-primary-color',
-      )}
+      className="cooperation-process"
     >
-      <Container className="py-[6rem] text-lp-body text-white text-center">
-        <h2 className="mb-[8rem] text-lp-section-title uppercase font-[800] text-white">
-          {T('trình tự đăng ký')}
-        </h2>
+      <Container className="cooperation-process-container">
+        <h2 className="section-title">{T('trình tự đăng ký')}</h2>
         <div className="mx-auto">
-          <div className="relative mb-[5rem] flex items-center justify-center">
+          <div className="cooperation-process-row">
             <Image width={300} src={p1Image} alt="step 1" />
             <Image
-              className="h-[4rem] px-[4rem]"
+              className="cooperation-process-arrow"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
             <Image width={300} src={p2Image} alt="step 2" />
             <Image
-              className="h-[4rem] px-[4rem]"
+              className="cooperation-process-arrow"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
             <Image width={300} src={p3Image} alt="step 3" />
           </div>
-          <div className="relative mb-[5rem] flex items-center justify-center">
+          <div className="cooperation-process-row-arrow">
             <Image
               className="h-[4rem] mr-[72rem] px-[4rem] -rotate-90 invisible"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
             <Image
-              className="h-[4rem] px-[4rem] rotate-90"
+              className="cooperation-process-arrow rotate-90"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
           </div>
-          <div className="relative flex items-center justify-center">
+          <div className="cooperation-process-1-row-arrow">
+            <Image
+              className="cooperation-process-arrow rotate-90"
+              src={whiteRightArrowIcon}
+              alt="right arrow"
+            />
+          </div>
+          <div className="cooperation-process-row cooperation-process-row-2">
             <Image width={300} src={p6Image} alt="step 6" />
             <Image
-              className="rotate-180 h-[4rem] px-[4rem]"
+              className="cooperation-process-arrow rotate-180"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />
             <Image width={300} src={p5Image} alt="step 5" />
             <Image
-              className="rotate-180 h-[4rem] px-[4rem]"
+              className="cooperation-process-arrow rotate-180"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />

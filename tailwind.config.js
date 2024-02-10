@@ -129,6 +129,9 @@ module.exports = {
         'tilt-shaking': 'tilt-shaking 0.5s linear infinite',
         'tilt-n-move-shaking': 'tilt-n-move-shaking 0.5s linear infinite',
       },
+      screens: {
+        'less-sm': { max: '639px' },
+      },
     },
     fontSize: {
       sm: ['4.8rem', '5.8rem'],

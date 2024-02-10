@@ -8,6 +8,7 @@ import CustomerTalkAboutUs from 'containers/app/home/CustomerTalkAboutUs';
 import CooperationProcess from 'containers/app/home/CooperationProcess';
 import FunStores from 'containers/app/home/FunStores';
 import StrengthOfFun from 'containers/app/home/StrengthOfFun';
+import AboutPhotoBooth from 'containers/app/home/AboutPhotoBooth';
 import { PageWithLayout } from 'models/common.model';
 import { renderMainLayout } from 'containers/layout/app/AppLayout';
 import { funBanners, funStores } from 'store/static-data/static-data.data';
@@ -26,6 +27,7 @@ const Home: PageWithLayout &
 }) => (
   <section className="font-Montserrat">
     <BannerSlider banners={banners} />
+    <AboutPhotoBooth />
     <Introduction />
     <EnsureOpportunity />
     <StrengthOfFun />
