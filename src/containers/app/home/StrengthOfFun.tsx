@@ -52,7 +52,6 @@ const StrengthOfFunSwiper = () => {
               <div className="strength-item">
                 <span className="strength-index">{ind + 1}</span>
                 <strong className="strength-item-title">{item?.label}</strong>
-                <br />
                 <p className="strength-item-description">{item?.description}</p>
                 <div className="triangle-border-left" />
                 <div className="triangle-border-right" />
@@ -103,7 +102,6 @@ const StrengthOfFun = () => {
               <div className="strength-item">
                 <span className="strength-index">{ind + 1}</span>
                 <strong className="strength-item-title">{item?.label}</strong>
-                <br />
                 <p className="strength-item-description">{item?.description}</p>
                 <div className="triangle-border-left" />
                 <div className="triangle-border-right" />

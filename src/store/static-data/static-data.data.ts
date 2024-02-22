@@ -26,15 +26,20 @@ import banner7Image from 'assets/images/banner-images/banner_7.jpg';
 
 import congluanImage from 'assets/images/home/bao_cong_luan.jpg';
 import radio4TeenImage from 'assets/images/home/radio_4_teen.jpg';
+import congluanLogoImage from 'assets/images/home/congluan_logo.png';
+import vtv1LogoImage from 'assets/images/home/vtv1_logo.png';
 
 import buiLanPhuongImage from 'assets/images/customers/bui_lan_phuong.jpg';
 import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.jpg';
 import duyLeImage from 'assets/images/customers/duy_le.jpg';
 import hongNhungImage from 'assets/images/customers/hong_nhung.jpg';
-
 import hoangThuPhuongImage from 'assets/images/customers/hoang_thu_phuong.jpg';
 import yenNhiImage from 'assets/images/customers/yen_nhi.jpg';
 import nguyenThuImage from 'assets/images/customers/nguyen_thu.jpg';
+import nguyenThuTrangImage from 'assets/images/customers/nguyen_thu_trang.jpg';
+import phuongLinhImage from 'assets/images/customers/phuong_linh.jpg';
+import minhKhueImage from 'assets/images/customers/minh_khue.jpg';
+import khanhLyImage from 'assets/images/customers/khanh_ly.jpg';
 
 export const headerNavBarLinks = [
   {
@@ -97,16 +102,16 @@ export const funStores = [
 
 export const funBanners = [
   {
-    label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
-    value: 1,
-    image: banner1Image,
-    alt: 'korea styles',
-  },
-  {
     label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
-    value: 2,
+    value: 1,
     image: banner2Image,
     alt: 'easy to use',
+  },
+  {
+    label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
+    value: 2,
+    image: banner1Image,
+    alt: 'korea styles',
   },
   {
     label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
@@ -186,28 +191,28 @@ export const FOOTER_ITEMS = [
 
 export const SERVICE_ITEMS = [
   {
-    label: 'tư vấn và tìm kiếm mặt bằng kinh doanh',
+    label: 'tư vấn và tìm kiếm mặt bằng kinh doanh.',
     value: 1,
     image: homeSearchIcon,
     alt: 'home search icon',
   },
   {
     label:
-      'update những sản phẩm mới, những chiến dịch quảng cáo, market-ing mang lại hiệu quả cho tất cả các cửa hàng chi nhánh',
+      'update những sản phẩm mới, những chiến dịch quảng cáo, marketing mang lại hiệu quả cho tất cả các cửa hàng chi nhánh.',
     value: 2,
     image: growIcon,
     alt: 'grow icon',
   },
   {
     label:
-      'huấn luyện, đào tạo nhân viên, chúng tôi luôn mong muốn mang đến cho các chủ đầu tư cơ hội tăng trưởng tài chính vững chắc, lâu dài.',
+      'xây dựng quy trình chặt chẽ và mô hình tiêu chuẩn, thêm nhiều cơ hội tăng trưởng tài chính vững chắc, lâu dài cho đối tác.',
     value: 3,
     image: presentationIcon,
     alt: 'presentation icon',
   },
   {
     label:
-      'lắp đặt, thi công và định hướng đúng để xây dựng một hệ thống cửa hàng trực thuộc thành công.',
+      'lắp đặt, thi công và tư vấn định hướng đúng để xây dựng một hệ thống cửa hàng trực thuộc thành công.',
     value: 4,
     image: setting2Icon,
     alt: 'setting icon',
@@ -218,7 +223,7 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn có nguồn vốn nhàn rỗi?',
     description:
-      'Bạn có nguồn vốn nhàn rỗi nhưng chưa có định hướng kinh doanh gì, không có đội ngũ? Vậy Fun Studio là lựa chọn tối ưu cho bạn để có thể tạo ra thu nhập thụ động, với vốn đầu tư ban đầu thấp và thời gian quay vòng vốn nhanh chóng',
+      'Bạn có nguồn vốn nhàn rỗi nhưng chưa có định hướng kinh doanh nhưng chưa chọn được lĩnh vực phù hợp. Fun Studio là lựa chọn tối ưu để có thể tạo ra thu nhập thụ động, với vốn đầu tư ban đầu thấp và thời gian quay vòng vốn nhanh chóng.',
     value: 1,
     image: budgetIcon,
     alt: 'budget icon',
@@ -226,15 +231,15 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn chưa biết nên đầu tư vào lĩnh vực nào?',
     description:
-      'Lựa chọn tuyệt vời dành cho bạn chính là Fun Studio - mô hình kinh doanh photo booth tự chụp ảnh phong cách Hàn Quốc đang nhận được rất nhiều sự yêu mến của các bạn trẻ',
+      'Lựa chọn tuyệt vời dành cho bạn chính là Fun Studio - mô hình kinh doanh photo booth tự chụp ảnh phong cách Hàn Quốc đang nhận được rất nhiều sự yêu mến của các bạn trẻ và đã phát triển hàng ngàn cửa hàng ở Hàn Quốc và Nhật Bản. Đồng thời cũng đang trên đà phát triển tại thị trường Việt Nam.',
     value: 2,
     image: growUpIcon,
     alt: 'hand icon',
   },
   {
-    label: 'Bạn muốn có cửa hàng nhưng chưa biết cách quản lý',
+    label: 'Bạn muốn thử sức kinh doanh nhưng thiếu kinh nghiệm quản lý',
     description:
-      'Rất nhiều người rất muốn kinh doanh nhưng không có kinh nghiệm, không dám làm vì không có kinh nghiệm, nguồn lực để làm. Nhưng đến với Fun Studio thì bạn hoàn toàn có thể, cửa hàng kinh doanh là của bạn, nhưng toàn bộ hoạt động vận hành, quản lý là do tổng công ty điều hành và hỗ trợ cho bạn.',
+      'Rất nhiều người rất muốn kinh doanh nhưng luôn trong trạng thái chưa sẵn sàng, thiếu nguồn lực hoặc chưa tự tin với kinh nghiệm của mình. Đến với Fun Studio bạn có thể hiện thực hóa giấc mở của mình, đồng thời thể hiện năng lực cá nhân cũng như phát triển thêm kinh nghiệm cần thiết khác. và có thêm sự hỗ trợ của toàn bộ tổng công ty trong hoạt động vận hành và quản lý cửa hàng.',
     value: 3,
     image: handIcon,
     alt: 'hand icon',
@@ -242,7 +247,7 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn đã kinh doanh nhưng muốn có thêm thu nhập thụ động?',
     description:
-      'Dù bạn đã kinh doanh ngành nghề khác, nhưng với 1 lĩnh vực mới như: mô hình tự chụp ảnh phong cách Hàn Quốc thì lời khuyên tốt nhất cho bạn là hãy tìm tới 1 công ty làm tốt vấn đề đó để đầu tư thay vì việc tự mình phải lo từ việc sản xuất, setup cửa hàng, quản lý, vận hành và, truyền thông...',
+      'Với sự tham gia và hỗ trợ của công ty thì bạn không cần mất nhiều thời gian trong các khâu quản lý và vận hành, bạn hoàn toàn có thể tạo ra thu nhập thụ động với công sức ít vì đã có Fun Studio hỗ trợ từ việc sản xuất, setup cửa hàng, quản lý, vận hành và, truyền thông.',
     value: 4,
     image: moneyIcon,
     alt: 'money icon',
@@ -306,66 +311,96 @@ export const CUSTOMER_MESSAGES = [
     image: nguyenThuImage,
     alt: 'customer messages',
   },
+  {
+    label: 'Nguyễn Thu Trang',
+    description:
+      'Em trải nghiệm chụp ảnh bên mình, ưng lắm nhaa, rổ giá okii mà in ảnh ra đẹp cực',
+    value: 8,
+    image: nguyenThuTrangImage,
+    alt: 'customer messages',
+  },
+  {
+    label: 'Phương Linh',
+    description:
+      'Ban đầu cứ tưởng 50k là giá ưu đãi, ai ngờ là giá niêm yết. Em rât mê studio vì vừa rẻ lại còn đẹp',
+    value: 9,
+    image: phuongLinhImage,
+    alt: 'customer messages',
+  },
+  {
+    label: 'Minh Khuê',
+    description:
+      'Sốp có mấy chị nhân viên nhiệt tình ghê, phụ kiện cũng xinh lắm aaa, sốp 10 điểm không có nhưng',
+    value: 10,
+    image: minhKhueImage,
+    alt: 'customer messages',
+  },
+  {
+    label: 'Khánh Ly',
+    description:
+      'Em ít khi chụp ảnh, nhưng studio có phòng riêng tư nên em đỡ ngại hơn, lại còn có thêm phụ kiện xinh iu lắm luôn ấy. Em sẽ kéo bạn bè qua thật nhìuu',
+    value: 11,
+    image: khanhLyImage,
+    alt: 'customer messages',
+  },
 ];
 
 export const NEWS_MESSAGES = [
   {
-    label: 'báo công luận',
+    label: 'vtv',
     value: 1,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
-    alt: 'cong luan news',
-  },
-  {
-    label: 'radio 4 teen',
-    value: 2,
-    href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
-    image: radio4TeenImage,
-    alt: 'radio 4 teens',
+    logo: vtv1LogoImage,
+    video: process.env.NEXT_PUBLIC_VTV1_YOUTUBE_URL,
+    alt: 'vtv news',
   },
   {
     label: 'báo công luận',
-    value: 3,
+    value: 2,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
+    logo: congluanLogoImage,
+    video: process.env.NEXT_PUBLIC_CONG_LUAN_YOUTUBE_URL,
     alt: 'cong luan news',
   },
   {
     label: 'radio 4 teen',
-    value: 4,
+    value: 3,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
+    video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,
     alt: 'radio 4 teens',
   },
 ];
 
 export const STRENGTH_ITEMS = [
   {
-    label: 'đội ngũ\n dày dặn\n kinh nghiệm',
+    label: 'đội ngũ\n sáng lập\n dày dặn\n kinh nghiệm',
     description:
       'Đồng hành triển khai và tư vấn bởi Đội ngũ chuyên môn cao dày dặn kinh nghiệm trong việc triển khai chuỗi cửa hàng',
     value: 1,
-    alt: 'cong luan news',
+    alt: 'đội ngũ dày dặn kinh nghiệm',
   },
   {
-    label: 'đội ngũ\n kỹ thuật\n chuyên nghiệp',
+    label: 'đội ngũ\n chuyên gia\n trong lĩnh vực\n cntt',
     description:
-      'Tự phát triển phần mềm bởi đội ngũ chuyên gia kĩ thuật chuyên nghiệp',
+      'Phần mềm và phần cứng được triển bởi đội ngũ chuyên gia dày dặn kinh nghiệm trong lĩnh vực Công nghệ - Thông tin',
     value: 2,
-    alt: 'radio 4 teens',
+    alt: 'đội ngũ chuyên gia trong lĩnh vực cntt',
   },
   {
     label: 'bắt trend\n nhanh chóng\n và sáng tạo',
     description:
       'Luôn cập nhật những frame độc quyền, phụ kiện độc đáo và độ bắt trend nhanh chóng.',
     value: 3,
-    alt: 'cong luan news',
+    alt: 'bắt trend nhanh chóng và sáng tạo',
   },
   {
     label: 'mô hình\n ưu việt',
     description:
-      'Mô hình tinh gọn, tiết kiệm chi phí, dễ sử dụng, thời gian triển khai nhanh chóng, thời gian hoàn vốn cấp tốc',
+      'Mô hình tinh gọn, tiết kiệm chi phí, dễ vận hành và quản lý, thời gian triển khai nhanh chóng và thời gian hoàn vốn cấp tốc',
     value: 4,
-    alt: 'radio 4 teens',
+    alt: 'mô hình ưu việt',
   },
 ];

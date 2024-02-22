@@ -10,6 +10,10 @@
       @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white whitespace-pre-line;
     }
 
+    .about-photobooth-video-frame-wrapper {
+      @apply mx-auto border-image w-fit h-fit;
+    }
+
     .about-photobooth-video-frame {
       @apply mx-auto;
       aspect-ratio: 16 / 9;
@@ -25,8 +29,12 @@
         font-size: 3.2rem;
       }
 
-      .about-photobooth-video-frame {
+      .about-photobooth-video-frame-wrapper {
         width: calc(100% - 4rem);
+      }
+
+      .about-photobooth-video-frame {
+        width: calc(100%);
       }
     }
   }
@@ -35,8 +43,11 @@
 @media screen('sm') {
   .about-photobooth {
     .about-photobooth-container {
-      .about-photobooth-video-frame {
+      .about-photobooth-video-frame-wrapper {
         width: calc(100% - 8rem);
+      }
+      .about-photobooth-video-frame {
+        width: calc(100%);
       }
     }
   }
@@ -55,6 +66,9 @@
         @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white whitespace-pre-line;
       }
 
+      .about-photobooth-video-frame-wrapper {
+        @apply mx-auto border-image w-fit h-fit;
+      }
       .about-photobooth-video-frame {
         @apply mx-auto;
         aspect-ratio: 16 / 9;

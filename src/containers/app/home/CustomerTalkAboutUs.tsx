@@ -36,7 +36,7 @@ const CustomerTalkAboutUs = () => {
   const handleSlideTo = useCallback(
     (index: number) => {
       if (newsSwiper) {
-        newsSwiper.slideToLoop(index * 2);
+        newsSwiper.slideToLoop(index);
       }
     },
     [newsSwiper],
@@ -48,6 +48,72 @@ const CustomerTalkAboutUs = () => {
       className="talk-about-us-section"
     >
       <Container className="talk-about-us-section-container">
+        <div className="news-swiper-wrapper">
+          <h2 className="news-swiper-card-title">
+            {T('báo chí nói về chúng tôi')}
+          </h2>
+          <Swiper
+            className="news-swiper"
+            spaceBetween={50}
+            scrollbar={{ draggable: true }}
+            autoplay={{ delay: 5000 }}
+            onSwiper={setNewsSwiper}
+            onRealIndexChange={(swiperData) =>
+              setNewsSwiperIndex(swiperData?.realIndex || 0)
+            }
+            loop
+          >
+            {map(NEWS_MESSAGES, (news) => (
+              <SwiperSlide key={`${news?.value}`} className="news-swiper-slide">
+                <div className="news-swiper-card">
+                  {news?.video ? (
+                    <iframe
+                      className="news-swiper-youtube-frame"
+                      src={news?.video}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <Image
+                      className="news-swiper-image"
+                      src={news?.image}
+                      alt={news?.alt}
+                    />
+                  )}
+
+                  <p className="news-swiper-title">
+                    {news?.logo ? (
+                      <Image
+                        className="mx-auto"
+                        src={news?.logo}
+                        alt={news?.alt}
+                      />
+                    ) : (
+                      news?.label
+                    )}
+                  </p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="news-swiper-dots">
+            {map(range(size(NEWS_MESSAGES)), (groupSlideIndex: number) => (
+              <button
+                onClick={() => handleSlideTo(groupSlideIndex)}
+                type="button"
+                className={`dot-slider ${
+                  isEqualVal(newsSwiperIndex, groupSlideIndex)
+                    ? 'dot-slider-active'
+                    : ''
+                }`}
+                title="trước"
+                aria-label="dot slider"
+              />
+            ))}
+          </div>
+        </div>
         <div className="customer-swiper-wrapper">
           <h2 className="customer-swiper-card-title">
             {T('khách hàng nói về chúng tôi')}
@@ -110,65 +176,6 @@ const CustomerTalkAboutUs = () => {
               alt="right arrow"
             />
           </button>
-        </div>
-        <div className="news-swiper-wrapper">
-          <h2 className="news-swiper-card-title">
-            {T('báo chí nói về chúng tôi')}
-          </h2>
-          <Swiper
-            spaceBetween={10}
-            scrollbar={{ draggable: true }}
-            slidesPerView={2}
-            slidesPerGroup={2}
-            autoplay={{ delay: 5000 }}
-            onSwiper={setNewsSwiper}
-            onRealIndexChange={(swiperData) =>
-              setNewsSwiperIndex((swiperData?.realIndex || 0) / 2)
-            }
-            breakpoints={{
-              640: { spaceBetween: 10 },
-              768: { spaceBetween: 10 },
-              1024: { spaceBetween: 50 },
-              1280: { spaceBetween: 50 },
-              1536: { spaceBetween: 50 },
-            }}
-            loop
-          >
-            {map(NEWS_MESSAGES, (news) => (
-              <SwiperSlide key={`${news?.value}`} className="news-swiper-slide">
-                <a
-                  target="_blank"
-                  href={news?.href}
-                  className="news-swiper-card"
-                  rel="noreferrer"
-                >
-                  <Image
-                    className="news-swiper-image"
-                    width={400}
-                    height={250}
-                    src={news?.image}
-                    alt={news?.alt}
-                  />
-                  <p className="news-swiper-title">{news?.label}</p>
-                </a>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="news-swiper-dots">
-            {map(range(size(NEWS_MESSAGES) / 2), (groupSlideIndex: number) => (
-              <button
-                onClick={() => handleSlideTo(groupSlideIndex)}
-                type="button"
-                className={`dot-slider ${
-                  isEqualVal(newsSwiperIndex, groupSlideIndex)
-                    ? 'dot-slider-active'
-                    : ''
-                }`}
-                title="trước"
-                aria-label="dot slider"
-              />
-            ))}
-          </div>
         </div>
       </Container>
     </section>

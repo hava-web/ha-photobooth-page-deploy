@@ -2,7 +2,7 @@
   @apply flex w-full bg-gradient-pink border-t-[3rem] border-lp-lighter-primary-color;
 
   .strength-of-fun-container {
-    @apply flex flex-col py-[4rem] pb-[5rem] text-lp-body text-white text-center;
+    @apply flex flex-col py-[4rem] pb-[5rem] text-[2.5rem] text-white text-center;
 
     .section-title {
       @apply mb-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
@@ -14,7 +14,7 @@
   }
 
   .strength-item-wrapper {
-    @apply whitespace-pre-line relative shadow-box flex items-center h-[45rem] w-[27rem] bg-white rounded-[1rem] mx-[0.75rem];
+    @apply whitespace-pre-line relative shadow-box flex items-center h-[48rem] w-[27rem] bg-white rounded-[1rem] mx-[0.75rem];
 
     .strength-item {
       @apply relative bg-white w-full h-full z-[1] rounded-[3rem] p-[2rem] text-center;
@@ -24,7 +24,7 @@
       }
 
       .strength-item-description {
-        @apply text-lp-primary-color text-[2.2rem];
+        @apply text-lp-primary-color text-[2rem] mt-[2rem];
       }
     }
   }
@@ -123,7 +123,7 @@
 
   strong {
     display: block;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
   .strength-item-under strong {
@@ -199,7 +199,7 @@
     @apply flex w-full bg-gradient-pink border-t-[3rem] border-lp-lighter-primary-color;
 
     .strength-of-fun-container {
-      @apply flex flex-col py-[4rem] pb-[5rem] text-lp-body text-white text-center;
+      @apply flex flex-col py-[4rem] pb-[5rem] text-[2.5rem] text-white text-center;
 
       .section-title {
         @apply mb-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
@@ -221,7 +221,7 @@
         }
 
         .strength-item-description {
-          @apply text-lp-primary-color text-[2.2rem];
+          @apply text-lp-primary-color text-[2rem] mt-[2rem];
         }
       }
     }

@@ -6,7 +6,7 @@
   }
 
   .customer-swiper-wrapper {
-    @apply relative mx-auto w-[90rem];
+    @apply relative mx-auto mt-[4rem] w-[90rem];
 
     .customer-swiper-card-title {
       @apply mb-[4rem] text-lp-section-title uppercase text-lp-secondary-color;
@@ -63,7 +63,11 @@
   }
 
   .news-swiper-wrapper {
-    @apply mx-auto mt-[4rem] w-[90rem];
+    @apply mx-auto w-[90rem];
+
+    .news-swiper {
+      @apply w-[60rem];
+    }
 
     .news-swiper-card-title {
       @apply mb-4 text-lp-section-title text-lp-primary-color uppercase;
@@ -74,11 +78,20 @@
         @apply flex flex-col rounded-[1rem] p-[1.2rem] bg-lp-lighter-primary-color;
 
         .news-swiper-image {
-          @apply border-image object-cover w-[40rem] h-[25rem];
+          @apply border-image object-cover;
+          aspect-ratio: 16 / 9;
+        }
+
+        .news-swiper-youtube-frame {
+          aspect-ratio: 16 / 9;
         }
 
         .news-swiper-title {
-          @apply text-white uppercase py-[2rem] text-lp-card-title;
+          @apply text-white uppercase py-[2rem] text-lp-card-title h-[8rem] leading-[4rem];
+          img {
+            height: 100%;
+            width: auto;
+          }
         }
       }
     }
@@ -127,6 +140,10 @@
   .news-swiper-wrapper {
     @apply mt-0 w-[unset] !important;
 
+    .news-swiper {
+      @apply w-[unset] !important;
+    }
+
     .news-swiper-card-title {
       @apply mb-4 text-lp-section-title-2 text-lp-primary-color uppercase !important;
     }
@@ -172,6 +189,10 @@
 
   .news-swiper-wrapper {
     @apply mt-0 w-[unset] !important;
+
+    .news-swiper {
+      @apply w-[unset];
+    }
 
     .news-swiper-card-title {
       @apply mb-4 text-lp-section-title text-lp-primary-color uppercase;
@@ -254,6 +275,10 @@
     .news-swiper-wrapper {
       @apply mx-auto mt-[4rem] w-[90rem] !important;
 
+      .news-swiper {
+        @apply w-[60rem];
+      }
+
       .news-swiper-card-title {
         @apply mb-4 text-lp-section-title text-lp-primary-color uppercase;
       }
@@ -263,7 +288,11 @@
           @apply flex flex-col rounded-[1rem] p-[1.2rem];
 
           .news-swiper-image {
-            @apply border-image object-cover w-[40rem] h-[25rem];
+            @apply border-image object-cover w-full;
+            aspect-ratio: 16 / 9;
+          }
+          .news-swiper-youtube-frame {
+            aspect-ratio: 16 / 9;
           }
 
           .news-swiper-title {

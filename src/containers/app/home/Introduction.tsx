@@ -27,19 +27,17 @@ const Introduction = () => {
             </p>
             <br />
             <p>
-              Vào đầu năm 2023, Fun Studio đã mang mô hình này về Việt Nam với
-              những giải pháp ưu Việt, giản tiện hơn, dễ dàng sử dụng, đặc biệt
-              chi phí vận hành rất thấp. Tuy mới thành lập và hoạt động trong
-              gần 1 năm, Fun Studio đã liên tiếp mở nhiều cơ sở tại những vị trí
-              đắc địa.
+              Fun Studio đã mang mô hình này về Việt Nam với những giải pháp ưu
+              việt, giản tiện hơn, dễ dàng quản lý và vận hành với chi phí rất
+              thấp. Tuy mới thành lập, Fun Studio đã liên tiếp mở nhiều cơ sở
+              tại những vị trí đắc địa.
             </p>
             <br />
             <p>
-              Nhắm đến khách hàng là những đối tượng trẻ và nhiều sáng tạo, Fun
-              Studio đang mang tới cho các bạn có niềm yêu thích về chụp ảnh
-              theo phong cách Hàn Quốc những trải nghiệm thật vui vẻ và đáng
-              nhớ. Tất cả đều được chứa đựng trong từng sản phẩm và các khâu vận
-              hành của Fun Studio.
+              Nhắm đến khách hàng là những bạn trẻ sáng tạo, thời thượng thông
+              qua những trải nghiệm đáng nhớ với chi phí siêu hạt dẻ, các trang
+              phục, phụ kiện và frame siêu độc đáo, phù hợp với túi tiền của học
+              sinh, sinh viên.
             </p>
             <div className="corner-top-left" />
             <div className="corner-bottom-right" />
