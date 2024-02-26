@@ -198,7 +198,7 @@ export const SERVICE_ITEMS = [
   },
   {
     label:
-      'update những sản phẩm mới, những chiến dịch quảng cáo, marketing mang lại hiệu quả cho tất cả các cửa hàng chi nhánh.',
+      'update các tính năng mới, những chiến dịch quảng cáo, marketing mang lại hiệu quả cho tất cả các cửa hàng chi nhánh.',
     value: 2,
     image: growIcon,
     alt: 'grow icon',
@@ -223,7 +223,7 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn có nguồn vốn nhàn rỗi?',
     description:
-      'Bạn có nguồn vốn nhàn rỗi nhưng chưa có định hướng kinh doanh nhưng chưa chọn được lĩnh vực phù hợp. Fun Studio là lựa chọn tối ưu để có thể tạo ra thu nhập thụ động, với vốn đầu tư ban đầu thấp và thời gian quay vòng vốn nhanh chóng.',
+      'Bạn có nguồn vốn nhàn rỗi nhưng chỉ biết gửi tiết kiệm. Trăn trở có một "công ty" của riêng mình nhưng lại không biết bắt đầu từ đâu. Fun Studio là lựa chọn tối ưu để có thể tạo ra thu nhập thụ động, với vốn đầu tư ban đầu thấp và thời gian quay vòng vốn nhanh chóng.',
     value: 1,
     image: budgetIcon,
     alt: 'budget icon',
@@ -239,7 +239,7 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn muốn thử sức kinh doanh nhưng thiếu kinh nghiệm quản lý',
     description:
-      'Rất nhiều người rất muốn kinh doanh nhưng luôn trong trạng thái chưa sẵn sàng, thiếu nguồn lực hoặc chưa tự tin với kinh nghiệm của mình. Đến với Fun Studio bạn có thể hiện thực hóa giấc mở của mình, đồng thời thể hiện năng lực cá nhân cũng như phát triển thêm kinh nghiệm cần thiết khác. và có thêm sự hỗ trợ của toàn bộ tổng công ty trong hoạt động vận hành và quản lý cửa hàng.',
+      'Bạn muốn kinh doanh nhưng luôn trong trạng thái chưa sẵn sàng, thiếu nguồn lực hoặc chưa tự tin với kinh nghiệm của mình. Fun Studio chính là giải pháp hiện thực hóa giấc mơ của mình, đồng thời thể hiện năng lực cá nhân cũng như phát triển thêm kinh nghiệm cần thiết khác. Bạn sẽ kinh doanh cùng Fun Studio, giải quyết các bài toán đau đầu về tối ưu chi phí, vận hành và có lãi.',
     value: 3,
     image: handIcon,
     alt: 'hand icon',
@@ -247,7 +247,7 @@ export const OPPORTUNITY_ITEMS = [
   {
     label: 'Bạn đã kinh doanh nhưng muốn có thêm thu nhập thụ động?',
     description:
-      'Với sự tham gia và hỗ trợ của công ty thì bạn không cần mất nhiều thời gian trong các khâu quản lý và vận hành, bạn hoàn toàn có thể tạo ra thu nhập thụ động với công sức ít vì đã có Fun Studio hỗ trợ từ việc sản xuất, setup cửa hàng, quản lý, vận hành và, truyền thông.',
+      'Với sự tham gia và hỗ trợ của công ty Fun Studio, các khâu quản lý và vận hành sẽ được tự động hóa và quy chuẩn hóa.  Fun Studio cũng hỗ trợ nhà đầu tư từ việc sản xuất, setup cửa hàng, đào tạo nhân viên, và truyền thông...',
     value: 4,
     image: moneyIcon,
     alt: 'money icon',

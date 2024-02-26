@@ -27,16 +27,16 @@ const Introduction = () => {
             </p>
             <br />
             <p>
-              Fun Studio đã mang mô hình này về Việt Nam với những giải pháp ưu
-              việt, giản tiện hơn, dễ dàng quản lý và vận hành với chi phí rất
-              thấp. Tuy mới thành lập, Fun Studio đã liên tiếp mở nhiều cơ sở
-              tại những vị trí đắc địa.
+              Bắt nhịp xu thế, Fun Studio nhanh chóng mang mô hình này về Việt
+              Nam với những giải pháp ưu việt, giản tiện hơn, dễ dàng quản lý và
+              vận hành với chi phí rất thấp.
             </p>
             <br />
             <p>
-              Nhắm đến khách hàng là những bạn trẻ sáng tạo, thời thượng thông
-              qua những trải nghiệm đáng nhớ với chi phí siêu hạt dẻ, các trang
-              phục, phụ kiện và frame siêu độc đáo, phù hợp với túi tiền của học
+              Mô hình kinh doanh này nhắm đến khách hàng là những bạn trẻ sáng
+              tạo, thời thượng thông qua những trải nghiệm đáng nhớ. Điểm hấp
+              dẫn của dịch vụ này chính là chất lượng hình siêu đẹp, các trang
+              phục, phụ kiện và frame độc đáo, phù hợp với túi tiền của học
               sinh, sinh viên.
             </p>
             <div className="corner-top-left" />

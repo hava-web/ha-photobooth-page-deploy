@@ -5,7 +5,7 @@
     @apply flex flex-col py-[4rem] pb-[5rem] text-[2.5rem] text-white text-center;
 
     .section-title {
-      @apply mb-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
+      @apply mb-4 px-[4rem] text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
     }
   }
 
