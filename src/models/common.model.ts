@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { AppContext, AppInitialProps } from 'next/app';
+import { StaticImageData } from 'next/image';
 
 declare function appGetInitialProps({
   Component,
@@ -67,4 +68,12 @@ export interface TriggerTypes {
 
 export type ObjectOfString<T = string> = {
   [key: string]: T;
+};
+
+export type CustomizeUIModel = {
+  appContainerClass?: string;
+  downloadUI: {
+    logoImage?: StaticImageData;
+    sloganImage?: StaticImageData;
+  };
 };

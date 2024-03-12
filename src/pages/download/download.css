@@ -11,7 +11,6 @@
 
 .download-logo {
   width: 12rem;
-  height: 8.172rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
@@ -52,7 +51,6 @@
 
 .download-logo-loading {
   width: 9rem;
-  height: 6.129rem;
   -webkit-animation: anim-heart 1.2s infinite
     cubic-bezier(0.215, 0.61, 0.355, 1);
   animation: anim-heart 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);

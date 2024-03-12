@@ -1,6 +1,5 @@
 import React, { FC, HtmlHTMLAttributes } from 'react';
 import cx from 'classnames';
-import classes from './background.module.css';
 
 export enum BackgroundTypes {
   FRAME = 'frame',
@@ -21,11 +20,11 @@ const Background: FC<Props> = ({
     {...rest}
     className={cx(
       'w-screen h-screen fixed top-0 left-0 -z-50 object-cover bg-image',
-      classes['bg-image'],
+      'bg-image',
       {
-        [classes['bg-image-frame']]: type === BackgroundTypes.FRAME || !type,
-        [classes['bg-image-layout']]: type === BackgroundTypes.LAYOUT,
-        [classes['bg-image-payment']]: type === BackgroundTypes.PAYMENT,
+        'bg-image-frame': type === BackgroundTypes.FRAME || !type,
+        'bg-image-layout': type === BackgroundTypes.LAYOUT,
+        'bg-image-payment': type === BackgroundTypes.PAYMENT,
       },
       className,
     )}

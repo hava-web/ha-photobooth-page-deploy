@@ -1,0 +1,34 @@
+.theme-default .pb-button-info {
+  background: var(--info-color);
+}
+.theme-default .pb-button-primary {
+  background: var(--primary-color);
+}
+.theme-default .pb-button-default {
+  background: var(--secondary-color);
+}
+.theme-default .pb-button-transparent {
+  background: transparent;
+}
+.theme-default .pb-button.pb-button-transparent .pb-button-text {
+  color: var(--secondary-text-color);
+}
+
+.theme-diana .pb-button-info {
+  background: var(--diana-info-color);
+}
+.theme-diana .pb-button-primary {
+  background: var(--diana-primary-color);
+}
+.theme-diana .pb-button-default {
+  background: var(--diana-secondary-color);
+}
+.theme-diana .pb-button-transparent {
+  background: transparent;
+}
+.theme-diana .pb-button.pb-button-transparent .pb-button-text {
+  color: var(--secondary-text-color);
+}
+.theme-diana .pb-button .pb-button-text {
+  color: white;
+}

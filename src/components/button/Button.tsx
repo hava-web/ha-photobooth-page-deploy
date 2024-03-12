@@ -5,7 +5,6 @@ import Typography, {
 import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
 import cx from 'classnames';
 import { BUTTON_COLORS } from './button-utils';
-import classes from './button.module.css';
 
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: string;
@@ -25,13 +24,13 @@ const Button: FC<Props> = ({
     disabled={disabled}
     type="button"
     className={cx(
-      classes['pb-button'],
+      'pb-button',
       {
-        [classes['pb-button-info']]: color === BUTTON_COLORS.INFO,
-        [classes['pb-button-primary']]: color === BUTTON_COLORS.PRIMARY,
-        [classes['pb-button-default']]: color === BUTTON_COLORS.DEFAULT,
-        [classes['pb-button-transparent']]: color === BUTTON_COLORS.TRANSPARENT,
-        [classes['pb-button-disabled']]: disabled,
+        'pb-button-info': color === BUTTON_COLORS.INFO,
+        'pb-button-primary': color === BUTTON_COLORS.PRIMARY,
+        'pb-button-default': color === BUTTON_COLORS.DEFAULT,
+        'pb-button-transparent': color === BUTTON_COLORS.TRANSPARENT,
+        'pb-button-disabled': disabled,
       },
       className,
     )}
@@ -40,7 +39,7 @@ const Button: FC<Props> = ({
       variant={TYPOGRAPHY_VARIANTS.BODY}
       firstCapCase
       {...TypographyProps}
-      className={cx(classes['pb-button-text'], TypographyProps?.className)}
+      className={cx('pb-button-text', TypographyProps?.className)}
     >
       {children}
     </Typography>

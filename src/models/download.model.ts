@@ -1,3 +1,5 @@
+import { CustomizeUIModel } from './common.model';
+
 export type DownloadModel = {
   device: string;
   isExpired: boolean;
@@ -25,5 +27,6 @@ export type GetDownloadDataResponseModel = {
 export interface DownloadDataStateModel {
   downloadData: DownloadModel | null;
   errorData: any;
+  appTheme: CustomizeUIModel;
   loading: boolean;
 }

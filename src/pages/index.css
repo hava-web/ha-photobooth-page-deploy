@@ -189,6 +189,13 @@ body {
   --lp-secondary-color: #3a80bf;
   --lp-gold-color: #ffbd0e;
 
+  --diana-primary-color: #d33292;
+  --diana-secondary-color: #1e80c7;
+  --diana-fun-white-color: #def4f6;
+  --diana-lighter-pink-color: #f9eaf1;
+  --diana-warning-color: #ffc840;
+  --diana-lighter-warning-color: #f3f3c5;
+
   --z-index-banner-dot: 999;
   --z-index-header: 1100;
   --z-index-floating-button: 1000;

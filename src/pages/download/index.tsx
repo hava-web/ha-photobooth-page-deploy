@@ -1,10 +1,13 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { Fragment, useState } from 'react';
+import cx from 'classnames';
+import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { find, get } from 'lodash';
 import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import { downloadFile } from 'api/common.api';
+import { useCustomizeUI } from 'hooks/useCustomizeUI';
 import { isEqualVal } from 'helpers/string.helper';
 import {
   CONTENT_TYPES,
@@ -24,9 +27,12 @@ import { DATE_FORMAT, HOUR_MINUTE_FORMAT } from 'constants/time.const';
 export default function DownloadFile({
   downloadData,
   errorData,
+  appTheme,
 }: DownloadDataStateModel) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
+
+  const { appContainerClass, downloadUI } = appTheme;
 
   console.log('ttt downloadData', downloadData, errorData);
 
@@ -56,30 +62,49 @@ export default function DownloadFile({
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center download-page-container">
+    <div
+      className={cx(
+        'w-screen h-screen flex justify-center download-page-container',
+        appContainerClass,
+      )}
+    >
       <Background />
       <Loader
         loading={loading}
         className="download-page"
         spin={
-          <img
-            src="/images/fun_studio_logo.png"
-            alt="logo loading"
-            className="download-logo-loading"
-          />
+          downloadUI?.logoImage ? (
+            <Image
+              src={downloadUI?.logoImage}
+              alt="logo loading"
+              className="download-logo-loading"
+            />
+          ) : (
+            <></>
+          )
         }
       >
-        <img
-          src="/images/fun_studio_logo.png"
-          alt="logo"
-          className="download-logo"
-        />
-        <Typography
-          variant={TYPOGRAPHY_VARIANTS.SMALL}
-          className="text-center font-semibold download-title"
-        >
-          {t('download:funStudioSlogan')}
-        </Typography>
+        {!!downloadUI?.logoImage && (
+          <Image
+            src={downloadUI?.logoImage}
+            alt="logo"
+            className="download-logo"
+          />
+        )}
+        {downloadUI?.sloganImage ? (
+          <Image
+            src={downloadUI?.sloganImage}
+            alt="slogan"
+            className="slogan-image"
+          />
+        ) : (
+          <Typography
+            variant={TYPOGRAPHY_VARIANTS.SMALL}
+            className="text-center font-semibold download-title"
+          >
+            {t('download:funStudioSlogan')}
+          </Typography>
+        )}
         {!downloadData || !!downloadData?.isExpired ? (
           <Typography
             variant={TYPOGRAPHY_VARIANTS.SMALL}
@@ -163,17 +188,22 @@ export default function DownloadFile({
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`);
+  const appTheme = useCustomizeUI();
 
   try {
     const downloadResponse = await getDownloadData({
       id: transactionId as string,
     });
     return {
-      props: { downloadData: downloadResponse?.data },
+      props: { downloadData: downloadResponse?.data, appTheme },
     };
   } catch (err) {
     return {
-      props: { downloadData: null, errorData: JSON.parse(JSON.stringify(err)) },
+      props: {
+        downloadData: null,
+        errorData: JSON.parse(JSON.stringify(err)),
+        appTheme,
+      },
     };
   }
 };

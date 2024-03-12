@@ -1,0 +1,15 @@
+/* Theme Diana */
+.theme-diana.download-page-container * {
+  color: var(--diana-primary-color);
+}
+.theme-diana .download-logo {
+  width: 20rem;
+  margin-bottom: 0rem;
+}
+.theme-diana .slogan-image {
+  width: 30rem;
+  margin-bottom: 2rem;
+}
+.theme-diana .download-logo-loading {
+  width: 15rem;
+}
