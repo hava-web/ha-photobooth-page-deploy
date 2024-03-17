@@ -7,6 +7,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document';
+import { useCustomizeUI } from 'hooks/useCustomizeUI';
 
 export const i18nPropsFromCtx = (ctx: NextPageContext): Object => {
   if (!(ctx && ctx.req && (ctx.req as any).language)) return {};
@@ -60,7 +61,11 @@ export default class MyDocument extends Document<{
           />
           <meta name="build-version" content="v0.0.1" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="shortcut icon" href="/fun_studio_logo.ico" />
+          {useCustomizeUI()?.isDiana ? (
+            <link rel="shortcut icon" href="/images/diana/logo.ico" />
+          ) : (
+            <link rel="shortcut icon" href="/fun_studio_logo.ico" />
+          )}
         </Head>
         <body>
           <Main />

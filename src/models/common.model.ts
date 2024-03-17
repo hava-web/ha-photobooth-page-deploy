@@ -71,6 +71,7 @@ export type ObjectOfString<T = string> = {
 };
 
 export type CustomizeUIModel = {
+  isDiana?: boolean;
   appContainerClass?: string;
   downloadUI: {
     logoImage?: StaticImageData;

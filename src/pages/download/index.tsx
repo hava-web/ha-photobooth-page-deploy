@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { Fragment, useState } from 'react';
 import cx from 'classnames';
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { find, get } from 'lodash';
@@ -32,7 +33,7 @@ export default function DownloadFile({
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
-  const { appContainerClass, downloadUI } = appTheme;
+  const { appContainerClass, downloadUI, isDiana } = appTheme;
 
   console.log('ttt downloadData', downloadData, errorData);
 
@@ -62,127 +63,131 @@ export default function DownloadFile({
   };
 
   return (
-    <div
-      className={cx(
-        'w-screen h-screen flex justify-center download-page-container',
-        appContainerClass,
-      )}
-    >
-      <Background />
-      <Loader
-        loading={loading}
-        className="download-page"
-        spin={
-          downloadUI?.logoImage ? (
+    <>
+      {isDiana && <NextSeo title="Diana cùng cậu" />}
+      <div
+        className={cx(
+          'w-screen h-screen flex justify-center download-page-container',
+          appContainerClass,
+        )}
+      >
+        <Background />
+        <Loader
+          loading={loading}
+          className="download-page"
+          spin={
+            downloadUI?.logoImage ? (
+              <Image
+                src={downloadUI?.logoImage}
+                alt="logo loading"
+                className="download-logo-loading"
+              />
+            ) : (
+              <></>
+            )
+          }
+        >
+          {!!downloadUI?.logoImage && (
             <Image
               src={downloadUI?.logoImage}
-              alt="logo loading"
-              className="download-logo-loading"
+              alt="logo"
+              className="download-logo"
+            />
+          )}
+          {downloadUI?.sloganImage ? (
+            <Image
+              src={downloadUI?.sloganImage}
+              alt="slogan"
+              className="slogan-image"
             />
           ) : (
-            <></>
-          )
-        }
-      >
-        {!!downloadUI?.logoImage && (
-          <Image
-            src={downloadUI?.logoImage}
-            alt="logo"
-            className="download-logo"
-          />
-        )}
-        {downloadUI?.sloganImage ? (
-          <Image
-            src={downloadUI?.sloganImage}
-            alt="slogan"
-            className="slogan-image"
-          />
-        ) : (
-          <Typography
-            variant={TYPOGRAPHY_VARIANTS.SMALL}
-            className="text-center font-semibold download-title"
-          >
-            {t('download:funStudioSlogan')}
-          </Typography>
-        )}
-        {!downloadData || !!downloadData?.isExpired ? (
-          <Typography
-            variant={TYPOGRAPHY_VARIANTS.SMALL}
-            className="text-center result-image"
-          >
-            {downloadData?.isExpired
-              ? t('download:dataExpired')
-              : t('download:noData')}
-          </Typography>
-        ) : (
-          <>
-            {videoRecordUrl ? (
-              <video
-                className="result-image"
-                poster={photoTakenUrl}
-                autoPlay
-                loop
-                muted
-                playsInline
-              >
-                <track kind="captions" />
-                <source src={videoRecordUrl} type="video/mp4" />
-              </video>
-            ) : (
-              <>
-                {photoTakenUrl ? (
-                  <img
-                    src={photoTakenUrl}
-                    alt="result"
-                    className="result-image"
-                  />
-                ) : (
-                  <Typography
-                    variant={TYPOGRAPHY_VARIANTS.SMALL}
-                    className="text-center result-image"
-                  >
-                    {t('download:dataIsUploading')}
-                  </Typography>
-                )}
-              </>
-            )}
-            <div className="download-action">
-              <Button
-                color="default"
-                onClick={handleDownloadImage}
-                disabled={!photoTakenUrl || loading}
-              >
-                {t('common:downloadImage')}
-              </Button>
-              {!!downloadData?.hasVideo && videoRecordUrl && (
-                <Button
-                  onClick={handleDownloadVideo}
-                  disabled={!videoRecordUrl || loading}
+            <Typography
+              variant={TYPOGRAPHY_VARIANTS.SMALL}
+              className="text-center font-semibold download-title"
+            >
+              {t('download:funStudioSlogan')}
+            </Typography>
+          )}
+          {!downloadData || !!downloadData?.isExpired ? (
+            <Typography
+              variant={TYPOGRAPHY_VARIANTS.SMALL}
+              className="text-center result-image"
+            >
+              {downloadData?.isExpired
+                ? t('download:dataExpired')
+                : t('download:noData')}
+            </Typography>
+          ) : (
+            <>
+              {videoRecordUrl ? (
+                <video
+                  className="result-image"
+                  poster={photoTakenUrl}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                 >
-                  {t('common:downloadVideo')}
-                </Button>
+                  <track kind="captions" />
+                  <source src={videoRecordUrl} type="video/mp4" />
+                </video>
+              ) : (
+                <>
+                  {photoTakenUrl ? (
+                    <img
+                      src={photoTakenUrl}
+                      alt="result"
+                      className="result-image"
+                    />
+                  ) : (
+                    <Typography
+                      variant={TYPOGRAPHY_VARIANTS.SMALL}
+                      className="text-center result-image"
+                    >
+                      {t('download:dataIsUploading')}
+                    </Typography>
+                  )}
+                </>
               )}
-            </div>
-            <Typography
-              variant={TYPOGRAPHY_VARIANTS.SMALL}
-              className="text-center machine-info-text"
-            >
-              {`${
-                moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) || '_'
-              } ngày ${
-                moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
-              }, máy ${downloadData?.device}`}
-            </Typography>
-            <Typography
-              variant={TYPOGRAPHY_VARIANTS.SMALL}
-              className="text-center font-bold"
-            >
-              {t('download:linkExpireInFiveDays')}
-            </Typography>
-          </>
-        )}
-      </Loader>
-    </div>
+              <div className="download-action">
+                <Button
+                  color="default"
+                  onClick={handleDownloadImage}
+                  disabled={!photoTakenUrl || loading}
+                >
+                  {t('common:downloadImage')}
+                </Button>
+                {!!downloadData?.hasVideo && videoRecordUrl && (
+                  <Button
+                    onClick={handleDownloadVideo}
+                    disabled={!videoRecordUrl || loading}
+                  >
+                    {t('common:downloadVideo')}
+                  </Button>
+                )}
+              </div>
+              <Typography
+                variant={TYPOGRAPHY_VARIANTS.SMALL}
+                className="text-center machine-info-text"
+              >
+                {`${
+                  moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) ||
+                  '_'
+                } ngày ${
+                  moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
+                }, máy ${downloadData?.device}`}
+              </Typography>
+              <Typography
+                variant={TYPOGRAPHY_VARIANTS.SMALL}
+                className="text-center font-bold"
+              >
+                {t('download:linkExpireInFiveDays')}
+              </Typography>
+            </>
+          )}
+        </Loader>
+      </div>
+    </>
   );
 }
 
