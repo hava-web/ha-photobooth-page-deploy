@@ -1,11 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { map, range, size } from 'lodash';
+import { map } from 'lodash';
 import Image from 'components/image/Image';
 import {
   CUSTOMER_MESSAGES,
   NEWS_MESSAGES,
 } from 'store/static-data/static-data.data';
-import { isEqualVal } from 'helpers/string.helper';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 import Container from 'components/grid/Container';
 import { useTranslation } from 'hooks/useTranslation';
@@ -19,7 +18,18 @@ const CustomerTalkAboutUs = () => {
     null,
   );
   const [newsSwiper, setNewsSwiper] = useState<SwiperClass | null>(null);
-  const [newsSwiperIndex, setNewsSwiperIndex] = useState(0);
+
+  const handleNewsPrev = useCallback(() => {
+    if (newsSwiper) {
+      newsSwiper.slidePrev();
+    }
+  }, [newsSwiper]);
+
+  const handleNewsNext = useCallback(() => {
+    if (newsSwiper) {
+      newsSwiper.slideNext();
+    }
+  }, [newsSwiper]);
 
   const handleCustomerPrev = useCallback(() => {
     if (customerSwiper) {
@@ -32,15 +42,6 @@ const CustomerTalkAboutUs = () => {
       customerSwiper.slideNext();
     }
   }, [customerSwiper]);
-
-  const handleSlideTo = useCallback(
-    (index: number) => {
-      if (newsSwiper) {
-        newsSwiper.slideToLoop(index);
-      }
-    },
-    [newsSwiper],
-  );
 
   return (
     <section
@@ -58,9 +59,6 @@ const CustomerTalkAboutUs = () => {
             scrollbar={{ draggable: true }}
             autoplay={{ delay: 5000 }}
             onSwiper={setNewsSwiper}
-            onRealIndexChange={(swiperData) =>
-              setNewsSwiperIndex(swiperData?.realIndex || 0)
-            }
             loop
           >
             {map(NEWS_MESSAGES, (news) => (
@@ -98,21 +96,32 @@ const CustomerTalkAboutUs = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="news-swiper-dots">
-            {map(range(size(NEWS_MESSAGES)), (groupSlideIndex: number) => (
-              <button
-                onClick={() => handleSlideTo(groupSlideIndex)}
-                type="button"
-                className={`dot-slider ${
-                  isEqualVal(newsSwiperIndex, groupSlideIndex)
-                    ? 'dot-slider-active'
-                    : ''
-                }`}
-                title="trước"
-                aria-label="dot slider"
-              />
-            ))}
-          </div>
+          <button
+            onClick={handleNewsPrev}
+            type="button"
+            className="news-swiper-left-arrow"
+            title="trước"
+          >
+            <Image
+              src={leftArrowIcon}
+              width={50}
+              height={50}
+              alt="left arrow"
+            />
+          </button>
+          <button
+            onClick={handleNewsNext}
+            type="button"
+            className="news-swiper-right-arrow"
+            title="sau"
+          >
+            <Image
+              src={rightArrowIcon}
+              width={50}
+              height={50}
+              alt="right arrow"
+            />
+          </button>
         </div>
         <div className="customer-swiper-wrapper">
           <h2 className="customer-swiper-card-title">

@@ -24,6 +24,13 @@ import banner5Image from 'assets/images/banner-images/banner_5.jpg';
 import banner6Image from 'assets/images/banner-images/banner_6.jpg';
 import banner7Image from 'assets/images/banner-images/banner_7.jpg';
 
+import funDhspImage from 'assets/images/stores/fun_dhsp.jpg';
+import funComplex01Image from 'assets/images/stores/fun_complex01.jpg';
+import funNuiTrucImage from 'assets/images/stores/fun_nui_truc.jpg';
+import funNgheAnImage from 'assets/images/stores/fun_nghe_an.jpg';
+import funVietTriImage from 'assets/images/stores/fun_viet_tri.jpg';
+import funVinhPhucImage from 'assets/images/stores/fun_vinh_phuc.jpg';
+
 import congluanImage from 'assets/images/home/bao_cong_luan.jpg';
 import radio4TeenImage from 'assets/images/home/radio_4_teen.jpg';
 import congluanLogoImage from 'assets/images/home/congluan_logo.png';
@@ -64,38 +71,53 @@ export const headerNavBarLinks = [
 
 export const funStores = [
   {
-    label: 'Complex 01 ngõ 167 Tây Sơn, Đống Đa, Hà Nội',
-    labelIndex: 'Fun Studio 1',
+    label:
+      'Tầng 2, Complex 01, Số 29, ngách 31, ngõ 167, Tây Sơn, Đống Đa, Hà Nội.',
+    labelIndex: 'Fun Studio Complex 01',
     value: 1,
-    alt: 'Complex',
+    alt: 'Fun Studio Complex 01',
+    image: funComplex01Image,
     href: '#',
   },
   {
-    label: '207 Tân Lập, Hùng Vương, Phú Thọ',
-    labelIndex: 'Fun Studio 4',
+    label:
+      'Ki-ốt số 4, Đại học Sư Phạm Hà Nội, 136 Xuân Thuỷ, Cầu Giấy, Hà Nội.',
+    labelIndex: 'Fun Studio ĐHSP',
     value: 2,
-    alt: 'Complex',
-    href: '#',
-  },
-  {
-    label: 'Kiot 4 Đại học Sư Phạm Hà Nội, Xuân Thủy, Cầu Giấy, Hà Nội',
-    labelIndex: 'Fun Studio 2',
-    value: 3,
-    alt: 'Complex',
-    href: '#',
-  },
-  {
-    label: '20 Chu Văn An, Vĩnh Yên, Vĩnh Phúc',
-    labelIndex: 'Fun Studio 5',
-    value: 4,
-    alt: 'Complex',
+    alt: 'Fun Studio ĐHSP',
+    image: funDhspImage,
     href: '#',
   },
   {
     label: '57 Núi Trúc, Ba Đình, Hà Nội',
-    labelIndex: 'Fun Studio 3',
+    labelIndex: 'Fun Studio Núi Trúc',
+    value: 3,
+    alt: 'Fun Studio Núi Trúc',
+    image: funNuiTrucImage,
+    href: '#',
+  },
+  {
+    label: '20 Chu Văn An, Tp. Vĩnh Yên, tỉnh Vĩnh Phúc',
+    labelIndex: 'Fun Studio Vĩnh Phúc',
+    value: 4,
+    alt: 'Fun Studio Vĩnh Phúc',
+    image: funVinhPhucImage,
+    href: '#',
+  },
+  {
+    label: '51 Quang Trung, Nông Trang, Việt Trì, Phú Thọ',
+    labelIndex: 'Fun Studio Việt Trì',
     value: 5,
-    alt: 'Complex',
+    alt: 'Fun Studio Việt Trì',
+    image: funVietTriImage,
+    href: '#',
+  },
+  {
+    label: 'Số 29 ngõ 27 đường Bạch Liêu, phường Trường Thi, TP. Vinh, Nghệ An',
+    labelIndex: 'Fun Studio Vinh',
+    value: 6,
+    alt: 'Fun Studio Vinh',
+    image: funNgheAnImage,
     href: '#',
   },
 ];

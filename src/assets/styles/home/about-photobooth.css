@@ -20,6 +20,16 @@
       width: 89rem;
     }
   }
+
+  .about-photobooth-swiper-dots {
+    margin-top: 2rem;
+    .dot-slider {
+      @apply bg-lp-primary-color border-white;
+    }
+    .dot-slider-active {
+      @apply bg-white border-white;
+    }
+  }
 }
 
 @media screen('less-sm') {

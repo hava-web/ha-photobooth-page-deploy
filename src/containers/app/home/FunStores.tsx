@@ -24,14 +24,24 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
           {map(stores, (item) => (
             <GridItem key={item?.value} className="fun-stores-item">
               <Image
-                className="rounded-[10px]"
-                src={storeIcon}
-                alt="store icon"
+                className="fun-stores-item-image"
+                src={item?.image}
+                alt="store"
                 quality={75}
               />
-              <p className="fun-stores-item-title">
-                {item?.labelIndex}: <strong>{item?.label}</strong>
-              </p>
+              <br />
+              <div>
+                <p className="fun-stores-item-title">
+                  <Image
+                    className="fun-stores-item-icon"
+                    src={storeIcon}
+                    alt="store icon"
+                    quality={75}
+                  />{' '}
+                  <strong>{item?.labelIndex}</strong>
+                </p>
+                <p className="fun-stores-item-title">{item?.label}</p>
+              </div>
             </GridItem>
           ))}
         </Grid>

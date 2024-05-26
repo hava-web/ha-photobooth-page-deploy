@@ -63,7 +63,7 @@
   }
 
   .news-swiper-wrapper {
-    @apply mx-auto w-[90rem];
+    @apply mx-auto w-[90rem] relative;
 
     .news-swiper {
       @apply w-[60rem];
@@ -99,6 +99,14 @@
     .news-swiper-dots {
       @apply mt-[2rem];
     }
+  }
+
+  .news-swiper-left-arrow {
+    @apply absolute top-[calc(50%+2rem)] -left-[8rem] z-z-index-banner-dot;
+  }
+
+  .news-swiper-right-arrow {
+    @apply absolute top-[calc(50%+2rem)] -right-[8rem] z-z-index-banner-dot;
   }
 }
 
@@ -153,6 +161,14 @@
         width: unset !important;
       }
     }
+
+    .news-swiper-left-arrow {
+      @apply -left-[4rem] top-[50%];
+    }
+
+    .news-swiper-right-arrow {
+      @apply -right-[4rem] top-[50%];
+    }
   }
 }
 
@@ -202,6 +218,14 @@
       .news-swiper-card {
         width: unset !important;
       }
+    }
+
+    .news-swiper-left-arrow {
+      @apply -left-[3rem];
+    }
+
+    .news-swiper-right-arrow {
+      @apply -right-[3rem];
     }
   }
 }

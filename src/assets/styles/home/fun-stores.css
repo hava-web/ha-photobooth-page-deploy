@@ -8,16 +8,19 @@
     .fun-stores-grid {
       @apply gap-[2rem] grid-cols-2 text-lp-body;
       .fun-stores-item {
-        @apply flex items-center;
-        img {
-          @apply rounded-[1rem] w-[6rem];
-        }
-        .fun-stores-item-title {
-          @apply text-left ml-[1rem];
-          strong {
-            @apply font-[600];
-          }
-        }
+        @apply flex flex-col items-center mb-[6rem];
+      }
+    }
+    .fun-stores-item-image {
+      @apply w-[30%] rounded-[1rem];
+    }
+    .fun-stores-item-icon {
+      @apply rounded-[1rem] w-[6rem];
+    }
+    .fun-stores-item-title {
+      @apply w-[80%] flex justify-center items-center my-[0.5rem] m-auto;
+      strong {
+        @apply font-[600] ml-[1rem] whitespace-nowrap;
       }
     }
   }
@@ -33,6 +36,9 @@
       .fun-stores-grid {
         @apply grid-cols-1;
       }
+      .fun-stores-item-image {
+        @apply w-[70%];
+      }
     }
   }
 }
@@ -43,6 +49,9 @@
       @apply px-[4rem];
       .fun-stores-grid {
         @apply grid-cols-1;
+      }
+      .fun-stores-item-image {
+        @apply w-[50%];
       }
     }
   }
