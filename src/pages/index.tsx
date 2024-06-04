@@ -5,7 +5,7 @@ import Introduction from 'containers/app/home/Introduction';
 import EnsureOpportunity from 'containers/app/home/EnsureOpportunity';
 import Services from 'containers/app/home/Services';
 import CustomerTalkAboutUs from 'containers/app/home/CustomerTalkAboutUs';
-import CooperationProcess from 'containers/app/home/CooperationProcess';
+// import CooperationProcess from 'containers/app/home/CooperationProcess';
 import FunStores from 'containers/app/home/FunStores';
 import StrengthOfFun from 'containers/app/home/StrengthOfFun';
 import AboutPhotoBooth from 'containers/app/home/AboutPhotoBooth';
@@ -33,7 +33,7 @@ const Home: PageWithLayout &
     <StrengthOfFun />
     <Services />
     <CustomerTalkAboutUs />
-    <CooperationProcess />
+    {/* <CooperationProcess /> */}
     <FunStores stores={stores} />
   </section>
 );

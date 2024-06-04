@@ -59,10 +59,10 @@ export const headerNavBarLinks = [
     value: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
     label: 'khách hàng\n nói về chúng tôi',
   },
-  {
-    value: HOME_PAGE_SECTIONS.COOPERATION_PROCESS,
-    label: 'quy trình\n hợp tác',
-  },
+  // {
+  //   value: HOME_PAGE_SECTIONS.COOPERATION_PROCESS,
+  //   label: 'quy trình\n hợp tác',
+  // },
   {
     value: HOME_PAGE_SECTIONS.FUN_STORES,
     label: 'danh sách\n cửa hàng',
