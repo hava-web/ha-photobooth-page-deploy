@@ -10,6 +10,7 @@ import GridItem from 'components/grid/GridItem';
 import { OPPORTUNITY_ITEMS } from 'store/static-data/static-data.data';
 import nhuongQuyen1Image from 'assets/images/home/nhuong_quyen_1.jpg';
 import nhuongQuyen2Image from 'assets/images/home/nhuong_quyen_2.jpg';
+import nhuongQuyen3Image from 'assets/images/home/nhuong_quyen_3.jpg';
 import { isEqualVal } from 'helpers/string.helper';
 
 const EnsureOpportunityMobileSwiper = () => {
@@ -108,6 +109,11 @@ const EnsureOpportunity = () => {
               className="ensure-opportunity-image"
               src={nhuongQuyen2Image}
               alt="opportunity 2"
+            />
+            <Image
+              className="ensure-opportunity-image"
+              src={nhuongQuyen3Image}
+              alt="opportunity 3"
             />
           </div>
           <i className="ensure-opportunity-description">

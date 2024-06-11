@@ -22,7 +22,7 @@
       .ensure-opportunity-image-wrapper {
         @apply flex;
         .ensure-opportunity-image {
-          @apply object-cover border-image w-[50rem] h-[40rem] z-[1];
+          @apply object-cover border-image w-[40rem] h-[40rem] z-[1];
         }
       }
       .ensure-opportunity-description {
@@ -52,8 +52,8 @@
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply relative object-cover border-image w-[50rem] h-[40rem] z-[1];
-            width: 50%;
+            @apply relative object-cover border-image w-[40rem] h-[40rem] z-[1];
+            width: 33%;
           }
         }
         .ensure-opportunity-description {
@@ -91,8 +91,8 @@
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply relative object-cover border-image w-[50rem] h-[40rem] z-[1];
-            width: 50%;
+            @apply relative object-cover border-image w-[35rem] h-[40rem] z-[1];
+            width: 33%;
           }
         }
         .ensure-opportunity-description {
@@ -143,7 +143,7 @@
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply object-cover border-image w-[50rem] h-[40rem] z-[1];
+            @apply object-cover border-image w-[40rem] h-[40rem] z-[1];
           }
         }
         .ensure-opportunity-description {
