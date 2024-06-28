@@ -16,9 +16,10 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
-import banner1Image from 'assets/images/banner-images/banner_1.jpg';
-import banner2Image from 'assets/images/banner-images/banner_2.jpg';
-import banner3Image from 'assets/images/banner-images/banner_3.jpg';
+import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.jpg';
+import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.jpg';
+import bannerTrendy2023Image from 'assets/images/banner-images/banner_2.jpg';
+import bannerEasyToUseImage from 'assets/images/banner-images/banner_3.jpg';
 import banner4Image from 'assets/images/banner-images/banner_4.jpg';
 import banner5Image from 'assets/images/banner-images/banner_5.jpg';
 import banner6Image from 'assets/images/banner-images/banner_6.jpg';
@@ -124,44 +125,50 @@ export const funStores = [
 
 export const funBanners = [
   {
-    label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
+    label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
     value: 1,
-    image: banner2Image,
+    image: bannerAllFeatureImage,
+    alt: 'easy to use',
+  },
+  {
+    label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
+    value: 2,
+    image: bannerTrendy2023Image,
     alt: 'easy to use',
   },
   {
     label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
-    value: 2,
-    image: banner1Image,
+    value: 3,
+    image: bannerKoreanStyleImage,
     alt: 'korea styles',
   },
   {
     label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
-    value: 3,
-    image: banner3Image,
+    value: 4,
+    image: bannerEasyToUseImage,
     alt: 'low risk high profit',
   },
   {
     label: 'Chi phí đầu tư ban đầu thấp,\n lợi nhuận cao',
-    value: 4,
+    value: 5,
     image: banner4Image,
     alt: 'genz trending',
   },
   {
     label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
-    value: 5,
+    value: 6,
     image: banner5Image,
     alt: 'get budget',
   },
   {
     label: 'Chi phí vận hành thấp,\n tự động hóa cao,\n sử dụng ít nhân sự',
-    value: 6,
+    value: 7,
     image: banner6Image,
     alt: 'low operation cost',
   },
   {
     label: 'Thời gian triển khai nhanh chóng với chi phí tối ưu',
-    value: 7,
+    value: 8,
     image: banner7Image,
     alt: 'quick building',
   },

@@ -42,6 +42,10 @@
         opacity: 0.9;
       }
     }
+
+    .swiper-slide:first-child .swiper-slide-image {
+      @apply object-fill;
+    }
   }
 
   .swiper-dot-wrapper {
