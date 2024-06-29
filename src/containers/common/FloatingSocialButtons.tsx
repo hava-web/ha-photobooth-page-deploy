@@ -8,7 +8,7 @@ import plusIcon from 'assets/icons/icon-plus.png';
 import messengerIcon from 'assets/icons/messenger.png';
 import phoneIcon from 'assets/icons/phone.png';
 import PopoverBox from 'components/popover/PopoverBox';
-import zaloQRCodeImage from 'assets/images/home/zalo_qrcode.jpg';
+import zaloQRCodeImage from 'assets/images/home/zalo_qrcode.webp';
 
 const FloatingSocialButtons = () => {
   const { T } = useTranslation();

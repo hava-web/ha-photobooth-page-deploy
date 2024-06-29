@@ -7,9 +7,9 @@ import Grid from 'components/grid/Grid';
 import GridItem from 'components/grid/GridItem';
 import { map } from 'lodash';
 import { SERVICE_ITEMS } from 'store/static-data/static-data.data';
-import service1Image from 'assets/images/home/services_1.jpg';
-import service2Image from 'assets/images/home/services_2.jpg';
-import service3Image from 'assets/images/home/services_3.jpg';
+import service1Image from 'assets/images/home/services_1.webp';
+import service2Image from 'assets/images/home/services_2.webp';
+import service3Image from 'assets/images/home/services_3.webp';
 
 const Services = () => {
   const { T } = useTranslation();

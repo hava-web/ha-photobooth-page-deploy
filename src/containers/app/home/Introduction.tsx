@@ -5,8 +5,8 @@ import { useTranslation } from 'hooks/useTranslation';
 import Grid from 'components/grid/Grid';
 import GridItem from 'components/grid/GridItem';
 import Image from 'components/image/Image';
-import nuiTruc2Image from 'assets/images/home/nui_truc2.jpg';
-import dhspImage from 'assets/images/home/dhsp.jpg';
+import nuiTruc2Image from 'assets/images/home/nui_truc2.webp';
+import dhspImage from 'assets/images/home/dhsp.webp';
 
 const Introduction = () => {
   const { T } = useTranslation();

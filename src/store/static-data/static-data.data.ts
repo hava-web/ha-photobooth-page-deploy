@@ -16,38 +16,38 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
-import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.jpg';
-import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.jpg';
+import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
+import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
 import bannerTrendy2023Image from 'assets/images/banner-images/banner_2.jpg';
-import bannerEasyToUseImage from 'assets/images/banner-images/banner_3.jpg';
-import banner4Image from 'assets/images/banner-images/banner_4.jpg';
-import banner5Image from 'assets/images/banner-images/banner_5.jpg';
-import banner6Image from 'assets/images/banner-images/banner_6.jpg';
-import banner7Image from 'assets/images/banner-images/banner_7.jpg';
+import bannerEasyToUseImage from 'assets/images/banner-images/banner_3.webp';
+import banner4Image from 'assets/images/banner-images/banner_4.webp';
+import banner5Image from 'assets/images/banner-images/banner_5.webp';
+import banner6Image from 'assets/images/banner-images/banner_6.webp';
+import banner7Image from 'assets/images/banner-images/banner_7.webp';
 
 import funDhspImage from 'assets/images/stores/fun_dhsp.jpg';
-import funComplex01Image from 'assets/images/stores/fun_complex01.jpg';
-import funNuiTrucImage from 'assets/images/stores/fun_nui_truc.jpg';
-import funNgheAnImage from 'assets/images/stores/fun_nghe_an.jpg';
-import funVietTriImage from 'assets/images/stores/fun_viet_tri.jpg';
-import funVinhPhucImage from 'assets/images/stores/fun_vinh_phuc.jpg';
+import funComplex01Image from 'assets/images/stores/fun_complex01.webp';
+import funNuiTrucImage from 'assets/images/stores/fun_nui_truc.webp';
+import funNgheAnImage from 'assets/images/stores/fun_nghe_an.webp';
+import funVietTriImage from 'assets/images/stores/fun_viet_tri.webp';
+import funVinhPhucImage from 'assets/images/stores/fun_vinh_phuc.webp';
 
-import congluanImage from 'assets/images/home/bao_cong_luan.jpg';
-import radio4TeenImage from 'assets/images/home/radio_4_teen.jpg';
+import congluanImage from 'assets/images/home/bao_cong_luan.webp';
+import radio4TeenImage from 'assets/images/home/radio_4_teen.webp';
 import congluanLogoImage from 'assets/images/home/congluan_logo.png';
 import vtv1LogoImage from 'assets/images/home/vtv1_logo.png';
 
-import buiLanPhuongImage from 'assets/images/customers/bui_lan_phuong.jpg';
-import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.jpg';
-import duyLeImage from 'assets/images/customers/duy_le.jpg';
-import hongNhungImage from 'assets/images/customers/hong_nhung.jpg';
-import hoangThuPhuongImage from 'assets/images/customers/hoang_thu_phuong.jpg';
-import yenNhiImage from 'assets/images/customers/yen_nhi.jpg';
-import nguyenThuImage from 'assets/images/customers/nguyen_thu.jpg';
-import nguyenThuTrangImage from 'assets/images/customers/nguyen_thu_trang.jpg';
-import phuongLinhImage from 'assets/images/customers/phuong_linh.jpg';
-import minhKhueImage from 'assets/images/customers/minh_khue.jpg';
-import khanhLyImage from 'assets/images/customers/khanh_ly.jpg';
+import buiLanPhuongImage from 'assets/images/customers/bui_lan_phuong.webp';
+import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.webp';
+import duyLeImage from 'assets/images/customers/duy_le.webp';
+import hongNhungImage from 'assets/images/customers/hong_nhung.webp';
+import hoangThuPhuongImage from 'assets/images/customers/hoang_thu_phuong.webp';
+import yenNhiImage from 'assets/images/customers/yen_nhi.webp';
+import nguyenThuImage from 'assets/images/customers/nguyen_thu.webp';
+import nguyenThuTrangImage from 'assets/images/customers/nguyen_thu_trang.webp';
+import phuongLinhImage from 'assets/images/customers/phuong_linh.webp';
+import minhKhueImage from 'assets/images/customers/minh_khue.webp';
+import khanhLyImage from 'assets/images/customers/khanh_ly.webp';
 
 export const headerNavBarLinks = [
   {
