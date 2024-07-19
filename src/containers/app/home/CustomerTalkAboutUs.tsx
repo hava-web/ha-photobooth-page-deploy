@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { map } from 'lodash';
+import Link from 'next/link';
 import Image from 'components/image/Image';
 import {
   CUSTOMER_MESSAGES,
@@ -75,11 +76,13 @@ const CustomerTalkAboutUs = () => {
                       loading="lazy"
                     />
                   ) : (
-                    <Image
-                      className="news-swiper-image"
-                      src={news?.image}
-                      alt={news?.alt}
-                    />
+                    <Link href={news?.href} target="blank">
+                      <Image
+                        className="news-swiper-image"
+                        src={news?.image}
+                        alt={news?.alt}
+                      />
+                    </Link>
                   )}
 
                   <p className="news-swiper-title">

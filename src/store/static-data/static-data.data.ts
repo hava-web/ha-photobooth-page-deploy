@@ -31,8 +31,12 @@ import funNuiTrucImage from 'assets/images/stores/fun_nui_truc.webp';
 import funNgheAnImage from 'assets/images/stores/fun_nghe_an.webp';
 import funVietTriImage from 'assets/images/stores/fun_viet_tri.webp';
 import funVinhPhucImage from 'assets/images/stores/fun_vinh_phuc.webp';
+import funNgheAn2Image from 'assets/images/stores/fun_nghe_an_2.webp';
+import funHaiDuongImage from 'assets/images/stores/fun_hai_duong.webp';
 
+import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
+import dianaFacebookEventImage from 'assets/images/home/diana_facebook_event.webp';
 import radio4TeenImage from 'assets/images/home/radio_4_teen.webp';
 import congluanLogoImage from 'assets/images/home/congluan_logo.png';
 import vtv1LogoImage from 'assets/images/home/vtv1_logo.png';
@@ -119,6 +123,22 @@ export const funStores = [
     value: 6,
     alt: 'Fun Studio Vinh',
     image: funNgheAnImage,
+    href: '#',
+  },
+  {
+    label: '68 Hải Thượng Lãn Ông, Phường Hà Huy Tập, Vinh',
+    labelIndex: 'Fun Studio Vinh',
+    value: 7,
+    alt: 'Fun Studio Vinh',
+    image: funNgheAn2Image,
+    href: '#',
+  },
+  {
+    label: '67 Tuệ Tĩnh, Phường Nguyễn Trãi, Hải Dương',
+    labelIndex: 'Fun Studio Hải Dương',
+    value: 8,
+    alt: 'Fun Studio Hải Dương',
+    image: funHaiDuongImage,
     href: '#',
   },
 ];
@@ -376,8 +396,16 @@ export const CUSTOMER_MESSAGES = [
 
 export const NEWS_MESSAGES = [
   {
-    label: 'vtv',
+    label: 'diana',
     value: 1,
+    href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx/',
+    image: dianaFacebookEventImage,
+    logo: dianaLogoImage,
+    alt: 'diana news',
+  },
+  {
+    label: 'vtv',
+    value: 2,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: vtv1LogoImage,
@@ -386,7 +414,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 2,
+    value: 3,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: congluanLogoImage,
@@ -395,7 +423,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'radio 4 teen',
-    value: 3,
+    value: 4,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
     video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,
