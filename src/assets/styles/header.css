@@ -18,7 +18,7 @@
   }
 
   .btn-hotline {
-    @apply font-[700] text-lp-small p-[0.4rem] px-[1rem] rounded-[2rem] bg-second-primary-color text-white;
+    @apply font-[700] text-lp-small p-[0.4rem] px-[1rem] rounded-[2rem] bg-lp-second-primary-color text-white;
   }
 
   .header-placeholder {
@@ -166,7 +166,7 @@
     }
 
     .btn-hotline {
-      @apply font-[700] text-lp-small p-[0.4rem] px-[1rem] rounded-[2rem] bg-second-primary-color text-white;
+      @apply font-[700] text-lp-small p-[0.4rem] px-[1rem] rounded-[2rem] bg-lp-second-primary-color text-white;
     }
 
     .header-placeholder {

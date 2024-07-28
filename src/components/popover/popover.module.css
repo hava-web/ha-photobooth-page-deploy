@@ -43,9 +43,9 @@
   border-radius: 50%;
   line-height: 4rem;
   text-align: center;
-  border: 0.3rem solid var(--primary-color);
+  border: 0.3rem solid var(--lp-primary-color);
   font-size: 4rem;
-  color: var(--primary-color);
+  color: var(--lp-primary-color);
   font-weight: 600;
 }
 

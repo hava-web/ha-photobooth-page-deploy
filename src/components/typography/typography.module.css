@@ -1,5 +1,5 @@
 .pb-typography {
-  color: var(--secondary-text-color);
+  color: var(--sync-text-color);
 }
 
 .pb-typography-firstCapCase::first-letter {

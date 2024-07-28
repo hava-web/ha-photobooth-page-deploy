@@ -14,7 +14,6 @@ import { makeStore } from 'store/store-hooks';
 import 'swiper/css';
 import './index.css';
 import './download/download.css';
-import './download/download.customize-ui.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const {

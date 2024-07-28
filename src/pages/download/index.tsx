@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import cx from 'classnames';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
@@ -24,18 +24,27 @@ import { QUERY_STRING } from 'constants/route.const';
 import { getDownloadData } from 'api/photo/download.api';
 import { DownloadDataStateModel } from 'models/download.model';
 import { DATE_FORMAT, HOUR_MINUTE_FORMAT } from 'constants/time.const';
+import { getUiTemplate } from 'api/ui-template/ui-template.api';
+import { UiTemplateModel } from 'models/ui-template/ui-template.model';
+import { handleUpdateCSSVar } from 'helpers/dom.helper';
+
+type DownloadFileProps = DownloadDataStateModel & {
+  uiTemplateData: UiTemplateModel;
+};
 
 export default function DownloadFile({
   downloadData,
   errorData,
   appTheme,
-}: DownloadDataStateModel) {
+  uiTemplateData,
+}: DownloadFileProps) {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
   const { appContainerClass, downloadUI, isDiana } = appTheme;
 
   console.log('ttt downloadData', downloadData, errorData);
+  console.log('ttt uiTemplateData', uiTemplateData);
 
   const photoTakenUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
@@ -62,6 +71,12 @@ export default function DownloadFile({
     setLoading(false);
   };
 
+  useEffect(() => {
+    if (uiTemplateData) {
+      handleUpdateCSSVar(uiTemplateData);
+    }
+  }, [uiTemplateData]);
+
   return (
     <>
       {isDiana && <NextSeo title="Diana cùng cậu" />}
@@ -76,9 +91,9 @@ export default function DownloadFile({
           loading={loading}
           className="download-page"
           spin={
-            downloadUI?.logoImage ? (
-              <Image
-                src={downloadUI?.logoImage}
+            uiTemplateData?.logoImageUrl ? (
+              <img
+                src={uiTemplateData?.logoImageUrl}
                 alt="logo loading"
                 className="download-logo-loading"
               />
@@ -87,9 +102,9 @@ export default function DownloadFile({
             )
           }
         >
-          {!!downloadUI?.logoImage && (
-            <Image
-              src={downloadUI?.logoImage}
+          {!!uiTemplateData?.logoImageUrl && (
+            <img
+              src={uiTemplateData?.logoImageUrl}
               alt="logo"
               className="download-logo"
             />
@@ -105,7 +120,7 @@ export default function DownloadFile({
               variant={TYPOGRAPHY_VARIANTS.SMALL}
               className="text-center font-semibold download-title"
             >
-              {t('download:funStudioSlogan')}
+              {uiTemplateData?.sloganTextPageDownload}
             </Typography>
           )}
           {!downloadData || !!downloadData?.isExpired ? (
@@ -114,8 +129,8 @@ export default function DownloadFile({
               className="text-center result-image"
             >
               {downloadData?.isExpired
-                ? t('download:dataExpired')
-                : t('download:noData')}
+                ? uiTemplateData?.expiredTextPageDownload
+                : uiTemplateData?.noDataTextPageDownload}
             </Typography>
           ) : (
             <>
@@ -144,7 +159,7 @@ export default function DownloadFile({
                       variant={TYPOGRAPHY_VARIANTS.SMALL}
                       className="text-center result-image"
                     >
-                      {t('download:dataIsUploading')}
+                      {uiTemplateData?.uploadingTextPageDownload}
                     </Typography>
                   )}
                 </>
@@ -192,15 +207,20 @@ export default function DownloadFile({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`);
+  const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
   const appTheme = useCustomizeUI();
 
   try {
-    const downloadResponse = await getDownloadData({
-      id: transactionId as string,
-    });
+    const uiTemplateResponse = await getUiTemplate({ id: transactionId });
+    const downloadResponse = await getDownloadData({ id: transactionId });
+
     return {
-      props: { downloadData: downloadResponse?.data, appTheme },
+      props: {
+        transactionId,
+        downloadData: downloadResponse?.data || null,
+        appTheme,
+        uiTemplateData: uiTemplateResponse?.data || null,
+      },
     };
   } catch (err) {
     return {

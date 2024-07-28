@@ -168,33 +168,23 @@ body {
 :root,
 #root,
 #docs-root {
-  --primary-color: #f16d94;
-  --second-primary-color: #1a83c0;
-  --secondary-color: #979797;
-  --secondary-text-color: #595959;
-  --border-color: #7b7b7b;
-  --border-active-img-color: #bcbcbc;
-  --active-color: #1a83c0;
-  --info-color: #28ace2;
-  --inactive-color: #cdcdcd;
-  --support-text-color: gray;
-
-  --bg-primary-color: #fdeeef;
-  --dark-bg-primary-color: #fabacf;
-  --lighter-bg-primary-color: #ffd9e5;
+  --sync-primary-color: #ee5e77;
+  --sync-secondary-color: #3a81c3;
+  --sync-text-color: #def4f6;
+  --sync-button-text-color: white;
+  --sync-button-border-color: white;
+  --sync-input-background-color: #f3f3c5;
+  --sync-title-color: white;
+  --sync-border-title-1-color: #3a81c3;
+  --sync-border-title-2-color: #ffc840;
 
   --lp-primary-color: #eb5a6f;
+  --lp-header-link-color: #f16d94;
+  --lq-second-primary-color: #1a83c0;
   --lp-lighter-primary-color: #ef909b;
   --lp-lighter2-primary-color: #f5ced5;
   --lp-secondary-color: #3a80bf;
   --lp-gold-color: #ffbd0e;
-
-  --diana-primary-color: #d33292;
-  --diana-secondary-color: #1e80c7;
-  --diana-fun-white-color: #def4f6;
-  --diana-lighter-pink-color: #f9eaf1;
-  --diana-warning-color: #ffc840;
-  --diana-lighter-warning-color: #f3f3c5;
 
   --z-index-banner-dot: 999;
   --z-index-header: 1100;

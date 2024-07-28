@@ -1,9 +1,11 @@
-.header {}
+.header {
+}
 
-.header-navbar {}
+.header-navbar {
+}
 
 .header-nav-link {
-  color: var(--primary-color);
+  color: var(--lp-header-link-color);
   text-transform: uppercase;
 }
 
