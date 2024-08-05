@@ -43,7 +43,7 @@ const BannerSlider: FC<any> = ({ banners }) => {
                 fill
               />
               <p className="label-title">{item?.label}</p>
-              <div className="shadow-white-bg" />
+              {!!item?.label && <div className="shadow-white-bg" />}
             </div>
           </SwiperSlide>
         ))}

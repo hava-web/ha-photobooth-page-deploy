@@ -16,6 +16,7 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
+import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
 import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
 import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
 import bannerTrendy2023Image from 'assets/images/banner-images/banner_2.jpg';
@@ -145,50 +146,56 @@ export const funStores = [
 
 export const funBanners = [
   {
-    label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
+    label: '',
     value: 1,
+    image: bannerAllStoreInVN,
+    alt: 'Hệ thống cửa hàng Fun Studio trên cả nước',
+  },
+  {
+    label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
+    value: 2,
     image: bannerAllFeatureImage,
     alt: 'easy to use',
   },
   {
     label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
-    value: 2,
+    value: 3,
     image: bannerTrendy2023Image,
     alt: 'easy to use',
   },
   {
     label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
-    value: 3,
+    value: 4,
     image: bannerKoreanStyleImage,
     alt: 'korea styles',
   },
   {
     label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
-    value: 4,
+    value: 5,
     image: bannerEasyToUseImage,
     alt: 'low risk high profit',
   },
   {
     label: 'Chi phí đầu tư ban đầu thấp,\n lợi nhuận cao',
-    value: 5,
+    value: 6,
     image: banner4Image,
     alt: 'genz trending',
   },
   {
     label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
-    value: 6,
+    value: 7,
     image: banner5Image,
     alt: 'get budget',
   },
   {
     label: 'Chi phí vận hành thấp,\n tự động hóa cao,\n sử dụng ít nhân sự',
-    value: 7,
+    value: 8,
     image: banner6Image,
     alt: 'low operation cost',
   },
   {
     label: 'Thời gian triển khai nhanh chóng với chi phí tối ưu',
-    value: 8,
+    value: 9,
     image: banner7Image,
     alt: 'quick building',
   },
