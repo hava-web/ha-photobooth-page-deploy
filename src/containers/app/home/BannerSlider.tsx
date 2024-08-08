@@ -34,14 +34,22 @@ const BannerSlider: FC<any> = ({ banners }) => {
         {map(banners, (item) => (
           <SwiperSlide className="swiper-slide" key={`${item?.value}`}>
             <div title={item?.label} className="swiper-slide-wrapper">
-              <Image
-                className="swiper-slide-image"
-                src={item?.image}
-                alt={item?.alt}
-                sizes="100vw"
-                quality={100}
-                fill
-              />
+              <picture>
+                {!!item?.mobileImage && (
+                  <source
+                    srcSet={item?.mobileImage?.src}
+                    media="(max-width: 767px)"
+                  />
+                )}
+                <Image
+                  className="swiper-slide-image"
+                  src={item?.image}
+                  alt={item?.alt}
+                  sizes="100vw"
+                  quality={100}
+                  fill
+                />
+              </picture>
               <p className="label-title">{item?.label}</p>
               {!!item?.label && <div className="shadow-white-bg" />}
             </div>

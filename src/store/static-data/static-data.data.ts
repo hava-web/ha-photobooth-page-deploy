@@ -17,7 +17,9 @@ import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
+import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-vn-mobile.webp';
 import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
+import bannerAllFeatureImageMobile from 'assets/images/banner-images/banner_all_feature-mobile.webp';
 import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
 import bannerTrendy2023Image from 'assets/images/banner-images/banner_2.jpg';
 import bannerEasyToUseImage from 'assets/images/banner-images/banner_3.webp';
@@ -149,12 +151,14 @@ export const funBanners = [
     label: '',
     value: 1,
     image: bannerAllStoreInVN,
+    mobileImage: bannerAllStoreInVNMobile,
     alt: 'Hệ thống cửa hàng Fun Studio trên cả nước',
   },
   {
     label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
     value: 2,
     image: bannerAllFeatureImage,
+    mobileImage: bannerAllFeatureImageMobile,
     alt: 'easy to use',
   },
   {
