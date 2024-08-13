@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { Fragment, useEffect, useState } from 'react';
 import cx from 'classnames';
-import { NextSeo } from 'next-seo';
-import Image from 'next/image';
+// import { NextSeo } from 'next-seo';
+// import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { find, get } from 'lodash';
 import moment from 'moment';
@@ -41,7 +41,7 @@ export default function DownloadFile({
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
 
-  const { appContainerClass, downloadUI, isDiana } = appTheme;
+  const { appContainerClass, downloadUI } = appTheme;
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
@@ -71,6 +71,16 @@ export default function DownloadFile({
     setLoading(false);
   };
 
+  const logoImage = uiTemplateData?.logoImageUrl || downloadUI?.logoImage?.src;
+  const sloganText =
+    uiTemplateData?.sloganTextPageDownload || t('download:funStudioSlogan');
+  const expiredText =
+    uiTemplateData?.expiredTextPageDownload || t('download:dataExpired');
+  const noDataText =
+    uiTemplateData?.noDataTextPageDownload || t('download:noData');
+  const uploadingText =
+    uiTemplateData?.uploadingTextPageDownload || t('download:dataIsUploading');
+
   useEffect(() => {
     if (uiTemplateData) {
       handleUpdateCSSVar(uiTemplateData);
@@ -79,7 +89,7 @@ export default function DownloadFile({
 
   return (
     <>
-      {isDiana && <NextSeo title="Diana cùng cậu" />}
+      {/* {isDiana && <NextSeo title="Diana cùng cậu" />} */}
       <div
         className={cx(
           'w-screen h-screen flex justify-center download-page-container',
@@ -91,9 +101,9 @@ export default function DownloadFile({
           loading={loading}
           className="download-page"
           spin={
-            uiTemplateData?.logoImageUrl ? (
+            logoImage ? (
               <img
-                src={uiTemplateData?.logoImageUrl}
+                src={logoImage}
                 alt="logo loading"
                 className="download-logo-loading"
               />
@@ -102,14 +112,16 @@ export default function DownloadFile({
             )
           }
         >
-          {!!uiTemplateData?.logoImageUrl && (
-            <img
-              src={uiTemplateData?.logoImageUrl}
-              alt="logo"
-              className="download-logo"
-            />
+          {!!logoImage && (
+            <img src={logoImage} alt="logo" className="download-logo" />
           )}
-          {downloadUI?.sloganImage ? (
+          <Typography
+            variant={TYPOGRAPHY_VARIANTS.SMALL}
+            className="text-center font-semibold download-title"
+          >
+            {sloganText}
+          </Typography>
+          {/* {downloadUI?.sloganImage ? (
             <Image
               src={downloadUI?.sloganImage}
               alt="slogan"
@@ -122,15 +134,13 @@ export default function DownloadFile({
             >
               {uiTemplateData?.sloganTextPageDownload}
             </Typography>
-          )}
+          )} */}
           {!downloadData || !!downloadData?.isExpired ? (
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
               className="text-center result-image"
             >
-              {downloadData?.isExpired
-                ? uiTemplateData?.expiredTextPageDownload
-                : uiTemplateData?.noDataTextPageDownload}
+              {downloadData?.isExpired ? expiredText : noDataText}
             </Typography>
           ) : (
             <>
@@ -159,7 +169,7 @@ export default function DownloadFile({
                       variant={TYPOGRAPHY_VARIANTS.SMALL}
                       className="text-center result-image"
                     >
-                      {uiTemplateData?.uploadingTextPageDownload}
+                      {uploadingText}
                     </Typography>
                   )}
                 </>

@@ -170,13 +170,15 @@ body {
 #docs-root {
   --sync-primary-color: #ee5e77;
   --sync-secondary-color: #3a81c3;
-  --sync-text-color: #def4f6;
+  --sync-text-color: #595959;
   --sync-button-text-color: white;
   --sync-button-border-color: white;
   --sync-input-background-color: #f3f3c5;
   --sync-title-color: white;
   --sync-border-title-1-color: #3a81c3;
   --sync-border-title-2-color: #ffc840;
+  --background-image-url: url('/images/background_frame.png');
+  --phone-background-image-url: url('/images/background_frame_phone.png');
 
   --lp-primary-color: #eb5a6f;
   --lp-header-link-color: #f16d94;
