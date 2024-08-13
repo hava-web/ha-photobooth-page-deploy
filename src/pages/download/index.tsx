@@ -82,7 +82,7 @@ export default function DownloadFile({
     uiTemplateData?.uploadingTextPageDownload || t('download:dataIsUploading');
 
   useEffect(() => {
-    if (uiTemplateData) {
+    if (uiTemplateData?.backgroundPageDownload) {
       handleUpdateCSSVar(uiTemplateData);
     }
   }, [uiTemplateData]);
