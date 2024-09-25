@@ -42,12 +42,11 @@ const BannerSlider: FC<any> = ({ banners }) => {
                   />
                 )}
                 <Image
-                  className="swiper-slide-image"
+                  className={`swiper-slide-image ${item?.imageClass || ''}`}
                   src={item?.image}
                   alt={item?.alt}
                   sizes="100vw"
                   quality={100}
-                  fill
                 />
               </picture>
               <p className="label-title">{item?.label}</p>

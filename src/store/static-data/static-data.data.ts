@@ -28,7 +28,7 @@ import banner5Image from 'assets/images/banner-images/banner_5.webp';
 import banner6Image from 'assets/images/banner-images/banner_6.webp';
 import banner7Image from 'assets/images/banner-images/banner_7.webp';
 
-import funDhspImage from 'assets/images/stores/fun_dhsp.jpg';
+import funDhspImage from 'assets/images/stores/fun_dhsp.webp';
 import funComplex01Image from 'assets/images/stores/fun_complex01.webp';
 import funNuiTrucImage from 'assets/images/stores/fun_nui_truc.webp';
 import funNgheAnImage from 'assets/images/stores/fun_nghe_an.webp';
@@ -36,6 +36,11 @@ import funVietTriImage from 'assets/images/stores/fun_viet_tri.webp';
 import funVinhPhucImage from 'assets/images/stores/fun_vinh_phuc.webp';
 import funNgheAn2Image from 'assets/images/stores/fun_nghe_an_2.webp';
 import funHaiDuongImage from 'assets/images/stores/fun_hai_duong.webp';
+import funNguyenTuanImage from 'assets/images/stores/fun_nguyen_tuan.webp';
+import funHueImage from 'assets/images/stores/fun_hue.webp';
+import funHaiDuong2Image from 'assets/images/stores/fun_hai_duong_2.webp';
+import funGoVapHCMImage from 'assets/images/stores/go_vap_hcm.webp';
+import funDienBienPhuHCMImage from 'assets/images/stores/dien_bien_phu_hcm.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -144,10 +149,52 @@ export const funStores = [
     image: funHaiDuongImage,
     href: '#',
   },
+  {
+    label: '100 Nguyễn Tuân, Thanh Xuân, Hà Nội',
+    labelIndex: 'Fun Studio Nguyễn Tuân',
+    value: 9,
+    alt: 'Fun Studio Nguyễn Tuân',
+    image: funNguyenTuanImage,
+    href: '#',
+  },
+  {
+    label: '158 Phạm Văn Đồng, Phú Thượng, Huế',
+    labelIndex: 'Fun Studio Huế',
+    value: 10,
+    alt: 'Fun Studio Huế',
+    image: funHueImage,
+    href: '#',
+  },
+  {
+    label: 'Lô LK26-07, Khu Đô thị phía Tây Nam Sách, Nam Sách, Hải Dương',
+    labelIndex: 'Fun Studio Hải Dương',
+    value: 11,
+    alt: 'Fun Studio Hải Dương',
+    image: funHaiDuong2Image,
+    href: '#',
+  },
+  {
+    label: '20 đường số 53, P.14, Q.Gò Vấp, TP. Hồ Chí Minh ',
+    labelIndex: 'Fun Studio TP Hồ Chí Minh',
+    value: 12,
+    alt: 'Fun Studio TP Hồ Chí Minh',
+    image: funGoVapHCMImage,
+    href: '#',
+  },
+  {
+    label:
+      '482 Điện Biên Phủ, phường 11, quận 10, Tp. Hồ Chí Minh (ngay ngã tư Cao Thắng)',
+    labelIndex: 'Fun Studio Điện Biên Phủ',
+    value: 13,
+    alt: 'Fun Studio Điện Biên Phủ',
+    image: funDienBienPhuHCMImage,
+    href: '#',
+  },
 ];
 
 export const funBanners = [
   {
+    imageClass: 'banner-all-store',
     label: '',
     value: 1,
     image: bannerAllStoreInVN,

@@ -11,6 +11,9 @@
 
       .swiper-slide-image {
         @apply w-full h-full object-cover;
+        &.banner-all-store {
+          @apply object-fill !important;
+        }
       }
 
       .swiper-slide-wrapper {
@@ -42,10 +45,6 @@
         opacity: 0.9;
       }
     }
-
-    .swiper-slide:first-child .swiper-slide-image {
-      @apply object-fill;
-    }
   }
 
   .swiper-dot-wrapper {
@@ -65,6 +64,10 @@
 
         .swiper-slide-image {
           @apply w-full h-full object-cover;
+
+          &.banner-all-store {
+            @apply object-fill !important;
+          }
         }
 
         .swiper-slide-wrapper {
