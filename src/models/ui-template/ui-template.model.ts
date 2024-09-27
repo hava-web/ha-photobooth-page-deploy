@@ -26,6 +26,9 @@ export type UiTemplateModel = {
   textColor: string;
   titleColor: string;
   uploadingTextPageDownload: string;
+  seoMetaDataJsonPageDownload: string;
+  paymentSuccessTextPageDownload: string;
+  paymentFailedTextPageDownload: string;
   Type: string;
 };
 

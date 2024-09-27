@@ -1,4 +1,4 @@
-import { filter, size, toString } from 'lodash';
+import { attempt, filter, isError, size, toString } from 'lodash';
 
 function convertViToEn(str: string, toUpperCase = false) {
   if (typeof str !== 'string') return '';
@@ -55,4 +55,24 @@ function capitalizeFirstLetter(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-export { convertViToEn, isEqualVal, includesId, capitalizeFirstLetter };
+/**
+ * same JSON parse
+ */
+function jsonParse(str: string | null | undefined, defaultValue = {}) {
+  if (!str) return {};
+
+  const result = attempt(JSON.parse.bind(null, str));
+  if (isError(result) || typeof result !== 'object') {
+    return defaultValue;
+  }
+
+  return result;
+}
+
+export {
+  convertViToEn,
+  isEqualVal,
+  includesId,
+  jsonParse,
+  capitalizeFirstLetter,
+};

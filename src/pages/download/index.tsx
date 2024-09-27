@@ -1,15 +1,13 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cx from 'classnames';
-// import { NextSeo } from 'next-seo';
-// import Image from 'next/image';
-import useTranslation from 'next-translate/useTranslation';
-import { find, get } from 'lodash';
+import { NextSeo } from 'next-seo';
+import { find, get, size } from 'lodash';
 import moment from 'moment';
+import { useTranslation } from 'hooks/useTranslation';
 import { GetServerSideProps } from 'next';
 import { downloadFile } from 'api/common.api';
-import { useCustomizeUI } from 'hooks/useCustomizeUI';
-import { isEqualVal } from 'helpers/string.helper';
+import { isEqualVal, jsonParse } from 'helpers/string.helper';
 import {
   CONTENT_TYPES,
   FILE_IMAGE_DOWNLOAD,
@@ -20,6 +18,7 @@ import Background from 'components/background/Background';
 import Typography from 'components/typography/Typography';
 import Button from 'components/button/Button';
 import Loader from 'components/loader/Loader';
+import funLogoImage from 'assets/images/fun_studio_logo.png';
 import { QUERY_STRING } from 'constants/route.const';
 import { getDownloadData } from 'api/photo/download.api';
 import { DownloadDataStateModel } from 'models/download.model';
@@ -35,13 +34,10 @@ type DownloadFileProps = DownloadDataStateModel & {
 export default function DownloadFile({
   downloadData,
   errorData,
-  appTheme,
   uiTemplateData,
 }: DownloadFileProps) {
-  const { t } = useTranslation();
+  const { t, T } = useTranslation();
   const [loading, setLoading] = useState(false);
-
-  const { appContainerClass, downloadUI } = appTheme;
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
@@ -71,9 +67,13 @@ export default function DownloadFile({
     setLoading(false);
   };
 
-  const logoImage = uiTemplateData?.logoImageUrl || downloadUI?.logoImage?.src;
+  const logoImage = uiTemplateData?.logoImageUrl || funLogoImage?.src;
+  const seoMetaData = jsonParse(
+    uiTemplateData?.seoMetaDataJsonPageDownload || '',
+    {},
+  );
   const sloganText =
-    uiTemplateData?.sloganTextPageDownload || t('download:funStudioSlogan');
+    uiTemplateData?.sloganTextPageDownload || T('download:funStudioSlogan');
   const expiredText =
     uiTemplateData?.expiredTextPageDownload || t('download:dataExpired');
   const noDataText =
@@ -89,23 +89,18 @@ export default function DownloadFile({
 
   return (
     <>
-      {/* {isDiana && <NextSeo title="Diana cùng cậu" />} */}
-      <div
-        className={cx(
-          'w-screen h-screen flex justify-center download-page-container',
-          appContainerClass,
-        )}
-      >
+      {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
+      <div className={cx('page-single__layout')}>
         <Background />
         <Loader
           loading={loading}
-          className="download-page"
+          className="page-single__grid"
           spin={
             logoImage ? (
               <img
                 src={logoImage}
                 alt="logo loading"
-                className="download-logo-loading"
+                className="page-single__logo-loading"
               />
             ) : (
               <></>
@@ -113,32 +108,18 @@ export default function DownloadFile({
           }
         >
           {!!logoImage && (
-            <img src={logoImage} alt="logo" className="download-logo" />
+            <img src={logoImage} alt="logo" className="page-single__logo" />
           )}
           <Typography
             variant={TYPOGRAPHY_VARIANTS.SMALL}
-            className="text-center font-semibold download-title"
+            className="page-single__content-text page-single__slogan-text"
           >
             {sloganText}
           </Typography>
-          {/* {downloadUI?.sloganImage ? (
-            <Image
-              src={downloadUI?.sloganImage}
-              alt="slogan"
-              className="slogan-image"
-            />
-          ) : (
-            <Typography
-              variant={TYPOGRAPHY_VARIANTS.SMALL}
-              className="text-center font-semibold download-title"
-            >
-              {uiTemplateData?.sloganTextPageDownload}
-            </Typography>
-          )} */}
           {!downloadData || !!downloadData?.isExpired ? (
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
-              className="text-center result-image"
+              className="page-single__download-result-image"
             >
               {downloadData?.isExpired ? expiredText : noDataText}
             </Typography>
@@ -146,7 +127,7 @@ export default function DownloadFile({
             <>
               {videoRecordUrl ? (
                 <video
-                  className="result-image"
+                  className="page-single__download-result-image"
                   poster={photoTakenUrl}
                   autoPlay
                   loop
@@ -162,19 +143,19 @@ export default function DownloadFile({
                     <img
                       src={photoTakenUrl}
                       alt="result"
-                      className="result-image"
+                      className="page-single__download-result-image"
                     />
                   ) : (
                     <Typography
                       variant={TYPOGRAPHY_VARIANTS.SMALL}
-                      className="text-center result-image"
+                      className="page-single__download-result-image"
                     >
                       {uploadingText}
                     </Typography>
                   )}
                 </>
               )}
-              <div className="download-action">
+              <div className="page-single__download-actions">
                 <Button
                   color="default"
                   onClick={handleDownloadImage}
@@ -218,7 +199,6 @@ export default function DownloadFile({
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
-  const appTheme = useCustomizeUI();
 
   try {
     const uiTemplateResponse = await getUiTemplate({ id: transactionId });
@@ -228,7 +208,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
         transactionId,
         downloadData: downloadResponse?.data || null,
-        appTheme,
         uiTemplateData: uiTemplateResponse?.data || null,
       },
     };
@@ -237,7 +216,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
         downloadData: null,
         errorData: JSON.parse(JSON.stringify(err)),
-        appTheme,
       },
     };
   }

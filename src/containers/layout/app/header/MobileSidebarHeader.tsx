@@ -3,7 +3,6 @@ import React from 'react';
 import closeIcon from 'assets/icons/icon-close.png';
 import cx from 'classnames';
 import Image from 'components/image/Image';
-import { I18nNamespace } from 'constants/i18n.const';
 import { useTranslation } from 'hooks/useTranslation';
 import { map } from 'lodash';
 import { Link } from 'react-scroll/modules';
@@ -18,7 +17,7 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
   open,
   onClose,
 }) => {
-  const { T } = useTranslation(I18nNamespace.COMMON);
+  const { T } = useTranslation();
 
   return (
     <div className={cx('mobile-sidebar-header', { isActive: open })}>

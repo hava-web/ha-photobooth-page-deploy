@@ -7,7 +7,6 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document';
-import { useCustomizeUI } from 'hooks/useCustomizeUI';
 
 export const i18nPropsFromCtx = (ctx: NextPageContext): Object => {
   if (!(ctx && ctx.req && (ctx.req as any).language)) return {};
@@ -47,25 +46,9 @@ export default class MyDocument extends Document<{
     return (
       <Html className="notranslate" translate="no" lang="vi">
         <Head>
-          <meta charSet="utf-8" />
           <meta name="google" content="notranslate" />
-          <meta name="theme-color" content="#000000" />
-          <meta content="vi-VN" itemProp="inLanguage" />
-          <meta
-            name="description"
-            content="Studio tự chụp ảnh phong cách Hàn Quốc"
-          />
-          <meta
-            name="keywords"
-            content="fun studio, funstudio, photobooth, korean style, fyp"
-          />
-          <meta name="build-version" content="v0.0.1" />
+          <meta name="build-version" content="v1.10.2" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          {useCustomizeUI()?.isDiana ? (
-            <link rel="shortcut icon" href="/images/diana/logo.ico" />
-          ) : (
-            <link rel="shortcut icon" href="/fun_studio_logo.ico" />
-          )}
         </Head>
         <body>
           <Main />

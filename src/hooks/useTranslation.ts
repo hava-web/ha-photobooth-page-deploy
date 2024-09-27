@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { useCallback } from 'react';
-import { useTranslation as useI18nTranslation } from 'react-i18next';
+import useI18nTranslation from 'next-translate/useTranslation';
 import { capitalizeFirstLetter } from 'helpers/string.helper';
 
 export type UseTranslationReturnType = {
@@ -11,10 +11,8 @@ export type UseTranslationReturnType = {
 
 // type TParameters = Parameters<ReturnType<typeof useI18nTranslation>['t']>;
 
-export const useTranslation = (
-  ...props: Parameters<typeof useI18nTranslation>
-) => {
-  const { t } = useI18nTranslation(...props);
+export const useTranslation = () => {
+  const { t } = useI18nTranslation();
 
   const T = useCallback(
     // TODO: refactor types

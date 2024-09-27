@@ -39,6 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <StoreProvider>
       <Head>
         <title>Fun studio</title>
+        <meta charSet="utf-8" />
+        <link rel="shortcut icon" href="/fun_studio_logo.ico" />
         <meta property="og:title" content="Fun Studio" />
         <meta
           property="og:description"
@@ -49,6 +51,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           content={`${process.env.NEXT_PUBLIC_APP_URL}/images/og_fun_studio_image.png`}
         />
         <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} />
+        <meta
+          name="keywords"
+          content="fun studio, funstudio, photobooth, korean style, fyp"
+        />
       </Head>
       <PersistGate loading={null} persistor={persistor}>
         {renderApp}

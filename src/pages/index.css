@@ -234,3 +234,95 @@ body {
     font-size: 7px;
   }
 }
+
+.page-single__layout {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  color: var(--sync-text-color);
+}
+
+.page-single__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem 2rem;
+}
+
+.page-single__logo {
+  width: 12rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.page-single__content-text {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.page-single__slogan-text {
+  margin-bottom: 3.5rem;
+}
+
+.page-single__logo-loading {
+  width: 9rem;
+  -webkit-animation: anim-heart 1.2s infinite
+    cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: anim-heart 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@-webkit-keyframes anim-heart {
+  0% {
+    transform: scale(0.95);
+  }
+
+  5% {
+    transform: scale(1.1);
+  }
+
+  39% {
+    transform: scale(0.85);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes anim-heart {
+  0% {
+    transform: scale(0.95);
+  }
+
+  5% {
+    transform: scale(1.1);
+  }
+
+  39% {
+    transform: scale(0.85);
+  }
+
+  45% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}

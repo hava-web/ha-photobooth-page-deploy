@@ -4,7 +4,8 @@
   "locale": "vi",
   "pages": {
     "*": ["common"],
-    "/download": ["common", "download"]
+    "/download": ["common", "download"],
+    "/payment-notice": ["common", "download"]
   },
   "fallbackLng": "vi",
   "localePrefix": "never",

@@ -3,7 +3,6 @@ import menuIcon from 'assets/icons/icon-menu.png';
 import logoIcon from 'assets/icons/logo.png';
 import Container from 'components/grid/Container';
 import Image from 'components/image/Image';
-import { I18nNamespace } from 'constants/i18n.const';
 import { useTranslation } from 'hooks/useTranslation';
 import { map } from 'lodash';
 import NextLink from 'next/link';
@@ -14,7 +13,7 @@ import MobileSidebarHeader from './MobileSidebarHeader';
 export interface INavbarProps {}
 
 const AppHeader: React.FC = () => {
-  const { T } = useTranslation(I18nNamespace.COMMON);
+  const { T } = useTranslation();
   const [isShowMobileNavbar, setIsShowMobileNavbar] = useState(false);
 
   const handleToggleShowMobileNavbar = useCallback(() => {
