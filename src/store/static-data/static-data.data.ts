@@ -24,7 +24,8 @@ import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
 import bannerTrendy2023Image from 'assets/images/banner-images/banner_2.jpg';
 import bannerEasyToUseImage from 'assets/images/banner-images/banner_3.webp';
 import banner4Image from 'assets/images/banner-images/banner_4.webp';
-import banner5Image from 'assets/images/banner-images/banner_5.webp';
+import fastRoiBannerImage from 'assets/images/banner-images/banner-fastroi.webp';
+import fastRoiMobileBannerImage from 'assets/images/banner-images/banner-fastroi-mobile.webp';
 import banner6Image from 'assets/images/banner-images/banner_6.webp';
 import banner7Image from 'assets/images/banner-images/banner_7.webp';
 
@@ -209,7 +210,7 @@ export const funBanners = [
     alt: 'easy to use',
   },
   {
-    label: 'Làn sóng chụp ảnh gây bão với giới trẻ đầu năm 2023',
+    label: 'Làn sóng chụp ảnh gây bão với giới trẻ',
     value: 3,
     image: bannerTrendy2023Image,
     alt: 'easy to use',
@@ -235,7 +236,8 @@ export const funBanners = [
   {
     label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
     value: 7,
-    image: banner5Image,
+    image: fastRoiBannerImage,
+    mobileImage: fastRoiMobileBannerImage,
     alt: 'get budget',
   },
   {

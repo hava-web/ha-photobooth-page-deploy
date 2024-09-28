@@ -15,11 +15,13 @@ import { DownloadDataStateModel } from 'models/download.model';
 import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import { jsonParse } from 'helpers/string.helper';
 
-type DownloadFileProps = DownloadDataStateModel & {
+type PaymentNoticeProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
 };
 
-export default function DownloadFile({ uiTemplateData }: DownloadFileProps) {
+export default function PaymentNoticeFile({
+  uiTemplateData,
+}: PaymentNoticeProps) {
   const { t } = useTranslation();
 
   const logoImage = uiTemplateData?.logoImageUrl || funLogoImage?.src;
