@@ -37,11 +37,14 @@ import funVietTriImage from 'assets/images/stores/fun_viet_tri.webp';
 import funVinhPhucImage from 'assets/images/stores/fun_vinh_phuc.webp';
 import funNgheAn2Image from 'assets/images/stores/fun_nghe_an_2.webp';
 import funHaiDuongImage from 'assets/images/stores/fun_hai_duong.webp';
-import funNguyenTuanImage from 'assets/images/stores/fun_nguyen_tuan.webp';
+import funTanMaiHNImage from 'assets/images/stores/fun_tan_mai_hn.webp';
 import funHueImage from 'assets/images/stores/fun_hue.webp';
 import funHaiDuong2Image from 'assets/images/stores/fun_hai_duong_2.webp';
 import funGoVapHCMImage from 'assets/images/stores/go_vap_hcm.webp';
 import funDienBienPhuHCMImage from 'assets/images/stores/dien_bien_phu_hcm.webp';
+
+import funKhoaiChauHungYenImage from 'assets/images/stores/fun_khoai_chau_hung_yen.webp';
+import funNguyenThiLuuBacGiangImage from 'assets/images/stores/fun_nguyen_thi_luu_bac_giang.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -151,11 +154,11 @@ export const funStores = [
     href: '#',
   },
   {
-    label: '100 Nguyễn Tuân, Thanh Xuân, Hà Nội',
-    labelIndex: 'Fun Studio Nguyễn Tuân',
+    label: '130 Tân Mai, Hoàng Mai, Hà Nội',
+    labelIndex: 'Fun Studio Tân Mai',
     value: 9,
-    alt: 'Fun Studio Nguyễn Tuân',
-    image: funNguyenTuanImage,
+    alt: 'Fun Studio Tân Mai',
+    image: funTanMaiHNImage,
     href: '#',
   },
   {
@@ -189,6 +192,23 @@ export const funStores = [
     value: 13,
     alt: 'Fun Studio Điện Biên Phủ',
     image: funDienBienPhuHCMImage,
+    href: '#',
+  },
+
+  {
+    label: 'Fun Studio: 169 Sài Thị, TT. Khoái Châu, Hưng Yên',
+    labelIndex: 'Fun Studio Hưng Yên',
+    value: 13,
+    alt: 'Fun Studio: 169 Sài Thị, TT. Khoái Châu, Hưng Yên',
+    image: funKhoaiChauHungYenImage,
+    href: '#',
+  },
+  {
+    label: 'Fun Studio Nguyễn Thị Lưu: 25 Nguyễn Thị Lưu, Ngô Quyền, Bắc Giang',
+    labelIndex: 'Fun Studio Bắc Giang',
+    value: 14,
+    alt: 'Fun Studio Bắc Giang',
+    image: funNguyenThiLuuBacGiangImage,
     href: '#',
   },
 ];
@@ -270,7 +290,7 @@ export const FOOTER_ITEMS = [
     href: process.env.NEXT_PUBLIC_FACEBOOK_URL,
   },
   {
-    label: 'Số 3, Ngõ 31 Dịch vọng, Cầu Giấy, Hà Nội',
+    label: 'Số 75 ngõ 381 Nguyễn Khang, P. Yên Hòa, Quận Cầu Giấy, Hà Nội',
     value: 3,
     image: squareLocationIcon,
     alt: 'footer location icon',
@@ -290,7 +310,7 @@ export const FOOTER_ITEMS = [
     href: 'tel:0975338244',
   },
   {
-    label: '@funatfunstudio',
+    label: '@funstudio___',
     value: 6,
     image: squareInstagramIcon,
     alt: 'footer instagram icon',
