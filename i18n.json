@@ -5,7 +5,8 @@
   "pages": {
     "*": ["common"],
     "/download": ["common", "download"],
-    "/payment-notice": ["common", "download"]
+    "/payment-notice": ["common", "download"],
+    "/upload-photo": ["common", "download"]
   },
   "fallbackLng": "vi",
   "localePrefix": "never",

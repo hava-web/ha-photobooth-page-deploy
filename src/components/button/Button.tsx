@@ -9,6 +9,7 @@ import { BUTTON_COLORS } from './button-utils';
 export type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: string;
   TypographyProps?: TypographyPropsProps;
+  loading?: boolean;
 };
 
 const Button: FC<Props> = ({
@@ -17,6 +18,7 @@ const Button: FC<Props> = ({
   children,
   TypographyProps,
   disabled,
+  loading,
   ...rest
 }) => (
   <button
@@ -41,7 +43,16 @@ const Button: FC<Props> = ({
       {...TypographyProps}
       className={cx('pb-button-text', TypographyProps?.className)}
     >
-      {children}
+      {loading ? (
+        <div className="indi-spiner">
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      ) : (
+        children
+      )}
     </Typography>
   </button>
 );

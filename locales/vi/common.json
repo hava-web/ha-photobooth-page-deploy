@@ -10,9 +10,13 @@
   "no": "không",
   "yes": "có",
   "downloadImage": "Tải ảnh",
+  "uploadImage": "Tải ảnh lên",
+  "uploadMoreImage": "Tải thêm ảnh",
   "downloadVideo": "Tải video",
+  "confirm": "xác nhận",
 
   "seoWebTitle": "fun studio",
+  "uploadSuccess": "tải ảnh lên thành công",
   "paymentSuccess": "Thanh toán thành công",
   "somethingWrong": "Có lỗi xảy ra!",
   "billAcceptorError": "Có lỗi bộ đếm tiền!",

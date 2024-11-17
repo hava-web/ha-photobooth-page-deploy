@@ -1,0 +1,27 @@
+.pb-upload-container {
+  display: inline-flex;
+}
+
+.pb-upload-container-label {
+  cursor: pointer;
+  margin: 0px;
+}
+
+.pb-upload-container-file-input {
+  display: none;
+}
+
+.pb-upload-container-droppable {
+  border-radius: 5px;
+  border: 1px dotted var(--primary-color);
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.pb-upload-btn-clear {
+  border-radius: 5px;
+  border: 1px dotted var(--danger-color);
+  text-align: center;
+  background-color: var(--danger-color);
+  flex-shrink: 0;
+}

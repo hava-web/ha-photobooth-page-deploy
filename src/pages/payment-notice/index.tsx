@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
-import { get, size } from 'lodash';
+import { get, size, split } from 'lodash';
 import { GetServerSideProps } from 'next';
 import { getUiTemplate } from 'api/ui-template/ui-template.api';
 import Background from 'components/background/Background';
@@ -69,7 +69,9 @@ export default function PaymentNoticeFile({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
+  const orderId = get(query, `${QUERY_STRING.ORDER_ID}`) as string;
+
+  const transactionId = split(orderId, '_')?.[0];
 
   try {
     const uiTemplateResponse = await getUiTemplate({ id: transactionId });

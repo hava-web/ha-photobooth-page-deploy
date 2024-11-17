@@ -1,0 +1,26 @@
+.upload-photo_preview-grid {
+  @apply grid grid-cols-2 gap-4 pb-4;
+
+  img {
+    @apply mx-auto;
+  }
+}
+
+.upload-photo__actions {
+  @apply flex items-center;
+
+  .upload-photo__btn-submit {
+  }
+}
+
+@media screen('md') {
+  .upload-photo_preview-grid {
+    @apply grid grid-cols-4 gap-4;
+  }
+}
+
+@media screen('xl') {
+  .upload-photo_preview-grid {
+    @apply grid grid-cols-6 gap-4;
+  }
+}

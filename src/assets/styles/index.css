@@ -12,3 +12,5 @@
 @import './home/floating-social-buttons.css';
 @import './component/background/download-background.css';
 @import './component/button/button.css';
+@import './component/upload.css';
+@import './page/upload-photo.css';

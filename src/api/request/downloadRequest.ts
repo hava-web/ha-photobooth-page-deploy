@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { TIME_OUT_API } from 'constants/api.const';
 
 const downloadRequest: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_DOWNLOAD_FILE_URL,
+  baseURL: process.env.NEXT_PUBLIC_BASE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
