@@ -290,10 +290,10 @@ export const FOOTER_ITEMS = [
     href: process.env.NEXT_PUBLIC_FACEBOOK_URL,
   },
   {
-    label: 'Số 75 ngõ 381 Nguyễn Khang, P. Yên Hòa, Quận Cầu Giấy, Hà Nội',
+    label: 'Công ty TNHH Công nghệ kết nối ý nghĩa, MST 0110315926',
     value: 3,
     image: squareLocationIcon,
-    alt: 'footer location icon',
+    alt: 'company info',
   },
   {
     label: 'funstudio__',
@@ -303,11 +303,10 @@ export const FOOTER_ITEMS = [
     href: process.env.NEXT_PUBLIC_TIKTOK_URL,
   },
   {
-    label: 'Mr. Duy 0975338244',
+    label: 'Số 75 ngõ 381 Nguyễn Khang, P. Yên Hòa, Quận Cầu Giấy, Hà Nội',
     value: 5,
-    image: squarePhoneIcon,
-    alt: 'footer phone icon',
-    href: 'tel:0975338244',
+    image: squareLocationIcon,
+    alt: 'footer location icon',
   },
   {
     label: '@funstudio___',
@@ -315,6 +314,13 @@ export const FOOTER_ITEMS = [
     image: squareInstagramIcon,
     alt: 'footer instagram icon',
     href: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
+  },
+  {
+    label: 'Mr. Duy 0975338244',
+    value: 7,
+    image: squarePhoneIcon,
+    alt: 'footer phone icon',
+    href: 'tel:0975338244',
   },
 ];
 
