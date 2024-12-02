@@ -19,12 +19,12 @@ export function convertToFormData(
     !(data instanceof File)
   ) {
     Object.keys(data).forEach((key) => {
-      const dataKey = !isNumberable(key as any)
+      let dataKey = !isNumberable(key as any)
         ? `${parentKey}.${key}`
         : `${parentKey}[${key}]`;
-      // if (data[key] instanceof File) {
-      //   dataKey = parentKey;
-      // }
+      if (data[key] instanceof File) {
+        dataKey = parentKey;
+      }
       convertToFormData(formData, data[key], parentKey ? dataKey : key);
     });
   } else {
