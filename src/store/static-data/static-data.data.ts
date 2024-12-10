@@ -42,9 +42,12 @@ import funHueImage from 'assets/images/stores/fun_hue.webp';
 import funHaiDuong2Image from 'assets/images/stores/fun_hai_duong_2.webp';
 import funGoVapHCMImage from 'assets/images/stores/go_vap_hcm.webp';
 import funDienBienPhuHCMImage from 'assets/images/stores/dien_bien_phu_hcm.webp';
-
 import funKhoaiChauHungYenImage from 'assets/images/stores/fun_khoai_chau_hung_yen.webp';
 import funNguyenThiLuuBacGiangImage from 'assets/images/stores/fun_nguyen_thi_luu_bac_giang.webp';
+
+import funBinhDuongThuDauMotImage from 'assets/images/stores/fun_binh_duong_thu_dau_mot.webp';
+import funGiaLamTrauQuyImage from 'assets/images/stores/fun_gia_lam_trau_quy.webp';
+import funDongAnhUyNoImage from 'assets/images/stores/fun_dong_anh_uy_no.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -196,19 +199,45 @@ export const funStores = [
   },
 
   {
-    label: 'Fun Studio: 169 Sài Thị, TT. Khoái Châu, Hưng Yên',
+    label: '169 Sài Thị, TT. Khoái Châu, Hưng Yên',
     labelIndex: 'Fun Studio Hưng Yên',
-    value: 13,
-    alt: 'Fun Studio: 169 Sài Thị, TT. Khoái Châu, Hưng Yên',
+    value: 14,
+    alt: 'Fun Studio Hưng Yên',
     image: funKhoaiChauHungYenImage,
     href: '#',
   },
   {
-    label: 'Fun Studio Nguyễn Thị Lưu: 25 Nguyễn Thị Lưu, Ngô Quyền, Bắc Giang',
+    label: '25 Nguyễn Thị Lưu, Ngô Quyền, Bắc Giang',
     labelIndex: 'Fun Studio Bắc Giang',
-    value: 14,
+    value: 15,
     alt: 'Fun Studio Bắc Giang',
     image: funNguyenThiLuuBacGiangImage,
+    href: '#',
+  },
+
+  {
+    label: '132 yersin, Phường Hiệp thành, TP Thủ Dầu Một, Bình Dương',
+    labelIndex: 'Fun Studio Bình Dương',
+    value: 16,
+    alt: 'Fun Studio Bình Dương',
+    image: funBinhDuongThuDauMotImage,
+    href: '#',
+  },
+  {
+    label:
+      '3/3 ngõ 68 đường Trâu Quỳ, Thị trấn Trâu Quỳ, huyện Gia Lâm, Hà Nội',
+    labelIndex: 'Fun Studio Trâu Quỳ',
+    value: 17,
+    alt: 'Fun Studio Trâu Quỳ',
+    image: funGiaLamTrauQuyImage,
+    href: '#',
+  },
+  {
+    label: '136 Đường Đản Dị, Xã Uy Nỗ, Huyện Đông Anh, Hà Nội',
+    labelIndex: 'Fun Studio Đông Anh',
+    value: 18,
+    alt: 'Fun Studio Đông Anh',
+    image: funDongAnhUyNoImage,
     href: '#',
   },
 ];
