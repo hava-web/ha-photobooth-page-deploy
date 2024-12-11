@@ -177,8 +177,8 @@ body {
   --sync-title-color: white;
   --sync-border-title-1-color: #3a81c3;
   --sync-border-title-2-color: #ffc840;
-  --background-image-url: url('/images/background_frame.png');
-  --phone-background-image-url: url('/images/background_frame_phone.png');
+  --background-image-url: url('/images/background_frame.jpg');
+  --phone-background-image-url: url('/images/background_frame_phone.jpg');
 
   --lp-primary-color: #eb5a6f;
   --lp-header-link-color: #f16d94;
@@ -252,7 +252,7 @@ body {
 }
 
 .page-single__logo {
-  width: 12rem;
+  width: 18rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
