@@ -104,7 +104,7 @@ export default function UploadPhotoFile({
                       : t('common:uploadImage')}
                   </Button>
                 </UploadMultiple>
-                {size(uploadPhotos) && (
+                {!!size(uploadPhotos) && (
                   <Button
                     color="primary"
                     onClick={handleUploadPhoto}

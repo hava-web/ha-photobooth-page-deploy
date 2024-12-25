@@ -1,0 +1,11 @@
+.policy-and-terms-section {
+  * {
+    @apply font-Montserrat !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .policy-and-terms-section {
+    @apply p-10;
+  }
+}

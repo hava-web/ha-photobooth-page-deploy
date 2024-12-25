@@ -38,6 +38,6 @@ const Home: PageWithLayout &
   </section>
 );
 
-Home.renderLayout = renderMainLayout;
+Home.renderLayout = (props) => renderMainLayout({ ...props, isHome: true });
 
 export default Home;

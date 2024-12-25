@@ -11,19 +11,20 @@ interface AppLayoutProps {
   headerScroll?: boolean;
   children: ReactElement;
   router?: NextRouter;
+  isHome?: boolean;
 }
 
-const AppLayout: FC<AppLayoutProps> = ({ children, ...rest }) => {
+const AppLayout: FC<AppLayoutProps> = ({ children, isHome, ...rest }) => {
   // eslint-disable-next-line no-console
   console.log('>>> AppLayout', rest);
   useWow();
 
   return (
     <>
-      <AppHeader />
-      <FloatingSocialButtons />
+      <AppHeader isHome={!!isHome} />
+      {isHome && <FloatingSocialButtons />}
       {children}
-      <Footer />
+      {isHome && <Footer />}
       <MasterLoading />
     </>
   );
