@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { TIME_OUT_API } from 'constants/api.const';
 
-const downloadRequest: AxiosInstance = axios.create({
+const adminRequest: AxiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_API_URL,
   headers: {
     'Content-Type': 'application/json',
@@ -9,7 +9,7 @@ const downloadRequest: AxiosInstance = axios.create({
   timeout: TIME_OUT_API,
 });
 
-downloadRequest.interceptors.response.use((response: AxiosResponse) => {
+adminRequest.interceptors.response.use((response: AxiosResponse) => {
   if (response?.data?.code >= 400 && response?.data?.code <= 500) {
     throw Object.assign(response?.data ?? {}, {
       message:
@@ -19,4 +19,4 @@ downloadRequest.interceptors.response.use((response: AxiosResponse) => {
   return response?.data;
 });
 
-export default downloadRequest;
+export default adminRequest;

@@ -1,11 +1,11 @@
+import adminRequest from 'api/request/adminRequest';
 import {
   GetDownloadDataRequestModel,
   GetDownloadDataResponseModel,
 } from 'models/download.model';
-import downloadRequest from 'api/request/downloadRequest';
 
 export function getDownloadData(payload: GetDownloadDataRequestModel) {
-  return downloadRequest.get<
+  return adminRequest.get<
     GetDownloadDataResponseModel,
     GetDownloadDataResponseModel
   >(`/general/transactions/${payload?.id}/resources`);

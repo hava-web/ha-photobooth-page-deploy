@@ -1,4 +1,4 @@
-import downloadRequest from 'api/request/downloadRequest';
+import adminRequest from 'api/request/adminRequest';
 import { getFormData } from 'helpers/file.helper';
 import {
   UploadPrintingPhotoRequestModel,
@@ -8,7 +8,7 @@ import {
 export function uploadPrintingPhoto(payload: UploadPrintingPhotoRequestModel) {
   const formDataPayload = getFormData(payload);
 
-  return downloadRequest.post<
+  return adminRequest.post<
     UploadPrintingPhotoResponseModel,
     UploadPrintingPhotoResponseModel
   >(`/general/printing`, formDataPayload, {
