@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'hooks/useTranslation';
 import Image from 'components/image/Image';
 import { useSpring, animated } from '@react-spring/web';
-import funlogo from 'assets/images/fun_studio_logo.png';
+import funlogo from 'assets/images/fun_studio_logo_pink.png';
 
 const MasterLoading = () => {
   useTranslation();

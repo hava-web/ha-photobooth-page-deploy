@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useState } from 'react';
-import { filter, forEach, map, size, toNumber } from 'lodash';
+import { filter, forEach, get, map, size, toNumber } from 'lodash';
 import cx from 'classnames';
 import Image from 'components/image/Image';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
@@ -22,6 +22,13 @@ const listStoreLocationOfType = [
   StoreLocationType.HCM,
   StoreLocationType.OTHER,
 ];
+
+const listStoreLocationName = {
+  [StoreLocationType.HANOI]: 'Hà Nội',
+  [StoreLocationType.HCM]: 'TP Hồ Chí Minh',
+  [StoreLocationType.OTHER]:
+    'Các tỉnh khác: \nVĩnh Phúc, Phú Thọ, Hải Dương, Hải Phòng, Hưng Yên, \n Bắc Giang, Hà Tĩnh, Thừa Thiên Huế, Bình Dương...',
+};
 
 const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   const { T } = useTranslation();
@@ -170,7 +177,9 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
 
           return (
             <React.Fragment key={storeLocation}>
-              <h3 className="store-location-title">{T('Hà nội')}</h3>
+              <h3 className="store-location-title">
+                {get(listStoreLocationName, `[${storeLocation}]`, '')}
+              </h3>
               <div className="store-swiper-wrapper">
                 <Swiper
                   onSwiper={(swipe) =>

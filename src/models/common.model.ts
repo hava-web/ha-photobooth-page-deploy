@@ -28,8 +28,8 @@ export interface DListResponse<Data = any> {
   code: number;
   message: string;
   response?: {
-    data?: Data;
-    totalRecord?: number;
+    items?: Data;
+    totalItems?: number;
   };
   [key: string]: any;
 }
@@ -39,14 +39,6 @@ export interface DObjectResponse<Data = any> {
   message: string;
   response?: Data;
   [key: string]: any;
-}
-export interface DList<Data = any> {
-  data?: Data[];
-  totalRecord?: number;
-}
-export interface DObject<Data = any> {
-  data?: Data;
-  totalRecord?: number;
 }
 
 export interface OptionProps {

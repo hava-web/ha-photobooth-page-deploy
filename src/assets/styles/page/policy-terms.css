@@ -1,6 +1,51 @@
 .policy-and-terms-section {
   * {
     @apply font-Montserrat !important;
+    color: var(--sync-text-color);
+  }
+}
+
+.faq-title {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: bold;
+}
+
+.faq-list {
+  margin-top: 2.6rem;
+}
+.faq-item {
+  @apply p-2 mb-2 border-0;
+
+  &:not(:last-of-type) {
+    @apply border-b;
+  }
+
+  * {
+    font-size: 1.8rem !important;
+    line-height: 2.9rem;
+  }
+
+  .faq-question-title {
+    @apply flex cursor-pointer;
+    .arrow-icon {
+      @apply ml-auto;
+      transition: all 0.4s;
+    }
+  }
+
+  .faq-answer {
+    @apply mt-2;
+    display: none;
+  }
+
+  &.is-show {
+    .faq-answer {
+      display: block;
+    }
+    .arrow-icon {
+      transform: scale(-1);
+    }
   }
 }
 

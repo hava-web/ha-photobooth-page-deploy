@@ -1,5 +1,4 @@
 import adminRequest from 'api/request/adminRequest';
-import { PREFIX_API } from 'constants/api.const';
 import { preprocessGetQuery } from 'helpers/api.helper';
 import {
   ListFaqRequestModel,
@@ -8,6 +7,6 @@ import {
 
 export function listFaq(payload: ListFaqRequestModel) {
   return adminRequest.get<ListFaqResponseModel, ListFaqResponseModel>(
-    `${PREFIX_API.API}/fa-questions?${preprocessGetQuery(payload)}`,
+    `/general/fa-questions?${preprocessGetQuery(payload)}`,
   );
 }

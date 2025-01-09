@@ -1,4 +1,4 @@
-import { DList, DListResponse } from 'models/common.model';
+import { DListResponse } from 'models/common.model';
 
 export type FaqModel = {
   id: number;
@@ -20,7 +20,7 @@ export type ListFaqRequestModel = {
 export type ListFaqResponseModel = DListResponse<FaqModel>;
 
 export interface FaqStateModel {
-  faqListData: DList<FaqModel> | null;
+  faqListData: DListResponse<FaqModel> | null;
   faqDetail: FaqModel | null;
 
   loadingList: boolean;
