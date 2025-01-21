@@ -31,8 +31,6 @@ const FAQ: PageWithLayout & NextPage<InferGetStaticPropsType<any>> = ({
         : [...list, id],
     );
 
-  console.log('ttt showQuestions', showQuestions);
-
   return (
     <section className="policy-and-terms-section p-20">
       <Container>

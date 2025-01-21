@@ -1,282 +1,125 @@
-import React, { FC, useCallback, useState } from 'react';
-import { filter, forEach, get, map, size, toNumber } from 'lodash';
-import cx from 'classnames';
+import storeIcon from 'assets/icons/store.png';
+import Container from 'components/grid/Container';
 import Image from 'components/image/Image';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
-import Container from 'components/grid/Container';
-import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { sortBySizeOfItem } from 'helpers/math.helper';
 import { useTranslation } from 'hooks/useTranslation';
-import storeIcon from 'assets/icons/store.png';
+import { get, groupBy, map, reduce, size } from 'lodash';
 import { OptionProps } from 'models/common.model';
-import { isEqualVal } from 'helpers/string.helper';
-import { StoreLocationType } from 'store/static-data/static-data.data';
-import leftArrowIcon from 'assets/icons/left_arrow.png';
-import rightArrowIcon from 'assets/icons/right_arrow.png';
+import React, { FC, useMemo } from 'react';
+import {
+  StoreLocationName,
+  StoreType,
+} from 'store/static-data/static-data.data';
 
 type FunStoresProps = {
   stores: Array<OptionProps & { labelIndex: string; storeLocation: string }>;
 };
 
-const listStoreLocationOfType = [
-  StoreLocationType.HANOI,
-  StoreLocationType.HCM,
-  StoreLocationType.OTHER,
-];
-
-const listStoreLocationName = {
-  [StoreLocationType.HANOI]: 'Hà Nội',
-  [StoreLocationType.HCM]: 'TP Hồ Chí Minh',
-  [StoreLocationType.OTHER]:
-    'Các tỉnh khác: \nVĩnh Phúc, Phú Thọ, Hải Dương, Hải Phòng, Hưng Yên, \n Bắc Giang, Hà Tĩnh, Thừa Thiên Huế, Bình Dương...',
-};
-
 const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   const { T } = useTranslation();
 
-  const [storeSwipers, setStoreSwipers] = useState<{
-    [key in StoreLocationType]: SwiperClass | null;
-  }>();
-  const [canPrevs, setCanPrevs] = useState<{
-    [key in StoreLocationType]: boolean;
-  }>();
-  const [canNexts, setCanNexts] = useState<{
-    [key in StoreLocationType]: boolean;
-  }>({
-    [StoreLocationType.HANOI]: true,
-    [StoreLocationType.HCM]: true,
-    [StoreLocationType.OTHER]: true,
-  } as any);
+  const listStore = useMemo(() => groupBy(stores, 'storeLocation'), [stores]);
 
-  const handleStorePrev = useCallback(
-    (location: StoreLocationType) => {
-      setCanNexts((s) => ({ ...(s as any), [location]: true }));
-      if (storeSwipers?.[location]) {
-        storeSwipers?.[location]?.slidePrev();
-        if (!toNumber(storeSwipers?.[location]?.activeIndex)) {
-          setCanPrevs((s) => ({ ...(s as any), [location]: false }));
-        }
-      }
-    },
-    [storeSwipers],
+  const listSortedStore = useMemo(
+    () => sortBySizeOfItem(groupBy(stores, 'storeLocation')),
+    [stores],
   );
 
-  const handleStoreNext = useCallback(
-    (location: StoreLocationType) => {
-      setCanPrevs((s) => ({ ...(s as any), [location]: true }));
-      if (storeSwipers?.[location]) {
-        storeSwipers?.[location]?.slideNext();
-        let slidePerView = 5;
-        forEach(
-          storeSwipers?.[location]?.params?.breakpoints,
-          (item, breakKey) => {
-            if (
-              toNumber(storeSwipers?.[location]?.currentBreakpoint) < +breakKey
-            )
-              return false;
-            slidePerView = toNumber(item?.slidesPerView);
-          },
-        );
-        const listStores = filter(stores, (s) =>
-          isEqualVal(s?.storeLocation, location),
-        );
-        if (
-          size(listStores) - toNumber(storeSwipers?.[location]?.activeIndex) <=
-          slidePerView
-        ) {
-          setCanNexts((s) => ({ ...(s as any), [location]: false }));
-        }
-      }
-    },
-    [storeSwipers],
+  const listHasManyStore = useMemo(
+    () =>
+      reduce(
+        listSortedStore,
+        (st, item, key) =>
+          size(item) > 1 ? { ...st, [key]: item } : { ...st },
+        {},
+      ),
+    [stores],
   );
 
-  const handleChangeActiveIndex = useCallback(
-    (location: StoreLocationType) => {
-      if (storeSwipers?.[location]) {
-        let slidePerView = 4;
-        forEach(
-          storeSwipers?.[location]?.params?.breakpoints,
-          (item, breakKey) => {
-            if (
-              toNumber(storeSwipers?.[location]?.currentBreakpoint) < +breakKey
-            )
-              return false;
-            slidePerView = toNumber(item?.slidesPerView);
-          },
-        );
-        const listStores = filter(stores, (s) =>
-          isEqualVal(s?.storeLocation, location),
-        );
-        setCanNexts((s) => ({
-          ...(s as any),
-          [location]:
-            toNumber(storeSwipers?.[location]?.activeIndex) + slidePerView <
-            size(listStores),
-        }));
-        setCanPrevs((s) => ({
-          ...(s as any),
-          [location]: toNumber(storeSwipers?.[location]?.activeIndex || 0) > 0,
-        }));
-      }
-    },
-    [storeSwipers],
+  const listOneStore = useMemo(
+    () =>
+      reduce(
+        listStore,
+        (st, item, key) =>
+          size(item) === 1 ? { ...st, [key]: item } : { ...st },
+        {},
+      ),
+    [stores],
   );
-
-  const renderSwiperContent = (storeData: FunStoresProps['stores'] = []) =>
-    map(storeData, (mess, ind) => (
-      <SwiperSlide key={`${mess?.value}`} className="store-swiper-slide">
-        <div className="store-swiper-card">
-          <Image
-            width={250}
-            height={250}
-            src={mess?.image}
-            alt={mess?.alt}
-            className="store-swiper-item-image"
-          />
-          <div>
-            <p className="store-swiper-item-title">
-              <Image
-                className="store-swiper-item-icon"
-                src={storeIcon}
-                alt="store icon"
-                quality={75}
-              />{' '}
-              <strong>
-                {ind + 1}. {mess?.labelIndex}
-              </strong>
-            </p>
-            <p className="store-swiper-item-title">{mess?.label}</p>
-          </div>
-        </div>
-      </SwiperSlide>
-    ));
 
   return (
     <section id={HOME_PAGE_SECTIONS.FUN_STORES} className="fun-stores">
       <Container className="fun-stores-container no-select">
         <h2 className="section-title">{T('danh sách cửa hàng')}</h2>
 
-        {map(listStoreLocationOfType, (storeLocation) => {
-          const listStores = filter(stores, (s) =>
-            isEqualVal(s?.storeLocation, storeLocation),
-          );
-
-          let slidePerView = 5;
-          forEach(
-            storeSwipers?.[storeLocation]?.params?.breakpoints,
-            (item, breakKey) => {
-              if (
-                toNumber(storeSwipers?.[storeLocation]?.currentBreakpoint) <
-                +breakKey
-              )
-                return false;
-              slidePerView = toNumber(item?.slidesPerView);
-            },
-          );
-          const isHasArrow = size(listStores) > slidePerView;
-
-          return (
-            <React.Fragment key={storeLocation}>
-              <h3 className="store-location-title">
-                {get(listStoreLocationName, `[${storeLocation}]`, '')}
-              </h3>
-              <div className="store-swiper-wrapper">
-                <Swiper
-                  onSwiper={(swipe) =>
-                    setStoreSwipers((swipers) => ({
-                      ...((swipers || {}) as any),
-                      [storeLocation]: swipe,
-                    }))
-                  }
-                  onActiveIndexChange={() =>
-                    handleChangeActiveIndex(storeLocation)
-                  }
-                  breakpoints={{
-                    0: {
-                      slidesPerView: 1,
-                    },
-                    639: {
-                      slidesPerView: 2,
-                    },
-                    1023: {
-                      slidesPerView: 3,
-                    },
-                    1279: {
-                      slidesPerView: 5,
-                    },
-                  }}
-                  spaceBetween={50}
-                  slidesPerView={5}
-                  scrollbar={{ draggable: true }}
-                  autoplay={{ delay: 5000 }}
-                  className="store-swiper"
-                  centerInsufficientSlides
-                >
-                  {renderSwiperContent(listStores)}
-                </Swiper>
-                {isHasArrow && (
-                  <>
-                    <button
-                      onClick={() => handleStorePrev(storeLocation)}
-                      type="button"
-                      className={cx('store-swiper-left-arrow', {
-                        disabled: !canPrevs?.[storeLocation],
-                      })}
-                      title="trước"
-                    >
-                      <Image
-                        src={leftArrowIcon}
-                        width={50}
-                        height={50}
-                        alt="left arrow"
-                      />
-                    </button>
-                    <button
-                      onClick={() => handleStoreNext(storeLocation)}
-                      type="button"
-                      className={cx('store-swiper-right-arrow', {
-                        disabled: !canNexts?.[storeLocation],
-                      })}
-                      title="sau"
-                    >
-                      <Image
-                        src={rightArrowIcon}
-                        width={50}
-                        height={50}
-                        alt="right arrow"
-                      />
-                    </button>
-                  </>
-                )}
-              </div>
-            </React.Fragment>
-          );
-        })}
-        {/* <Grid className="fun-stores-grid">
-          {map(stores, (item) => (
-            <GridItem key={item?.value} className="fun-stores-item">
-              <Image
-                className="fun-stores-item-image"
-                src={item?.image}
-                alt="store"
-                quality={75}
-              />
-              <br />
-              <div>
-                <p className="fun-stores-item-title">
+        {map(listHasManyStore, (items, locationKey) => (
+          <>
+            <h3 className="store-location-title">
+              {get(StoreLocationName, `[${locationKey}]`, '')}
+            </h3>
+            <div className="list-store-row">
+              {map(items, (store: StoreType) => (
+                <div className="store-swiper-card">
                   <Image
-                    className="fun-stores-item-icon"
-                    src={storeIcon}
-                    alt="store icon"
-                    quality={75}
-                  />{' '}
-                  <strong>{item?.labelIndex}</strong>
-                </p>
-                <p className="fun-stores-item-title">{item?.label}</p>
+                    width={250}
+                    height={250}
+                    src={store?.image}
+                    alt={store?.alt}
+                    className="store-swiper-item-image"
+                  />
+                  <div>
+                    <p className="store-swiper-item-title">
+                      <Image
+                        className="store-swiper-item-icon"
+                        src={storeIcon}
+                        alt="store icon"
+                        quality={75}
+                      />{' '}
+                      <strong>{store?.labelIndex}</strong>
+                    </p>
+                    <p className="store-swiper-item-title">{store?.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ))}
+
+        <div className="list-location-grid">
+          {map(listOneStore, (items, locationKey) => (
+            <div className="list-location-item">
+              <h3 className="store-location-title">
+                {get(StoreLocationName, `[${locationKey}]`, '')}
+              </h3>
+              <div className="list-store-row">
+                {map(items, (store: StoreType) => (
+                  <div className="store-swiper-card">
+                    <Image
+                      width={250}
+                      height={250}
+                      src={store?.image}
+                      alt={store?.alt}
+                      className="store-swiper-item-image"
+                    />
+                    <div>
+                      <p className="store-swiper-item-title">
+                        <Image
+                          className="store-swiper-item-icon"
+                          src={storeIcon}
+                          alt="store icon"
+                          quality={75}
+                        />{' '}
+                        <strong>{store?.labelIndex}</strong>
+                      </p>
+                      <p className="store-swiper-item-title">{store?.label}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </GridItem>
+            </div>
           ))}
-        </Grid> */}
+        </div>
       </Container>
     </section>
   );

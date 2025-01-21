@@ -44,6 +44,8 @@ import funGoVapHCMImage from 'assets/images/stores/go_vap_hcm.webp';
 import funDienBienPhuHCMImage from 'assets/images/stores/dien_bien_phu_hcm.webp';
 import funKhoaiChauHungYenImage from 'assets/images/stores/fun_khoai_chau_hung_yen.webp';
 import funNguyenThiLuuBacGiangImage from 'assets/images/stores/fun_nguyen_thi_luu_bac_giang.webp';
+import funDiAnBinhDuongImage from 'assets/images/stores/fun_di_an_binh_duong.webp';
+import funThuDucHCMImage from 'assets/images/stores/fun_thu_duc_hcm.webp';
 
 import funBinhDuongThuDauMotImage from 'assets/images/stores/fun_binh_duong_thu_dau_mot.webp';
 import funGiaLamTrauQuyImage from 'assets/images/stores/fun_gia_lam_trau_quy.webp';
@@ -68,15 +70,46 @@ import nguyenThuTrangImage from 'assets/images/customers/nguyen_thu_trang.webp';
 import phuongLinhImage from 'assets/images/customers/phuong_linh.webp';
 import minhKhueImage from 'assets/images/customers/minh_khue.webp';
 import khanhLyImage from 'assets/images/customers/khanh_ly.webp';
+import { StaticImageData } from 'next/image';
 
 export enum StoreLocationType {
   HANOI = 'hn',
   HCM = 'hcm',
   HAIPHONG = 'hp',
   HUE = 'hue',
-  NGHE_AN = 'nghean',
+  NGHE_AN = 'nghe-an',
+  VINH_PHUC = 'vinh-phuc',
+  PHU_THO = 'phu-tho',
+
+  VINH = 'vinh',
+  HAI_DUONG = 'hai-duong',
+  HUNG_YEN = 'hung-yen',
+  BAC_GIANG = 'bac-giang',
+  BINH_DUONG = 'binh-duong',
+  HA_TINH = 'ha-tinh',
+
   OTHER = 'other',
 }
+
+export const StoreLocationName = {
+  [StoreLocationType.HANOI]: 'Hà Nội',
+  [StoreLocationType.HCM]: 'TP Hồ Chí Minh',
+  [StoreLocationType.HAIPHONG]: 'Hải Phòng',
+  [StoreLocationType.HUE]: 'Huế',
+  [StoreLocationType.NGHE_AN]: 'Nghệ An',
+  [StoreLocationType.VINH_PHUC]: 'Vĩnh Phúc',
+  [StoreLocationType.PHU_THO]: 'Phú Thọ',
+  [StoreLocationType.VINH]: 'Vinh',
+  [StoreLocationType.HAI_DUONG]: 'Hải Dương',
+
+  [StoreLocationType.HUNG_YEN]: 'Hưng Yên',
+  [StoreLocationType.BAC_GIANG]: 'Bắc Giang',
+  [StoreLocationType.BINH_DUONG]: 'Bình Dương',
+  [StoreLocationType.HA_TINH]: 'Hà Tĩnh',
+
+  [StoreLocationType.OTHER]:
+    'Các tỉnh khác: \nVĩnh Phúc, Phú Thọ, Hải Dương, Hải Phòng, Hưng Yên, \n Bắc Giang, Hà Tĩnh, Thừa Thiên Huế, Bình Dương...',
+};
 
 export const headerNavBarLinks = [
   {
@@ -99,7 +132,16 @@ export const headerNavBarLinks = [
   },
 ];
 
-export const funStores = [
+export type StoreType = {
+  label: string;
+  labelIndex: string;
+  value: number;
+  alt: string;
+  image: StaticImageData;
+  storeLocation: StoreLocationType;
+  href: string;
+};
+export const funStores: Array<StoreType> = [
   {
     label:
       'Tầng 2, Complex 01, Số 29, ngách 31, ngõ 167, Tây Sơn, Đống Đa, Hà Nội.',
@@ -135,7 +177,7 @@ export const funStores = [
     value: 4,
     alt: 'Fun Studio Vĩnh Phúc',
     image: funVinhPhucImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.VINH_PHUC,
     href: '#',
   },
   {
@@ -144,7 +186,7 @@ export const funStores = [
     value: 5,
     alt: 'Fun Studio Việt Trì',
     image: funVietTriImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.PHU_THO,
     href: '#',
   },
   {
@@ -153,7 +195,7 @@ export const funStores = [
     value: 6,
     alt: 'Fun Studio Vinh',
     image: funNgheAnImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.NGHE_AN,
     href: '#',
   },
   {
@@ -162,7 +204,7 @@ export const funStores = [
     value: 7,
     alt: 'Fun Studio Vinh',
     image: funNgheAn2Image,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.VINH,
     href: '#',
   },
   {
@@ -171,7 +213,7 @@ export const funStores = [
     value: 8,
     alt: 'Fun Studio Hải Dương',
     image: funHaiDuongImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.HAI_DUONG,
     href: '#',
   },
   {
@@ -189,7 +231,7 @@ export const funStores = [
     value: 10,
     alt: 'Fun Studio Huế',
     image: funHueImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.HUE,
     href: '#',
   },
   {
@@ -198,11 +240,11 @@ export const funStores = [
     value: 11,
     alt: 'Fun Studio Hải Dương',
     image: funHaiDuong2Image,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.HAI_DUONG,
     href: '#',
   },
   {
-    label: '20 đường số 53, P.14, Q.Gò Vấp, TP. Hồ Chí Minh ',
+    label: '20 đường số 53, P.14, Q.Gò Vấp, TP. Hồ Chí Minh',
     labelIndex: 'Fun Studio TP Hồ Chí Minh',
     value: 12,
     alt: 'Fun Studio TP Hồ Chí Minh',
@@ -227,7 +269,7 @@ export const funStores = [
     value: 14,
     alt: 'Fun Studio Hưng Yên',
     image: funKhoaiChauHungYenImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.HUNG_YEN,
     href: '#',
   },
   {
@@ -236,7 +278,7 @@ export const funStores = [
     value: 15,
     alt: 'Fun Studio Bắc Giang',
     image: funNguyenThiLuuBacGiangImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.BAC_GIANG,
     href: '#',
   },
 
@@ -246,7 +288,7 @@ export const funStores = [
     value: 16,
     alt: 'Fun Studio Bình Dương',
     image: funBinhDuongThuDauMotImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.BINH_DUONG,
     href: '#',
   },
   {
@@ -274,7 +316,27 @@ export const funStores = [
     value: 19,
     alt: 'Fun Studio Hà Tĩnh',
     image: funCanLocHaTinhImage,
-    storeLocation: StoreLocationType.OTHER,
+    storeLocation: StoreLocationType.HA_TINH,
+    href: '#',
+  },
+  {
+    label:
+      'Trung tâm thương mại Go!Dĩ An Quốc lộ 1K, Đông Hoà, Dĩ An, Bình Dương',
+    labelIndex: 'Fun Studio Dĩ An',
+    value: 20,
+    alt: 'Fun Studio Dĩ An',
+    image: funDiAnBinhDuongImage,
+    storeLocation: StoreLocationType.BINH_DUONG,
+    href: '#',
+  },
+  {
+    label:
+      'Số 70, đường Hoàng Diệu 2, phường Linh Chiểu, quận Thủ Đức, thành phố Hồ Chí Minh',
+    labelIndex: 'Fun Studio Thủ Đức',
+    value: 21,
+    alt: 'Fun Studio Thủ Đức',
+    image: funThuDucHCMImage,
+    storeLocation: StoreLocationType.HCM,
     href: '#',
   },
 ];
@@ -342,11 +404,11 @@ export const funBanners = [
 
 export const FOOTER_ITEMS = [
   {
-    label: 'fun@funstudio.com.vn',
+    label: 'fun@funstudio.vn',
     value: 1,
     image: squareEmailIcon,
     alt: 'footer email icon',
-    href: 'mailto:fun@funstudio.com.vn',
+    href: 'mailto:fun@funstudio.vn',
   },
   {
     label: 'Fun Studio',

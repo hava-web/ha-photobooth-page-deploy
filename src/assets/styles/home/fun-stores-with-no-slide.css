@@ -1,0 +1,56 @@
+.fun-stores {
+  .list-location-grid {
+    @apply flex flex-wrap justify-center;
+
+    .list-location-item {
+      @apply w-1/2 mb-[2rem];
+
+      .store-swiper-card {
+        @apply w-full mb-0;
+      }
+    }
+  }
+
+  .list-store-row {
+    @apply flex flex-wrap justify-center;
+  }
+
+  .store-swiper-card {
+    @apply w-1/2 mb-[2rem] p-[1rem];
+  }
+
+  .store-swiper-item-title strong {
+    white-space: wrap;
+  }
+}
+
+@media screen('less-sm') {
+}
+
+@media screen('sm') {
+}
+
+@media screen('md') {
+  .fun-stores {
+    .list-location-grid {
+      .list-location-item {
+        @apply w-1/3 mb-[5rem];
+      }
+    }
+
+    .store-swiper-card {
+      @apply w-1/3 mb-[5rem];
+    }
+
+    .store-swiper-item-title strong {
+      white-space: wrap;
+    }
+  }
+
+  .store-swiper-item-title strong {
+    white-space: nowrap;
+  }
+}
+
+@media screen('xl') {
+}
