@@ -52,6 +52,13 @@ import funGiaLamTrauQuyImage from 'assets/images/stores/fun_gia_lam_trau_quy.web
 import funDongAnhUyNoImage from 'assets/images/stores/fun_dong_anh_uy_no.webp';
 import funCanLocHaTinhImage from 'assets/images/stores/fun_can_loc_ha_tinh.webp';
 
+import funDucTrongLamDongImage from 'assets/images/stores/fun_duc_trong_lam_dong.webp';
+import funLeLoiHungYenImage from 'assets/images/stores/fun_le_loi_hung_yen.webp';
+import funLyTuTrongLamDongImage from 'assets/images/stores/fun_ly_tu_trong_lam_dong.webp';
+import funMyHaoHungYenImage from 'assets/images/stores/fun_my_hao_hung_yen.webp';
+import funNgoQuyenHaiPhongImage from 'assets/images/stores/fun_ngo_quyen_hai_phong.webp';
+import funTranDaiNghiaHaNoiImage from 'assets/images/stores/fun_tran_dai_nghia_ha_noi.webp';
+
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
 import dianaFacebookEventImage from 'assets/images/home/diana_facebook_event.webp';
@@ -87,6 +94,8 @@ export enum StoreLocationType {
   BAC_GIANG = 'bac-giang',
   BINH_DUONG = 'binh-duong',
   HA_TINH = 'ha-tinh',
+
+  LAM_DONG = 'lam-dong',
 
   OTHER = 'other',
 }
@@ -337,6 +346,61 @@ export const funStores: Array<StoreType> = [
     alt: 'Fun Studio Thủ Đức',
     image: funThuDucHCMImage,
     storeLocation: StoreLocationType.HCM,
+    href: '#',
+  },
+  {
+    label: '72 Phó Đức Chính, Tx. Mỹ Hào, Hưng yên',
+    labelIndex: 'Fun Studio Phố Nối',
+    value: 22,
+    alt: 'Fun Studio Phố Nối',
+    image: funMyHaoHungYenImage,
+    storeLocation: StoreLocationType.HUNG_YEN,
+    href: '#',
+  },
+  {
+    label: '78 Trần Đại Nghĩa, Hai Bà Trưng, Hà Nội',
+    labelIndex: 'Deluxe by Fun Studio',
+    value: 23,
+    alt: 'Deluxe by Fun Studio',
+    image: funTranDaiNghiaHaNoiImage,
+    storeLocation: StoreLocationType.HANOI,
+    href: '#',
+  },
+  {
+    label: '47 Điện Biên 1, Phường Lê Lợi, TP. Hưng Yên',
+    labelIndex: 'Fun Studio Hưng Yên',
+    value: 24,
+    alt: 'Fun Studio Hưng Yên',
+    image: funLeLoiHungYenImage,
+    storeLocation: StoreLocationType.HUNG_YEN,
+    href: '#',
+  },
+
+  {
+    label: '223 P. Lê Lợi, Gia Viên, Ngô Quyền, Hải Phòng ',
+    labelIndex: 'Fun Studio Ngô Quyền',
+    value: 25,
+    alt: 'Fun Studio Ngô Quyền',
+    image: funNgoQuyenHaiPhongImage,
+    storeLocation: StoreLocationType.HAIPHONG,
+    href: '#',
+  },
+  {
+    label: 'Số 6 Duy Tân, Liên Nghĩa, Đức Trọng, Lâm Đồng ',
+    labelIndex: 'Fun Studio Đức Trọng',
+    value: 26,
+    alt: 'Fun Studio Đức Trọng',
+    image: funDucTrongLamDongImage,
+    storeLocation: StoreLocationType.LAM_DONG,
+    href: '#',
+  },
+  {
+    label: 'Số 65 Lý Tự Trọng, Phường 1, thành phố Bảo Lộc, tỉnh Lâm Đồng',
+    labelIndex: 'Fun Studio Bảo Lộc',
+    value: 27,
+    alt: 'Fun Studio Bảo Lộc',
+    image: funLyTuTrongLamDongImage,
+    storeLocation: StoreLocationType.LAM_DONG,
     href: '#',
   },
 ];
