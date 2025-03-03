@@ -58,6 +58,7 @@ import funLyTuTrongLamDongImage from 'assets/images/stores/fun_ly_tu_trong_lam_d
 import funMyHaoHungYenImage from 'assets/images/stores/fun_my_hao_hung_yen.webp';
 import funNgoQuyenHaiPhongImage from 'assets/images/stores/fun_ngo_quyen_hai_phong.webp';
 import funTranDaiNghiaHaNoiImage from 'assets/images/stores/fun_tran_dai_nghia_ha_noi.webp';
+import funCamXuyenHaTinhImage from 'assets/images/stores/fun_cam_xuyen_ha_tinh.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -401,6 +402,16 @@ export const funStores: Array<StoreType> = [
     alt: 'Fun Studio Bảo Lộc',
     image: funLyTuTrongLamDongImage,
     storeLocation: StoreLocationType.LAM_DONG,
+    href: '#',
+  },
+  {
+    label:
+      'Số 78 đường Thiên Cầm, thị trấn Cẩm Xuyên, huyện Cẩm Xuyên, tỉnh Hà Tĩnh',
+    labelIndex: 'Fun Studio Cẩm Xuyên',
+    value: 28,
+    alt: 'Fun Studio Cẩm Xuyên',
+    image: funCamXuyenHaTinhImage,
+    storeLocation: StoreLocationType.HA_TINH,
     href: '#',
   },
 ];
