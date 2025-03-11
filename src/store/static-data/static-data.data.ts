@@ -67,6 +67,13 @@ import radio4TeenImage from 'assets/images/home/radio_4_teen.webp';
 import congluanLogoImage from 'assets/images/home/congluan_logo.png';
 import vtv1LogoImage from 'assets/images/home/vtv1_logo.png';
 
+import baoCafebizImage from 'assets/images/home/bao_cafebiz.webp';
+import baoKenh14Image from 'assets/images/home/bao_kenh14.webp';
+import baoVnexpressImage from 'assets/images/home/bao_vnexpress.webp';
+import cafebizLogoImage from 'assets/images/home/cafebiz.webp';
+import vnexpressLogoImage from 'assets/images/home/vnexpress_logo.png';
+import kenh14LogoImage from 'assets/images/home/kenh14_logo.png';
+
 import buiLanPhuongImage from 'assets/images/customers/bui_lan_phuong.webp';
 import hoaiAnhLeImage from 'assets/images/customers/hoai_anh_le.webp';
 import duyLeImage from 'assets/images/customers/duy_le.webp';
@@ -685,8 +692,32 @@ export const CUSTOMER_MESSAGES = [
 
 export const NEWS_MESSAGES = [
   {
-    label: 'diana',
+    label: 'vnexpress',
     value: 1,
+    href: 'https://vnexpress.net/fun-studio-tien-phong-xu-huong-chup-anh-photobooth-4857200.html',
+    image: baoVnexpressImage,
+    logo: vnexpressLogoImage,
+    alt: 'vnexpress news',
+  },
+  {
+    label: 'cafebiz',
+    value: 2,
+    href: 'https://cafebiz.vn/fun-studio-giai-phap-kinh-doanh-photobooth-chi-phi-thap-loi-nhuan-cao-17625030519422388.chn',
+    image: baoCafebizImage,
+    logo: cafebizLogoImage,
+    alt: 'cafebiz news',
+  },
+  {
+    label: 'kenh14',
+    value: 3,
+    href: 'https://kenh14.vn/bat-mi-diem-hen-cua-gioi-tre-ha-thanh-dao-nay-cu-den-la-rinh-ve-vo-van-anh-song-ao-215250305165008722.chn',
+    image: baoKenh14Image,
+    logo: kenh14LogoImage,
+    alt: 'kenh14 news',
+  },
+  {
+    label: 'diana',
+    value: 4,
     href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx/',
     image: dianaFacebookEventImage,
     logo: dianaLogoImage,
@@ -694,7 +725,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vtv',
-    value: 2,
+    value: 5,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: vtv1LogoImage,
@@ -703,7 +734,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 3,
+    value: 6,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: congluanLogoImage,
