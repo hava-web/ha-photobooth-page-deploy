@@ -18,6 +18,7 @@ import moneyIcon from 'assets/icons/money.png';
 
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
 import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-vn-mobile.webp';
+import bannerNewsImage from 'assets/images/banner-images/banner-news.webp';
 import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
 import bannerAllFeatureImageMobile from 'assets/images/banner-images/banner_all_feature-mobile.webp';
 import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
@@ -59,6 +60,9 @@ import funMyHaoHungYenImage from 'assets/images/stores/fun_my_hao_hung_yen.webp'
 import funNgoQuyenHaiPhongImage from 'assets/images/stores/fun_ngo_quyen_hai_phong.webp';
 import funTranDaiNghiaHaNoiImage from 'assets/images/stores/fun_tran_dai_nghia_ha_noi.webp';
 import funCamXuyenHaTinhImage from 'assets/images/stores/fun_cam_xuyen_ha_tinh.webp';
+
+import funKienAnHaiPhongImage from 'assets/images/stores/kien_an_hai_phong.webp';
+import funSocSonHaNoiImage from 'assets/images/stores/soc_son_ha_noi.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -421,6 +425,26 @@ export const funStores: Array<StoreType> = [
     storeLocation: StoreLocationType.HA_TINH,
     href: '#',
   },
+
+  {
+    label: '26 Trần Thành Ngọ, Kiến An, Hải Phòng',
+    labelIndex: 'Fun Studio Kiến An',
+    value: 27,
+    alt: 'Fun Studio Kiến An',
+    image: funKienAnHaiPhongImage,
+    storeLocation: StoreLocationType.HAIPHONG,
+    href: '#',
+  },
+  {
+    label:
+      '42 đường vành đai khu đô thị Sóc Sơn, tổ 3, thị trấn Sóc Sơn, huyện Sóc Sơn, thành phố Hà Nội',
+    labelIndex: 'Fun Studio Sóc Sơn',
+    value: 28,
+    alt: 'Fun Studio Sóc Sơn',
+    image: funSocSonHaNoiImage,
+    storeLocation: StoreLocationType.HANOI,
+    href: '#',
+  },
 ];
 
 export const funBanners = [
@@ -433,52 +457,62 @@ export const funBanners = [
     alt: 'Hệ thống cửa hàng Fun Studio trên cả nước',
   },
   {
-    label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
+    imageClass: 'banner-news',
+    label: '',
     value: 2,
+    image: bannerNewsImage,
+    mobileImage: bannerNewsImage,
+    imageStyle: { objectFit: 'fill' },
+    href: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
+    alt: '',
+  },
+  {
+    label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
+    value: 3,
     image: bannerAllFeatureImage,
     mobileImage: bannerAllFeatureImageMobile,
     alt: 'easy to use',
   },
   {
     label: 'Làn sóng chụp ảnh gây bão với giới trẻ',
-    value: 3,
+    value: 4,
     image: bannerTrendy2023Image,
     alt: 'easy to use',
   },
   {
     label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
-    value: 4,
+    value: 5,
     image: bannerKoreanStyleImage,
     alt: 'korea styles',
   },
   {
     label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
-    value: 5,
+    value: 6,
     image: bannerEasyToUseImage,
     alt: 'low risk high profit',
   },
   {
     label: 'Chi phí đầu tư ban đầu thấp,\n lợi nhuận cao',
-    value: 6,
+    value: 7,
     image: banner4Image,
     alt: 'genz trending',
   },
   {
     label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
-    value: 7,
+    value: 8,
     image: fastRoiBannerImage,
     mobileImage: fastRoiMobileBannerImage,
     alt: 'get budget',
   },
   {
     label: 'Chi phí vận hành thấp,\n tự động hóa cao,\n sử dụng ít nhân sự',
-    value: 8,
+    value: 9,
     image: banner6Image,
     alt: 'low operation cost',
   },
   {
     label: 'Thời gian triển khai nhanh chóng với chi phí tối ưu',
-    value: 9,
+    value: 10,
     image: banner7Image,
     alt: 'quick building',
   },
@@ -692,6 +726,14 @@ export const CUSTOMER_MESSAGES = [
 
 export const NEWS_MESSAGES = [
   {
+    label: 'vtv1',
+    value: 1,
+    href: 'https://youtu.be/CnKDC4b1HTo',
+    video: 'https://www.youtube.com/embed/CnKDC4b1HTo?si=MeEzBoT1diw2gHP8',
+    logo: vtv1LogoImage,
+    alt: 'vtv news',
+  },
+  {
     label: 'vnexpress',
     value: 1,
     href: 'https://vnexpress.net/fun-studio-tien-phong-xu-huong-chup-anh-photobooth-4857200.html',
@@ -743,7 +785,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'radio 4 teen',
-    value: 4,
+    value: 7,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
     video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,
