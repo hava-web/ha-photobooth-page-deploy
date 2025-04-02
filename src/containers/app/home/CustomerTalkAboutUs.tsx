@@ -12,6 +12,7 @@ import { useTranslation } from 'hooks/useTranslation';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import leftArrowIcon from 'assets/icons/left_arrow.png';
 import rightArrowIcon from 'assets/icons/right_arrow.png';
+import { StaticImageData } from 'next/image';
 
 const CustomerTalkAboutUs = () => {
   const { T } = useTranslation();
@@ -79,7 +80,7 @@ const CustomerTalkAboutUs = () => {
                     <Link href={news?.href} target="blank">
                       <Image
                         className="news-swiper-image"
-                        src={news?.image}
+                        src={news?.image as StaticImageData}
                         alt={news?.alt}
                       />
                     </Link>

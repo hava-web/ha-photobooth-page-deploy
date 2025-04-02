@@ -38,8 +38,8 @@ const AboutPhotoBooth = () => {
         <h2 className="section-title">
           {T('Tìm hiểu về mô hình photobooth\n phong cách Hàn Quốc')}
         </h2>
-        {map(youtubeLinks, (item) => (
-          <div className="mx-auto mt-2">
+        <div className="about-photobooth-grid">
+          {map(youtubeLinks, (item) => (
             <div className="about-photobooth-video-frame-wrapper">
               <iframe
                 className="about-photobooth-video-frame"
@@ -51,8 +51,8 @@ const AboutPhotoBooth = () => {
                 loading="lazy"
               />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         {/* <Swiper
           spaceBetween={50}
           scrollbar={{ draggable: true }}

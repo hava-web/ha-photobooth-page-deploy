@@ -19,6 +19,7 @@ import moneyIcon from 'assets/icons/money.png';
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
 import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-vn-mobile.webp';
 import bannerNewsImage from 'assets/images/banner-images/banner-news.webp';
+import bannerNewsMobileImage from 'assets/images/banner-images/banner-news-mobile.webp';
 import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
 import bannerAllFeatureImageMobile from 'assets/images/banner-images/banner_all_feature-mobile.webp';
 import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
@@ -461,7 +462,7 @@ export const funBanners = [
     label: '',
     value: 2,
     image: bannerNewsImage,
-    mobileImage: bannerNewsImage,
+    mobileImage: bannerNewsMobileImage,
     imageStyle: { objectFit: 'fill' },
     href: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
     alt: '',
@@ -735,7 +736,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vnexpress',
-    value: 1,
+    value: 2,
     href: 'https://vnexpress.net/fun-studio-tien-phong-xu-huong-chup-anh-photobooth-4857200.html',
     image: baoVnexpressImage,
     logo: vnexpressLogoImage,
@@ -743,7 +744,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'cafebiz',
-    value: 2,
+    value: 3,
     href: 'https://cafebiz.vn/fun-studio-giai-phap-kinh-doanh-photobooth-chi-phi-thap-loi-nhuan-cao-17625030519422388.chn',
     image: baoCafebizImage,
     logo: cafebizLogoImage,
@@ -751,7 +752,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'kenh14',
-    value: 3,
+    value: 4,
     href: 'https://kenh14.vn/bat-mi-diem-hen-cua-gioi-tre-ha-thanh-dao-nay-cu-den-la-rinh-ve-vo-van-anh-song-ao-215250305165008722.chn',
     image: baoKenh14Image,
     logo: kenh14LogoImage,
@@ -759,7 +760,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'diana',
-    value: 4,
+    value: 5,
     href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx/',
     image: dianaFacebookEventImage,
     logo: dianaLogoImage,
@@ -767,7 +768,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vtv',
-    value: 5,
+    value: 6,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: vtv1LogoImage,
@@ -776,7 +777,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 6,
+    value: 7,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: congluanLogoImage,
@@ -785,7 +786,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'radio 4 teen',
-    value: 7,
+    value: 8,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
     video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,

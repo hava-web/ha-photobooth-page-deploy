@@ -46,28 +46,40 @@ const BannerSlider: React.FC<any> = ({ banners }) => {
           return (
             <SwiperSlide className="swiper-slide" key={`${item?.value}`}>
               <div title={item?.label} className="swiper-slide-wrapper">
-                <picture>
-                  {!!item?.mobileImage && (
-                    <source
-                      srcSet={item?.mobileImage?.src}
-                      media="(max-width: 767px)"
-                    />
-                  )}
-                  {item?.href ? (
-                    <Link
-                      href={`#${item?.href}`}
-                      to={item?.href}
-                      spy={true}
-                      smooth={true}
-                      offset={300}
-                      duration={500}
-                    >
-                      {imageCom as any}
-                    </Link>
-                  ) : (
-                    imageCom
-                  )}
-                </picture>
+                {item?.href ? (
+                  <Link
+                    href={`#${item?.href}`}
+                    to={item?.href}
+                    spy={true}
+                    smooth={true}
+                    offset={300}
+                    duration={500}
+                  >
+                    {
+                      (
+                        <picture>
+                          {!!item?.mobileImage && (
+                            <source
+                              srcSet={item?.mobileImage?.src}
+                              media="(max-width: 767px)"
+                            />
+                          )}
+                          {imageCom}
+                        </picture>
+                      ) as any
+                    }
+                  </Link>
+                ) : (
+                  <picture>
+                    {!!item?.mobileImage && (
+                      <source
+                        srcSet={item?.mobileImage?.src}
+                        media="(max-width: 767px)"
+                      />
+                    )}
+                    {imageCom}
+                  </picture>
+                )}
                 <p className="label-title">{item?.label}</p>
                 {!!item?.label && <div className="shadow-white-bg" />}
               </div>
