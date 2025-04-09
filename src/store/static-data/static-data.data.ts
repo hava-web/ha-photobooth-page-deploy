@@ -48,12 +48,10 @@ import funKhoaiChauHungYenImage from 'assets/images/stores/fun_khoai_chau_hung_y
 import funNguyenThiLuuBacGiangImage from 'assets/images/stores/fun_nguyen_thi_luu_bac_giang.webp';
 import funDiAnBinhDuongImage from 'assets/images/stores/fun_di_an_binh_duong.webp';
 import funThuDucHCMImage from 'assets/images/stores/fun_thu_duc_hcm.webp';
-
 import funBinhDuongThuDauMotImage from 'assets/images/stores/fun_binh_duong_thu_dau_mot.webp';
 import funGiaLamTrauQuyImage from 'assets/images/stores/fun_gia_lam_trau_quy.webp';
 import funDongAnhUyNoImage from 'assets/images/stores/fun_dong_anh_uy_no.webp';
 import funCanLocHaTinhImage from 'assets/images/stores/fun_can_loc_ha_tinh.webp';
-
 import funDucTrongLamDongImage from 'assets/images/stores/fun_duc_trong_lam_dong.webp';
 import funLeLoiHungYenImage from 'assets/images/stores/fun_le_loi_hung_yen.webp';
 import funLyTuTrongLamDongImage from 'assets/images/stores/fun_ly_tu_trong_lam_dong.webp';
@@ -61,9 +59,10 @@ import funMyHaoHungYenImage from 'assets/images/stores/fun_my_hao_hung_yen.webp'
 import funNgoQuyenHaiPhongImage from 'assets/images/stores/fun_ngo_quyen_hai_phong.webp';
 import funTranDaiNghiaHaNoiImage from 'assets/images/stores/fun_tran_dai_nghia_ha_noi.webp';
 import funCamXuyenHaTinhImage from 'assets/images/stores/fun_cam_xuyen_ha_tinh.webp';
-
 import funKienAnHaiPhongImage from 'assets/images/stores/kien_an_hai_phong.webp';
 import funSocSonHaNoiImage from 'assets/images/stores/soc_son_ha_noi.webp';
+import funCongHoaTanBinhHCMImage from 'assets/images/stores/conghoa_tanbinh_hcm.webp';
+import funCoopmartBienHoaDongNaiImage from 'assets/images/stores/coopmart_bienhoa_dongnai.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -109,6 +108,7 @@ export enum StoreLocationType {
   HA_TINH = 'ha-tinh',
 
   LAM_DONG = 'lam-dong',
+  DONG_NAI = 'dong-nai',
 
   OTHER = 'other',
 }
@@ -430,7 +430,7 @@ export const funStores: Array<StoreType> = [
   {
     label: '26 Trần Thành Ngọ, Kiến An, Hải Phòng',
     labelIndex: 'Fun Studio Kiến An',
-    value: 27,
+    value: 29,
     alt: 'Fun Studio Kiến An',
     image: funKienAnHaiPhongImage,
     storeLocation: StoreLocationType.HAIPHONG,
@@ -440,10 +440,30 @@ export const funStores: Array<StoreType> = [
     label:
       '42 đường vành đai khu đô thị Sóc Sơn, tổ 3, thị trấn Sóc Sơn, huyện Sóc Sơn, thành phố Hà Nội',
     labelIndex: 'Fun Studio Sóc Sơn',
-    value: 28,
+    value: 30,
     alt: 'Fun Studio Sóc Sơn',
     image: funSocSonHaNoiImage,
     storeLocation: StoreLocationType.HANOI,
+    href: '#',
+  },
+
+  {
+    label:
+      'Tầng 4-Lotte Cinema Cộng Hoà, Toà nhà Pico Plaza số 20 Đ. Cộng Hòa, Phường 12, Tân Bình, Hồ Chí Minh',
+    labelIndex: 'Fun Studio Cộng Hoà',
+    value: 31,
+    alt: 'Fun Studio Cộng Hoà',
+    image: funCongHoaTanBinhHCMImage,
+    storeLocation: StoreLocationType.HCM,
+    href: '#',
+  },
+  {
+    label: '121 Phạm Văn Thuận, Phường Tân Tiến, Thành Phố Biên Hòa, Đồng Nai',
+    labelIndex: 'Fun Studio CO.OPMART BIÊN HÒA',
+    value: 32,
+    alt: 'Fun Studio CO.OPMART BIÊN HÒA',
+    image: funCoopmartBienHoaDongNaiImage,
+    storeLocation: StoreLocationType.DONG_NAI,
     href: '#',
   },
 ];
