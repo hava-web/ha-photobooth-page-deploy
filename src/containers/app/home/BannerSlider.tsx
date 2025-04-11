@@ -4,6 +4,7 @@ import { isEqualVal } from 'helpers/string.helper';
 import { map, range, size } from 'lodash';
 import React, { useCallback, useState } from 'react';
 import { Link } from 'react-scroll';
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
 const BannerSlider: React.FC<any> = ({ banners }) => {
@@ -25,11 +26,15 @@ const BannerSlider: React.FC<any> = ({ banners }) => {
         className="swiper"
         spaceBetween={0}
         scrollbar={{ draggable: true }}
-        autoplay={{ delay: 5000 }}
         onSwiper={setNewsSwiper}
         onRealIndexChange={(swiperData) =>
           setNewsSwiperIndex(swiperData?.realIndex || 0)
         }
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+        }}
         loop
       >
         {map(banners, (item) => {
