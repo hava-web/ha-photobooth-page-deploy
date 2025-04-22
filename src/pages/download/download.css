@@ -8,6 +8,10 @@
 
 .page-single__download-actions {
   margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .page-single__download-actions button {
@@ -20,10 +24,6 @@
   font-weight: 700;
   line-height: 2.4rem;
   text-align: center;
-}
-
-.page-single__download-actions > *:not(:last-child) {
-  margin-right: 2rem;
 }
 
 .machine-info-text {
