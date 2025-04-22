@@ -1,0 +1,1 @@
+export const TIME_MASTER_LOADING_ALIVE = 3000;

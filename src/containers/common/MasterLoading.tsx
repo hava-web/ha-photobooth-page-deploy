@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'hooks/useTranslation';
-import Image from 'components/image/Image';
-import { useSpring, animated } from '@react-spring/web';
+import { animated, useSpring } from '@react-spring/web';
 import funlogo from 'assets/images/fun_studio_logo_pink.png';
+import Image from 'components/image/Image';
+import { TIME_MASTER_LOADING_ALIVE } from 'constants/common.const';
+import { useTranslation } from 'hooks/useTranslation';
+import React, { useEffect, useState } from 'react';
 
 const MasterLoading = () => {
   useTranslation();
@@ -20,7 +21,7 @@ const MasterLoading = () => {
         document.body.style.overflow = 'auto';
       }
       setIsFirstLoading(false);
-    }, 3000);
+    }, TIME_MASTER_LOADING_ALIVE);
   }, []);
 
   return (

@@ -1,14 +1,17 @@
 import Image from 'components/image/Image';
+import { TIME_MASTER_LOADING_ALIVE } from 'constants/common.const';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 import { isEqualVal } from 'helpers/string.helper';
 import { map, range, size } from 'lodash';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-scroll';
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 
 const BannerSlider: React.FC<any> = ({ banners }) => {
   const [newsSwiper, setNewsSwiper] = useState<SwiperClass | null>(null);
   const [newsSwiperIndex, setNewsSwiperIndex] = useState(0);
+  const [isDelayAutoPlay, setIsDelayAutoPlay] = useState(true);
 
   const handleSlideTo = useCallback(
     (index: number) => {
@@ -19,17 +22,27 @@ const BannerSlider: React.FC<any> = ({ banners }) => {
     [newsSwiper],
   );
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsDelayAutoPlay(false);
+    }, TIME_MASTER_LOADING_ALIVE);
+  }, []);
+
   return (
     <section id={HOME_PAGE_SECTIONS.BANNER_SLIDER} className="banner-slider">
       <Swiper
         className="swiper"
         spaceBetween={0}
         scrollbar={{ draggable: true }}
-        autoplay={{ delay: 5000 }}
         onSwiper={setNewsSwiper}
         onRealIndexChange={(swiperData) =>
           setNewsSwiperIndex(swiperData?.realIndex || 0)
         }
+        modules={[Autoplay]}
+        autoplay={{
+          delay: isDelayAutoPlay ? 2000000 : 2000,
+          disableOnInteraction: false,
+        }}
         loop
       >
         {map(banners, (item) => {
