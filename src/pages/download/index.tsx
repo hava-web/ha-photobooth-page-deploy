@@ -10,6 +10,7 @@ import { downloadFile } from 'api/common.api';
 import { isEqualVal, jsonParse } from 'helpers/string.helper';
 import {
   CONTENT_TYPES,
+  FILE_GIF_DOWNLOAD,
   FILE_IMAGE_DOWNLOAD,
   FILE_VIDEO_DOWNLOAD,
 } from 'constants/file.const';
@@ -50,6 +51,10 @@ export default function DownloadFile({
     isEqualVal(o?.contentType, CONTENT_TYPES.MP4),
   )?.url;
 
+  const gifTakenUrl = find(downloadData?.resources, (o) =>
+    isEqualVal(o?.contentType, CONTENT_TYPES.GIF),
+  )?.url;
+
   const handleDownloadImage = async () => {
     setLoading(true);
     await downloadFile(
@@ -64,6 +69,11 @@ export default function DownloadFile({
       videoRecordUrl,
       `${FILE_VIDEO_DOWNLOAD}-${moment().unix()}`,
     );
+    setLoading(false);
+  };
+  const handleDownloadGif = async () => {
+    setLoading(true);
+    await downloadFile(gifTakenUrl, `${FILE_GIF_DOWNLOAD}-${moment().unix()}`);
     setLoading(false);
   };
 
@@ -169,6 +179,14 @@ export default function DownloadFile({
                     disabled={!videoRecordUrl || loading}
                   >
                     {t('common:downloadVideo')}
+                  </Button>
+                )}
+                {gifTakenUrl && (
+                  <Button
+                    onClick={handleDownloadGif}
+                    disabled={!gifTakenUrl || loading}
+                  >
+                    {t('common:downloadGif')}
                   </Button>
                 )}
               </div>
