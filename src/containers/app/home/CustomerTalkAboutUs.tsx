@@ -85,18 +85,19 @@ const CustomerTalkAboutUs = () => {
                       />
                     </Link>
                   )}
-
-                  <p className="news-swiper-title">
-                    {news?.logo ? (
-                      <Image
-                        className="mx-auto"
-                        src={news?.logo}
-                        alt={news?.alt}
-                      />
-                    ) : (
-                      news?.label
-                    )}
-                  </p>
+                  <Link href={news?.href} target="blank">
+                    <p className="news-swiper-title">
+                      {news?.logo ? (
+                        <Image
+                          className="mx-auto"
+                          src={news?.logo}
+                          alt={news?.alt}
+                        />
+                      ) : (
+                        news?.label
+                      )}
+                    </p>
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}

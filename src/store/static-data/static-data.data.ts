@@ -755,8 +755,17 @@ export const NEWS_MESSAGES = [
     alt: 'vtv news',
   },
   {
-    label: 'vnexpress',
+    label: 'báo công luận',
     value: 2,
+    href: 'https://congluan.vn/thu-vui-chup-anh-lay-ngay-hut-gen-z-10286365.html',
+    video: 'https://www.youtube.com/embed/nkewKtTuHts?si=fkPGFrjVnNQhaKP2',
+    image: congluanImage,
+    logo: congluanLogoImage,
+    alt: 'cong luan news',
+  },
+  {
+    label: 'vnexpress',
+    value: 3,
     href: 'https://vnexpress.net/fun-studio-tien-phong-xu-huong-chup-anh-photobooth-4857200.html',
     image: baoVnexpressImage,
     logo: vnexpressLogoImage,
@@ -764,7 +773,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'cafebiz',
-    value: 3,
+    value: 4,
     href: 'https://cafebiz.vn/fun-studio-giai-phap-kinh-doanh-photobooth-chi-phi-thap-loi-nhuan-cao-17625030519422388.chn',
     image: baoCafebizImage,
     logo: cafebizLogoImage,
@@ -772,7 +781,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'kenh14',
-    value: 4,
+    value: 5,
     href: 'https://kenh14.vn/bat-mi-diem-hen-cua-gioi-tre-ha-thanh-dao-nay-cu-den-la-rinh-ve-vo-van-anh-song-ao-215250305165008722.chn',
     image: baoKenh14Image,
     logo: kenh14LogoImage,
@@ -780,15 +789,15 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'diana',
-    value: 5,
-    href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx/',
+    value: 6,
+    href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx',
     image: dianaFacebookEventImage,
     logo: dianaLogoImage,
     alt: 'diana news',
   },
   {
     label: 'vtv',
-    value: 6,
+    value: 7,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: vtv1LogoImage,
@@ -797,7 +806,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 7,
+    value: 8,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: congluanLogoImage,
@@ -806,7 +815,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'radio 4 teen',
-    value: 8,
+    value: 9,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
     video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,
