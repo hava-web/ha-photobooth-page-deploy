@@ -63,6 +63,14 @@ import funKienAnHaiPhongImage from 'assets/images/stores/kien_an_hai_phong.webp'
 import funSocSonHaNoiImage from 'assets/images/stores/soc_son_ha_noi.webp';
 import funCongHoaTanBinhHCMImage from 'assets/images/stores/conghoa_tanbinh_hcm.webp';
 import funCoopmartBienHoaDongNaiImage from 'assets/images/stores/coopmart_bienhoa_dongnai.webp';
+import funLamHaLamDongImage from 'assets/images/stores/lam_ha_lam_dong.webp';
+import funPhanThietBinhThuanImage from 'assets/images/stores/phan_thiet_binh_thuan.webp';
+import funPhucYenVinhPhucImage from 'assets/images/stores/phuc_yen_vinh_phuc.webp';
+import funTuSonBacNinhImage from 'assets/images/stores/tu_son_bac_ninh.webp';
+import funHiepHoaBacGiangImage from 'assets/images/stores/hiep_hoa_bac_giang.webp';
+import funBienHoaDongNaiImage from 'assets/images/stores/bien_hoa_dong_nai.webp';
+import funChiLinhHaiDuongImage from 'assets/images/stores/chi_linh_hai_duong.webp';
+import funDongTrieuQuangNinhImage from 'assets/images/stores/dong_trieu_quang_ninh.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -104,8 +112,11 @@ export enum StoreLocationType {
   HAI_DUONG = 'hai-duong',
   HUNG_YEN = 'hung-yen',
   BAC_GIANG = 'bac-giang',
+  BAC_NINH = 'bac-ninh',
   BINH_DUONG = 'binh-duong',
+  BINH_THUAN = 'binh-thuan',
   HA_TINH = 'ha-tinh',
+  QUANG_NINH = 'quang-ninh',
 
   LAM_DONG = 'lam-dong',
   DONG_NAI = 'dong-nai',
@@ -446,7 +457,6 @@ export const funStores: Array<StoreType> = [
     storeLocation: StoreLocationType.HANOI,
     href: '#',
   },
-
   {
     label:
       'Tầng 4-Lotte Cinema Cộng Hoà, Toà nhà Pico Plaza số 20 Đ. Cộng Hòa, Phường 12, Tân Bình, Hồ Chí Minh',
@@ -464,6 +474,81 @@ export const funStores: Array<StoreType> = [
     alt: 'Fun Studio CO.OPMART BIÊN HÒA',
     image: funCoopmartBienHoaDongNaiImage,
     storeLocation: StoreLocationType.DONG_NAI,
+    href: '#',
+  },
+  {
+    label: 'Lô 19, khu đô thị phía Nam, Thị Trấn Thắng, Hiệp Hoà, Bắc Giang',
+    labelIndex: 'Fun Studio Hiệp Hòa',
+    value: 33,
+    alt: 'Fun Studio Hiệp Hòa',
+    image: funHiepHoaBacGiangImage,
+    storeLocation: StoreLocationType.BAC_GIANG,
+    href: '#',
+  },
+  {
+    label:
+      '105 Tuyên Quang, P. Phú Thuỷ , Thành phố Phan Thiết, Tỉnh Bình Thuận',
+    labelIndex: 'Fun Studio Phú Thủy',
+    value: 34,
+    alt: 'Fun Studio Phú Thủy',
+    image: funPhanThietBinhThuanImage,
+    storeLocation: StoreLocationType.BINH_THUAN,
+    href: '#',
+  },
+  {
+    label: 'Phố chợ Cột, phường Đức Chính, thành phố Đông Triều, Quảng Ninh',
+    labelIndex: 'Fun Studio Đông Triều',
+    value: 35,
+    alt: 'Fun Studio Đông Triều',
+    image: funDongTrieuQuangNinhImage,
+    storeLocation: StoreLocationType.QUANG_NINH,
+    href: '#',
+  },
+  {
+    label: '117 Nguyễn Văn Linh, phường Xuân Hoà, TP Phúc Yên, Vĩnh Phúc',
+    labelIndex: 'Fun Studio Phúc Yên',
+    value: 36,
+    alt: 'Fun Studio Phúc Yên',
+    image: funPhucYenVinhPhucImage,
+    storeLocation: StoreLocationType.VINH_PHUC,
+    href: '#',
+  },
+  {
+    label: 'số 8, ngõ 39 Bà Triệu, Sao Đỏ, Chí Linh, Hải Dương',
+    labelIndex: 'Fun Studio Chí Linh',
+    value: 37,
+    alt: 'Fun Studio Chí Linh',
+    image: funChiLinhHaiDuongImage,
+    storeLocation: StoreLocationType.HAI_DUONG,
+    href: '#',
+  },
+  {
+    label:
+      'CO.OPMART BIÊN HÒA. số 121 Phạm Văn Thuận, Phường Tân Tiến, Thành Phố Biên Hòa, Đồng Nai',
+    labelIndex: 'Fun Studio Biên Hòa',
+    value: 38,
+    alt: 'Fun Studio Biên Hòa',
+    image: funBienHoaDongNaiImage,
+    storeLocation: StoreLocationType.DONG_NAI,
+    href: '#',
+  },
+  {
+    label:
+      'Gần cửa hàng thế giới số 360.vn, Nguyễn Văn Cừ, Phù Khê, Từ Sơn, Bắc Ninh',
+    labelIndex: 'Fun Studio Từ Sơn',
+    value: 39,
+    alt: 'Fun Studio Từ Sơn',
+    image: funTuSonBacNinhImage,
+    storeLocation: StoreLocationType.BAC_NINH,
+    href: '#',
+  },
+  {
+    label: 'Khu đô thị mới Đinh Văn, Lâm Hà, tỉnh Lâm Đồng',
+    labelIndex: 'Fun Studio Lâm Hà',
+    value: 40,
+    alt: 'Fun Studio Lâm Hà',
+    image: funLamHaLamDongImage,
+    storeLocation: StoreLocationType.LAM_DONG,
     href: '#',
   },
 ];
