@@ -10,8 +10,7 @@ type FulfilledAction = ReturnType<GenericAsyncThunk['fulfilled']>;
 
 const initialState: AppStateModel = {
   appLoading: false,
-  rightModal: null,
-  confirmModal: null,
+  modalState: null,
 };
 
 function isRejectedAction(action: AnyAction): action is RejectedAction {

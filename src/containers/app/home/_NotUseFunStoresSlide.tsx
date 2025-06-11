@@ -9,7 +9,7 @@ import { useTranslation } from 'hooks/useTranslation';
 import storeIcon from 'assets/icons/store.png';
 import { OptionProps } from 'models/common.model';
 import { isEqualVal } from 'helpers/string.helper';
-import { StoreLocationType } from 'store/static-data/static-data.data';
+import { ProvinceTypes } from 'store/static-data/static-data.data';
 import leftArrowIcon from 'assets/icons/left_arrow.png';
 import rightArrowIcon from 'assets/icons/right_arrow.png';
 
@@ -18,15 +18,15 @@ type FunStoresProps = {
 };
 
 const listStoreLocationOfType = [
-  StoreLocationType.HANOI,
-  StoreLocationType.HCM,
-  StoreLocationType.OTHER,
+  ProvinceTypes.HANOI,
+  ProvinceTypes.HCM,
+  ProvinceTypes.OTHER,
 ];
 
-const listStoreLocationName = {
-  [StoreLocationType.HANOI]: 'Hà Nội',
-  [StoreLocationType.HCM]: 'TP Hồ Chí Minh',
-  [StoreLocationType.OTHER]:
+const listProvinceNames = {
+  [ProvinceTypes.HANOI]: 'Hà Nội',
+  [ProvinceTypes.HCM]: 'TP Hồ Chí Minh',
+  [ProvinceTypes.OTHER]:
     'Các tỉnh khác: \nVĩnh Phúc, Phú Thọ, Hải Dương, Hải Phòng, Hưng Yên, \n Bắc Giang, Hà Tĩnh, Thừa Thiên Huế, Bình Dương...',
 };
 
@@ -34,21 +34,21 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   const { T } = useTranslation();
 
   const [storeSwipers, setStoreSwipers] = useState<{
-    [key in StoreLocationType]: SwiperClass | null;
+    [key in ProvinceTypes]: SwiperClass | null;
   }>();
   const [canPrevs, setCanPrevs] = useState<{
-    [key in StoreLocationType]: boolean;
+    [key in ProvinceTypes]: boolean;
   }>();
   const [canNexts, setCanNexts] = useState<{
-    [key in StoreLocationType]: boolean;
+    [key in ProvinceTypes]: boolean;
   }>({
-    [StoreLocationType.HANOI]: true,
-    [StoreLocationType.HCM]: true,
-    [StoreLocationType.OTHER]: true,
+    [ProvinceTypes.HANOI]: true,
+    [ProvinceTypes.HCM]: true,
+    [ProvinceTypes.OTHER]: true,
   } as any);
 
   const handleStorePrev = useCallback(
-    (location: StoreLocationType) => {
+    (location: ProvinceTypes) => {
       setCanNexts((s) => ({ ...(s as any), [location]: true }));
       if (storeSwipers?.[location]) {
         storeSwipers?.[location]?.slidePrev();
@@ -61,7 +61,7 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   );
 
   const handleStoreNext = useCallback(
-    (location: StoreLocationType) => {
+    (location: ProvinceTypes) => {
       setCanPrevs((s) => ({ ...(s as any), [location]: true }));
       if (storeSwipers?.[location]) {
         storeSwipers?.[location]?.slideNext();
@@ -91,7 +91,7 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
   );
 
   const handleChangeActiveIndex = useCallback(
-    (location: StoreLocationType) => {
+    (location: ProvinceTypes) => {
       if (storeSwipers?.[location]) {
         let slidePerView = 4;
         forEach(
@@ -178,7 +178,7 @@ const FunStores: FC<FunStoresProps> = ({ stores = [] }) => {
           return (
             <React.Fragment key={storeLocation}>
               <h3 className="store-location-title">
-                {get(listStoreLocationName, `[${storeLocation}]`, '')}
+                {get(listProvinceNames, `[${storeLocation}]`, '')}
               </h3>
               <div className="store-swiper-wrapper">
                 <Swiper

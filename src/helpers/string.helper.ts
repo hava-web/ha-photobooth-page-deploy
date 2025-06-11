@@ -43,7 +43,7 @@ function isEqualVal(
 }
 
 const includesId = (
-  array: (string | number)[],
+  array: (string | number)[] | undefined,
   id: Parameters<typeof isEqualVal>[0],
 ): boolean => !!size(filter(array, (o) => isEqualVal(o, id)));
 

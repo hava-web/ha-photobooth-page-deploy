@@ -99,7 +99,7 @@ import minhKhueImage from 'assets/images/customers/minh_khue.webp';
 import khanhLyImage from 'assets/images/customers/khanh_ly.webp';
 import { StaticImageData } from 'next/image';
 
-export enum StoreLocationType {
+export enum ProvinceTypes {
   HANOI = 'hn',
   HCM = 'hcm',
   HAIPHONG = 'hp',
@@ -107,8 +107,6 @@ export enum StoreLocationType {
   NGHE_AN = 'nghe-an',
   VINH_PHUC = 'vinh-phuc',
   PHU_THO = 'phu-tho',
-
-  VINH = 'vinh',
   HAI_DUONG = 'hai-duong',
   HUNG_YEN = 'hung-yen',
   BAC_GIANG = 'bac-giang',
@@ -117,30 +115,71 @@ export enum StoreLocationType {
   BINH_THUAN = 'binh-thuan',
   HA_TINH = 'ha-tinh',
   QUANG_NINH = 'quang-ninh',
-
   LAM_DONG = 'lam-dong',
   DONG_NAI = 'dong-nai',
-
   OTHER = 'other',
 }
 
-export const StoreLocationName = {
-  [StoreLocationType.HANOI]: 'Hà Nội',
-  [StoreLocationType.HCM]: 'TP Hồ Chí Minh',
-  [StoreLocationType.HAIPHONG]: 'Hải Phòng',
-  [StoreLocationType.HUE]: 'Huế',
-  [StoreLocationType.NGHE_AN]: 'Nghệ An',
-  [StoreLocationType.VINH_PHUC]: 'Vĩnh Phúc',
-  [StoreLocationType.PHU_THO]: 'Phú Thọ',
-  [StoreLocationType.VINH]: 'Vinh',
-  [StoreLocationType.HAI_DUONG]: 'Hải Dương',
+export enum RegionLocationType {
+  NORTH = 'north',
+  MIDDLE = 'middle',
+  SOUTH = 'south',
+}
 
-  [StoreLocationType.HUNG_YEN]: 'Hưng Yên',
-  [StoreLocationType.BAC_GIANG]: 'Bắc Giang',
-  [StoreLocationType.BINH_DUONG]: 'Bình Dương',
-  [StoreLocationType.HA_TINH]: 'Hà Tĩnh',
+export const RegionLocationName = {
+  [RegionLocationType.NORTH]: 'Miền Bắc',
+  [RegionLocationType.MIDDLE]: 'Miền Trung',
+  [RegionLocationType.SOUTH]: 'Miền Nam',
+};
 
-  [StoreLocationType.OTHER]:
+export const ProvinceOfRegions = {
+  [RegionLocationType.NORTH]: [
+    ProvinceTypes.HANOI,
+    ProvinceTypes.HAI_DUONG,
+    ProvinceTypes.BAC_GIANG,
+    ProvinceTypes.HAIPHONG,
+    ProvinceTypes.VINH_PHUC,
+    ProvinceTypes.PHU_THO,
+    ProvinceTypes.HUNG_YEN,
+    ProvinceTypes.BAC_NINH,
+    ProvinceTypes.QUANG_NINH,
+  ],
+  [RegionLocationType.MIDDLE]: [
+    ProvinceTypes.HUE,
+    ProvinceTypes.NGHE_AN,
+    ProvinceTypes.LAM_DONG,
+    ProvinceTypes.BINH_THUAN,
+    ProvinceTypes.HA_TINH,
+  ],
+  [RegionLocationType.SOUTH]: [
+    ProvinceTypes.HCM,
+    ProvinceTypes.BINH_DUONG,
+    ProvinceTypes.DONG_NAI,
+  ],
+};
+
+export const ProvinceNames = {
+  [ProvinceTypes.HANOI]: 'Hà Nội',
+  [ProvinceTypes.HAI_DUONG]: 'Hải Dương',
+  [ProvinceTypes.BAC_GIANG]: 'Bắc Giang',
+  [ProvinceTypes.HAIPHONG]: 'Hải Phòng',
+  [ProvinceTypes.VINH_PHUC]: 'Vĩnh Phúc',
+  [ProvinceTypes.PHU_THO]: 'Phú Thọ',
+  [ProvinceTypes.HUNG_YEN]: 'Hưng Yên',
+  [ProvinceTypes.BAC_NINH]: 'Bắc ninh',
+  [ProvinceTypes.QUANG_NINH]: 'Quảng ninh',
+
+  [ProvinceTypes.HUE]: 'Huế',
+  [ProvinceTypes.NGHE_AN]: 'Nghệ An',
+  [ProvinceTypes.LAM_DONG]: 'Lâm Đồng',
+  [ProvinceTypes.BINH_THUAN]: 'Bình Thuận',
+  [ProvinceTypes.HA_TINH]: 'Hà Tĩnh',
+
+  [ProvinceTypes.HCM]: 'TP Hồ Chí Minh',
+  [ProvinceTypes.BINH_DUONG]: 'Bình Dương',
+  [ProvinceTypes.DONG_NAI]: 'Đồng Nai',
+
+  [ProvinceTypes.OTHER]:
     'Các tỉnh khác: \nVĩnh Phúc, Phú Thọ, Hải Dương, Hải Phòng, Hưng Yên, \n Bắc Giang, Hà Tĩnh, Thừa Thiên Huế, Bình Dương...',
 };
 
@@ -171,7 +210,7 @@ export type StoreType = {
   value: number;
   alt: string;
   image: StaticImageData;
-  storeLocation: StoreLocationType;
+  storeLocation: ProvinceTypes;
   href: string;
 };
 export const funStores: Array<StoreType> = [
@@ -182,7 +221,7 @@ export const funStores: Array<StoreType> = [
     value: 1,
     alt: 'Fun Studio Complex 01',
     image: funComplex01Image,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -192,7 +231,7 @@ export const funStores: Array<StoreType> = [
     value: 2,
     alt: 'Fun Studio ĐHSP',
     image: funDhspImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -201,7 +240,7 @@ export const funStores: Array<StoreType> = [
     value: 3,
     alt: 'Fun Studio Núi Trúc',
     image: funNuiTrucImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -210,7 +249,7 @@ export const funStores: Array<StoreType> = [
     value: 4,
     alt: 'Fun Studio Vĩnh Phúc',
     image: funVinhPhucImage,
-    storeLocation: StoreLocationType.VINH_PHUC,
+    storeLocation: ProvinceTypes.VINH_PHUC,
     href: '#',
   },
   {
@@ -219,7 +258,7 @@ export const funStores: Array<StoreType> = [
     value: 5,
     alt: 'Fun Studio Việt Trì',
     image: funVietTriImage,
-    storeLocation: StoreLocationType.PHU_THO,
+    storeLocation: ProvinceTypes.PHU_THO,
     href: '#',
   },
   {
@@ -228,7 +267,7 @@ export const funStores: Array<StoreType> = [
     value: 6,
     alt: 'Fun Studio Vinh',
     image: funNgheAnImage,
-    storeLocation: StoreLocationType.NGHE_AN,
+    storeLocation: ProvinceTypes.NGHE_AN,
     href: '#',
   },
   {
@@ -237,7 +276,7 @@ export const funStores: Array<StoreType> = [
     value: 7,
     alt: 'Fun Studio Vinh',
     image: funNgheAn2Image,
-    storeLocation: StoreLocationType.VINH,
+    storeLocation: ProvinceTypes.NGHE_AN,
     href: '#',
   },
   {
@@ -246,7 +285,7 @@ export const funStores: Array<StoreType> = [
     value: 8,
     alt: 'Fun Studio Hải Dương',
     image: funHaiDuongImage,
-    storeLocation: StoreLocationType.HAI_DUONG,
+    storeLocation: ProvinceTypes.HAI_DUONG,
     href: '#',
   },
   {
@@ -255,7 +294,7 @@ export const funStores: Array<StoreType> = [
     value: 9,
     alt: 'Fun Studio Tân Mai',
     image: funTanMaiHNImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -264,7 +303,7 @@ export const funStores: Array<StoreType> = [
     value: 10,
     alt: 'Fun Studio Huế',
     image: funHueImage,
-    storeLocation: StoreLocationType.HUE,
+    storeLocation: ProvinceTypes.HUE,
     href: '#',
   },
   {
@@ -273,7 +312,7 @@ export const funStores: Array<StoreType> = [
     value: 11,
     alt: 'Fun Studio Hải Dương',
     image: funHaiDuong2Image,
-    storeLocation: StoreLocationType.HAI_DUONG,
+    storeLocation: ProvinceTypes.HAI_DUONG,
     href: '#',
   },
   {
@@ -282,7 +321,7 @@ export const funStores: Array<StoreType> = [
     value: 12,
     alt: 'Fun Studio TP Hồ Chí Minh',
     image: funGoVapHCMImage,
-    storeLocation: StoreLocationType.HCM,
+    storeLocation: ProvinceTypes.HCM,
     href: '#',
   },
   {
@@ -292,7 +331,7 @@ export const funStores: Array<StoreType> = [
     value: 13,
     alt: 'Fun Studio Điện Biên Phủ',
     image: funDienBienPhuHCMImage,
-    storeLocation: StoreLocationType.HCM,
+    storeLocation: ProvinceTypes.HCM,
     href: '#',
   },
 
@@ -302,7 +341,7 @@ export const funStores: Array<StoreType> = [
     value: 14,
     alt: 'Fun Studio Hưng Yên',
     image: funKhoaiChauHungYenImage,
-    storeLocation: StoreLocationType.HUNG_YEN,
+    storeLocation: ProvinceTypes.HUNG_YEN,
     href: '#',
   },
   {
@@ -311,7 +350,7 @@ export const funStores: Array<StoreType> = [
     value: 15,
     alt: 'Fun Studio Bắc Giang',
     image: funNguyenThiLuuBacGiangImage,
-    storeLocation: StoreLocationType.BAC_GIANG,
+    storeLocation: ProvinceTypes.BAC_GIANG,
     href: '#',
   },
 
@@ -321,7 +360,7 @@ export const funStores: Array<StoreType> = [
     value: 16,
     alt: 'Fun Studio Bình Dương',
     image: funBinhDuongThuDauMotImage,
-    storeLocation: StoreLocationType.BINH_DUONG,
+    storeLocation: ProvinceTypes.BINH_DUONG,
     href: '#',
   },
   {
@@ -331,7 +370,7 @@ export const funStores: Array<StoreType> = [
     value: 17,
     alt: 'Fun Studio Trâu Quỳ',
     image: funGiaLamTrauQuyImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -340,7 +379,7 @@ export const funStores: Array<StoreType> = [
     value: 18,
     alt: 'Fun Studio Đông Anh',
     image: funDongAnhUyNoImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -349,7 +388,7 @@ export const funStores: Array<StoreType> = [
     value: 19,
     alt: 'Fun Studio Hà Tĩnh',
     image: funCanLocHaTinhImage,
-    storeLocation: StoreLocationType.HA_TINH,
+    storeLocation: ProvinceTypes.HA_TINH,
     href: '#',
   },
   {
@@ -359,7 +398,7 @@ export const funStores: Array<StoreType> = [
     value: 20,
     alt: 'Fun Studio Dĩ An',
     image: funDiAnBinhDuongImage,
-    storeLocation: StoreLocationType.BINH_DUONG,
+    storeLocation: ProvinceTypes.BINH_DUONG,
     href: '#',
   },
   {
@@ -369,7 +408,7 @@ export const funStores: Array<StoreType> = [
     value: 21,
     alt: 'Fun Studio Thủ Đức',
     image: funThuDucHCMImage,
-    storeLocation: StoreLocationType.HCM,
+    storeLocation: ProvinceTypes.HCM,
     href: '#',
   },
   {
@@ -378,7 +417,7 @@ export const funStores: Array<StoreType> = [
     value: 22,
     alt: 'Fun Studio Phố Nối',
     image: funMyHaoHungYenImage,
-    storeLocation: StoreLocationType.HUNG_YEN,
+    storeLocation: ProvinceTypes.HUNG_YEN,
     href: '#',
   },
   {
@@ -387,7 +426,7 @@ export const funStores: Array<StoreType> = [
     value: 23,
     alt: 'Deluxe by Fun Studio',
     image: funTranDaiNghiaHaNoiImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -396,7 +435,7 @@ export const funStores: Array<StoreType> = [
     value: 24,
     alt: 'Fun Studio Hưng Yên',
     image: funLeLoiHungYenImage,
-    storeLocation: StoreLocationType.HUNG_YEN,
+    storeLocation: ProvinceTypes.HUNG_YEN,
     href: '#',
   },
 
@@ -406,7 +445,7 @@ export const funStores: Array<StoreType> = [
     value: 25,
     alt: 'Fun Studio Ngô Quyền',
     image: funNgoQuyenHaiPhongImage,
-    storeLocation: StoreLocationType.HAIPHONG,
+    storeLocation: ProvinceTypes.HAIPHONG,
     href: '#',
   },
   {
@@ -415,7 +454,7 @@ export const funStores: Array<StoreType> = [
     value: 26,
     alt: 'Fun Studio Đức Trọng',
     image: funDucTrongLamDongImage,
-    storeLocation: StoreLocationType.LAM_DONG,
+    storeLocation: ProvinceTypes.LAM_DONG,
     href: '#',
   },
   {
@@ -424,7 +463,7 @@ export const funStores: Array<StoreType> = [
     value: 27,
     alt: 'Fun Studio Bảo Lộc',
     image: funLyTuTrongLamDongImage,
-    storeLocation: StoreLocationType.LAM_DONG,
+    storeLocation: ProvinceTypes.LAM_DONG,
     href: '#',
   },
   {
@@ -434,7 +473,7 @@ export const funStores: Array<StoreType> = [
     value: 28,
     alt: 'Fun Studio Cẩm Xuyên',
     image: funCamXuyenHaTinhImage,
-    storeLocation: StoreLocationType.HA_TINH,
+    storeLocation: ProvinceTypes.HA_TINH,
     href: '#',
   },
 
@@ -444,7 +483,7 @@ export const funStores: Array<StoreType> = [
     value: 29,
     alt: 'Fun Studio Kiến An',
     image: funKienAnHaiPhongImage,
-    storeLocation: StoreLocationType.HAIPHONG,
+    storeLocation: ProvinceTypes.HAIPHONG,
     href: '#',
   },
   {
@@ -454,7 +493,7 @@ export const funStores: Array<StoreType> = [
     value: 30,
     alt: 'Fun Studio Sóc Sơn',
     image: funSocSonHaNoiImage,
-    storeLocation: StoreLocationType.HANOI,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
   {
@@ -464,7 +503,7 @@ export const funStores: Array<StoreType> = [
     value: 31,
     alt: 'Fun Studio Cộng Hoà',
     image: funCongHoaTanBinhHCMImage,
-    storeLocation: StoreLocationType.HCM,
+    storeLocation: ProvinceTypes.HCM,
     href: '#',
   },
   {
@@ -473,7 +512,7 @@ export const funStores: Array<StoreType> = [
     value: 32,
     alt: 'Fun Studio CO.OPMART BIÊN HÒA',
     image: funCoopmartBienHoaDongNaiImage,
-    storeLocation: StoreLocationType.DONG_NAI,
+    storeLocation: ProvinceTypes.DONG_NAI,
     href: '#',
   },
   {
@@ -482,7 +521,7 @@ export const funStores: Array<StoreType> = [
     value: 33,
     alt: 'Fun Studio Hiệp Hòa',
     image: funHiepHoaBacGiangImage,
-    storeLocation: StoreLocationType.BAC_GIANG,
+    storeLocation: ProvinceTypes.BAC_GIANG,
     href: '#',
   },
   {
@@ -492,7 +531,7 @@ export const funStores: Array<StoreType> = [
     value: 34,
     alt: 'Fun Studio Phú Thủy',
     image: funPhanThietBinhThuanImage,
-    storeLocation: StoreLocationType.BINH_THUAN,
+    storeLocation: ProvinceTypes.BINH_THUAN,
     href: '#',
   },
   {
@@ -501,7 +540,7 @@ export const funStores: Array<StoreType> = [
     value: 35,
     alt: 'Fun Studio Đông Triều',
     image: funDongTrieuQuangNinhImage,
-    storeLocation: StoreLocationType.QUANG_NINH,
+    storeLocation: ProvinceTypes.QUANG_NINH,
     href: '#',
   },
   {
@@ -510,7 +549,7 @@ export const funStores: Array<StoreType> = [
     value: 36,
     alt: 'Fun Studio Phúc Yên',
     image: funPhucYenVinhPhucImage,
-    storeLocation: StoreLocationType.VINH_PHUC,
+    storeLocation: ProvinceTypes.VINH_PHUC,
     href: '#',
   },
   {
@@ -519,7 +558,7 @@ export const funStores: Array<StoreType> = [
     value: 37,
     alt: 'Fun Studio Chí Linh',
     image: funChiLinhHaiDuongImage,
-    storeLocation: StoreLocationType.HAI_DUONG,
+    storeLocation: ProvinceTypes.HAI_DUONG,
     href: '#',
   },
   {
@@ -529,7 +568,7 @@ export const funStores: Array<StoreType> = [
     value: 38,
     alt: 'Fun Studio Biên Hòa',
     image: funBienHoaDongNaiImage,
-    storeLocation: StoreLocationType.DONG_NAI,
+    storeLocation: ProvinceTypes.DONG_NAI,
     href: '#',
   },
   {
@@ -539,7 +578,7 @@ export const funStores: Array<StoreType> = [
     value: 39,
     alt: 'Fun Studio Từ Sơn',
     image: funTuSonBacNinhImage,
-    storeLocation: StoreLocationType.BAC_NINH,
+    storeLocation: ProvinceTypes.BAC_NINH,
     href: '#',
   },
   {
@@ -548,7 +587,7 @@ export const funStores: Array<StoreType> = [
     value: 40,
     alt: 'Fun Studio Lâm Hà',
     image: funLamHaLamDongImage,
-    storeLocation: StoreLocationType.LAM_DONG,
+    storeLocation: ProvinceTypes.LAM_DONG,
     href: '#',
   },
 ];
