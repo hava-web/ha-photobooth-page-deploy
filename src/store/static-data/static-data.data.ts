@@ -71,6 +71,8 @@ import funHiepHoaBacGiangImage from 'assets/images/stores/hiep_hoa_bac_giang.web
 import funBienHoaDongNaiImage from 'assets/images/stores/bien_hoa_dong_nai.webp';
 import funChiLinhHaiDuongImage from 'assets/images/stores/chi_linh_hai_duong.webp';
 import funDongTrieuQuangNinhImage from 'assets/images/stores/dong_trieu_quang_ninh.webp';
+import funCamLeDaNangImage from 'assets/images/stores/fun_cam_le_da_nang.webp';
+import funYenVienGiaLamHaNoiImage from 'assets/images/stores/fun_yen_vien_gia_lam_hn.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -117,6 +119,7 @@ export enum ProvinceTypes {
   QUANG_NINH = 'quang-ninh',
   LAM_DONG = 'lam-dong',
   DONG_NAI = 'dong-nai',
+  DA_NANG = 'da-nang',
   OTHER = 'other',
 }
 
@@ -145,6 +148,7 @@ export const ProvinceOfRegions = {
     ProvinceTypes.QUANG_NINH,
   ],
   [RegionLocationType.MIDDLE]: [
+    ProvinceTypes.DA_NANG,
     ProvinceTypes.HUE,
     ProvinceTypes.NGHE_AN,
     ProvinceTypes.LAM_DONG,
@@ -169,6 +173,7 @@ export const ProvinceNames = {
   [ProvinceTypes.BAC_NINH]: 'Bắc ninh',
   [ProvinceTypes.QUANG_NINH]: 'Quảng ninh',
 
+  [ProvinceTypes.DA_NANG]: 'Đà Nẵng',
   [ProvinceTypes.HUE]: 'Huế',
   [ProvinceTypes.NGHE_AN]: 'Nghệ An',
   [ProvinceTypes.LAM_DONG]: 'Lâm Đồng',
@@ -588,6 +593,24 @@ export const funStores: Array<StoreType> = [
     alt: 'Fun Studio Lâm Hà',
     image: funLamHaLamDongImage,
     storeLocation: ProvinceTypes.LAM_DONG,
+    href: '#',
+  },
+  {
+    label: '257 Phan Đăng Lưu, Khuê Trung, Cẩm Lệ, TP. Đà Nẵng',
+    labelIndex: 'Fun Studio Cẩm Lệ',
+    value: 41,
+    alt: 'Fun Studio Cẩm Lệ',
+    image: funCamLeDaNangImage,
+    storeLocation: ProvinceTypes.DA_NANG,
+    href: '#',
+  },
+  {
+    label: '347 Hà Huy Tập, Yên Viên, Gia Lâm',
+    labelIndex: 'Fun Studio Yên Viên',
+    value: 42,
+    alt: 'Fun Studio Yên Viên',
+    image: funYenVienGiaLamHaNoiImage,
+    storeLocation: ProvinceTypes.HANOI,
     href: '#',
   },
 ];
