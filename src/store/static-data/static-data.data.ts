@@ -73,6 +73,8 @@ import funChiLinhHaiDuongImage from 'assets/images/stores/chi_linh_hai_duong.web
 import funDongTrieuQuangNinhImage from 'assets/images/stores/dong_trieu_quang_ninh.webp';
 import funCamLeDaNangImage from 'assets/images/stores/fun_cam_le_da_nang.webp';
 import funYenVienGiaLamHaNoiImage from 'assets/images/stores/fun_yen_vien_gia_lam_hn.webp';
+import funCangiuocLongAnImage from 'assets/images/stores/fun_can_giuoc_long_an.webp';
+import funQuangTrungBacGiangImage from 'assets/images/stores/fun_quang_trung_bac_giang.webp';
 
 import dianaLogoImage from 'assets/diana/images/logo.png';
 import congluanImage from 'assets/images/home/bao_cong_luan.webp';
@@ -120,6 +122,7 @@ export enum ProvinceTypes {
   LAM_DONG = 'lam-dong',
   DONG_NAI = 'dong-nai',
   DA_NANG = 'da-nang',
+  LONG_AN = 'long-an',
   OTHER = 'other',
 }
 
@@ -159,6 +162,7 @@ export const ProvinceOfRegions = {
     ProvinceTypes.HCM,
     ProvinceTypes.BINH_DUONG,
     ProvinceTypes.DONG_NAI,
+    ProvinceTypes.LONG_AN,
   ],
 };
 
@@ -183,6 +187,7 @@ export const ProvinceNames = {
   [ProvinceTypes.HCM]: 'TP Hồ Chí Minh',
   [ProvinceTypes.BINH_DUONG]: 'Bình Dương',
   [ProvinceTypes.DONG_NAI]: 'Đồng Nai',
+  [ProvinceTypes.LONG_AN]: 'Long An',
 
   [ProvinceTypes.OTHER]:
     'Các tỉnh khác: \nVĩnh Phúc, Phú Thọ, Hải Dương, Hải Phòng, Hưng Yên, \n Bắc Giang, Hà Tĩnh, Thừa Thiên Huế, Bình Dương...',
@@ -611,6 +616,24 @@ export const funStores: Array<StoreType> = [
     alt: 'Fun Studio Yên Viên',
     image: funYenVienGiaLamHaNoiImage,
     storeLocation: ProvinceTypes.HANOI,
+    href: '#',
+  },
+  {
+    label: 'D-LK-45-21 khu T&T Millennia City, Long Hậu, Cần Giuộc, Long An',
+    labelIndex: 'Fun Studio Cần Giuộc',
+    value: 43,
+    alt: 'Fun Studio Cần Giuộc',
+    image: funCangiuocLongAnImage,
+    storeLocation: ProvinceTypes.LONG_AN,
+    href: '#',
+  },
+  {
+    label: 'Đối diện số nhà 1240 TDP Quang Trung, TX chũ, Bắc Giang',
+    labelIndex: 'Fun Studio Bắc Giang',
+    value: 44,
+    alt: 'Fun Studio Bắc Giang',
+    image: funQuangTrungBacGiangImage,
+    storeLocation: ProvinceTypes.BAC_GIANG,
     href: '#',
   },
 ];
