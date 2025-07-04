@@ -49,6 +49,10 @@ export default class MyDocument extends Document<{
           <meta name="google" content="notranslate" />
           <meta name="build-version" content="v1.10.2" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta
+            name="zalo-platform-site-verification"
+            content="RjcJ6RNz0oSnrDKDvyiF1s7Yg1YDb7b2C3Ku"
+          />
         </Head>
         <body>
           <Main />
