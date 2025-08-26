@@ -1,44 +1,49 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { useEffect, useState } from 'react';
-import cx from 'classnames';
-import { NextSeo } from 'next-seo';
-import { find, get, size } from 'lodash';
-import moment from 'moment';
-import { useTranslation } from 'hooks/useTranslation';
-import { GetServerSideProps } from 'next';
 import { downloadFile } from 'api/common.api';
-import { isEqualVal, jsonParse } from 'helpers/string.helper';
+import { getDownloadData } from 'api/photo/download.api';
+import { getUiTemplate } from 'api/ui-template/ui-template.api';
+import funLogoImage from 'assets/images/fun_studio_logo.png';
+import cx from 'classnames';
+import Background from 'components/background/Background';
+import Button from 'components/button/Button';
+import Loader from 'components/loader/Loader';
+import Typography from 'components/typography/Typography';
+import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
 import {
   CONTENT_TYPES,
   FILE_GIF_DOWNLOAD,
   FILE_IMAGE_DOWNLOAD,
   FILE_VIDEO_DOWNLOAD,
 } from 'constants/file.const';
-import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
-import Background from 'components/background/Background';
-import Typography from 'components/typography/Typography';
-import Button from 'components/button/Button';
-import Loader from 'components/loader/Loader';
-import funLogoImage from 'assets/images/fun_studio_logo.png';
 import { QUERY_STRING } from 'constants/route.const';
-import { getDownloadData } from 'api/photo/download.api';
-import { DownloadDataStateModel } from 'models/download.model';
 import { DATE_FORMAT, HOUR_MINUTE_FORMAT } from 'constants/time.const';
-import { getUiTemplate } from 'api/ui-template/ui-template.api';
-import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import { handleUpdateCSSVar } from 'helpers/dom.helper';
+import { isEqualVal, jsonParse } from 'helpers/string.helper';
+import { useTranslation } from 'hooks/useTranslation';
+import { find, get, size } from 'lodash';
+import { DownloadDataStateModel } from 'models/download.model';
+import { UiTemplateModel } from 'models/ui-template/ui-template.model';
+import moment from 'moment';
+import { GetServerSideProps } from 'next';
+import { NextSeo } from 'next-seo';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 type DownloadFileProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
 };
 
 export default function DownloadFile({
+  transactionId,
   downloadData,
   errorData,
   uiTemplateData,
 }: DownloadFileProps) {
   const { t, T } = useTranslation();
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname(); // e.g. "/products/123"
+  const searchParams = useSearchParams(); // e.g. ?ref=home
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
@@ -75,6 +80,15 @@ export default function DownloadFile({
     setLoading(true);
     await downloadFile(gifTakenUrl, `${FILE_GIF_DOWNLOAD}-${moment().unix()}`);
     setLoading(false);
+  };
+
+  const handleScanQRAndEarnPoint = async () => {
+    const fullUrl = `${
+      process.env.NEXT_PUBLIC_APP_URL
+    }${pathname}?${searchParams.toString()}`;
+    router.push(
+      `${process.env.NEXT_PUBLIC_ZMA_APP_URL}&${QUERY_STRING.TRANSACTION}=${transactionId}&${QUERY_STRING.ACTION}=${QUERY_STRING?.ACTION_ID.SYNC_TRANSACTION}&${QUERY_STRING.URL}=${fullUrl}`,
+    );
   };
 
   const logoImage = uiTemplateData?.logoImageUrl || funLogoImage?.src;
@@ -190,6 +204,15 @@ export default function DownloadFile({
                   </Button>
                 )}
               </div>
+              <div className="page-single__download-actions">
+                <Button
+                  color="default"
+                  onClick={handleScanQRAndEarnPoint}
+                  className="!w-fit px-2"
+                >
+                  {t('common:scanQRAndEarnPoint')}
+                </Button>
+              </div>
               <Typography
                 variant={TYPOGRAPHY_VARIANTS.SMALL}
                 className="text-center machine-info-text"
@@ -232,6 +255,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   } catch (err) {
     return {
       props: {
+        transactionId,
         downloadData: null,
         errorData: JSON.parse(JSON.stringify(err)),
       },

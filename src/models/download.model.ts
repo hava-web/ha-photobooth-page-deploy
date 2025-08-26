@@ -25,6 +25,7 @@ export type GetDownloadDataResponseModel = {
 };
 
 export interface DownloadDataStateModel {
+  transactionId: string;
   downloadData: DownloadModel | null;
   errorData: any;
   appTheme: CustomizeUIModel;
