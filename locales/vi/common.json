@@ -17,7 +17,8 @@
   "confirm": "xác nhận",
 
   "scanQR": "Quét mã QR",
-  "scanQRAndEarnPoint": "Quét mã & tích điểm",
+  "earnPointAndReceiveGift": "Tích điểm \nĐổi quà",
+  "takePictureButNotEarn": "Chụp xong mà không tích điểm? \nUổng công đẹp!",
 
   "seoWebTitle": "fun studio",
   "uploadSuccess": "tải ảnh lên thành công",

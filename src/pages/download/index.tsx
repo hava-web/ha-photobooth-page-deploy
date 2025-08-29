@@ -26,8 +26,8 @@ import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import FloatingEarnPointButtons from './FloatingEarnPointButtons';
 
 type DownloadFileProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
@@ -41,9 +41,6 @@ export default function DownloadFile({
 }: DownloadFileProps) {
   const { t, T } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const pathname = usePathname(); // e.g. "/products/123"
-  const searchParams = useSearchParams(); // e.g. ?ref=home
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
@@ -80,15 +77,6 @@ export default function DownloadFile({
     setLoading(true);
     await downloadFile(gifTakenUrl, `${FILE_GIF_DOWNLOAD}-${moment().unix()}`);
     setLoading(false);
-  };
-
-  const handleScanQRAndEarnPoint = async () => {
-    const fullUrl = `${
-      process.env.NEXT_PUBLIC_APP_URL
-    }${pathname}?${searchParams.toString()}`;
-    router.push(
-      `${process.env.NEXT_PUBLIC_ZMA_APP_URL}&${QUERY_STRING.TRANSACTION}=${transactionId}&${QUERY_STRING.ACTION}=${QUERY_STRING?.ACTION_ID.SYNC_TRANSACTION}&${QUERY_STRING.URL}=${fullUrl}`,
-    );
   };
 
   const logoImage = uiTemplateData?.logoImageUrl || funLogoImage?.src;
@@ -149,6 +137,7 @@ export default function DownloadFile({
             </Typography>
           ) : (
             <>
+              <FloatingEarnPointButtons transactionId={transactionId} />
               {videoRecordUrl ? (
                 <video
                   className="page-single__download-result-image"
@@ -203,15 +192,6 @@ export default function DownloadFile({
                     {t('common:downloadGif')}
                   </Button>
                 )}
-              </div>
-              <div className="page-single__download-actions">
-                <Button
-                  color="default"
-                  onClick={handleScanQRAndEarnPoint}
-                  className="!w-fit px-2"
-                >
-                  {t('common:scanQRAndEarnPoint')}
-                </Button>
               </div>
               <Typography
                 variant={TYPOGRAPHY_VARIANTS.SMALL}
