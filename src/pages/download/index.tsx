@@ -128,6 +128,9 @@ export default function DownloadFile({
           >
             {sloganText}
           </Typography>
+          {!!downloadData && (
+            <FloatingEarnPointButtons transactionId={transactionId} />
+          )}
           {!downloadData || !!downloadData?.isExpired ? (
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
@@ -137,7 +140,6 @@ export default function DownloadFile({
             </Typography>
           ) : (
             <>
-              <FloatingEarnPointButtons transactionId={transactionId} />
               {videoRecordUrl ? (
                 <video
                   className="page-single__download-result-image"
