@@ -23,6 +23,7 @@ const TermsOfUse: PageWithLayout &
     <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">Về tất cả c&aacute;c nội dung do m&igrave;nh tạo, gửi, đăng k&yacute; khi sử dụng c&aacute;c dịch vụ, tiện &iacute;ch tr&ecirc;n Ứng dụng Fun.</span></p>
   </li>
 </ul>
+<br />
 <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt; font-family: 'Times New Roman', serif;">Tổ chức, c&aacute; nh&acirc;n sử dụng dịch vụ, tiện &iacute;ch tr&ecirc;n Ứng dụng Fun kh&ocirc;ng được thực hiện những h&agrave;nh vi sau:&nbsp;</span></p>
 <ul style="margin-top: 0px; margin-bottom: 0px; padding-inline-start: 48px;">
   <li style="font-size: 13pt; font-family: 'Times New Roman', serif;">
@@ -44,6 +45,7 @@ const TermsOfUse: PageWithLayout &
     <p style="line-height: 1.656; text-align: justify; background-color: #ffffff; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">C&aacute;c h&agrave;nh vi kh&aacute;c theo quy định của ph&aacute;p luật.</span></p>
   </li>
 </ul>
+<br />
 <p style="line-height: 1.656; text-align: justify; background-color: #ffffff; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 12pt; font-family: 'Times New Roman', serif;">Việc vi phạm Điều Khoản Dịch Vụ n&agrave;y c&oacute; thể dẫn tới một số h&agrave;nh động, bao gồm bất kỳ hoặc tất cả c&aacute;c h&agrave;nh động sau:</span></p>
 <ul style="margin-top: 0px; margin-bottom: 0px; padding-inline-start: 48px;">
   <li style="font-size: 12pt; font-family: 'Times New Roman', serif;">
@@ -56,7 +58,18 @@ const TermsOfUse: PageWithLayout &
     <p style="line-height: 1.656; text-align: justify; background-color: #ffffff; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 12pt;">C&aacute;c h&agrave;nh động hoặc biện ph&aacute;p chế t&agrave;i kh&aacute;c.</span><strong><span style="font-size: 10.5pt;">&nbsp;</span></strong></p>
   </li>
 </ul>
-<p style="line-height: 1.656; text-align: justify; background-color: #ffffff; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt; font-family: 'Times New Roman', serif;">Trong trường hợp sửa đổi nội dung, c&aacute;c điều khoản v&agrave; điều kiện sử dụng Ứng dụng, c&aacute;c nội dung sửa đổi sẽ được th&ocirc;ng b&aacute;o tr&ecirc;n Ứng dụng. Người sử dụng tiếp tục sử dụng v&agrave; thực hiện c&aacute;c y&ecirc;u cầu dịch vụ, tiện &iacute;ch tr&ecirc;n Ứng dụng c&oacute; nghĩa l&agrave; đ&atilde; chấp nhận c&aacute;c sửa đổi đ&oacute;.</span></p>`;
+<br />
+<p style="line-height: 1.656; text-align: justify; background-color: #ffffff; margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt; font-family: 'Times New Roman', serif;">Trong trường hợp sửa đổi nội dung, c&aacute;c điều khoản v&agrave; điều kiện sử dụng Ứng dụng, c&aacute;c nội dung sửa đổi sẽ được th&ocirc;ng b&aacute;o tr&ecirc;n Ứng dụng. Người sử dụng tiếp tục sử dụng v&agrave; thực hiện c&aacute;c y&ecirc;u cầu dịch vụ, tiện &iacute;ch tr&ecirc;n Ứng dụng c&oacute; nghĩa l&agrave; đ&atilde; chấp nhận c&aacute;c sửa đổi đ&oacute;.</span></p>
+<br />
+<p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt; font-family: 'Times New Roman', serif;">Nếu Người d&ugrave;ng c&oacute; thắc mắc về Ch&iacute;nh s&aacute;ch n&agrave;y, h&atilde;y li&ecirc;n hệ với ch&uacute;ng t&ocirc;i theo th&ocirc;ng tin sau:&nbsp;</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; padding-inline-start: 48px;">
+  <li style="font-size: 13pt; font-family: 'Times New Roman', serif;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">Số 75 ngõ 381 Nguyễn Khang, P. Yên Hòa, Quận Cầu Giấy, Hà Nội.</span></p>
+  </li>
+  <li style="font-size: 13pt; font-family: 'Times New Roman', serif;">
+    <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">Hotline: 0902969386</span></p>
+  </li>
+</ul>`;
 
   return (
     <section className="policy-and-terms-section">

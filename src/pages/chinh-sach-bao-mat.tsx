@@ -43,7 +43,7 @@ const PrivacyPolicy: PageWithLayout &
 <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt; font-family: 'Times New Roman', serif;">Nếu Người d&ugrave;ng c&oacute; thắc mắc về Ch&iacute;nh s&aacute;ch n&agrave;y, h&atilde;y li&ecirc;n hệ với ch&uacute;ng t&ocirc;i theo th&ocirc;ng tin sau:&nbsp;</span></p>
 <ul style="margin-top: 0px; margin-bottom: 0px; padding-inline-start: 48px;">
   <li style="font-size: 13pt; font-family: 'Times New Roman', serif;">
-    <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">Địa chỉ: Số 37 ng&otilde; 381 Nguyễn Khang, phường Dịch Vọng, quận Cầu Giấy, H&agrave; Nội.</span></p>
+    <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">Số 75 ngõ 381 Nguyễn Khang, P. Yên Hòa, Quận Cầu Giấy, Hà Nội.</span></p>
   </li>
   <li style="font-size: 13pt; font-family: 'Times New Roman', serif;">
     <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt;">Hotline: 0902969386</span></p>
