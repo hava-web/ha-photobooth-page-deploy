@@ -74,7 +74,7 @@ const FAQ: PageWithLayout & NextPage<InferGetStaticPropsType<any>> = ({
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const listFaqRes = await listFaq({});
+    const listFaqRes = await listFaq({ isActive: true });
 
     return {
       props: {
