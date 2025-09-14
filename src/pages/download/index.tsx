@@ -27,14 +27,14 @@ import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useState } from 'react';
-import FloatingEarnPointButtons from './FloatingEarnPointButtons';
+// import FloatingEarnPointButtons from './FloatingEarnPointButtons';
 
 type DownloadFileProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
 };
 
 export default function DownloadFile({
-  transactionId,
+  // transactionId,
   downloadData,
   errorData,
   uiTemplateData,
@@ -128,9 +128,9 @@ export default function DownloadFile({
           >
             {sloganText}
           </Typography>
-          {!!downloadData && (
+          {/* {!!downloadData && (
             <FloatingEarnPointButtons transactionId={transactionId} />
-          )}
+          )} */}
           {!downloadData || !!downloadData?.isExpired ? (
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
