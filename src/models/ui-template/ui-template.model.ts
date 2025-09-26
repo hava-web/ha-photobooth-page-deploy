@@ -13,6 +13,7 @@ export type UiTemplateModel = {
   id: number;
   inputBackgroundColor: string;
   isActive: true;
+  isAllowEarnPoint: boolean;
   logoImageUrl: string;
   name: string;
   noDataTextPageDownload: string;
