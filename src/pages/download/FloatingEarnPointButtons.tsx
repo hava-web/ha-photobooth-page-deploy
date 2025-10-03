@@ -4,8 +4,8 @@ import Typography from 'components/typography/Typography';
 import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
 import { QUERY_STRING } from 'constants/route.const';
 import { useTranslation } from 'hooks/useTranslation';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import React, { useEffect, useMemo, useState } from 'react';
 
 export type FloatingEarnPointButtonsType = {
   transactionId: string;
@@ -15,21 +15,18 @@ const FloatingEarnPointButtons: React.FC<FloatingEarnPointButtonsType> = ({
   transactionId,
 }) => {
   const { t } = useTranslation();
-  const btnZaloRef = useRef<HTMLButtonElement>(null);
   const [isOpenEarnPointPopup, setIsOpenEarnPointPopup] =
     useState<boolean>(true);
-  const router = useRouter();
   const pathname = usePathname(); // e.g. "/products/123"
   const searchParams = useSearchParams(); // e.g. ?ref=home
 
-  const handleScanQRAndEarnPoint = async () => {
+  const zmaEarnPointLink = useMemo(() => {
     const fullUrl = `${
       process.env.NEXT_PUBLIC_APP_URL
     }${pathname}?${searchParams.toString()}`;
-    router.push(
-      `${process.env.NEXT_PUBLIC_ZMA_APP_URL}&${QUERY_STRING.TRANSACTION}=${transactionId}&${QUERY_STRING.ACTION}=${QUERY_STRING?.ACTION_ID.SYNC_TRANSACTION}&${QUERY_STRING.URL}=${fullUrl}`,
-    );
-  };
+
+    return `${process.env.NEXT_PUBLIC_ZMA_APP_URL}&${QUERY_STRING.TRANSACTION}=${transactionId}&${QUERY_STRING.ACTION}=${QUERY_STRING?.ACTION_ID.SYNC_TRANSACTION}&${QUERY_STRING.URL}=${fullUrl}`;
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -53,10 +50,12 @@ const FloatingEarnPointButtons: React.FC<FloatingEarnPointButtonsType> = ({
           <div className={cx('earn-point__pb-popover-arrow')} />
         </div>
       )}
-      <button
-        ref={btnZaloRef}
-        type="button"
-        onClick={handleScanQRAndEarnPoint}
+      <a
+        href={zmaEarnPointLink}
+        target="_blank"
+        rel="noreferrer"
+        // type="button"
+        // onClick={handleScanQRAndEarnPoint}
         className="page-single__btn-earn-point"
       >
         <AssetIcons.GiftFillIcon className="page-single__btn-earn-point--icon" />{' '}
@@ -67,7 +66,7 @@ const FloatingEarnPointButtons: React.FC<FloatingEarnPointButtonsType> = ({
         >
           {t('common:earnPointAndReceiveGift')}
         </Typography>
-      </button>
+      </a>
     </div>
   );
 };
