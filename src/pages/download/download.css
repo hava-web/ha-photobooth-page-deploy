@@ -1,9 +1,9 @@
 .page-single__download-result-image {
-  margin-bottom: 3.5rem;
   max-height: 100%;
   max-width: 100%;
   min-height: 0;
   text-align: center;
+  transform: scale(0.98);
 }
 
 .page-single__download-actions {
@@ -99,5 +99,36 @@
       text-align: center;
       font-size: 1.2rem;
     }
+  }
+}
+
+.swiper-wrapper {
+  width: 100rem;
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    .resource-container {
+      display: flex;
+      align-items: center;
+      transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .resource-container.selected {
+      opacity: 0.7;
+      border: 3px solid #3b82f6;
+      transform: scale(0.97);
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+    }
+  }
+  .check-icon {
+    position: absolute;
+    z-index: 10000;
+    top: 1rem;
+    left: 1rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .swiper-wrapper {
+    width: 45rem;
   }
 }
