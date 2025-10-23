@@ -23,9 +23,6 @@ import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
-import Image from 'components/image/Image';
-import leftArrowIcon from 'assets/icons/left_arrow.png';
-import rightArrowIcon from 'assets/icons/right_arrow.png';
 import { AssetIcons } from 'assets/icons/AssetIcons';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
 
@@ -141,18 +138,13 @@ export default function DownloadFile({
             </Typography>
           ) : (
             <>
-              <div className="flex max-h-[60rem] mb-[4rem]">
+              <div className="flex max-h-[60rem]">
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-left"
                   onClick={handleNewsPrev}
                 >
-                  <Image
-                    src={leftArrowIcon}
-                    width={25}
-                    height={25}
-                    alt="left arrow"
-                  />
+                  <AssetIcons.LeftIcon width={40} height={40} />
                 </button>
                 <Swiper onSwiper={setSwiper} loop>
                   {downloadData ? (
@@ -216,14 +208,19 @@ export default function DownloadFile({
                   className="pb-carousel-arrow pb-carousel-arrow-right"
                   onClick={handleNewsNext}
                 >
-                  <Image
-                    src={rightArrowIcon}
-                    width={25}
-                    height={25}
-                    alt="right arrow"
-                  />
+                  <AssetIcons.RightIcon width={40} height={40} />
                 </button>
               </div>
+              {!isEmpty(downloadData?.resources) && (
+                <div className="bg-black bg-opacity-40 w-[8rem] rounded-lg my-1">
+                  <Typography
+                    variant={TYPOGRAPHY_VARIANTS.SMALL}
+                    className="page-single__download-result-image"
+                  >
+                    {resource?.length}/{downloadData?.resources?.length}
+                  </Typography>
+                </div>
+              )}
 
               <div className="page-single__download-actions">
                 <Button

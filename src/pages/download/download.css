@@ -101,6 +101,18 @@
     }
   }
 }
+.pb-carousel-arrow-right,
+.pb-carousel-arrow-left {
+  position: relative;
+  z-index: 1000;
+}
+
+.pb-carousel-arrow-right {
+  right: 3rem;
+}
+.pb-carousel-arrow-left {
+  left: 3rem;
+}
 
 .swiper-wrapper {
   width: 100rem;
