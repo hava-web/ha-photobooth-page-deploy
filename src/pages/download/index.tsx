@@ -40,6 +40,7 @@ export default function DownloadFile({
   const [loading, setLoading] = useState(false);
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [resource, setResource] = useState<string[]>([]);
+  const [isOpenPopover, setIsOpenPopover] = useState(true);
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
@@ -97,6 +98,12 @@ export default function DownloadFile({
     }
   }, [uiTemplateData]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpenPopover(false);
+    }, 6000);
+  }, []);
+
   return (
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
@@ -138,6 +145,17 @@ export default function DownloadFile({
             </Typography>
           ) : (
             <>
+              {isOpenPopover && (
+                <div className="popup-download">
+                  <Typography
+                    variant={TYPOGRAPHY_VARIANTS.SMALL}
+                    className="text-center font-bold flex justify-center items-center"
+                  >
+                    {T('common:choosePhotoToDownload')}
+                  </Typography>
+                  <div className="download__pb-popover-arrow" />
+                </div>
+              )}
               <div className="flex max-h-[60rem]">
                 <button
                   type="button"
@@ -150,48 +168,33 @@ export default function DownloadFile({
                   {downloadData ? (
                     map(downloadData?.resources, (item, index) => (
                       <SwiperSlide
-                        className={`swiper-slide`}
-                        key={`${index}`}
+                        className="swiper-slide"
+                        key={index}
                         onClick={() => handleAddResource(item.url)}
                       >
-                        {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ? (
-                          <>
-                            <div
-                              className={`resource-container ${includes(resource, item?.url) && 'selected'}`}
+                        <div
+                          className={`resource-container ${includes(resource, item.url) && 'selected'}`}
+                        >
+                          {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ? (
+                            <video
+                              className={`page-single__download-result-image ${includes(resource, item.url) && 'selected'}`}
+                              poster={photoTakenUrl}
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
                             >
-                              {includes(resource, item?.url) && (
-                                <AssetIcons.CheckIcon className="check-icon" />
-                              )}
-                              <video
-                                className={`page-single__download-result-image`}
-                                poster={photoTakenUrl}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                              >
-                                <track kind="captions" />
-                                <source src={item.url} type="video/mp4" />
-                              </video>
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div
-                              className={`resource-container ${includes(resource, item?.url) && 'selected'}`}
-                            >
-                              {includes(resource, item?.url) && (
-                                <AssetIcons.CheckIcon className="check-icon" />
-                              )}
-                              <img
-                                src={item.url}
-                                key={index}
-                                alt="result"
-                                className={`page-single__download-result-image`}
-                              />
-                            </div>
-                          </>
-                        )}
+                              <track kind="captions" />
+                              <source src={item.url} type="video/mp4" />
+                            </video>
+                          ) : (
+                            <img
+                              src={item.url}
+                              alt="result"
+                              className={`page-single__download-result-image ${includes(resource, item.url) && 'selected'}`}
+                            />
+                          )}
+                        </div>
                       </SwiperSlide>
                     ))
                   ) : (
