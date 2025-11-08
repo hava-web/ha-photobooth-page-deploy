@@ -121,7 +121,7 @@
   border-radius: 1rem;
   position: absolute;
   height: 6rem;
-  top: 16rem;
+  top: 40rem;
   left: 6rem;
   z-index: 1400;
   background-color: var(--sync-primary-color);
@@ -131,7 +131,7 @@
     width: 2rem;
     height: 2rem;
     right: 3rem;
-    top: 6rem;
+    top: 0;
     background-color: var(--sync-primary-color);
     transform: translate(50%, -50%) rotate(45deg);
   }
