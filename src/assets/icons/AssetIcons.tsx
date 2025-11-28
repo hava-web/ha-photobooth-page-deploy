@@ -58,4 +58,138 @@ export const AssetIcons: {
       />
     </svg>
   ),
+  CheckIcon: (props) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 640"
+      {...props}
+      width={30}
+      height={30}
+      fill="#3b82f6"
+    >
+      <path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM438 209.7C427.3 201.9 412.3 204.3 404.5 215L285.1 379.2L233 327.1C223.6 317.7 208.4 317.7 199.1 327.1C189.8 336.5 189.7 351.7 199.1 361L271.1 433C276.1 438 282.9 440.5 289.9 440C296.9 439.5 303.3 435.9 307.4 430.2L443.3 243.2C451.1 232.5 448.7 217.5 438 209.7z" />
+    </svg>
+  ),
+  RightIcon: (props) => (
+    <svg
+      width="52"
+      height="54"
+      viewBox="0 0 52 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g filter="url(#filter0_d_92_9)">
+        <ellipse cx="25.5471" cy="22.5" rx="21.5471" ry="22.5" fill="white" />
+        <path
+          d="M28.2822 22.3057L16.8555 13.0742L15.5928 14.7783L24.248 21.7686L24.9551 22.3398L24.2598 22.9258L15.5674 30.2461L16.8623 31.9229L28.2822 22.3057Z"
+          stroke="black"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M39.2637 22.3057L27.8311 13.0762L26.5742 14.7783L35.2295 21.7686L35.9365 22.3398L35.2412 22.9258L26.5479 30.2471L27.8379 31.9219L39.2637 22.3057Z"
+          stroke="black"
+          strokeWidth="1.5"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_92_9"
+          x="0"
+          y="0"
+          width="51.0942"
+          height="54"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="5" />
+          <feGaussianBlur stdDeviation="2" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_92_9"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_92_9"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  ),
+  LeftIcon: (props) => (
+    <svg
+      width="55"
+      height="55"
+      viewBox="0 0 55 55"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <g filter="url(#filter0_d_92_3)">
+        <circle cx="27.0184" cy="22.0184" r="22.0184" fill="white" />
+        <path
+          d="M25.2593 22.208L36.937 31.2412L38.2222 29.5801L29.3999 22.7559L28.6489 22.1748L29.3882 21.5791L38.2485 14.4336L36.9292 12.7969L25.2593 22.208Z"
+          stroke="black"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M14.0386 22.208L25.7212 31.2402L27.0015 29.5811L18.1782 22.7559L17.4272 22.1748L18.1665 21.5791L27.0278 14.4326L25.7134 12.7979L14.0386 22.208Z"
+          stroke="black"
+          strokeWidth="1.5"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_92_3"
+          x="0"
+          y="0"
+          width="54.0366"
+          height="54.0367"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="5" />
+          <feGaussianBlur stdDeviation="2.5" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_92_3"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_92_3"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  ),
 };

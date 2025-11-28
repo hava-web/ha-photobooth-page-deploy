@@ -1,20 +1,16 @@
 import { CustomizeUIModel } from './common.model';
 
+export type ItemResource = {
+  contentType: string;
+  url: string;
+};
+
 export type DownloadModel = {
   device: string;
   isExpired: boolean;
   hasVideo: boolean;
   recordAt: string;
-  resources: [
-    {
-      contentType: string;
-      url: string;
-    },
-    {
-      contentType: string;
-      url: string;
-    },
-  ];
+  resources: ItemResource[];
 };
 
 export type GetDownloadDataRequestModel = {
