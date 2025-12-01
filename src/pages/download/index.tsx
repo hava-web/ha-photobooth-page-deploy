@@ -27,6 +27,7 @@ import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useState } from 'react';
+import EncycomEmbed from 'containers/encycom/EncycomEmbed';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
 
 type DownloadFileProps = DownloadDataStateModel & {
@@ -103,6 +104,7 @@ export default function DownloadFile({
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
       <div className={cx('page-single__layout')}>
+        <EncycomEmbed />
         <Background />
         <Loader
           loading={loading}
