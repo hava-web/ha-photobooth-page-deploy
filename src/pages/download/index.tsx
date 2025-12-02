@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { downloadFiles, shareLink } from 'api/common.api';
 import { getDownloadData } from 'api/photo/download.api';
 import { getUiTemplate } from 'api/ui-template/ui-template.api';
+import { AssetIcons } from 'assets/icons/AssetIcons';
 import funLogoImage from 'assets/images/fun_studio_logo.png';
 import cx from 'classnames';
 import Background from 'components/background/Background';
@@ -12,10 +14,11 @@ import { TYPOGRAPHY_VARIANTS } from 'components/typography/typography-utils';
 import { CONTENT_TYPES, FILE_IMAGE_DOWNLOAD } from 'constants/file.const';
 import { QUERY_STRING } from 'constants/route.const';
 import { DATE_FORMAT, HOUR_MINUTE_FORMAT } from 'constants/time.const';
+import EncycomEmbed from 'containers/encycom/EncycomEmbed';
 import { handleUpdateCSSVar } from 'helpers/dom.helper';
 import { isEqualVal, jsonParse } from 'helpers/string.helper';
 import { useTranslation } from 'hooks/useTranslation';
-import { find, get, includes, isEmpty, map, size } from 'lodash';
+import { filter, find, get, includes, isEmpty, map, size } from 'lodash';
 import { DownloadDataStateModel } from 'models/download.model';
 import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import moment from 'moment';
@@ -23,7 +26,6 @@ import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
-import { AssetIcons } from 'assets/icons/AssetIcons';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
 
 type DownloadFileProps = DownloadDataStateModel & {
@@ -108,6 +110,15 @@ export default function DownloadFile({
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
       <div className={cx('page-single__layout')}>
+        <EncycomEmbed
+          boothId={1}
+          images={map(
+            filter(downloadData?.resources, (o) =>
+              isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
+            ),
+            'url',
+          )}
+        />
         <Background />
         <Loader
           loading={loading}
@@ -173,11 +184,15 @@ export default function DownloadFile({
                         onClick={() => handleAddResource(item.url)}
                       >
                         <div
-                          className={`resource-container ${includes(resource, item.url) && 'selected'}`}
+                          className={`resource-container ${
+                            includes(resource, item.url) && 'selected'
+                          }`}
                         >
                           {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ? (
                             <video
-                              className={`page-single__download-result-image ${includes(resource, item.url) && 'selected'}`}
+                              className={`page-single__download-result-image ${
+                                includes(resource, item.url) && 'selected'
+                              }`}
                               poster={photoTakenUrl}
                               autoPlay
                               loop
@@ -191,7 +206,9 @@ export default function DownloadFile({
                             <img
                               src={item.url}
                               alt="result"
-                              className={`page-single__download-result-image ${includes(resource, item.url) && 'selected'}`}
+                              className={`page-single__download-result-image ${
+                                includes(resource, item.url) && 'selected'
+                              }`}
                             />
                           )}
                         </div>
