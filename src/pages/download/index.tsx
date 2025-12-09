@@ -160,6 +160,7 @@ export default function DownloadFile({
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-left"
+                  aria-label="prev slide"
                   onClick={handleNewsPrev}
                 >
                   <AssetIcons.LeftIcon width={40} height={40} />
@@ -173,11 +174,15 @@ export default function DownloadFile({
                         onClick={() => handleAddResource(item.url)}
                       >
                         <div
-                          className={`resource-container ${includes(resource, item.url) && 'selected'}`}
+                          className={`resource-container ${
+                            includes(resource, item.url) && 'selected'
+                          }`}
                         >
                           {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ? (
                             <video
-                              className={`page-single__download-result-image ${includes(resource, item.url) && 'selected'}`}
+                              className={`page-single__download-result-image ${
+                                includes(resource, item.url) && 'selected'
+                              }`}
                               poster={photoTakenUrl}
                               autoPlay
                               loop
@@ -191,7 +196,9 @@ export default function DownloadFile({
                             <img
                               src={item.url}
                               alt="result"
-                              className={`page-single__download-result-image ${includes(resource, item.url) && 'selected'}`}
+                              className={`page-single__download-result-image ${
+                                includes(resource, item.url) && 'selected'
+                              }`}
                             />
                           )}
                         </div>
@@ -209,6 +216,7 @@ export default function DownloadFile({
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-right"
+                  aria-label="next slide"
                   onClick={handleNewsNext}
                 >
                   <AssetIcons.RightIcon width={40} height={40} />
