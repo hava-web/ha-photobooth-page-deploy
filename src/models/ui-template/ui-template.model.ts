@@ -1,3 +1,5 @@
+import { CapitalizedKeys } from 'types/global';
+
 export type UiTemplateModel = {
   backgroundImageUrl: string;
   backgroundPageDownload: string;
@@ -38,6 +40,9 @@ export type GetUiTemplateRequestModel = {
 };
 export type GetUiTemplateResponseModel = {
   data: UiTemplateModel;
+};
+export type GetUiTemplateBoothOfflineResponseModel = {
+  response: CapitalizedKeys<UiTemplateModel>;
 };
 
 export interface UiTemplateStateModel {

@@ -6,3 +6,7 @@ type AString = undefined | null | string;
 type UndefinedAll<T> = {
   [P in keyof T]?: T[P] | undefined;
 };
+
+export type CapitalizedKeys<T> = {
+  [K in keyof T as Capitalize<string & K>]: T[K];
+};

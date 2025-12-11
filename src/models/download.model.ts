@@ -19,6 +19,13 @@ export type GetDownloadDataRequestModel = {
 export type GetDownloadDataResponseModel = {
   data: DownloadModel;
 };
+export type GetDownloadDataBoothOfflineResponseModel = {
+  Code: number;
+  Data: {
+    ContentType: string;
+    Url: string;
+  }[];
+};
 
 export interface DownloadDataStateModel {
   transactionId: string;

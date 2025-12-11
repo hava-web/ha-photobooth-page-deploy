@@ -1,8 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-no-useless-fragment */
 import { downloadFiles, shareLink } from 'api/common.api';
-import { getDownloadData } from 'api/photo/download.api';
-import { getUiTemplate } from 'api/ui-template/ui-template.api';
+import {
+  getDownloadData,
+  getDownloadDataBoothOffline,
+} from 'api/photo/download.api';
+import {
+  getUiTemplate,
+  getUiTemplateBoothOffline,
+} from 'api/ui-template/ui-template.api';
 import { AssetIcons } from 'assets/icons/AssetIcons';
 import funLogoImage from 'assets/images/fun_studio_logo.png';
 import cx from 'classnames';
@@ -17,6 +23,7 @@ import { DATE_FORMAT, HOUR_MINUTE_FORMAT } from 'constants/time.const';
 import EncycomEmbed from 'containers/encycom/EncycomEmbed';
 import { handleUpdateCSSVar } from 'helpers/dom.helper';
 import { isEqualVal, jsonParse } from 'helpers/string.helper';
+import { isBoothOfflineMode } from 'helpers/common.helper';
 import { useTranslation } from 'hooks/useTranslation';
 import { filter, find, get, includes, isEmpty, map, size } from 'lodash';
 import { DownloadDataStateModel } from 'models/download.model';
@@ -250,9 +257,11 @@ export default function DownloadFile({
                 >
                   {T('common:download')}
                 </Button>
-                <Button onClick={handleShare} disabled={loading}>
-                  {T('common:share')}
-                </Button>
+                {!isBoothOfflineMode() && (
+                  <Button onClick={handleShare} disabled={loading}>
+                    {T('common:share')}
+                  </Button>
+                )}
               </div>
               <Typography
                 variant={TYPOGRAPHY_VARIANTS.SMALL}
@@ -263,7 +272,10 @@ export default function DownloadFile({
                   '_'
                 } ngày ${
                   moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
-                }, máy ${downloadData?.device}`}
+                }`}
+                {!!downloadData?.device && (
+                  <>{`, máy ${downloadData?.device}`}</>
+                )}
               </Typography>
               <Typography
                 variant={TYPOGRAPHY_VARIANTS.SMALL}
@@ -283,8 +295,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
   try {
-    const uiTemplateResponse = await getUiTemplate({ id: transactionId });
-    const downloadResponse = await getDownloadData({ id: transactionId });
+    const uiTemplateResponse = await (
+      isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate
+    )({ id: transactionId });
+    const downloadResponse = await (
+      isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
+    )({ id: transactionId });
 
     return {
       props: {
