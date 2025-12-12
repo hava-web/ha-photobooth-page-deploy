@@ -178,6 +178,7 @@ export default function DownloadFile({
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-left"
+                  aria-label="prev slide"
                   onClick={handleNewsPrev}
                 >
                   <AssetIcons.LeftIcon width={40} height={40} />
@@ -233,6 +234,7 @@ export default function DownloadFile({
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-right"
+                  aria-label="next slide"
                   onClick={handleNewsNext}
                 >
                   <AssetIcons.RightIcon width={40} height={40} />
