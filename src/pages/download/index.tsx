@@ -117,15 +117,17 @@ export default function DownloadFile({
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
       <div className={cx('page-single__layout')}>
-        <EncycomEmbed
-          boothId={1}
-          images={map(
-            filter(downloadData?.resources, (o) =>
-              isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
-            ),
-            'url',
-          )}
-        />
+        {!!uiTemplateData?.IsEncycom && (
+          <EncycomEmbed
+            boothId={1}
+            images={map(
+              filter(downloadData?.resources, (o) =>
+                isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
+              ),
+              'url',
+            )}
+          />
+        )}
         <Background />
         <Loader
           loading={loading}
@@ -297,12 +299,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
   try {
-    const uiTemplateResponse = await (
-      isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate
-    )({ id: transactionId });
-    const downloadResponse = await (
-      isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
-    )({ id: transactionId });
+    const uiTemplateResponse = await (isBoothOfflineMode()
+      ? getUiTemplateBoothOffline
+      : getUiTemplate)({ id: transactionId });
+    const downloadResponse = await (isBoothOfflineMode()
+      ? getDownloadDataBoothOffline
+      : getDownloadData)({ id: transactionId });
 
     return {
       props: {

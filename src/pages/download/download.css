@@ -101,6 +101,7 @@
     }
   }
 }
+
 .pb-carousel-arrow-right,
 .pb-carousel-arrow-left {
   position: relative;
@@ -110,6 +111,7 @@
 .pb-carousel-arrow-right {
   right: 3rem;
 }
+
 .pb-carousel-arrow-left {
   left: 3rem;
 }
@@ -126,6 +128,7 @@
   z-index: 1400;
   background-color: var(--sync-primary-color);
   width: 32rem;
+
   .download__pb-popover-arrow {
     position: absolute;
     width: 2rem;
@@ -139,24 +142,30 @@
 
 .swiper-wrapper {
   width: 100rem;
+
   .swiper-slide {
     display: flex;
     justify-content: center;
+
     .page-single__download-result-image.selected {
       opacity: 0.65;
       border: 3px solid #3b82f6;
       transform: scale(0.97);
       box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
     }
+
     .resource-container {
       display: flex;
       align-items: center;
+      justify-content: center;
       transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .resource-container.selected {
       transform: scale(0.97);
     }
   }
+
   .check-icon {
     position: absolute;
     z-index: 10000;

@@ -31,7 +31,7 @@ const FloatingEarnPointButtons: React.FC<FloatingEarnPointButtonsType> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpenEarnPointPopup(false);
-    }, 6000);
+    }, 15000);
 
     return () => clearTimeout(timer);
   }, []);
