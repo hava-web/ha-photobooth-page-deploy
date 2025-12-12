@@ -101,6 +101,7 @@
         "depth": 3
       }
     ],
+    "jsx-a11y/control-has-associated-label": "error",
     "camelcase": "off",
     "import/name": "off",
     "no-underscore-dangle": "off"
