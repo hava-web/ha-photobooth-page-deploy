@@ -110,14 +110,14 @@ export default function DownloadFile({
   useEffect(() => {
     setTimeout(() => {
       setIsOpenPopover(false);
-    }, 6000);
+    }, 15000);
   }, []);
 
   return (
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
       <div className={cx('page-single__layout')}>
-        {!!uiTemplateData?.IsEncycom && (
+        {!!uiTemplateData?.isEncycom && (
           <EncycomEmbed
             boothId={1}
             images={map(
