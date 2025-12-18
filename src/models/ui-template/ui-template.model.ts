@@ -33,6 +33,7 @@ export type UiTemplateModel = {
   paymentSuccessTextPageDownload: string;
   paymentFailedTextPageDownload: string;
   Type: string;
+  languageCode: string;
   isEncycom: boolean;
 };
 

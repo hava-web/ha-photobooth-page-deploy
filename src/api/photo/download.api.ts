@@ -1,9 +1,12 @@
 import adminRequest from 'api/request/adminRequest';
 import { map } from 'lodash';
+import { preprocessGetQuery } from 'helpers/api.helper';
+
 import {
   GetDownloadDataBoothOfflineResponseModel,
   GetDownloadDataRequestModel,
   GetDownloadDataResponseModel,
+  GetLanguageDataRequestModel,
 } from 'models/download.model';
 
 export function getDownloadData(payload: GetDownloadDataRequestModel) {
@@ -31,4 +34,11 @@ export function getDownloadDataBoothOffline(
         })),
       },
     }));
+}
+
+export function getLanguagesData(payload: GetLanguageDataRequestModel) {
+  return adminRequest.get<
+    GetDownloadDataResponseModel,
+    GetDownloadDataResponseModel
+  >(`/general/languages?${preprocessGetQuery(payload)}`);
 }

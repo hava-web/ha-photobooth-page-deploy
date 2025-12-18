@@ -13,8 +13,25 @@ export type DownloadModel = {
   resources: ItemResource[];
 };
 
+export type LanguageModel = {
+  id: number;
+  code: string;
+  imageUrl: string;
+  name: string;
+  isActive: boolean;
+};
+
+export type LanguageResponse = {
+  items: LanguageModel[];
+  totalItems: number;
+};
+
 export type GetDownloadDataRequestModel = {
   id: string;
+};
+export type GetLanguageDataRequestModel = {
+  pageSize?: number;
+  pageIndex?: number;
 };
 export type GetDownloadDataResponseModel = {
   data: DownloadModel;
