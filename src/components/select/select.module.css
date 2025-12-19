@@ -3,9 +3,9 @@
   .pb-select__item {
     position: relative;
     cursor: pointer;
-    background-color: var(--sync-secondary-color);
+    background-color: var(--sync-primary-color);
     color: var(--sync-text-color);
-    padding: 1.35rem 2rem;
+    padding: 1rem;
     font-weight: 900;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
   }
 
   .pb-select__input {
-    border-radius: 1.5rem;
+    border-radius: 4rem;
 
     .pb-select__prefix-icon,
     .pb-select__surfix-icon {
@@ -67,8 +67,6 @@
 
   &.pb-select-show {
     .pb-select__input {
-      border-bottom-left-radius: 1.5rem;
-      border-bottom-right-radius: 1.5rem;
       .pb-select__list {
         display: block;
       }

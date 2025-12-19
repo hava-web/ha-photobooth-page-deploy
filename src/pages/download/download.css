@@ -177,17 +177,21 @@
 .change-language-selection {
   width: 7rem;
   position: fixed;
+  display: flex;
+  justify-content: center;
   left: 2rem;
   top: 2rem;
   z-index: var(--z-index-popover);
   .select_pb-select__input__6Ojk_ {
+    width: 5rem;
     .select_pb-select__list__AvUA7 {
       width: 17rem;
       top: 52px;
-      .pb-select__item {
+      .select_pb-select__item__7QbJZ {
         background-color: #f597a8;
+        padding: 1.2rem 1rem;
       }
-      .pb-select__item:hover {
+      .select_pb-select__item__7QbJZ:hover {
         background-color: var(--sync-primary-color);
       }
     }

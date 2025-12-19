@@ -30,5 +30,7 @@
   "billAcceptorError": "Có lỗi bộ đếm tiền!",
   "noCameraFound": "Lỗi không tìm thấy camera!",
   "doYouNeedMoreTime": "Bạn có cần thêm thời gian để tiếp tục sử dụng dịch vụ không?",
-  "textRemindUseCamera": "Vui lòng dùng camera điện thoại để quét QR. \nKhông dùng Zalo để quét QR bạn nhé!"
+  "textRemindUseCamera": "Vui lòng dùng camera điện thoại để quét QR. \nKhông dùng Zalo để quét QR bạn nhé!",
+  "time": "thời gian",
+  "device": "máy"
 }

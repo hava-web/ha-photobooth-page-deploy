@@ -60,6 +60,7 @@ function DownloadFile({
   const [resource, setResource] = useState<string[]>([]);
   const [isOpenPopover, setIsOpenPopover] = useState(true);
   const [language, setLanguage] = useState<string>('vi');
+  const [uiTemplate, setUiTemplate] = useState<any>(uiTemplateData);
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
@@ -120,39 +121,47 @@ function DownloadFile({
     i18n.changeLanguage(language);
   }, []);
 
-  const logoImage = uiTemplateData?.logoImageUrl || funLogoImage?.src;
+  const logoImage = uiTemplate?.logoImageUrl || funLogoImage?.src;
   const seoMetaData = jsonParse(
-    uiTemplateData?.seoMetaDataJsonPageDownload || '',
+    uiTemplate?.seoMetaDataJsonPageDownload || '',
     {},
   );
   const sloganText =
-    uiTemplateData?.sloganTextPageDownload || T('download:funStudioSlogan');
+    uiTemplate?.sloganTextPageDownload || T('download:funStudioSlogan');
   const expiredText =
-    uiTemplateData?.expiredTextPageDownload || t('download:dataExpired');
-  const noDataText =
-    uiTemplateData?.noDataTextPageDownload || t('download:noData');
+    uiTemplate?.expiredTextPageDownload || t('download:dataExpired');
+  const noDataText = uiTemplate?.noDataTextPageDownload || t('download:noData');
   const uploadingText =
-    uiTemplateData?.uploadingTextPageDownload || t('download:dataIsUploading');
+    uiTemplate?.uploadingTextPageDownload || t('download:dataIsUploading');
 
   useEffect(() => {
-    if (uiTemplateData?.backgroundPageDownload) {
-      handleUpdateCSSVar(uiTemplateData);
+    if (uiTemplate?.backgroundPageDownload) {
+      handleUpdateCSSVar(uiTemplate);
     }
-    if (uiTemplateData?.languageCode) {
-      setLanguage(uiTemplateData?.languageCode);
-      i18n.changeLanguage(language);
-    }
+  }, [uiTemplate]);
+
+  useEffect(() => {
+    setUiTemplate(uiTemplateData);
   }, [uiTemplateData]);
 
   useEffect(() => {
-    if (isBoothOfflineMode()) {
-      getUiTemplateBoothOffline();
-      getDownloadDataBoothOffline({ id: transactionId });
-    } else {
-      getUiTemplate({ id: transactionId });
-      getDownloadData({ id: transactionId });
-    }
+    const fetchUiTemplate = async () => {
+      const res = isBoothOfflineMode()
+        ? await getUiTemplateBoothOffline()
+        : await getUiTemplate({ id: transactionId });
+
+      setUiTemplate(res?.data);
+    };
+
+    fetchUiTemplate();
   }, [i18n.language]);
+
+  useEffect(() => {
+    if (uiTemplateData?.languageCode) {
+      setLanguage(uiTemplateData.languageCode);
+      i18n.changeLanguage(uiTemplateData.languageCode);
+    }
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -340,11 +349,11 @@ function DownloadFile({
                 {`${
                   moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) ||
                   '_'
-                } ngày ${
+                } ${T('common:time')} ${
                   moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
                 }`}
                 {!!downloadData?.device && (
-                  <>{`, máy ${downloadData?.device}`}</>
+                  <>{`, ${T('common:device')} ${downloadData?.device}`}</>
                 )}
               </Typography>
               <Typography

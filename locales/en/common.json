@@ -30,5 +30,7 @@
   "billAcceptorError": "Bill acceptor error!",
   "noCameraFound": "Camera not found!",
   "doYouNeedMoreTime": "Do you need more time to continue using the service?",
-  "textRemindUseCamera": "Please use your phone’s camera to scan the QR code. \nPlease do not use Zalo to scan the QR code."
+  "textRemindUseCamera": "Please use your phone’s camera to scan the QR code. \nDo not use Zalo to scan the QR code!",
+  "time": "time",
+  "device": "device"
 }
