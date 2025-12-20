@@ -1,6 +1,36 @@
 {
+  "ok": "ok",
   "noData": "No data",
   "back": "back",
   "continue": "continue",
-  "picture": "picture"
+  "start": "start",
+  "picture": "photo",
+  "finish": "finish",
+  "print": "Print photo",
+  "no": "no",
+  "yes": "yes",
+  "download": "download",
+  "share": "share link",
+  "downloadImage": "Download image",
+  "uploadImage": "Upload image",
+  "uploadMoreImage": "Upload more images",
+  "downloadVideo": "Download video",
+  "downloadGif": "Download GIF",
+  "confirm": "confirm",
+
+  "scanQR": "Scan QR code",
+  "earnPointAndReceiveGift": "Earn points",
+  "takePictureButNotEarn": "Took photos but didn’t earn points?\nWhat a waste of good looks!",
+  "choosePhotoToDownload": "Choose photos to download",
+
+  "seoWebTitle": "fun studio",
+  "uploadSuccess": "Image uploaded successfully",
+  "paymentSuccess": "Payment successful",
+  "somethingWrong": "Something went wrong!",
+  "billAcceptorError": "Bill acceptor error!",
+  "noCameraFound": "Camera not found!",
+  "doYouNeedMoreTime": "Do you need more time to continue using the service?",
+  "textRemindUseCamera": "Please use your phone’s camera to scan the QR code. \nDo not use Zalo to scan the QR code!",
+  "time": "time",
+  "device": "device"
 }

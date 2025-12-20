@@ -3,6 +3,7 @@
 import { downloadFiles, shareLink } from 'api/common.api';
 import {
   getDownloadData,
+  getLanguagesData,
   getDownloadDataBoothOffline,
 } from 'api/photo/download.api';
 import {
@@ -24,39 +25,67 @@ import EncycomEmbed from 'containers/encycom/EncycomEmbed';
 import { handleUpdateCSSVar } from 'helpers/dom.helper';
 import { isEqualVal, jsonParse } from 'helpers/string.helper';
 import { isBoothOfflineMode } from 'helpers/common.helper';
-import { useTranslation } from 'hooks/useTranslation';
+import { I18nextProvider } from 'react-i18next';
 import { filter, find, get, includes, isEmpty, map, size } from 'lodash';
-import { DownloadDataStateModel } from 'models/download.model';
+import {
+  DownloadDataStateModel,
+  LanguageResponse,
+} from 'models/download.model';
 import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { useTranslation } from 'hooks/useTranslation';
+import Select from 'components/select/Select';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
+import downloadI18n from '../../i18n/download';
 
 type DownloadFileProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
+  languageData: LanguageResponse;
 };
 
-export default function DownloadFile({
+function DownloadFile({
   transactionId,
   downloadData,
   errorData,
   uiTemplateData,
+  languageData,
 }: DownloadFileProps) {
-  const { t, T } = useTranslation();
+  const { t, T, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [resource, setResource] = useState<string[]>([]);
   const [isOpenPopover, setIsOpenPopover] = useState(true);
+  const [language, setLanguage] = useState<string>('vi');
+  const [uiTemplate, setUiTemplate] = useState<any>(uiTemplateData);
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
+  console.log('ttt languageData', languageData);
 
   const photoTakenUrl = find(downloadData?.resources, (o) =>
     isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
   )?.url;
+
+  const langOtp = useMemo(
+    () =>
+      map(
+        filter(languageData?.items, (i) => i.isActive === true),
+        (lang) => ({
+          value: lang?.code,
+          label: (
+            <div className="flex items-center gap-3 language-option">
+              <img src={lang?.imageUrl} alt="img" />
+              {lang?.name}
+            </div>
+          ),
+        }),
+      ),
+    [],
+  );
 
   const handleDownload = async () => {
     setLoading(true);
@@ -87,25 +116,52 @@ export default function DownloadFile({
     swiper && swiper.slideNext();
   };
 
-  const logoImage = uiTemplateData?.logoImageUrl || funLogoImage?.src;
+  const handleChangeLanguage = useCallback((language: any) => {
+    setLanguage(language);
+    i18n.changeLanguage(language);
+  }, []);
+
+  const logoImage = uiTemplate?.logoImageUrl || funLogoImage?.src;
   const seoMetaData = jsonParse(
-    uiTemplateData?.seoMetaDataJsonPageDownload || '',
+    uiTemplate?.seoMetaDataJsonPageDownload || '',
     {},
   );
   const sloganText =
-    uiTemplateData?.sloganTextPageDownload || T('download:funStudioSlogan');
+    uiTemplate?.sloganTextPageDownload || T('download:funStudioSlogan');
   const expiredText =
-    uiTemplateData?.expiredTextPageDownload || t('download:dataExpired');
-  const noDataText =
-    uiTemplateData?.noDataTextPageDownload || t('download:noData');
+    uiTemplate?.expiredTextPageDownload || t('download:dataExpired');
+  const noDataText = uiTemplate?.noDataTextPageDownload || t('download:noData');
   const uploadingText =
-    uiTemplateData?.uploadingTextPageDownload || t('download:dataIsUploading');
+    uiTemplate?.uploadingTextPageDownload || t('download:dataIsUploading');
 
   useEffect(() => {
-    if (uiTemplateData?.backgroundPageDownload) {
-      handleUpdateCSSVar(uiTemplateData);
+    if (uiTemplate?.backgroundPageDownload) {
+      handleUpdateCSSVar(uiTemplate);
     }
+  }, [uiTemplate]);
+
+  useEffect(() => {
+    setUiTemplate(uiTemplateData);
   }, [uiTemplateData]);
+
+  useEffect(() => {
+    const fetchUiTemplate = async () => {
+      const res = isBoothOfflineMode()
+        ? await getUiTemplateBoothOffline()
+        : await getUiTemplate({ id: transactionId });
+
+      setUiTemplate(res?.data);
+    };
+
+    fetchUiTemplate();
+  }, [i18n.language]);
+
+  useEffect(() => {
+    if (uiTemplateData?.languageCode) {
+      setLanguage(uiTemplateData.languageCode);
+      i18n.changeLanguage(uiTemplateData.languageCode);
+    }
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -144,6 +200,18 @@ export default function DownloadFile({
             )
           }
         >
+          <>
+            <Select
+              options={langOtp}
+              value={language}
+              onChange={(value: any) => {
+                handleChangeLanguage(value);
+              }}
+              OuterProps={{
+                className: 'change-language-selection',
+              }}
+            />
+          </>
           {!!logoImage && (
             <img src={logoImage} alt="logo" className="page-single__logo" />
           )}
@@ -176,7 +244,7 @@ export default function DownloadFile({
                   <div className="download__pb-popover-arrow" />
                 </div>
               )}
-              <div className="flex max-h-[60rem]">
+              <div className="flex flex-1 items-center overflow-hidden">
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-left"
@@ -185,7 +253,11 @@ export default function DownloadFile({
                 >
                   <AssetIcons.LeftIcon width={40} height={40} />
                 </button>
-                <Swiper onSwiper={setSwiper} loop>
+                <Swiper
+                  onSwiper={setSwiper}
+                  className=' className="w-full h-full'
+                  loop
+                >
                   {downloadData ? (
                     map(downloadData?.resources, (item, index) => (
                       <SwiperSlide
@@ -253,6 +325,13 @@ export default function DownloadFile({
                 </div>
               )}
 
+              <Typography
+                variant={TYPOGRAPHY_VARIANTS.XS}
+                className="flex items-center justify-center text-remind-use-camera"
+              >
+                {T('common:textRemindUseCamera')}
+              </Typography>
+
               <div className="page-single__download-actions">
                 <Button
                   color="default"
@@ -274,11 +353,11 @@ export default function DownloadFile({
                 {`${
                   moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) ||
                   '_'
-                } ngày ${
+                } ${T('common:time')} ${
                   moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
                 }`}
                 {!!downloadData?.device && (
-                  <>{`, máy ${downloadData?.device}`}</>
+                  <>{`, ${T('common:device')} ${downloadData?.device}`}</>
                 )}
               </Typography>
               <Typography
@@ -295,6 +374,14 @@ export default function DownloadFile({
   );
 }
 
+export default function DownloadFilePage(props: DownloadFileProps) {
+  return (
+    <I18nextProvider i18n={downloadI18n}>
+      <DownloadFile {...props} />
+    </I18nextProvider>
+  );
+}
+
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
@@ -305,12 +392,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     const downloadResponse = await (isBoothOfflineMode()
       ? getDownloadDataBoothOffline
       : getDownloadData)({ id: transactionId });
+    const languageResponse = await getLanguagesData({});
 
     return {
       props: {
         transactionId,
         downloadData: downloadResponse?.data || null,
         uiTemplateData: uiTemplateResponse?.data || null,
+        languageData: languageResponse?.data || null,
       },
     };
   } catch (err) {
