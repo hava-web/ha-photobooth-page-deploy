@@ -127,7 +127,7 @@
   left: 13rem;
   z-index: 1400;
   background-color: var(--sync-primary-color);
-  width: 32rem;
+  padding: 1rem;
 
   .download__pb-popover-arrow {
     position: absolute;

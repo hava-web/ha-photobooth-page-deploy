@@ -244,7 +244,7 @@ function DownloadFile({
                   <div className="download__pb-popover-arrow" />
                 </div>
               )}
-              <div className="flex max-h-[60rem]">
+              <div className="flex flex-1 items-center overflow-hidden">
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-left"
@@ -253,7 +253,11 @@ function DownloadFile({
                 >
                   <AssetIcons.LeftIcon width={40} height={40} />
                 </button>
-                <Swiper onSwiper={setSwiper} loop>
+                <Swiper
+                  onSwiper={setSwiper}
+                  className=' className="w-full h-full'
+                  loop
+                >
                   {downloadData ? (
                     map(downloadData?.resources, (item, index) => (
                       <SwiperSlide
