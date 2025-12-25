@@ -175,7 +175,7 @@ function DownloadFile({
       <div className={cx('page-single__layout')}>
         {!!uiTemplateData?.isEncycom && (
           <EncycomEmbed
-            boothId={1}
+            boothId={uiTemplateData?.boothId}
             images={map(
               filter(downloadData?.resources, (o) =>
                 isEqualVal(o?.contentType, CONTENT_TYPES.PNG),

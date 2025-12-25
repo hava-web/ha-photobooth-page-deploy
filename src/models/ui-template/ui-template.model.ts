@@ -13,6 +13,7 @@ export type UiTemplateModel = {
   downloadUrl: string;
   expiredTextPageDownload: string;
   id: number;
+  boothId: number;
   inputBackgroundColor: string;
   isActive: true;
   isAllowEarnPoint: boolean;
