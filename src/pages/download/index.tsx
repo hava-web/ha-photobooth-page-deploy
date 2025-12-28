@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-no-useless-fragment */
-import { downloadFiles, shareLink } from 'api/common.api';
+import { downloadSequential, shareLink } from 'api/common.api';
 import {
   getDownloadData,
   getLanguagesData,
@@ -89,7 +89,7 @@ function DownloadFile({
 
   const handleDownload = async () => {
     setLoading(true);
-    await downloadFiles(resource, `${FILE_IMAGE_DOWNLOAD}-${moment().unix()}`);
+    await downloadSequential(resource, `${FILE_IMAGE_DOWNLOAD}`);
     setResource([]);
     setLoading(false);
   };
@@ -146,11 +146,15 @@ function DownloadFile({
 
   useEffect(() => {
     const fetchUiTemplate = async () => {
-      const res = isBoothOfflineMode()
-        ? await getUiTemplateBoothOffline()
-        : await getUiTemplate({ id: transactionId });
+      try {
+        const res = isBoothOfflineMode()
+          ? await getUiTemplateBoothOffline()
+          : await getUiTemplate({ id: transactionId });
 
-      setUiTemplate(res?.data);
+        setUiTemplate(res?.data);
+      } catch (err) {
+        setUiTemplate(null);
+      }
     };
 
     fetchUiTemplate();
@@ -173,7 +177,7 @@ function DownloadFile({
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
       <div className={cx('page-single__layout')}>
-        {!!uiTemplateData?.isEncycom && (
+        {!!uiTemplateData?.isEncycom && !!size(downloadData?.resources) && (
           <EncycomEmbed
             boothId={uiTemplateData?.boothId}
             images={map(
@@ -407,6 +411,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       props: {
         transactionId,
         downloadData: null,
+        uiTemplateData: null,
+        languageData: null,
         errorData: JSON.parse(JSON.stringify(err)),
       },
     };
