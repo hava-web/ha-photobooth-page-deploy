@@ -94,6 +94,12 @@ function DownloadFile({
     setLoading(false);
   };
 
+  const resourceWithoutQRphoto = useMemo(
+    () =>
+      filter(downloadData?.resources, (item) => !includes(item?.url, '_QR')),
+    [],
+  );
+
   const handleShare = async () => {
     setLoading(true);
     await shareLink(window.location.href);
@@ -263,7 +269,7 @@ function DownloadFile({
                   loop
                 >
                   {downloadData ? (
-                    map(downloadData?.resources, (item, index) => (
+                    map(resourceWithoutQRphoto, (item, index) => (
                       <SwiperSlide
                         className="swiper-slide"
                         key={index}
@@ -324,7 +330,7 @@ function DownloadFile({
                     variant={TYPOGRAPHY_VARIANTS.SMALL}
                     className="page-single__download-result-image"
                   >
-                    {resource?.length}/{downloadData?.resources?.length}
+                    {resource?.length}/{resourceWithoutQRphoto?.length}
                   </Typography>
                 </div>
               )}
