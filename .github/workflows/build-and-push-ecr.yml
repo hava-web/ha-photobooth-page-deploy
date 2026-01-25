@@ -1,0 +1,131 @@
+name: Build and Push image to ECR
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: 'Source branch to build image from'
+        required: true
+        default: 'master'
+        type: choice
+        options:
+          - master
+      gitops_target_branch:
+        description: 'Target git-ops branch (leave empty to skip GitOps update)'
+        required: false
+        default: ''
+        type: choice
+        options:
+          - ''
+          - main
+          - dev
+      app_theme_target:
+        description: 'Target booth theme for this build (optional)'
+        required: false
+        default: ''
+        type: choice
+        options:
+          - ''
+          - diana
+
+env:
+  AWS_REGION: ap-southeast-1
+  ECR_REGISTRY: 394628339454.dkr.ecr.ap-southeast-1.amazonaws.com
+  ECR_REPOSITORY: fun-studio-ui-website
+  GITOPS_REPO: FunStudio-vn/git-ops
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.inputs.source_branch || github.ref }}
+          fetch-depth: 0
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.AWS_ECR_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Get commit info
+        id: commit-info
+        run: |
+          COMMIT_SHA=${{ github.sha }}
+          COMMIT_SHORT=${COMMIT_SHA:0:8}
+          IMAGE_TAG=$(date +%Y%m%d)-${COMMIT_SHORT}
+          echo "image_tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+          echo "commit_sha_short=${COMMIT_SHORT}" >> $GITHUB_OUTPUT
+          echo "Image tag: ${IMAGE_TAG}"
+
+      - name: Build Docker image
+        id: docker-build
+        env:
+          DOCKER_BUILDKIT: 1
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.CI_PAT_TOKEN }}
+        run: |
+          if [ "${{ github.event.inputs.app_theme_target }}" = "" ]; then
+            IMAGE_TAG="${{ steps.commit-info.outputs.image_tag }}"
+          else
+            IMAGE_TAG="${{ steps.commit-info.outputs.image_tag }}-${{ github.event.inputs.app_theme_target }}"
+          fi
+
+          echo "image_tag=${IMAGE_TAG}" >> $GITHUB_OUTPUT
+
+          docker build -t ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG .
+
+      - name: Push image to Amazon ECR
+        run: |
+          docker push ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ steps.docker-build.outputs.image_tag }}
+
+      - name: Update GitOps repository
+        if: ${{ github.event.inputs.gitops_target_branch != '' }}
+        env:
+          IMAGE_TAG: ${{ steps.docker-build.outputs.image_tag }}
+          GITOPS_TARGET_BRANCH: ${{ github.event.inputs.gitops_target_branch }}
+          GITHUB_TOKEN: ${{ secrets.CI_PAT_TOKEN }}
+        run: |
+          # Clone git-ops repo
+          git clone https://x-access-token:${GITHUB_TOKEN}@github.com/${{ env.GITOPS_REPO }}.git gitops-repo
+          cd gitops-repo
+          
+          # Checkout target branch
+          git fetch origin $GITOPS_TARGET_BRANCH
+          git checkout $GITOPS_TARGET_BRANCH
+          
+          # Update image tag in ui/client-site/depl.yaml
+          sed -i "s|image: .*${{ env.ECR_REPOSITORY }}:.*|image: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${IMAGE_TAG}|g" ui/client-site/depl.yaml
+          
+          # Commit and push changes
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git add ui/client-site/depl.yaml
+          git commit -m "chore: Update UI website image tags to ${IMAGE_TAG}"
+          git push origin $GITOPS_TARGET_BRANCH
+
+      - name: Print summary
+        if: always()
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Source Branch**: ${{ github.event.inputs.source_branch || github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Image Tag**: ${{ steps.docker-build.outputs.image_tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit SHA**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **ECR Repository**: ${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **GitOps Branch**: ${{ github.event.inputs.gitops_target_branch || 'Skipped' }}" >> $GITHUB_STEP_SUMMARY
