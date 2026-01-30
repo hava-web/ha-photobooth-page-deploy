@@ -10,14 +10,14 @@ on:
       source_branch:
         description: 'Source branch to build image from'
         required: true
-        default: 'master'
+        default: master
         type: choice
         options:
           - master
       gitops_target_branch:
         description: 'Target git-ops branch (leave empty to skip GitOps update)'
         required: false
-        default: ''
+        default: dev
         type: choice
         options:
           - ''
