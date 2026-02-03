@@ -4,6 +4,7 @@ import squareInstagramIcon from 'assets/icons/square_instagram.png';
 import squareLocationIcon from 'assets/icons/square_location.png';
 import squarePhoneIcon from 'assets/icons/square_phone.png';
 import squareTiktokIcon from 'assets/icons/square_tiktok.png';
+import funPinkLogoImage from 'assets/images/fun_studio_logo_pink.png';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 
 import growIcon from 'assets/icons/grow.png';
@@ -37,7 +38,6 @@ import funCongHoaTanBinhHCMImage from 'assets/images/stores/conghoa_tanbinh_hcm.
 import funCoopmartBienHoaDongNaiImage from 'assets/images/stores/coopmart_bienhoa_dongnai.webp';
 import funDienBienPhuHCMImage from 'assets/images/stores/dien_bien_phu_hcm.webp';
 import funDongTrieuQuangNinhImage from 'assets/images/stores/dong_trieu_quang_ninh.webp';
-import funBinhDuongThuDauMotImage from 'assets/images/stores/fun_binh_duong_thu_dau_mot.webp';
 import funCamLeDaNangImage from 'assets/images/stores/fun_cam_le_da_nang.webp';
 import funCamXuyenHaTinhImage from 'assets/images/stores/fun_cam_xuyen_ha_tinh.webp';
 import funCangiuocLongAnImage from 'assets/images/stores/fun_can_giuoc_long_an.webp';
@@ -110,12 +110,14 @@ export enum ProvinceTypes {
   NGHE_AN = 'nghe-an',
   PHU_THO = 'phu-tho',
   HUNG_YEN = 'hung-yen',
+  TUYEN_QUANG = 'tuyen-quang',
   BAC_NINH = 'bac-ninh',
   BINH_THUAN = 'binh-thuan',
   HA_TINH = 'ha-tinh',
   QUANG_NINH = 'quang-ninh',
   LAM_DONG = 'lam-dong',
   DONG_NAI = 'dong-nai',
+  TAY_NINH = 'tay-ninh',
   DA_NANG = 'da-nang',
   LONG_AN = 'long-an',
   OTHER = 'other',
@@ -139,6 +141,7 @@ export const ProvinceOfRegions = {
     ProvinceTypes.HAIPHONG,
     ProvinceTypes.PHU_THO,
     ProvinceTypes.HUNG_YEN,
+    ProvinceTypes.TUYEN_QUANG,
     ProvinceTypes.BAC_NINH,
     ProvinceTypes.QUANG_NINH,
   ],
@@ -153,6 +156,7 @@ export const ProvinceOfRegions = {
   [RegionLocationType.SOUTH]: [
     ProvinceTypes.HCM,
     ProvinceTypes.DONG_NAI,
+    ProvinceTypes.TAY_NINH,
     ProvinceTypes.LONG_AN,
   ],
 };
@@ -162,6 +166,7 @@ export const ProvinceNames = {
   [ProvinceTypes.HAIPHONG]: 'Hải Phòng',
   [ProvinceTypes.PHU_THO]: 'Phú Thọ',
   [ProvinceTypes.HUNG_YEN]: 'Hưng Yên',
+  [ProvinceTypes.TUYEN_QUANG]: 'Tuyên Quang',
   [ProvinceTypes.BAC_NINH]: 'Bắc ninh',
   [ProvinceTypes.QUANG_NINH]: 'Quảng ninh',
 
@@ -174,6 +179,7 @@ export const ProvinceNames = {
 
   [ProvinceTypes.HCM]: 'TP Hồ Chí Minh',
   [ProvinceTypes.DONG_NAI]: 'Đồng Nai',
+  [ProvinceTypes.TAY_NINH]: 'Tây Ninh',
   [ProvinceTypes.LONG_AN]: 'Long An',
 
   [ProvinceTypes.OTHER]:
@@ -339,15 +345,6 @@ export const funStores: Array<StoreType> = [
     href: '#',
   },
   {
-    label: '162 Yersin, Thủ Dầu Một, Hồ Chí Minh',
-    labelIndex: 'Fun Studio Thủ Dầu Một',
-    value: 16,
-    alt: 'Fun Studio Thủ Dầu Một',
-    image: funBinhDuongThuDauMotImage,
-    storeLocation: ProvinceTypes.HCM,
-    href: '#',
-  },
-  {
     label: '3/3 ngõ 68 Trâu Quỳ, Gia Lâm, Hà Nội',
     labelIndex: 'Fun Studio Trâu Quỳ',
     value: 17,
@@ -438,10 +435,10 @@ export const funStores: Array<StoreType> = [
     href: '#',
   },
   {
-    label: '65 Lý Tự Trọng, Bảo Lộc 1, Lâm Đồng',
-    labelIndex: 'Fun Studio Bảo Lộc',
+    label: 'Cạnh Nhà Thờ Giáo xứ Lán Tranh, Tân Hà, Lâm Đồng',
+    labelIndex: 'Fun Studio Tân Hà',
     value: 27,
-    alt: 'Fun Studio Bảo Lộc',
+    alt: 'Fun Studio Tân Hà',
     image: funLyTuTrongLamDongImage,
     storeLocation: ProvinceTypes.LAM_DONG,
     href: '#',
@@ -584,12 +581,12 @@ export const funStores: Array<StoreType> = [
     href: '#',
   },
   {
-    label: 'D-LK-45-21 khu T&T Millennia City, Long Hậu, Cần Giuộc, Long An',
+    label: 'D-LK-45-21 khu T&T Millennia City, Long Hậu, Cần Giuộc, Tây Ninh',
     labelIndex: 'Fun Studio Cần Giuộc',
     value: 43,
     alt: 'Fun Studio Cần Giuộc',
     image: funCangiuocLongAnImage,
-    storeLocation: ProvinceTypes.LONG_AN,
+    storeLocation: ProvinceTypes.TAY_NINH,
     href: '#',
   },
   {
@@ -599,6 +596,145 @@ export const funStores: Array<StoreType> = [
     alt: 'Fun Studio TX. Chũ',
     image: funQuangTrungBacGiangImage,
     storeLocation: ProvinceTypes.BAC_NINH,
+    href: '#',
+  },
+  {
+    label: '269 Đ. Tô Hiệu, Hà Đông, Hà Nội',
+    labelIndex: 'Fun Studio Hà Đông',
+    value: 45,
+    alt: 'Fun Studio Hà Đông',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HANOI,
+    href: '#',
+  },
+  {
+    label:
+      'Đối diện cổng trường THCS Nguyễn Thượng Hiền, TTTM, Ứng Hòa, Hà Nội',
+    labelIndex: 'Fun Studio Vân Đình',
+    value: 46,
+    alt: 'Fun Studio Vân Đình',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HANOI,
+    href: '#',
+  },
+  {
+    label: '94 Cầu Trì, Sơn Tây, Hà Nội',
+    labelIndex: 'Fun Studio Sơn Tây',
+    value: 47,
+    alt: 'Fun Studio Sơn Tây',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HANOI,
+    href: '#',
+  },
+  {
+    label: 'Số nhà 83, đối diện C3 Ngọc Tảo, xã Hát Môn, Hà Nội',
+    labelIndex: 'Fun Studio Hát Môn',
+    value: 48,
+    alt: 'Fun Studio Hát Môn',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HANOI,
+    href: '#',
+  },
+  {
+    label: '26 Trần Thành Ngọ, Phù Liễn, Hải Phòng',
+    labelIndex: 'Fun Studio Kiến An',
+    value: 49,
+    alt: 'Fun Studio Kiến An',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HAIPHONG,
+    href: '#',
+  },
+  {
+    label: 'Vincom Mega Mall Ocean City, Nghĩa Trụ, Văn Giang, Hưng Yên',
+    labelIndex: 'Fun Studio TTTM Vincom Mega Mall Ocean City',
+    value: 50,
+    alt: 'Fun Studio TTTM Vincom Mega Mall Ocean City',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HUNG_YEN,
+    href: '#',
+  },
+  {
+    label: '108 Đ. Bình Thuận, P. Tân Quang, Tuyên Quang',
+    labelIndex: 'Fun Studio Tân Quang',
+    value: 51,
+    alt: 'Fun Studio Tân Quang',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.TUYEN_QUANG,
+    href: '#',
+  },
+  {
+    label:
+      'Số 26, đường 17/04, Liên Hương (Tuy Phong, Bình Thuận cũ), Lâm Đồng',
+    labelIndex: 'Fun Studio Liên Hương',
+    value: 52,
+    alt: 'Fun Studio Liên Hương',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.LAM_DONG,
+    href: '#',
+  },
+  {
+    label: '144 Thống Nhất, Phước Hội, Lâm Đồng',
+    labelIndex: 'Fun Studio LaGi',
+    value: 53,
+    alt: 'Fun Studio LaGi',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.LAM_DONG,
+    href: '#',
+  },
+
+  {
+    label: 'GO! 2A Nguyễn Đình Chiểu, Bà Rịa, Hồ Chí Minh',
+    labelIndex: 'Fun Studio GO! Bà Rịa',
+    value: 53,
+    alt: 'Fun Studio GO! Bà Rịa',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HCM,
+    href: '#',
+  },
+  {
+    label: '764A Đ. 30 Tháng 4, Phước Thắng, Hồ Chí Minh',
+    labelIndex: 'Fun Studio Vũng Tàu',
+    value: 54,
+    alt: 'Fun Studio Vũng Tàu',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HCM,
+    href: '#',
+  },
+  {
+    label: 'Go KNG Phú Mỹ, Tôn Đức Thắng, Phường Tân Thành, Bà Rịa - Vũng Tàu',
+    labelIndex: 'Fun Studio Phú Mỹ',
+    value: 55,
+    alt: 'Fun Studio Phú Mỹ',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HCM,
+    href: '#',
+  },
+  {
+    label: '120 Xa lộ Hà Nội, P.Tân Phú, TP Thủ Đức, TP.HCM',
+    labelIndex: 'Fun Studio Thủ Đức',
+    value: 55,
+    alt: 'Fun Studio Thủ Đức',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HCM,
+    href: '#',
+  },
+  {
+    label:
+      'Trung Tâm Văn Hóa - Thể Thao Quận 12, Nguyễn Ảnh Thủ, Trung Mỹ Tây, Hồ Chí Minh',
+    labelIndex: 'Fun Studio Galaxy Trung Chánh',
+    value: 56,
+    alt: 'Fun Studio Galaxy Trung Chánh',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.HCM,
+    href: '#',
+  },
+  {
+    label: '12 Trần Hưng Đạo (Chợ đêm), Bình Phước, Đồng Nai',
+    labelIndex: 'Fun Studio Đồng Xoài',
+    value: 57,
+    alt: 'Fun Studio Đồng Xoài',
+    image: funPinkLogoImage,
+    storeLocation: ProvinceTypes.DONG_NAI,
     href: '#',
   },
 ];

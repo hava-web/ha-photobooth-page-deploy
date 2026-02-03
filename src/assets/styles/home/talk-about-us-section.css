@@ -75,7 +75,7 @@
 
     .news-swiper-slide {
       .news-swiper-card {
-        @apply flex flex-col rounded-[1rem] p-[1.2rem] bg-lp-lighter-primary-color;
+        @apply flex flex-col rounded-[1rem] p-[1.2rem] bg-lp-lighter-primary-color w-full;
 
         .news-swiper-image {
           @apply border-image object-cover;
@@ -88,6 +88,7 @@
 
         .news-swiper-title {
           @apply text-white uppercase py-[2rem] text-lp-card-title h-[8rem] leading-[4rem];
+
           img {
             height: 100%;
             width: auto;
@@ -156,12 +157,6 @@
       @apply mb-4 text-lp-section-title-2 text-lp-primary-color uppercase !important;
     }
 
-    .news-swiper-slide {
-      .news-swiper-card {
-        width: unset !important;
-      }
-    }
-
     .news-swiper-left-arrow {
       @apply -left-[4rem] top-[50%];
     }
@@ -212,12 +207,6 @@
 
     .news-swiper-card-title {
       @apply mb-4 text-lp-section-title text-lp-primary-color uppercase;
-    }
-
-    .news-swiper-slide {
-      .news-swiper-card {
-        width: unset !important;
-      }
     }
 
     .news-swiper-left-arrow {
@@ -315,6 +304,7 @@
             @apply border-image object-cover w-full;
             aspect-ratio: 16 / 9;
           }
+
           .news-swiper-youtube-frame {
             aspect-ratio: 16 / 9;
           }

@@ -56,6 +56,8 @@ const FunStores: React.FC<FunStoresProps> = ({ stores = [] }) => {
                   );
                   const firstStore = locationStores?.[0];
 
+                  if (!size(locationStores)) return null;
+
                   return (
                     <div className="flex flex-col items-center">
                       <h3 className="store-location-title">
