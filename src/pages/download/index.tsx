@@ -280,7 +280,11 @@ function DownloadFile({
                             includes(resource, item.url) && 'selected'
                           }`}
                         >
-                          {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ? (
+                          {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ||
+                          isEqualVal(
+                            item?.contentType,
+                            CONTENT_TYPES.VIDEO_GIF,
+                          ) ? (
                             <video
                               className={`page-single__download-result-image ${
                                 includes(resource, item.url) && 'selected'
