@@ -7,6 +7,7 @@ export const CONTENT_TYPES = {
   PNG: 'image/png',
   MP4: 'video/mp4',
   GIF: 'image/gif',
+  VIDEO_GIF: 'image/mp4',
 };
 export enum VALIDATE_TYPES {
   OK = 'OK',
