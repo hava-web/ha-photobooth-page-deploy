@@ -9,6 +9,7 @@ import messengerIcon from 'assets/icons/messenger.png';
 import phoneIcon from 'assets/icons/phone.png';
 import PopoverBox from 'components/popover/PopoverBox';
 import zaloQRCodeImage from 'assets/images/home/zalo_qrcode.webp';
+import { SALE_PHONE_NUMBER } from 'constants/common.const';
 
 const FloatingSocialButtons = () => {
   const { T } = useTranslation();
@@ -78,7 +79,7 @@ const FloatingSocialButtons = () => {
         className="floating-button animate-tilt-shaking"
         title={T('hotline')}
         aria-label="phone"
-        href="tel:0975338244"
+        href={`tel:${SALE_PHONE_NUMBER}`}
       >
         <Image src={phoneIcon} height={60} alt="phone" />
       </a>

@@ -12,6 +12,7 @@ import AboutPhotoBooth from 'containers/app/home/AboutPhotoBooth';
 import { PageWithLayout } from 'models/common.model';
 import { renderMainLayout } from 'containers/layout/app/AppLayout';
 import { funBanners, funStores } from 'store/static-data/static-data.data';
+import FunProducts from 'containers/app/home/FunProducts';
 
 export const getStaticProps: GetStaticProps = () => ({
   props: {
@@ -34,6 +35,7 @@ const Home: PageWithLayout &
     <Services />
     <CustomerTalkAboutUs />
     {/* <CooperationProcess /> */}
+    <FunProducts />
     <FunStores stores={stores} />
   </section>
 );

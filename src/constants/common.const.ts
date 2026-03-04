@@ -1,1 +1,2 @@
 export const TIME_MASTER_LOADING_ALIVE = 3000;
+export const SALE_PHONE_NUMBER = '0975338244';

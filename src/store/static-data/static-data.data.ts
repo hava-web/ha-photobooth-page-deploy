@@ -32,6 +32,12 @@ import banner7Image from 'assets/images/banner-images/banner_7.webp';
 import bannerAllFeatureImageMobile from 'assets/images/banner-images/banner_all_feature-mobile.webp';
 import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
 
+import funBoothMEImage from 'assets/images/fun-products/booth-me.webp';
+import funBoothSSImage from 'assets/images/fun-products/booth-ss.webp';
+import funBoothSF from 'assets/images/fun-products/booth-sf.webp';
+import funBoothWoodKiot from 'assets/images/fun-products/booth-kiot-go.webp';
+import funBoothDSHImage from 'assets/images/fun-products/booth-dsh.webp';
+
 import funBienHoaDongNaiImage from 'assets/images/stores/bien_hoa_dong_nai.webp';
 import funChiLinhHaiDuongImage from 'assets/images/stores/chi_linh_hai_duong.webp';
 import funCongHoaTanBinhHCMImage from 'assets/images/stores/conghoa_tanbinh_hcm.webp';
@@ -101,6 +107,7 @@ import nguyenThuTrangImage from 'assets/images/customers/nguyen_thu_trang.webp';
 import phuongLinhImage from 'assets/images/customers/phuong_linh.webp';
 import yenNhiImage from 'assets/images/customers/yen_nhi.webp';
 import { StaticImageData } from 'next/image';
+import { SALE_PHONE_NUMBER } from 'constants/common.const';
 
 export enum ProvinceTypes {
   HANOI = 'hn',
@@ -204,6 +211,33 @@ export const headerNavBarLinks = [
   {
     value: HOME_PAGE_SECTIONS.FUN_STORES,
     label: 'danh sách\n cửa hàng',
+  },
+];
+
+export const FUN_PRODUCTS = [
+  {
+    label: 'Super Star (SS) Máy Tiêu Chuẩn',
+    image: funBoothSSImage,
+  },
+  {
+    label: 'Multiple Effective (ME) Máy 2 Góc Chụp',
+    image: funBoothMEImage,
+  },
+  {
+    label: 'Double Super High (DSH) Máy Góc Cao',
+    image: funBoothDSHImage,
+  },
+  {
+    label: 'Double Effective (DE) Máy Chụp Kép',
+    image: funPinkLogoImage,
+  },
+  {
+    label: 'SuperFlex (SF) Máy Mini Sự Kiện',
+    image: funBoothSF,
+  },
+  {
+    label: 'Kiot Gỗ',
+    image: funBoothWoodKiot,
   },
 ];
 
@@ -856,7 +890,7 @@ export const FOOTER_ITEMS = [
     value: 7,
     image: squarePhoneIcon,
     alt: 'footer phone icon',
-    href: 'tel:0975338244',
+    href: `tel:${SALE_PHONE_NUMBER}`,
   },
 ];
 

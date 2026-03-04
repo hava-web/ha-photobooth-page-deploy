@@ -1,11 +1,12 @@
-import React, { useCallback, useState } from 'react';
 import menuIcon from 'assets/icons/icon-menu.png';
 import logoIcon from 'assets/icons/logo.png';
 import Container from 'components/grid/Container';
 import Image from 'components/image/Image';
+import { SALE_PHONE_NUMBER } from 'constants/common.const';
 import { useTranslation } from 'hooks/useTranslation';
 import { map } from 'lodash';
 import NextLink from 'next/link';
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-scroll/modules';
 import { headerNavBarLinks } from 'store/static-data/static-data.data';
 import MobileSidebarHeader from './MobileSidebarHeader';
@@ -52,7 +53,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ isHome }) => {
                 </Link>
               ))}
           </div>
-          <a className="btn-hotline" href="tel:0975338244">
+          <a className="btn-hotline" href={`tel:${SALE_PHONE_NUMBER}`}>
             hotline
           </a>
           {isHome && (
