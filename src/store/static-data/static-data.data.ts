@@ -34,9 +34,10 @@ import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_featur
 
 import funBoothMEImage from 'assets/images/fun-products/booth-me.webp';
 import funBoothSSImage from 'assets/images/fun-products/booth-ss.webp';
-import funBoothSF from 'assets/images/fun-products/booth-sf.webp';
+import funBoothSFImage from 'assets/images/fun-products/booth-sf.webp';
 import funBoothWoodKiot from 'assets/images/fun-products/booth-kiot-go.webp';
 import funBoothDSHImage from 'assets/images/fun-products/booth-dsh.webp';
+import funBoothDEImage from 'assets/images/fun-products/booth-de.webp';
 
 import funBienHoaDongNaiImage from 'assets/images/stores/bien_hoa_dong_nai.webp';
 import funChiLinhHaiDuongImage from 'assets/images/stores/chi_linh_hai_duong.webp';
@@ -229,11 +230,11 @@ export const FUN_PRODUCTS = [
   },
   {
     label: 'Double Effective (DE) Máy Chụp Kép',
-    image: funPinkLogoImage,
+    image: funBoothDEImage,
   },
   {
     label: 'SuperFlex (SF) Máy Mini Sự Kiện',
-    image: funBoothSF,
+    image: funBoothSFImage,
   },
   {
     label: 'Kiot Gỗ',
