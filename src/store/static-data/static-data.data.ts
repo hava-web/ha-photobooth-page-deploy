@@ -19,6 +19,8 @@ import moneyIcon from 'assets/icons/money.png';
 
 import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-vn-mobile.webp';
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
+import bannerEvent2026Mobile from 'assets/images/banner-images/event-2026-mobile.webp';
+import bannerEvent2026 from 'assets/images/banner-images/event-2026.webp';
 import fastRoiMobileBannerImage from 'assets/images/banner-images/banner-fastroi-mobile.webp';
 import fastRoiBannerImage from 'assets/images/banner-images/banner-fastroi.webp';
 import bannerNewsMobileImage from 'assets/images/banner-images/banner-news-mobile.webp';
@@ -784,9 +786,17 @@ export const funBanners = [
     alt: 'Hệ thống cửa hàng Fun Studio trên cả nước',
   },
   {
-    imageClass: 'banner-news',
+    imageClass: 'banner-event-2026',
     label: '',
     value: 2,
+    image: bannerEvent2026,
+    mobileImage: bannerEvent2026Mobile,
+    alt: 'Funstudio sự kiện photobooth 2026',
+  },
+  {
+    imageClass: 'banner-news',
+    label: '',
+    value: 3,
     image: bannerNewsImage,
     mobileImage: bannerNewsMobileImage,
     imageStyle: { objectFit: 'fill' },
@@ -795,51 +805,51 @@ export const funBanners = [
   },
   {
     label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
-    value: 3,
+    value: 4,
     image: bannerAllFeatureImage,
     mobileImage: bannerAllFeatureImageMobile,
     alt: 'easy to use',
   },
   {
     label: 'Làn sóng chụp ảnh gây bão với giới trẻ',
-    value: 4,
+    value: 5,
     image: bannerTrendy2023Image,
     alt: 'easy to use',
   },
   {
     label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
-    value: 5,
+    value: 6,
     image: bannerKoreanStyleImage,
     alt: 'korea styles',
   },
   {
     label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
-    value: 6,
+    value: 7,
     image: bannerEasyToUseImage,
     alt: 'low risk high profit',
   },
   {
     label: 'Chi phí đầu tư ban đầu thấp,\n lợi nhuận cao',
-    value: 7,
+    value: 8,
     image: banner4Image,
     alt: 'genz trending',
   },
   {
     label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
-    value: 8,
+    value: 9,
     image: fastRoiBannerImage,
     mobileImage: fastRoiMobileBannerImage,
     alt: 'get budget',
   },
   {
     label: 'Chi phí vận hành thấp,\n tự động hóa cao,\n sử dụng ít nhân sự',
-    value: 9,
+    value: 10,
     image: banner6Image,
     alt: 'low operation cost',
   },
   {
     label: 'Thời gian triển khai nhanh chóng với chi phí tối ưu',
-    value: 10,
+    value: 11,
     image: banner7Image,
     alt: 'quick building',
   },

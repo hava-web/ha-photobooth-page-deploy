@@ -1,6 +1,5 @@
 import Container from 'components/grid/Container';
 import Image from 'components/image/Image';
-import { SALE_PHONE_NUMBER } from 'constants/common.const';
 import { HOME_PAGE_SECTIONS } from 'constants/dom-element.const';
 import { useTranslation } from 'hooks/useTranslation';
 import { map } from 'lodash';
@@ -33,9 +32,11 @@ const FunProducts: React.FC<FunProductsProps> = () => {
                 <p className="fun-products__name">{item?.label}</p>
                 <a
                   className="fun-products__contact"
-                  title={T('hotline')}
-                  aria-label="phone"
-                  href={`tel:${SALE_PHONE_NUMBER}`}
+                  href={process.env.NEXT_PUBLIC_FRANCHISE_FORM_REGISTER_URL}
+                  target="_blank"
+                  title={T('đăng ký nhượng quyền')}
+                  aria-label="đăng ký nhượng quyền"
+                  rel="noreferrer"
                 >
                   {T('Liên hệ')}
                 </a>
