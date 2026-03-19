@@ -12,7 +12,6 @@ export async function downloadFile(
   try {
     await fetch(fileUrl, {
       headers: {
-        responseType: 'blob',
         'Cache-Control': 'no-cache, no-store, max-age=0',
       },
     })
