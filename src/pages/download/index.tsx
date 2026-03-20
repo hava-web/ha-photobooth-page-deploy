@@ -26,7 +26,7 @@ import { handleUpdateCSSVar } from 'helpers/dom.helper';
 import { isEqualVal, jsonParse } from 'helpers/string.helper';
 import { isBoothOfflineMode } from 'helpers/common.helper';
 import { I18nextProvider } from 'react-i18next';
-import { filter, find, get, includes, isEmpty, map, size } from 'lodash';
+import { filter, get, includes, isEmpty, map, size } from 'lodash';
 import {
   DownloadDataStateModel,
   LanguageResponse,
@@ -66,9 +66,9 @@ function DownloadFile({
   console.log('ttt uiTemplateData', uiTemplateData);
   console.log('ttt languageData', languageData);
 
-  const photoTakenUrl = find(downloadData?.resources, (o) =>
-    isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
-  )?.url;
+  // const photoTakenUrl = find(downloadData?.resources, (o) =>
+  //   isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
+  // )?.url;
 
   const langOtp = useMemo(
     () =>
@@ -289,11 +289,20 @@ function DownloadFile({
                               className={`page-single__download-result-image ${
                                 includes(resource, item.url) && 'selected'
                               }`}
-                              poster={photoTakenUrl}
                               autoPlay
                               loop
                               muted
                               playsInline
+                              // Thêm các dòng dưới đây
+                              // eslint-disable-next-line react/no-unknown-property
+                              webkit-playsinline="true" // cho iOS Safari cũ
+                              // eslint-disable-next-line react/no-unknown-property
+                              x5-playsinline="true" // cho một số WebView
+                              preload="auto"
+                              onLoadedMetadata={(e) => {
+                                const video = e.currentTarget;
+                                video.play().catch(() => {}); // force play, bắt lỗi nếu bị block
+                              }}
                             >
                               <track kind="captions" />
                               <source src={item.url} type="video/mp4" />
