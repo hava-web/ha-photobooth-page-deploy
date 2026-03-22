@@ -94,6 +94,7 @@ import vtv24LogoImage from 'assets/images/home/vtv24.webp';
 
 import baoCafebizImage from 'assets/images/home/bao_cafebiz.webp';
 import baoKenh14Image from 'assets/images/home/bao_kenh14.webp';
+import suoitienKenh14Image from 'assets/images/home/suoitien_kenh14.webp';
 import baoVnexpressImage from 'assets/images/home/bao_vnexpress.webp';
 import cafebizLogoImage from 'assets/images/home/cafebiz.webp';
 import kenh14LogoImage from 'assets/images/home/kenh14_logo.png';
@@ -1072,8 +1073,16 @@ export const NEWS_MESSAGES = [
     alt: 'vtv24',
   },
   {
-    label: 'vtv1',
+    label: 'kenh14',
     value: 2,
+    href: 'https://kenh14.vn/dinh-nhat-tet-nay-dich-thi-la-photobooth-suoi-tien-khi-chi-ton-70k-da-duoc-lam-vua-khien-khach-tay-xep-hang-dang-co-nuom-nuop-215260221200730321.chn',
+    image: suoitienKenh14Image,
+    logo: kenh14LogoImage,
+    alt: 'kenh14 news',
+  },
+  {
+    label: 'vtv1',
+    value: 3,
     href: 'https://youtu.be/CnKDC4b1HTo',
     video: 'https://www.youtube.com/embed/CnKDC4b1HTo?si=MeEzBoT1diw2gHP8',
     logo: vtv1LogoImage,
@@ -1081,7 +1090,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 3,
+    value: 4,
     href: 'https://congluan.vn/thu-vui-chup-anh-lay-ngay-hut-gen-z-10286365.html',
     video: 'https://www.youtube.com/embed/nkewKtTuHts?si=fkPGFrjVnNQhaKP2',
     image: congluanImage,
@@ -1090,7 +1099,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vnexpress',
-    value: 4,
+    value: 5,
     href: 'https://vnexpress.net/fun-studio-tien-phong-xu-huong-chup-anh-photobooth-4857200.html',
     image: baoVnexpressImage,
     logo: vnexpressLogoImage,
@@ -1098,7 +1107,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'cafebiz',
-    value: 5,
+    value: 6,
     href: 'https://cafebiz.vn/fun-studio-giai-phap-kinh-doanh-photobooth-chi-phi-thap-loi-nhuan-cao-17625030519422388.chn',
     image: baoCafebizImage,
     logo: cafebizLogoImage,
@@ -1106,7 +1115,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'kenh14',
-    value: 6,
+    value: 7,
     href: 'https://kenh14.vn/bat-mi-diem-hen-cua-gioi-tre-ha-thanh-dao-nay-cu-den-la-rinh-ve-vo-van-anh-song-ao-215250305165008722.chn',
     image: baoKenh14Image,
     logo: kenh14LogoImage,
@@ -1114,7 +1123,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'diana',
-    value: 7,
+    value: 8,
     href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx',
     image: dianaFacebookEventImage,
     logo: dianaLogoImage,
@@ -1122,7 +1131,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vtv',
-    value: 8,
+    value: 9,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: vtv1LogoImage,
@@ -1131,7 +1140,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 9,
+    value: 10,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: congluanLogoImage,
@@ -1140,7 +1149,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'radio 4 teen',
-    value: 10,
+    value: 11,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
     video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,
