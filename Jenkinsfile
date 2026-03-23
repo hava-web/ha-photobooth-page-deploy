@@ -26,7 +26,7 @@ pipeline {
             }
         }
         
-        stage('Docker build - push - cleanup') {
+        stage('Docker build - push - cleanup ') {
             steps {
                 script {
                     checkout scm
