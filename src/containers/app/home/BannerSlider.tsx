@@ -40,7 +40,7 @@ const BannerSlider: React.FC<any> = ({ banners }) => {
         }
         modules={[Autoplay]}
         autoplay={{
-          delay: isDelayAutoPlay ? 2000000 : 2000,
+          delay: isDelayAutoPlay ? 2000000 : 4000,
           disableOnInteraction: false,
         }}
         loop

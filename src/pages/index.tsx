@@ -9,6 +9,7 @@ import CustomerTalkAboutUs from 'containers/app/home/CustomerTalkAboutUs';
 import FunStores from 'containers/app/home/FunStores';
 import StrengthOfFun from 'containers/app/home/StrengthOfFun';
 import AboutPhotoBooth from 'containers/app/home/AboutPhotoBooth';
+import EventGallery from 'containers/app/home/EventGallery';
 import { PageWithLayout } from 'models/common.model';
 import { renderMainLayout } from 'containers/layout/app/AppLayout';
 import { funBanners, funStores } from 'store/static-data/static-data.data';
@@ -35,6 +36,7 @@ const Home: PageWithLayout &
     <Services />
     <CustomerTalkAboutUs />
     {/* <CooperationProcess /> */}
+    <EventGallery />
     <FunProducts />
     <FunStores stores={stores} />
   </section>

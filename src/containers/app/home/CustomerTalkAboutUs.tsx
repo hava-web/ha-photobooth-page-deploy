@@ -92,6 +92,7 @@ const CustomerTalkAboutUs = () => {
                           className="mx-auto"
                           src={news?.logo}
                           alt={news?.alt}
+                          style={news?.style || {}}
                         />
                       ) : (
                         news?.label

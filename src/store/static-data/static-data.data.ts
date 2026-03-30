@@ -21,18 +21,18 @@ import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-v
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
 import bannerEvent2026Mobile from 'assets/images/banner-images/event-2026-mobile.webp';
 import bannerEvent2026 from 'assets/images/banner-images/event-2026.webp';
-import fastRoiMobileBannerImage from 'assets/images/banner-images/banner-fastroi-mobile.webp';
-import fastRoiBannerImage from 'assets/images/banner-images/banner-fastroi.webp';
 import bannerNewsMobileImage from 'assets/images/banner-images/banner-news-mobile.webp';
 import bannerNewsImage from 'assets/images/banner-images/banner-news.webp';
-import bannerKoreanStyleImage from 'assets/images/banner-images/banner_1.webp';
-import bannerTrendy2023Image from 'assets/images/banner-images/banner_2.jpg';
-import bannerEasyToUseImage from 'assets/images/banner-images/banner_3.webp';
+import banner1Image from 'assets/images/banner-images/banner_1.webp';
+import banner2Image from 'assets/images/banner-images/banner_2.webp';
+import banner3Image from 'assets/images/banner-images/banner_3.webp';
 import banner4Image from 'assets/images/banner-images/banner_4.webp';
+import banner5Image from 'assets/images/banner-images/banner_5.webp';
 import banner6Image from 'assets/images/banner-images/banner_6.webp';
 import banner7Image from 'assets/images/banner-images/banner_7.webp';
-import bannerAllFeatureImageMobile from 'assets/images/banner-images/banner_all_feature-mobile.webp';
-import bannerAllFeatureImage from 'assets/images/banner-images/banner_all_feature.webp';
+import banner8Image from 'assets/images/banner-images/banner_8.webp';
+import banner9Image from 'assets/images/banner-images/banner_9.webp';
+import banner10Image from 'assets/images/banner-images/banner_10.webp';
 
 import funBoothMEImage from 'assets/images/fun-products/booth-me.webp';
 import funBoothSSImage from 'assets/images/fun-products/booth-ss.webp';
@@ -40,6 +40,15 @@ import funBoothSFImage from 'assets/images/fun-products/booth-sf.webp';
 import funBoothWoodKiot from 'assets/images/fun-products/booth-kiot-go.webp';
 import funBoothDSHImage from 'assets/images/fun-products/booth-dsh.webp';
 import funBoothDEImage from 'assets/images/fun-products/booth-de.webp';
+
+import event1Image from 'assets/images/events/event_1.webp';
+import event2Image from 'assets/images/events/event_2.webp';
+import event3Image from 'assets/images/events/event_3.webp';
+import event4Image from 'assets/images/events/event_4.webp';
+import event5Image from 'assets/images/events/event_5.webp';
+import event6Image from 'assets/images/events/event_6.webp';
+import event7Image from 'assets/images/events/event_7.webp';
+import event8Image from 'assets/images/events/event_8.webp';
 
 import funBienHoaDongNaiImage from 'assets/images/stores/bien_hoa_dong_nai.webp';
 import funChiLinhHaiDuongImage from 'assets/images/stores/chi_linh_hai_duong.webp';
@@ -91,6 +100,8 @@ import dianaFacebookEventImage from 'assets/images/home/diana_facebook_event.web
 import radio4TeenImage from 'assets/images/home/radio_4_teen.webp';
 import vtv1LogoImage from 'assets/images/home/vtv1_logo.png';
 import vtv24LogoImage from 'assets/images/home/vtv24.webp';
+import lienQuanLogoImage from 'assets/images/home/lien_quan.webp';
+import lienQuanCoverImage from 'assets/images/home/lien_quan_cover_image.webp';
 
 import baoCafebizImage from 'assets/images/home/bao_cafebiz.webp';
 import baoKenh14Image from 'assets/images/home/bao_kenh14.webp';
@@ -243,6 +254,49 @@ export const FUN_PRODUCTS = [
   {
     label: 'Kiot Gỗ',
     image: funBoothWoodKiot,
+  },
+];
+
+export const EVENT_GALLERY = [
+  {
+    image: event1Image,
+    alt: 'Hoạt động sự kiện 1',
+    value: 1,
+  },
+  {
+    image: event2Image,
+    alt: 'Hoạt động sự kiện 2',
+    value: 2,
+  },
+  {
+    image: event3Image,
+    alt: 'Hoạt động sự kiện 3',
+    value: 3,
+  },
+  {
+    image: event4Image,
+    alt: 'Hoạt động sự kiện 4',
+    value: 4,
+  },
+  {
+    image: event5Image,
+    alt: 'Hoạt động sự kiện 5',
+    value: 5,
+  },
+  {
+    image: event6Image,
+    alt: 'Hoạt động sự kiện 6',
+    value: 6,
+  },
+  {
+    image: event7Image,
+    alt: 'Hoạt động sự kiện 7',
+    value: 7,
+  },
+  {
+    image: event8Image,
+    alt: 'Hoạt động sự kiện 8',
+    value: 8,
   },
 ];
 
@@ -806,54 +860,54 @@ export const funBanners = [
     alt: '',
   },
   {
-    label: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
     value: 4,
-    image: bannerAllFeatureImage,
-    mobileImage: bannerAllFeatureImageMobile,
-    alt: 'easy to use',
+    image: banner1Image,
+    alt: 'Mô hình chụp ảnh tự động',
   },
   {
-    label: 'Làn sóng chụp ảnh gây bão với giới trẻ',
     value: 5,
-    image: bannerTrendy2023Image,
-    alt: 'easy to use',
+    image: banner2Image,
+    alt: 'Làn sóng chụp ảnh gây bão giới trẻ',
   },
   {
-    label: 'Mô hình chụp ảnh tự động,\n phong cách Hàn Quốc',
     value: 6,
-    image: bannerKoreanStyleImage,
-    alt: 'korea styles',
+    image: banner3Image,
+    alt: 'Nâng tầm trải nghiệm không gian thương hiệu',
   },
   {
-    label: 'Mô hình ưu Việt,\n dễ dàng sử dụng',
     value: 7,
-    image: bannerEasyToUseImage,
-    alt: 'low risk high profit',
-  },
-  {
-    label: 'Chi phí đầu tư ban đầu thấp,\n lợi nhuận cao',
-    value: 8,
     image: banner4Image,
-    alt: 'genz trending',
+    alt: 'Mô hình ưu việt dễ dàng sử dụng',
   },
   {
-    label: 'Thu hồi vốn nhanh chóng 6 - 8 tháng',
+    value: 8,
+    image: banner5Image,
+    alt: 'Đồng hành cùng hàng trăm sự kiện toàn quốc',
+  },
+  {
     value: 9,
-    image: fastRoiBannerImage,
-    mobileImage: fastRoiMobileBannerImage,
-    alt: 'get budget',
-  },
-  {
-    label: 'Chi phí vận hành thấp,\n tự động hóa cao,\n sử dụng ít nhân sự',
-    value: 10,
     image: banner6Image,
-    alt: 'low operation cost',
+    alt: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
   },
   {
-    label: 'Thời gian triển khai nhanh chóng với chi phí tối ưu',
-    value: 11,
+    value: 10,
     image: banner7Image,
-    alt: 'quick building',
+    alt: 'chi phí đầu tư ban đầu thấp, lợi nhuận cao',
+  },
+  {
+    value: 11,
+    image: banner8Image,
+    alt: 'Thời gian triển khai nhanh chóng, với chi phí tối ưu',
+  },
+  {
+    value: 12,
+    image: banner9Image,
+    alt: 'Chi phí vận hành thấp, tự động hóa cao, sử dụng ít nhân sự',
+  },
+  {
+    value: 13,
+    image: banner10Image,
+    alt: 'Thu hồi vốn nhanh chóng 6-8 tháng',
   },
 ];
 
@@ -1065,8 +1119,17 @@ export const CUSTOMER_MESSAGES = [
 
 export const NEWS_MESSAGES = [
   {
-    label: 'vtv24',
+    label: 'lien quan mobile',
     value: 1,
+    href: 'https://lienquan.garena.vn/fun-studio-x-lien-quan-mobile-khi-photobooth-tro-thanh-diem-cham-moi-de-ket-noi/',
+    image: lienQuanCoverImage,
+    logo: lienQuanLogoImage,
+    style: { transform: 'scale(2.2)', marginTop: '0.5rem' },
+    alt: 'lien quan mobile',
+  },
+  {
+    label: 'vtv24',
+    value: 2,
     href: 'https://www.youtube.com/watch?v=unyZnLKiWUw',
     video: 'https://www.youtube.com/embed/unyZnLKiWUw?si=UCcTrLZJO7K50aFl',
     logo: vtv24LogoImage,
@@ -1074,7 +1137,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'kenh14',
-    value: 2,
+    value: 3,
     href: 'https://kenh14.vn/dinh-nhat-tet-nay-dich-thi-la-photobooth-suoi-tien-khi-chi-ton-70k-da-duoc-lam-vua-khien-khach-tay-xep-hang-dang-co-nuom-nuop-215260221200730321.chn',
     image: suoitienKenh14Image,
     logo: kenh14LogoImage,
@@ -1082,7 +1145,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vtv1',
-    value: 3,
+    value: 4,
     href: 'https://youtu.be/CnKDC4b1HTo',
     video: 'https://www.youtube.com/embed/CnKDC4b1HTo?si=MeEzBoT1diw2gHP8',
     logo: vtv1LogoImage,
@@ -1090,7 +1153,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 4,
+    value: 5,
     href: 'https://congluan.vn/thu-vui-chup-anh-lay-ngay-hut-gen-z-10286365.html',
     video: 'https://www.youtube.com/embed/nkewKtTuHts?si=fkPGFrjVnNQhaKP2',
     image: congluanImage,
@@ -1099,7 +1162,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vnexpress',
-    value: 5,
+    value: 6,
     href: 'https://vnexpress.net/fun-studio-tien-phong-xu-huong-chup-anh-photobooth-4857200.html',
     image: baoVnexpressImage,
     logo: vnexpressLogoImage,
@@ -1107,7 +1170,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'cafebiz',
-    value: 6,
+    value: 7,
     href: 'https://cafebiz.vn/fun-studio-giai-phap-kinh-doanh-photobooth-chi-phi-thap-loi-nhuan-cao-17625030519422388.chn',
     image: baoCafebizImage,
     logo: cafebizLogoImage,
@@ -1115,7 +1178,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'kenh14',
-    value: 7,
+    value: 8,
     href: 'https://kenh14.vn/bat-mi-diem-hen-cua-gioi-tre-ha-thanh-dao-nay-cu-den-la-rinh-ve-vo-van-anh-song-ao-215250305165008722.chn',
     image: baoKenh14Image,
     logo: kenh14LogoImage,
@@ -1123,7 +1186,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'diana',
-    value: 8,
+    value: 9,
     href: 'https://www.facebook.com/share/p/3xpn4v3j3T6Muapx',
     image: dianaFacebookEventImage,
     logo: dianaLogoImage,
@@ -1131,7 +1194,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'vtv',
-    value: 9,
+    value: 10,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: vtv1LogoImage,
@@ -1140,7 +1203,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'báo công luận',
-    value: 10,
+    value: 11,
     href: 'https://tv.congluan.vn/gioi-tre-ru-nhau-lam-moi-lai-trao-luu-photobooth-post275590.html',
     image: congluanImage,
     logo: congluanLogoImage,
@@ -1149,7 +1212,7 @@ export const NEWS_MESSAGES = [
   },
   {
     label: 'radio 4 teen',
-    value: 11,
+    value: 12,
     href: 'https://hanoionline.vn/radio-4-teen-03-11-2023-201398.htm',
     image: radio4TeenImage,
     video: process.env.NEXT_PUBLIC_RADIO_TEEN_YOUTUBE_URL,

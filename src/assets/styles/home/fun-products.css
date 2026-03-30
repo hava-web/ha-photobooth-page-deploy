@@ -1,5 +1,7 @@
 .fun-products-section {
   @apply bg-gradient-pink;
+  border-top-width: 3rem;
+  border-color: var(--lp-lighter-primary-color);
 
   .fun-products-container {
     @apply py-[4rem] pb-[6rem] text-center text-lp-small;
