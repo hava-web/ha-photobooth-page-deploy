@@ -17,22 +17,32 @@ import growUpIcon from 'assets/icons/grow_up.png';
 import handIcon from 'assets/icons/hand.png';
 import moneyIcon from 'assets/icons/money.png';
 
-import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-vn-mobile.webp';
+import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-vn-mobile.png';
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
 import bannerEvent2026Mobile from 'assets/images/banner-images/event-2026-mobile.webp';
 import bannerEvent2026 from 'assets/images/banner-images/event-2026.webp';
 import bannerNewsMobileImage from 'assets/images/banner-images/banner-news-mobile.webp';
 import bannerNewsImage from 'assets/images/banner-images/banner-news.webp';
 import banner1Image from 'assets/images/banner-images/banner_1.webp';
+import banner1MobileImage from 'assets/images/banner-images/banner_1-mobile.png';
 import banner2Image from 'assets/images/banner-images/banner_2.webp';
+import banner2MobileImage from 'assets/images/banner-images/banner_2-mobile.png';
 import banner3Image from 'assets/images/banner-images/banner_3.webp';
+import banner3MobileImage from 'assets/images/banner-images/banner_3-mobile.png';
 import banner4Image from 'assets/images/banner-images/banner_4.webp';
+import banner4MobileImage from 'assets/images/banner-images/banner_4-mobile.png';
 import banner5Image from 'assets/images/banner-images/banner_5.webp';
+import banner5MobileImage from 'assets/images/banner-images/banner_5-mobile.png';
 import banner6Image from 'assets/images/banner-images/banner_6.webp';
+import banner6MobileImage from 'assets/images/banner-images/banner_6-mobile.png';
 import banner7Image from 'assets/images/banner-images/banner_7.webp';
+import banner7MobileImage from 'assets/images/banner-images/banner_7-mobile.png';
 import banner8Image from 'assets/images/banner-images/banner_8.webp';
+import banner8MobileImage from 'assets/images/banner-images/banner_8-mobile.png';
 import banner9Image from 'assets/images/banner-images/banner_9.webp';
+import banner9MobileImage from 'assets/images/banner-images/banner_9-mobile.png';
 import banner10Image from 'assets/images/banner-images/banner_10.webp';
+import banner10MobileImage from 'assets/images/banner-images/banner_10-mobile.png';
 
 import funBoothMEImage from 'assets/images/fun-products/booth-me.webp';
 import funBoothSSImage from 'assets/images/fun-products/booth-ss.webp';
@@ -862,51 +872,61 @@ export const funBanners = [
   {
     value: 4,
     image: banner1Image,
+    mobileImage: banner1MobileImage,
     alt: 'Mô hình chụp ảnh tự động',
   },
   {
     value: 5,
     image: banner2Image,
+    mobileImage: banner2MobileImage,
     alt: 'Làn sóng chụp ảnh gây bão giới trẻ',
   },
   {
     value: 6,
     image: banner3Image,
+    mobileImage: banner3MobileImage,
     alt: 'Nâng tầm trải nghiệm không gian thương hiệu',
   },
   {
     value: 7,
     image: banner4Image,
+    mobileImage: banner4MobileImage,
     alt: 'Mô hình ưu việt dễ dàng sử dụng',
   },
   {
     value: 8,
     image: banner5Image,
+    mobileImage: banner5MobileImage,
     alt: 'Đồng hành cùng hàng trăm sự kiện toàn quốc',
   },
   {
     value: 9,
     image: banner6Image,
+    mobileImage: banner6MobileImage,
     alt: 'Trọn gói đầu tư, tư vấn, triển khai, vận hành',
   },
   {
     value: 10,
     image: banner7Image,
+    mobileImage: banner7MobileImage,
     alt: 'chi phí đầu tư ban đầu thấp, lợi nhuận cao',
   },
   {
     value: 11,
     image: banner8Image,
+    mobileImage: banner8MobileImage,
     alt: 'Thời gian triển khai nhanh chóng, với chi phí tối ưu',
   },
   {
     value: 12,
     image: banner9Image,
+    mobileImage: banner9MobileImage,
     alt: 'Chi phí vận hành thấp, tự động hóa cao, sử dụng ít nhân sự',
   },
   {
     value: 13,
     image: banner10Image,
+    mobileImage: banner10MobileImage,
     alt: 'Thu hồi vốn nhanh chóng 6-8 tháng',
   },
 ];
