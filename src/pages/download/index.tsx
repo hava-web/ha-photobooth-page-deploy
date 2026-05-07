@@ -409,12 +409,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
   try {
-    const uiTemplateResponse = await (isBoothOfflineMode()
-      ? getUiTemplateBoothOffline
-      : getUiTemplate)({ id: transactionId });
-    const downloadResponse = await (isBoothOfflineMode()
-      ? getDownloadDataBoothOffline
-      : getDownloadData)({ id: transactionId });
+    const uiTemplateResponse = await (
+      isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate
+    )({ id: transactionId });
+    const downloadResponse = await (
+      isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
+    )({ id: transactionId });
     const languageResponse = await getLanguagesData({});
 
     return {
