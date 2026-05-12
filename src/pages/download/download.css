@@ -354,6 +354,6 @@
 
 @media (max-width: 639px) {
   .swiper-wrapper {
-    width: 100%;
+    width: 40rem;
   }
 }
