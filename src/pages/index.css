@@ -254,6 +254,7 @@ body {
 
 .page-single__logo {
   width: 40%;
+  max-width: 30rem;
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
