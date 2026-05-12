@@ -180,7 +180,7 @@
 }
 
 .swiper-wrapper {
-  width: 100%;
+  width: 50rem;
 
   .swiper-slide {
     display: flex;
