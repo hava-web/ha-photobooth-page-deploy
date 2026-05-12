@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
 import { saveAs } from 'file-saver';
+import JSZip from 'jszip';
 import { FILE_NAME_DOWNLOAD } from 'constants/file.const';
 import { isEmpty, size } from 'lodash';
-import { delay } from 'helpers/common.helper';
 
 export async function downloadFile(
   fileUrl: string | undefined,
@@ -28,10 +28,27 @@ export async function downloadSequential(
   urls: string[],
   displayName: string = FILE_NAME_DOWNLOAD,
 ) {
+  if (!size(urls)) return;
+
+  const zip = new JSZip();
+  const folder = zip.folder(displayName) ?? zip;
+
   for (let i = 0; i < size(urls); i++) {
-    await downloadFile(urls[i], `${displayName + Date.now()}`);
-    await delay(300); // delay
+    const url = urls[i];
+    try {
+      const res = await fetch(url, {
+        headers: { 'Cache-Control': 'no-cache, no-store, max-age=0' },
+      });
+      const blob = await res.blob();
+      const ext = url.split('?')[0].split('.').pop() || 'jpg';
+      folder.file(`photo_${i + 1}.${ext}`, blob);
+    } catch {
+      //
+    }
   }
+
+  const zipBlob = await zip.generateAsync({ type: 'blob' });
+  saveAs(zipBlob, `${displayName}.zip`);
 }
 
 export async function downloadFiles(
