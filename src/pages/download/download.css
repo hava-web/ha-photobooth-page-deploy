@@ -180,7 +180,7 @@
 }
 
 .swiper-wrapper {
-  width: 50rem;
+  width: 90vw;
 
   .swiper-slide {
     display: flex;
@@ -211,8 +211,8 @@
         background: white;
         border: none;
         border-radius: 50%;
-        width: 2.5rem;
-        height: 1.5rem;
+        width: clamp(2.5rem, 3vw, 4rem);
+        height: clamp(2.5rem, 3vw, 4rem);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -352,8 +352,8 @@
   margin: 1rem 0;
 }
 
-@media (max-width: 639px) {
+/* @media (max-width: 639px) {
   .swiper-wrapper {
     width: 40rem;
   }
-}
+} */
