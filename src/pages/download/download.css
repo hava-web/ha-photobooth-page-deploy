@@ -352,6 +352,14 @@
   margin: 1rem 0;
 }
 
+.pin-popup {
+  .confirm-button {
+    width: 12rem;
+    height: 5rem;
+    border-radius: 3rem;
+  }
+}
+
 @media (max-width: 639px) {
   .swiper-wrapper {
     width: 90vw;

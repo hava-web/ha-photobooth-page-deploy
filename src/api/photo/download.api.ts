@@ -13,7 +13,12 @@ export function getDownloadData(payload: GetDownloadDataRequestModel) {
   return adminRequest.get<
     GetDownloadDataResponseModel,
     GetDownloadDataResponseModel
-  >(`/general/transactions/${payload?.id}/resources`);
+  >(`/general/transactions/${payload?.id}/resources`, {
+    params: {
+      transactionId: payload?.id,
+      pinCodeDownload: payload?.pinCodeDownload,
+    },
+  });
 }
 
 export function getDownloadDataBoothOffline(

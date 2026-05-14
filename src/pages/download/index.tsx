@@ -40,6 +40,7 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { useTranslation } from 'hooks/useTranslation';
 import Select from 'components/select/Select';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
+import PinModal from './PinModal';
 import downloadI18n from '../../i18n/download';
 
 type DownloadFileProps = DownloadDataStateModel & {
@@ -59,6 +60,24 @@ function DownloadFile({
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
+  const [isPinModalOpen, setIsPinModalOpen] = useState(true);
+  const [localDownloadData, setLocalDownloadData] = useState(downloadData);
+
+  const pinStorageKey = `pin_${transactionId}`;
+
+  useEffect(() => {
+    const savedPin = sessionStorage.getItem(pinStorageKey);
+    if (savedPin) {
+      getDownloadData({ id: transactionId, pinCodeDownload: savedPin })
+        .then((res) => {
+          setLocalDownloadData(res.data || null);
+          setIsPinModalOpen(false);
+        })
+        .catch(() => {
+          sessionStorage.removeItem(pinStorageKey);
+        });
+    }
+  }, []);
   const [uiTemplate, setUiTemplate] = useState<any>(uiTemplateData);
   const [previewItem, setPreviewItem] = useState<{
     url: string;
@@ -95,8 +114,11 @@ function DownloadFile({
 
   const resourceWithoutQRphoto = useMemo(
     () =>
-      filter(downloadData?.resources, (item) => !includes(item?.url, '_QR')),
-    [],
+      filter(
+        localDownloadData?.resources,
+        (item) => !includes(item?.url, '_QR'),
+      ),
+    [localDownloadData],
   );
 
   const resourceChunks = useMemo(
@@ -186,6 +208,24 @@ function DownloadFile({
   return (
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
+      <PinModal
+        open={isPinModalOpen}
+        onClose={() => setIsPinModalOpen(false)}
+        onConfirm={(pin) => {
+          getDownloadData({
+            id: transactionId,
+            pinCodeDownload: pin,
+          })
+            .then((res) => {
+              sessionStorage.setItem(pinStorageKey, pin);
+              setLocalDownloadData(res.data || null);
+              setIsPinModalOpen(false);
+            })
+            .catch(() => {
+              setLocalDownloadData(null);
+            });
+        }}
+      />
       <div className={cx('page-single__layout')}>
         {!!uiTemplateData?.isEncycom && !!size(downloadData?.resources) && (
           <EncycomEmbed
@@ -235,15 +275,15 @@ function DownloadFile({
           >
             {sloganText}
           </Typography>
-          {!!downloadData && uiTemplateData?.isAllowEarnPoint && (
+          {!!localDownloadData && uiTemplateData?.isAllowEarnPoint && (
             <FloatingEarnPointButtons transactionId={transactionId} />
           )}
-          {!downloadData || !!downloadData?.isExpired ? (
+          {!localDownloadData || !!localDownloadData?.isExpired ? (
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
               className="page-single__download-result-image"
             >
-              {downloadData?.isExpired ? expiredText : noDataText}
+              {localDownloadData?.isExpired ? expiredText : noDataText}
             </Typography>
           ) : (
             <>
@@ -273,7 +313,7 @@ function DownloadFile({
                     </label>
                   </div>
                   <Swiper onSwiper={setSwiper} className="w-full h-full" loop>
-                    {downloadData ? (
+                    {localDownloadData ? (
                       map(resourceChunks, (chunkItems, chunkIndex) => (
                         <SwiperSlide className="swiper-slide" key={chunkIndex}>
                           <div className="grid grid-cols-3 grid-rows-3 gap-[0.4rem] w-full h-full">
@@ -367,7 +407,7 @@ function DownloadFile({
                   <AssetIcons.RightIcon width={40} height={40} />
                 </button>
               </div>
-              {!isEmpty(downloadData?.resources) && (
+              {!isEmpty(localDownloadData?.resources) && (
                 <div className="bg-black bg-opacity-40 w-[8rem] rounded-lg my-1">
                   <Typography
                     variant={TYPOGRAPHY_VARIANTS.SMALL}
@@ -405,13 +445,14 @@ function DownloadFile({
                 className="text-center machine-info-text"
               >
                 {`${
-                  moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) ||
-                  '_'
+                  moment(localDownloadData?.recordAt).format(
+                    HOUR_MINUTE_FORMAT,
+                  ) || '_'
                 } ${T('common:time')} ${
-                  moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
+                  moment(localDownloadData?.recordAt).format(DATE_FORMAT) || '_'
                 }`}
-                {!!downloadData?.device && (
-                  <>{`, ${T('common:device')} ${downloadData?.device}`}</>
+                {!!localDownloadData?.device && (
+                  <>{`, ${T('common:device')} ${localDownloadData?.device}`}</>
                 )}
               </Typography>
             </>
@@ -496,7 +537,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     )({ id: transactionId });
     const downloadResponse = await (
       isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
-    )({ id: transactionId });
+    )({
+      id: transactionId,
+      pinCodeDownload: '',
+    });
     const languageResponse = await getLanguagesData({});
 
     return {
