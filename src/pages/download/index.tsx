@@ -60,7 +60,9 @@ function DownloadFile({
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
-  const [isPinModalOpen, setIsPinModalOpen] = useState(true);
+  const [isPinModalOpen, setIsPinModalOpen] = useState(
+    !downloadData?.resources?.length,
+  );
   const [localDownloadData, setLocalDownloadData] = useState(downloadData);
 
   const pinStorageKey = `pin_${transactionId}`;
