@@ -110,10 +110,12 @@
 
 .pb-carousel-arrow-right {
   right: 3rem;
+  top: 2rem;
 }
 
 .pb-carousel-arrow-left {
   left: 3rem;
+  top: 2rem;
 }
 
 .popup-download {
@@ -253,6 +255,7 @@
   z-index: 9999;
   background: rgba(0, 0, 0, 0.85);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -273,14 +276,29 @@
   border-radius: 8px;
 }
 
-.preview-modal-close {
+.header-preview-modal {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(255, 255, 255, 0.2);
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--sync-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.preview-modal-index {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.preview-modal-close {
+  position: static;
   border: none;
   color: white;
-  font-size: 1.25rem;
+  font-size: 2rem;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -292,9 +310,7 @@
 }
 
 .preview-modal-download {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+  position: static;
   background: var(--sync-primary-color);
   border: none;
   border-radius: 50%;

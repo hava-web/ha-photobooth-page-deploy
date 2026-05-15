@@ -58,6 +58,7 @@ function DownloadFile({
   const { t, T, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
   const [isPinModalOpen, setIsPinModalOpen] = useState(false);
@@ -321,7 +322,12 @@ function DownloadFile({
                       {T('common:selectAll')}
                     </label>
                   </div>
-                  <Swiper onSwiper={setSwiper} className="w-full h-full" loop>
+                  <Swiper
+                    onSwiper={setSwiper}
+                    onSlideChange={(s) => setActiveIndex(s.realIndex)}
+                    className="w-full h-full"
+                    loop
+                  >
                     {localDownloadData ? (
                       map(resourceChunks, (chunkItems, chunkIndex) => (
                         <SwiperSlide className="swiper-slide" key={chunkIndex}>
@@ -416,6 +422,24 @@ function DownloadFile({
                   <AssetIcons.RightIcon width={40} height={40} />
                 </button>
               </div>
+              {resourceChunks.length >= 2 && (
+                <div className="flex items-center justify-center gap-2 my-1">
+                  {map(resourceChunks, (_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      aria-label={`slide ${i + 1}`}
+                      onClick={() => swiper?.slideToLoop(i)}
+                      className={cx(
+                        'w-[1.2rem] h-[1.2rem] rounded-full transition-all duration-200',
+                        i === activeIndex
+                          ? 'bg-[var(--sync-primary-color)] scale-125'
+                          : 'bg-[var(--sync-primary-color)] opacity-40',
+                      )}
+                    />
+                  ))}
+                </div>
+              )}
               {!isEmpty(localDownloadData?.resources) && (
                 <div className="bg-black bg-opacity-40 w-[8rem] rounded-lg my-1">
                   <Typography
@@ -475,34 +499,61 @@ function DownloadFile({
           onClick={() => setPreviewItem(null)}
           aria-hidden="true"
         >
-          <button
-            type="button"
-            className="preview-modal-close"
-            onClick={() => setPreviewItem(null)}
-            aria-label="close preview"
-          >
-            ✕
-          </button>
-          <button
-            type="button"
-            className="preview-modal-download"
-            onClick={(e) => {
-              e.stopPropagation();
-              downloadFile(previewItem.url, FILE_IMAGE_DOWNLOAD);
-            }}
-            aria-label="download"
-          >
-            <AssetIcons.DownloadIcon
-              width={20}
-              height={20}
-              className="text-white"
-            />
-          </button>
+          <div className="header-preview-modal">
+            <button
+              type="button"
+              className="preview-modal-close"
+              onClick={() => setPreviewItem(null)}
+              aria-label="close preview"
+            >
+              ✕
+            </button>
+            <span className="preview-modal-index">
+              {resourceWithoutQRphoto.findIndex(
+                (r) => r.url === previewItem.url,
+              ) + 1}
+              /{resourceWithoutQRphoto.length}
+            </span>
+            <button
+              type="button"
+              className="preview-modal-download"
+              onClick={(e) => {
+                e.stopPropagation();
+                downloadFile(previewItem.url, FILE_IMAGE_DOWNLOAD);
+              }}
+              aria-label="download"
+            >
+              <AssetIcons.DownloadIcon
+                width={20}
+                height={20}
+                className="text-white"
+              />
+            </button>
+          </div>
           <div
             className="preview-modal-content"
             onClick={(e) => e.stopPropagation()}
             aria-hidden="true"
           >
+            <button
+              type="button"
+              className="pb-carousel-arrow pb-carousel-arrow-left"
+              aria-label="prev image"
+              onClick={(e) => {
+                e.stopPropagation();
+                const idx = resourceWithoutQRphoto.findIndex(
+                  (r) => r.url === previewItem.url,
+                );
+                const prev =
+                  resourceWithoutQRphoto[
+                    (idx - 1 + resourceWithoutQRphoto.length) %
+                      resourceWithoutQRphoto.length
+                  ];
+                setPreviewItem(prev);
+              }}
+            >
+              <AssetIcons.LeftIcon width={40} height={40} />
+            </button>
             {isEqualVal(previewItem.contentType, CONTENT_TYPES.MP4) ||
             isEqualVal(previewItem.contentType, CONTENT_TYPES.VIDEO_GIF) ? (
               <video
@@ -522,6 +573,24 @@ function DownloadFile({
                 className="preview-modal-media"
               />
             )}
+            <button
+              type="button"
+              className="pb-carousel-arrow pb-carousel-arrow-right"
+              aria-label="next image"
+              onClick={(e) => {
+                e.stopPropagation();
+                const idx = resourceWithoutQRphoto.findIndex(
+                  (r) => r.url === previewItem.url,
+                );
+                const next =
+                  resourceWithoutQRphoto[
+                    (idx + 1) % resourceWithoutQRphoto.length
+                  ];
+                setPreviewItem(next);
+              }}
+            >
+              <AssetIcons.RightIcon width={40} height={40} />
+            </button>
           </div>
         </div>
       )}
