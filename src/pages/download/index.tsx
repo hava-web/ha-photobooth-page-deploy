@@ -502,20 +502,6 @@ function DownloadFile({
           <div className="header-preview-modal">
             <button
               type="button"
-              className="preview-modal-close"
-              onClick={() => setPreviewItem(null)}
-              aria-label="close preview"
-            >
-              ✕
-            </button>
-            <span className="preview-modal-index">
-              {resourceWithoutQRphoto.findIndex(
-                (r) => r.url === previewItem.url,
-              ) + 1}
-              /{resourceWithoutQRphoto.length}
-            </span>
-            <button
-              type="button"
               className="preview-modal-download"
               onClick={(e) => {
                 e.stopPropagation();
@@ -528,6 +514,20 @@ function DownloadFile({
                 height={20}
                 className="text-white"
               />
+            </button>
+            <span className="preview-modal-index">
+              {resourceWithoutQRphoto.findIndex(
+                (r) => r.url === previewItem.url,
+              ) + 1}
+              /{resourceWithoutQRphoto.length}
+            </span>
+            <button
+              type="button"
+              className="preview-modal-close"
+              onClick={() => setPreviewItem(null)}
+              aria-label="close preview"
+            >
+              ✕
             </button>
           </div>
           <div
