@@ -21,8 +21,6 @@ import bannerAllStoreInVNMobile from 'assets/images/banner-images/all-store-in-v
 import bannerAllStoreInVN from 'assets/images/banner-images/all-store-in-vn.webp';
 import bannerEvent2026Mobile from 'assets/images/banner-images/event-2026-mobile.webp';
 import bannerEvent2026 from 'assets/images/banner-images/event-2026.webp';
-import bannerNewsMobileImage from 'assets/images/banner-images/banner-news-mobile.webp';
-import bannerNewsImage from 'assets/images/banner-images/banner-news.webp';
 import banner1Image from 'assets/images/banner-images/banner_1.webp';
 import banner1MobileImage from 'assets/images/banner-images/banner_1-mobile.webp';
 import banner2Image from 'assets/images/banner-images/banner_2.webp';
@@ -112,6 +110,8 @@ import vtv1LogoImage from 'assets/images/home/vtv1_logo.png';
 import vtv24LogoImage from 'assets/images/home/vtv24.webp';
 import lienQuanLogoImage from 'assets/images/home/lien_quan.webp';
 import lienQuanCoverImage from 'assets/images/home/lien_quan_cover_image.webp';
+import vcfLogoImage from 'assets/images/home/vcf_logo.webp';
+import vcfCoverImage from 'assets/images/home/vcf_fun_studio_cover.webp';
 
 import baoCafebizImage from 'assets/images/home/bao_cafebiz.webp';
 import baoKenh14Image from 'assets/images/home/bao_kenh14.webp';
@@ -860,16 +860,6 @@ export const funBanners = [
     alt: 'Funstudio sự kiện photobooth 2026',
   },
   {
-    imageClass: 'banner-news',
-    label: '',
-    value: 3,
-    image: bannerNewsImage,
-    mobileImage: bannerNewsMobileImage,
-    imageStyle: { objectFit: 'fill' },
-    href: HOME_PAGE_SECTIONS.CUSTOMER_TALK_ABOUT_US,
-    alt: '',
-  },
-  {
     value: 4,
     image: banner1Image,
     mobileImage: banner1MobileImage,
@@ -1138,6 +1128,14 @@ export const CUSTOMER_MESSAGES = [
 ];
 
 export const NEWS_MESSAGES = [
+  {
+    label: "vietnam children's fund",
+    value: 13,
+    href: 'https://vietnamchildrensfund.com/fun-studio-dong-hanh-cung-vietnam-childrens-fund-trien-khai-photobooth-gay-quy-cho-tre-em-kho-khan/',
+    image: vcfCoverImage,
+    logo: vcfLogoImage,
+    alt: "vietnam children's fund news",
+  },
   {
     label: 'lien quan mobile',
     value: 1,
