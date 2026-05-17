@@ -75,7 +75,13 @@ function DownloadFile({
     if (savedPin) {
       getDownloadData({ id: transactionId, pinCodeDownload: savedPin })
         .then((res) => {
-          setLocalDownloadData(res.data || null);
+          if (!res.data) {
+            sessionStorage.removeItem(pinStorageKey);
+            setIsCheckingPin(false);
+            setIsPinModalOpen(true);
+            return;
+          }
+          setLocalDownloadData(res.data);
           setIsCheckingPin(false);
         })
         .catch(() => {
