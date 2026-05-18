@@ -15,7 +15,7 @@ export function getDownloadData(payload: GetDownloadDataRequestModel) {
     GetDownloadDataResponseModel
   >(`/general/transactions/${payload?.id}/resources`, {
     params: {
-      transactionId: payload?.id,
+      // transactionId: payload?.id,
       pinCodeDownload: payload?.pinCodeDownload,
     },
   });
