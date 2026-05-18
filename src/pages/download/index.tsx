@@ -255,7 +255,9 @@ function DownloadFile({
               sessionStorage.removeItem(pinStorageKey);
               setLocalDownloadData(null);
               setIsPinModalOpen(true);
-              setPinError(err?.message || t('download:pinError'));
+              setPinError(
+                err?.response?.data?.message || t('download:pinError'),
+              );
             });
         }}
       />
