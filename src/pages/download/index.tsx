@@ -62,38 +62,42 @@ function DownloadFile({
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
   const [isPinModalOpen, setIsPinModalOpen] = useState(false);
+  const [isCheckingPin, setIsCheckingPin] = useState(
+    !downloadData?.resources?.length,
+  );
   const [localDownloadData, setLocalDownloadData] = useState(downloadData);
 
   const pinStorageKey = `pin_${transactionId}`;
 
   useEffect(() => {
     if (!uiTemplateData?.isPinCodeDownload) {
-      setIsPinModalOpen(false);
+      setIsCheckingPin(false);
       return;
     }
-
+    if (!isCheckingPin) return;
     const savedPin = sessionStorage.getItem(pinStorageKey);
-
     if (savedPin) {
       getDownloadData({ id: transactionId, pinCodeDownload: savedPin })
         .then((res) => {
           if (!res.data) {
             sessionStorage.removeItem(pinStorageKey);
+            setIsCheckingPin(false);
             setIsPinModalOpen(true);
             return;
           }
           setLocalDownloadData(res.data);
-          setIsPinModalOpen(false);
+          setIsCheckingPin(false);
         })
         .catch(() => {
           sessionStorage.removeItem(pinStorageKey);
+          setIsCheckingPin(false);
           setIsPinModalOpen(true);
         });
-      return;
+    } else {
+      setIsCheckingPin(false);
+      setIsPinModalOpen(true);
     }
-
-    setIsPinModalOpen(true);
-  }, [uiTemplateData?.isPinCodeDownload, pinStorageKey, transactionId]);
+  }, []);
   const [uiTemplate, setUiTemplate] = useState<any>(uiTemplateData);
   const [previewItem, setPreviewItem] = useState<{
     url: string;
