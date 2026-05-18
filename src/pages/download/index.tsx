@@ -628,23 +628,37 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
   try {
-    const uiTemplateResponse = await (
-      isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate
-    )({ id: transactionId });
-    const downloadResponse = await (
-      isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
-    )({
-      id: transactionId,
-      pinCodeDownload: '',
-    });
-    const languageResponse = await getLanguagesData({});
+    const [uiTemplateResponse, downloadResponse, languageResponse] =
+      await Promise.allSettled([
+        (isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate)({
+          id: transactionId,
+        }),
+        (isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData)({
+          id: transactionId,
+          pinCodeDownload: '',
+        }),
+        getLanguagesData({}),
+      ]);
 
     return {
       props: {
         transactionId,
-        downloadData: downloadResponse?.data || null,
-        uiTemplateData: uiTemplateResponse?.data || null,
-        languageData: languageResponse?.data || null,
+        downloadData:
+          downloadResponse.status === 'fulfilled'
+            ? downloadResponse.value?.data || null
+            : null,
+        uiTemplateData:
+          uiTemplateResponse.status === 'fulfilled'
+            ? uiTemplateResponse.value?.data || null
+            : null,
+        languageData:
+          languageResponse.status === 'fulfilled'
+            ? languageResponse.value?.data || null
+            : null,
+        errorData:
+          downloadResponse.status === 'rejected'
+            ? JSON.parse(JSON.stringify(downloadResponse.reason))
+            : null,
       },
     };
   } catch (err) {
