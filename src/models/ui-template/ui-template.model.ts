@@ -36,6 +36,7 @@ export type UiTemplateModel = {
   Type: string;
   languageCode: string;
   isEncycom: boolean;
+  isPinCodeDownload: boolean;
 };
 
 export type GetUiTemplateRequestModel = {

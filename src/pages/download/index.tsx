@@ -70,6 +70,10 @@ function DownloadFile({
   const pinStorageKey = `pin_${transactionId}`;
 
   useEffect(() => {
+    if (!uiTemplateData?.isPinCodeDownload) {
+      setIsCheckingPin(false);
+      return;
+    }
     if (!isCheckingPin) return;
     const savedPin = sessionStorage.getItem(pinStorageKey);
     if (savedPin) {
@@ -233,12 +237,20 @@ function DownloadFile({
             pinCodeDownload: pin,
           })
             .then((res) => {
+              if (!res?.data) {
+                sessionStorage.removeItem(pinStorageKey);
+                setLocalDownloadData(null);
+                setIsPinModalOpen(true);
+                return;
+              }
               sessionStorage.setItem(pinStorageKey, pin);
-              setLocalDownloadData(res.data || null);
+              setLocalDownloadData(res.data);
               setIsPinModalOpen(false);
             })
             .catch(() => {
+              sessionStorage.removeItem(pinStorageKey);
               setLocalDownloadData(null);
+              setIsPinModalOpen(true);
             });
         }}
       />
