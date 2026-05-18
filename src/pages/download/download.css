@@ -374,6 +374,10 @@
     height: 5rem;
     border-radius: 3rem;
   }
+
+  .pin-error {
+    color: #ef4444;
+  }
 }
 
 @media (max-width: 639px) {

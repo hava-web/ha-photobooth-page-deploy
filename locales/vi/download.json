@@ -4,5 +4,6 @@
   "linkExpireInFiveDays": "Link tải file sẽ hết hạn sau 05 ngày!",
   "dataIsUploading": "Dữ liệu đang được tải lên. Vui lòng chờ trong giây lát ^^",
   "noData": "Dữ liệu không tồn tại -_-",
-  "dataExpired": "Dữ liệu đã hết hạn T.T"
+  "dataExpired": "Dữ liệu đã hết hạn T.T",
+  "pinError": "Có lỗi xảy ra hãy thử liên hệ với bộ phận hỗ trợ."
 }

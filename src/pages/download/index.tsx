@@ -62,6 +62,7 @@ function DownloadFile({
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
   const [isPinModalOpen, setIsPinModalOpen] = useState(false);
+  const [pinError, setPinError] = useState<string | undefined>(undefined);
   const [isCheckingPin, setIsCheckingPin] = useState(
     !downloadData?.resources?.length,
   );
@@ -231,7 +232,9 @@ function DownloadFile({
       <PinModal
         open={isPinModalOpen}
         onClose={() => setIsPinModalOpen(false)}
+        errorMessage={pinError}
         onConfirm={(pin) => {
+          setPinError(undefined);
           getDownloadData({
             id: transactionId,
             pinCodeDownload: pin,
@@ -246,11 +249,13 @@ function DownloadFile({
               sessionStorage.setItem(pinStorageKey, pin);
               setLocalDownloadData(res.data);
               setIsPinModalOpen(false);
+              setPinError(undefined);
             })
-            .catch(() => {
+            .catch((err: any) => {
               sessionStorage.removeItem(pinStorageKey);
               setLocalDownloadData(null);
               setIsPinModalOpen(true);
+              setPinError(err?.message || t('download:pinError'));
             });
         }}
       />
