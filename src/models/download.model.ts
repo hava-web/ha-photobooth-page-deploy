@@ -28,6 +28,7 @@ export type LanguageResponse = {
 
 export type GetDownloadDataRequestModel = {
   id: string;
+  pinCodeDownload: string;
 };
 export type GetLanguageDataRequestModel = {
   pageSize?: number;

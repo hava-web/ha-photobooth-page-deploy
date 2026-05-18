@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable react/jsx-no-useless-fragment */
-import { downloadSequential, shareLink } from 'api/common.api';
+import { downloadFile, downloadSequential } from 'api/common.api';
 import {
   getDownloadData,
   getLanguagesData,
@@ -26,7 +26,7 @@ import { handleUpdateCSSVar } from 'helpers/dom.helper';
 import { isEqualVal, jsonParse } from 'helpers/string.helper';
 import { isBoothOfflineMode } from 'helpers/common.helper';
 import { I18nextProvider } from 'react-i18next';
-import { filter, get, includes, isEmpty, map, size } from 'lodash';
+import { chunk, filter, get, includes, isEmpty, map, size } from 'lodash';
 import {
   DownloadDataStateModel,
   LanguageResponse,
@@ -40,6 +40,7 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { useTranslation } from 'hooks/useTranslation';
 import Select from 'components/select/Select';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
+import PinModal from './PinModal';
 import downloadI18n from '../../i18n/download';
 
 type DownloadFileProps = DownloadDataStateModel & {
@@ -57,18 +58,51 @@ function DownloadFile({
   const { t, T, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [resource, setResource] = useState<string[]>([]);
-  const [isOpenPopover, setIsOpenPopover] = useState(true);
   const [language, setLanguage] = useState<string>('vi');
+  const [isPinModalOpen, setIsPinModalOpen] = useState(false);
+  const [isCheckingPin, setIsCheckingPin] = useState(
+    !downloadData?.resources?.length,
+  );
+  const [localDownloadData, setLocalDownloadData] = useState(downloadData);
+
+  const pinStorageKey = `pin_${transactionId}`;
+
+  useEffect(() => {
+    if (!isCheckingPin) return;
+    const savedPin = sessionStorage.getItem(pinStorageKey);
+    if (savedPin) {
+      getDownloadData({ id: transactionId, pinCodeDownload: savedPin })
+        .then((res) => {
+          if (!res.data) {
+            sessionStorage.removeItem(pinStorageKey);
+            setIsCheckingPin(false);
+            setIsPinModalOpen(true);
+            return;
+          }
+          setLocalDownloadData(res.data);
+          setIsCheckingPin(false);
+        })
+        .catch(() => {
+          sessionStorage.removeItem(pinStorageKey);
+          setIsCheckingPin(false);
+          setIsPinModalOpen(true);
+        });
+    } else {
+      setIsCheckingPin(false);
+      setIsPinModalOpen(true);
+    }
+  }, []);
   const [uiTemplate, setUiTemplate] = useState<any>(uiTemplateData);
+  const [previewItem, setPreviewItem] = useState<{
+    url: string;
+    contentType: string;
+  } | null>(null);
 
   console.log('ttt downloadData', downloadData, errorData);
   console.log('ttt uiTemplateData', uiTemplateData);
   console.log('ttt languageData', languageData);
-
-  // const photoTakenUrl = find(downloadData?.resources, (o) =>
-  //   isEqualVal(o?.contentType, CONTENT_TYPES.PNG),
-  // )?.url;
 
   const langOtp = useMemo(
     () =>
@@ -96,20 +130,34 @@ function DownloadFile({
 
   const resourceWithoutQRphoto = useMemo(
     () =>
-      filter(downloadData?.resources, (item) => !includes(item?.url, '_QR')),
-    [],
+      filter(
+        localDownloadData?.resources,
+        (item) => !includes(item?.url, '_QR'),
+      ),
+    [localDownloadData],
   );
 
-  const handleShare = async () => {
-    setLoading(true);
-    await shareLink(window.location.href);
-    setLoading(false);
-  };
+  const resourceChunks = useMemo(
+    () => chunk(resourceWithoutQRphoto, 9),
+    [resourceWithoutQRphoto],
+  );
 
   const handleAddResource = (url: string) => {
     setResource((item) =>
       item.includes(url) ? item.filter((i) => i !== url) : [...item, url],
     );
+  };
+
+  const isAllSelected =
+    resourceWithoutQRphoto?.length > 0 &&
+    resource.length === resourceWithoutQRphoto?.length;
+
+  const handleSelectAll = () => {
+    if (isAllSelected) {
+      setResource([]);
+    } else {
+      setResource(map(resourceWithoutQRphoto, 'url'));
+    }
   };
 
   const handleNewsPrev = () => {
@@ -173,15 +221,27 @@ function DownloadFile({
     }
   }, []);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsOpenPopover(false);
-    }, 15000);
-  }, []);
-
   return (
     <>
       {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
+      <PinModal
+        open={isPinModalOpen}
+        onClose={() => setIsPinModalOpen(false)}
+        onConfirm={(pin) => {
+          getDownloadData({
+            id: transactionId,
+            pinCodeDownload: pin,
+          })
+            .then((res) => {
+              sessionStorage.setItem(pinStorageKey, pin);
+              setLocalDownloadData(res.data || null);
+              setIsPinModalOpen(false);
+            })
+            .catch(() => {
+              setLocalDownloadData(null);
+            });
+        }}
+      />
       <div className={cx('page-single__layout')}>
         {!!uiTemplateData?.isEncycom && !!size(downloadData?.resources) && (
           <EncycomEmbed
@@ -231,113 +291,162 @@ function DownloadFile({
           >
             {sloganText}
           </Typography>
-          {!!downloadData && uiTemplateData?.isAllowEarnPoint && (
+          {!!localDownloadData && uiTemplateData?.isAllowEarnPoint && (
             <FloatingEarnPointButtons transactionId={transactionId} />
           )}
-          {!downloadData || !!downloadData?.isExpired ? (
+          {!localDownloadData || !!localDownloadData?.isExpired ? (
             <Typography
               variant={TYPOGRAPHY_VARIANTS.SMALL}
               className="page-single__download-result-image"
             >
-              {downloadData?.isExpired ? expiredText : noDataText}
+              {localDownloadData?.isExpired ? expiredText : noDataText}
             </Typography>
           ) : (
             <>
-              {isOpenPopover && (
-                <div className="popup-download">
-                  <Typography
-                    variant={TYPOGRAPHY_VARIANTS.SMALL}
-                    className="text-center font-bold flex justify-center items-center"
-                  >
-                    {T('common:choosePhotoToDownload')}
-                  </Typography>
-                  <div className="download__pb-popover-arrow" />
-                </div>
-              )}
-              <div className="flex flex-1 items-center overflow-hidden">
+              <div className="flex flex-1 items-center overflow-hidden min-h-0">
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-left"
                   aria-label="prev slide"
                   onClick={handleNewsPrev}
+                  style={{
+                    visibility:
+                      resourceChunks.length < 2 ? 'hidden' : 'visible',
+                  }}
                 >
                   <AssetIcons.LeftIcon width={40} height={40} />
                 </button>
-                <Swiper
-                  onSwiper={setSwiper}
-                  className=' className="w-full h-full'
-                  loop
-                >
-                  {downloadData ? (
-                    map(resourceWithoutQRphoto, (item, index) => (
-                      <SwiperSlide
-                        className="swiper-slide"
-                        key={index}
-                        onClick={() => handleAddResource(item.url)}
+                <div className="images-swiper-container">
+                  <div className="select-all-checkbox">
+                    <input
+                      id="select-all-checkbox"
+                      type="checkbox"
+                      checked={isAllSelected}
+                      onChange={handleSelectAll}
+                    />
+                    <label htmlFor="select-all-checkbox">
+                      {T('common:selectAll')}
+                    </label>
+                  </div>
+                  <Swiper
+                    onSwiper={setSwiper}
+                    onSlideChange={(s) => setActiveIndex(s.realIndex)}
+                    className="w-full h-full"
+                    loop
+                  >
+                    {localDownloadData ? (
+                      map(resourceChunks, (chunkItems, chunkIndex) => (
+                        <SwiperSlide className="swiper-slide" key={chunkIndex}>
+                          <div className="grid grid-cols-3 grid-rows-3 gap-[0.4rem] w-full h-full">
+                            {map(chunkItems, (item, index) => (
+                              <div
+                                key={index}
+                                className={`resource-container ${
+                                  includes(resource, item.url) && 'selected'
+                                }`}
+                                onClick={() => handleAddResource(item.url)}
+                                aria-hidden="true"
+                              >
+                                <button
+                                  type="button"
+                                  className="resource-eye-btn"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setPreviewItem(item);
+                                  }}
+                                  aria-label="preview"
+                                >
+                                  <AssetIcons.EyeIcon
+                                    width={16}
+                                    height={16}
+                                    fill="white"
+                                  />
+                                </button>
+                                {isEqualVal(
+                                  item?.contentType,
+                                  CONTENT_TYPES.MP4,
+                                ) ||
+                                isEqualVal(
+                                  item?.contentType,
+                                  CONTENT_TYPES.VIDEO_GIF,
+                                ) ? (
+                                  <video
+                                    className={`page-single__download-result-image ${
+                                      includes(resource, item.url) && 'selected'
+                                    }`}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    // eslint-disable-next-line react/no-unknown-property
+                                    webkit-playsinline="true"
+                                    // eslint-disable-next-line react/no-unknown-property
+                                    x5-playsinline="true"
+                                    preload="auto"
+                                    onLoadedMetadata={(e) => {
+                                      const video = e.currentTarget;
+                                      video.play().catch(() => {});
+                                    }}
+                                  >
+                                    <track kind="captions" />
+                                    <source src={item.url} type="video/mp4" />
+                                  </video>
+                                ) : (
+                                  <img
+                                    src={item.url}
+                                    alt="result"
+                                    className={`page-single__download-result-image ${
+                                      includes(resource, item.url) && 'selected'
+                                    }`}
+                                  />
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </SwiperSlide>
+                      ))
+                    ) : (
+                      <Typography
+                        variant={TYPOGRAPHY_VARIANTS.SMALL}
+                        className="page-single__download-result-image"
                       >
-                        <div
-                          className={`resource-container ${
-                            includes(resource, item.url) && 'selected'
-                          }`}
-                        >
-                          {isEqualVal(item?.contentType, CONTENT_TYPES.MP4) ||
-                          isEqualVal(
-                            item?.contentType,
-                            CONTENT_TYPES.VIDEO_GIF,
-                          ) ? (
-                            <video
-                              className={`page-single__download-result-image ${
-                                includes(resource, item.url) && 'selected'
-                              }`}
-                              autoPlay
-                              loop
-                              muted
-                              playsInline
-                              // Thêm các dòng dưới đây
-                              // eslint-disable-next-line react/no-unknown-property
-                              webkit-playsinline="true" // cho iOS Safari cũ
-                              // eslint-disable-next-line react/no-unknown-property
-                              x5-playsinline="true" // cho một số WebView
-                              preload="auto"
-                              onLoadedMetadata={(e) => {
-                                const video = e.currentTarget;
-                                video.play().catch(() => {}); // force play, bắt lỗi nếu bị block
-                              }}
-                            >
-                              <track kind="captions" />
-                              <source src={item.url} type="video/mp4" />
-                            </video>
-                          ) : (
-                            <img
-                              src={item.url}
-                              alt="result"
-                              className={`page-single__download-result-image ${
-                                includes(resource, item.url) && 'selected'
-                              }`}
-                            />
-                          )}
-                        </div>
-                      </SwiperSlide>
-                    ))
-                  ) : (
-                    <Typography
-                      variant={TYPOGRAPHY_VARIANTS.SMALL}
-                      className="page-single__download-result-image"
-                    >
-                      {uploadingText}
-                    </Typography>
-                  )}
-                </Swiper>
+                        {uploadingText}
+                      </Typography>
+                    )}
+                  </Swiper>
+                </div>
                 <button
                   type="button"
                   className="pb-carousel-arrow pb-carousel-arrow-right"
                   aria-label="next slide"
                   onClick={handleNewsNext}
+                  style={{
+                    visibility:
+                      resourceChunks.length < 2 ? 'hidden' : 'visible',
+                  }}
                 >
                   <AssetIcons.RightIcon width={40} height={40} />
                 </button>
               </div>
-              {!isEmpty(downloadData?.resources) && (
+              {resourceChunks.length >= 2 && (
+                <div className="flex items-center justify-center gap-2 my-1">
+                  {map(resourceChunks, (_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      aria-label={`slide ${i + 1}`}
+                      onClick={() => swiper?.slideToLoop(i)}
+                      className={cx(
+                        'w-[1.2rem] h-[1.2rem] rounded-full transition-all duration-200',
+                        i === activeIndex
+                          ? 'bg-[var(--sync-primary-color)] scale-125'
+                          : 'bg-[var(--sync-primary-color)] opacity-40',
+                      )}
+                    />
+                  ))}
+                </div>
+              )}
+              {!isEmpty(localDownloadData?.resources) && (
                 <div className="bg-black bg-opacity-40 w-[8rem] rounded-lg my-1">
                   <Typography
                     variant={TYPOGRAPHY_VARIANTS.SMALL}
@@ -363,36 +472,134 @@ function DownloadFile({
                 >
                   {T('common:download')}
                 </Button>
-                {!isBoothOfflineMode() && (
-                  <Button onClick={handleShare} disabled={loading}>
-                    {T('common:share')}
-                  </Button>
-                )}
               </div>
-              <Typography
-                variant={TYPOGRAPHY_VARIANTS.SMALL}
-                className="text-center machine-info-text"
-              >
-                {`${
-                  moment(downloadData?.recordAt).format(HOUR_MINUTE_FORMAT) ||
-                  '_'
-                } ${T('common:time')} ${
-                  moment(downloadData?.recordAt).format(DATE_FORMAT) || '_'
-                }`}
-                {!!downloadData?.device && (
-                  <>{`, ${T('common:device')} ${downloadData?.device}`}</>
-                )}
-              </Typography>
               <Typography
                 variant={TYPOGRAPHY_VARIANTS.SMALL}
                 className="text-center font-bold"
               >
                 {t('download:linkExpireInFiveDays')}
               </Typography>
+              <Typography
+                variant={TYPOGRAPHY_VARIANTS.SMALL}
+                className="text-center machine-info-text"
+              >
+                {`${
+                  moment(localDownloadData?.recordAt).format(
+                    HOUR_MINUTE_FORMAT,
+                  ) || '_'
+                } ${T('common:time')} ${
+                  moment(localDownloadData?.recordAt).format(DATE_FORMAT) || '_'
+                }`}
+                {!!localDownloadData?.device && (
+                  <>{`, ${T('common:device')} ${localDownloadData?.device}`}</>
+                )}
+              </Typography>
             </>
           )}
         </Loader>
       </div>
+
+      {previewItem && (
+        <div
+          className="preview-modal-overlay"
+          onClick={() => setPreviewItem(null)}
+          aria-hidden="true"
+        >
+          <div className="header-preview-modal">
+            <button
+              type="button"
+              className="preview-modal-download"
+              onClick={(e) => {
+                e.stopPropagation();
+                downloadFile(previewItem.url, FILE_IMAGE_DOWNLOAD);
+              }}
+              aria-label="download"
+            >
+              <AssetIcons.DownloadIcon
+                width={20}
+                height={20}
+                className="text-white"
+              />
+            </button>
+            <span className="preview-modal-index">
+              {resourceWithoutQRphoto.findIndex(
+                (r) => r.url === previewItem.url,
+              ) + 1}
+              /{resourceWithoutQRphoto.length}
+            </span>
+            <button
+              type="button"
+              className="preview-modal-close"
+              onClick={() => setPreviewItem(null)}
+              aria-label="close preview"
+            >
+              ✕
+            </button>
+          </div>
+          <div
+            className="preview-modal-content"
+            onClick={(e) => e.stopPropagation()}
+            aria-hidden="true"
+          >
+            <button
+              type="button"
+              className="pb-carousel-arrow pb-carousel-arrow-left"
+              aria-label="prev image"
+              onClick={(e) => {
+                e.stopPropagation();
+                const idx = resourceWithoutQRphoto.findIndex(
+                  (r) => r.url === previewItem.url,
+                );
+                const prev =
+                  resourceWithoutQRphoto[
+                    (idx - 1 + resourceWithoutQRphoto.length) %
+                      resourceWithoutQRphoto.length
+                  ];
+                setPreviewItem(prev);
+              }}
+            >
+              <AssetIcons.LeftIcon width={40} height={40} />
+            </button>
+            {isEqualVal(previewItem.contentType, CONTENT_TYPES.MP4) ||
+            isEqualVal(previewItem.contentType, CONTENT_TYPES.VIDEO_GIF) ? (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="preview-modal-media"
+              >
+                <track kind="captions" />
+                <source src={previewItem.url} type="video/mp4" />
+              </video>
+            ) : (
+              <img
+                src={previewItem.url}
+                alt="preview"
+                className="preview-modal-media"
+              />
+            )}
+            <button
+              type="button"
+              className="pb-carousel-arrow pb-carousel-arrow-right"
+              aria-label="next image"
+              onClick={(e) => {
+                e.stopPropagation();
+                const idx = resourceWithoutQRphoto.findIndex(
+                  (r) => r.url === previewItem.url,
+                );
+                const next =
+                  resourceWithoutQRphoto[
+                    (idx + 1) % resourceWithoutQRphoto.length
+                  ];
+                setPreviewItem(next);
+              }}
+            >
+              <AssetIcons.RightIcon width={40} height={40} />
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
@@ -409,12 +616,15 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
   try {
-    const uiTemplateResponse = await (isBoothOfflineMode()
-      ? getUiTemplateBoothOffline
-      : getUiTemplate)({ id: transactionId });
-    const downloadResponse = await (isBoothOfflineMode()
-      ? getDownloadDataBoothOffline
-      : getDownloadData)({ id: transactionId });
+    const uiTemplateResponse = await (
+      isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate
+    )({ id: transactionId });
+    const downloadResponse = await (
+      isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
+    )({
+      id: transactionId,
+      pinCodeDownload: '',
+    });
     const languageResponse = await getLanguagesData({});
 
     return {
