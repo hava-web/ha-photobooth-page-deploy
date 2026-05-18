@@ -4,5 +4,6 @@
   "linkExpireInFiveDays": "The download link will expire after 5 days!",
   "dataIsUploading": "Data is being uploaded. Please wait a moment ^^",
   "noData": "Data does not exist -_-",
-  "dataExpired": "Data has expired T.T"
+  "dataExpired": "Data has expired T.T",
+  "pinError": "An error occurred, please contact support."
 }

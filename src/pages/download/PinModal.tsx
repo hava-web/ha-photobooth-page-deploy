@@ -7,12 +7,14 @@ type PinModalContentProps = {
   pin: string;
   onPinChange: (value: string) => void;
   onConfirm: () => void;
+  errorMessage?: string;
 };
 
 const PinModalContent: FC<PinModalContentProps> = ({
   pin,
   onPinChange,
   onConfirm,
+  errorMessage,
 }) => (
   <div className="bg-white rounded-2xl p-8 mx-4 w-full max-w-[80vw] sm:max-w-[30vw] flex flex-col items-center gap-2 shadow-xl pin-popup">
     <Typography
@@ -29,6 +31,14 @@ const PinModalContent: FC<PinModalContentProps> = ({
       placeholder="Nhập mã PIN"
       className="w-full border-2 border-[var(--sync-primary-color)] rounded-lg px-4 py-1 text-center text-[1.8rem] outline-none focus:border-[var(--sync-secondary-color)] transition placeholder:text-[1.8rem]"
     />
+    {!!errorMessage && (
+      <Typography
+        variant="none"
+        className="text-[1.6rem] text-center pin-error"
+      >
+        {errorMessage}
+      </Typography>
+    )}
     <Button
       className="confirm-button"
       onClick={onConfirm}
@@ -44,9 +54,15 @@ type PinModalProps = {
   open: boolean;
   onConfirm: (pin: string) => void;
   onClose?: () => void;
+  errorMessage?: string;
 };
 
-const PinModal: FC<PinModalProps> = ({ open, onConfirm, onClose }) => {
+const PinModal: FC<PinModalProps> = ({
+  open,
+  onConfirm,
+  onClose,
+  errorMessage,
+}) => {
   const [pin, setPin] = useState('');
 
   const handleConfirm = () => {
@@ -66,6 +82,7 @@ const PinModal: FC<PinModalProps> = ({ open, onConfirm, onClose }) => {
             pin={pin}
             onPinChange={setPin}
             onConfirm={handleConfirm}
+            errorMessage={errorMessage}
           />
         ) as any
       }

@@ -62,6 +62,7 @@ function DownloadFile({
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
   const [isPinModalOpen, setIsPinModalOpen] = useState(false);
+  const [pinError, setPinError] = useState<string | undefined>(undefined);
   const [isCheckingPin, setIsCheckingPin] = useState(
     !downloadData?.resources?.length,
   );
@@ -70,6 +71,10 @@ function DownloadFile({
   const pinStorageKey = `pin_${transactionId}`;
 
   useEffect(() => {
+    if (!uiTemplateData?.isPinCodeDownload) {
+      setIsCheckingPin(false);
+      return;
+    }
     if (!isCheckingPin) return;
     const savedPin = sessionStorage.getItem(pinStorageKey);
     if (savedPin) {
@@ -227,18 +232,32 @@ function DownloadFile({
       <PinModal
         open={isPinModalOpen}
         onClose={() => setIsPinModalOpen(false)}
+        errorMessage={pinError}
         onConfirm={(pin) => {
+          setPinError(undefined);
           getDownloadData({
             id: transactionId,
             pinCodeDownload: pin,
           })
             .then((res) => {
+              if (!res?.data) {
+                sessionStorage.removeItem(pinStorageKey);
+                setLocalDownloadData(null);
+                setIsPinModalOpen(true);
+                return;
+              }
               sessionStorage.setItem(pinStorageKey, pin);
-              setLocalDownloadData(res.data || null);
+              setLocalDownloadData(res.data);
               setIsPinModalOpen(false);
+              setPinError(undefined);
             })
-            .catch(() => {
+            .catch((err: any) => {
+              sessionStorage.removeItem(pinStorageKey);
               setLocalDownloadData(null);
+              setIsPinModalOpen(true);
+              setPinError(
+                err?.response?.data?.message || t('download:pinError'),
+              );
             });
         }}
       />
@@ -616,23 +635,37 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const transactionId = get(query, `${QUERY_STRING.TRANSACTION}`) as string;
 
   try {
-    const uiTemplateResponse = await (
-      isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate
-    )({ id: transactionId });
-    const downloadResponse = await (
-      isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData
-    )({
-      id: transactionId,
-      pinCodeDownload: '',
-    });
-    const languageResponse = await getLanguagesData({});
+    const [uiTemplateResponse, downloadResponse, languageResponse] =
+      await Promise.allSettled([
+        (isBoothOfflineMode() ? getUiTemplateBoothOffline : getUiTemplate)({
+          id: transactionId,
+        }),
+        (isBoothOfflineMode() ? getDownloadDataBoothOffline : getDownloadData)({
+          id: transactionId,
+          pinCodeDownload: '',
+        }),
+        getLanguagesData({}),
+      ]);
 
     return {
       props: {
         transactionId,
-        downloadData: downloadResponse?.data || null,
-        uiTemplateData: uiTemplateResponse?.data || null,
-        languageData: languageResponse?.data || null,
+        downloadData:
+          downloadResponse.status === 'fulfilled'
+            ? downloadResponse.value?.data || null
+            : null,
+        uiTemplateData:
+          uiTemplateResponse.status === 'fulfilled'
+            ? uiTemplateResponse.value?.data || null
+            : null,
+        languageData:
+          languageResponse.status === 'fulfilled'
+            ? languageResponse.value?.data || null
+            : null,
+        errorData:
+          downloadResponse.status === 'rejected'
+            ? JSON.parse(JSON.stringify(downloadResponse.reason))
+            : null,
       },
     };
   } catch (err) {
