@@ -28,6 +28,7 @@ const PinModalContent: FC<PinModalContentProps> = ({
         {t('common:pinModalTitle')}
       </Typography>
       <input
+        aria-label="PIN"
         type="password"
         value={pin}
         maxLength={6}

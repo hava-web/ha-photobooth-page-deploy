@@ -15,9 +15,10 @@ export function getUiTemplate(payload: GetUiTemplateRequestModel) {
 
 export function getUiTemplateBoothOffline() {
   return adminRequest
-    .get<GetUiTemplateResponseModel, GetUiTemplateBoothOfflineResponseModel>(
-      `/api/ui-template-booths/page-download`,
-    )
+    .get<
+      GetUiTemplateResponseModel,
+      GetUiTemplateBoothOfflineResponseModel
+    >(`/api/ui-template-booths/page-download`)
     .then((res) => ({
       data: {
         ...mapKeys(res?.response, (value, key) => lowerFirst(key)),

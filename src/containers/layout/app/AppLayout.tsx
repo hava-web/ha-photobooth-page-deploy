@@ -12,19 +12,25 @@ interface AppLayoutProps {
   children: ReactElement;
   router?: NextRouter;
   isHome?: boolean;
+  isMarketing?: boolean;
 }
 
-const AppLayout: FC<AppLayoutProps> = ({ children, isHome, ...rest }) => {
+const AppLayout: FC<AppLayoutProps> = ({
+  children,
+  isHome,
+  isMarketing,
+  ...rest
+}) => {
   // eslint-disable-next-line no-console
   console.log('>>> AppLayout', rest);
   useWow();
 
   return (
     <>
-      <AppHeader isHome={!!isHome} />
+      <AppHeader showNav={!!isMarketing || !!isHome} />
       {isHome && <FloatingSocialButtons />}
       {children}
-      {isHome && <Footer />}
+      {(isHome || isMarketing) && <Footer />}
       <MasterLoading />
     </>
   );
@@ -37,6 +43,14 @@ export function renderMainLayout({
 }: AppLayoutProps) {
   return (
     <AppLayout router={router} {...other}>
+      {children}
+    </AppLayout>
+  );
+}
+
+export function renderMarketingLayout({ children, router }: AppLayoutProps) {
+  return (
+    <AppLayout router={router} isMarketing>
       {children}
     </AppLayout>
   );

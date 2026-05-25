@@ -5,17 +5,20 @@ import { NextPageContext } from 'next/types';
 import { ComponentStatic, PageWithLayout } from 'models/common.model';
 import type { AppContext, AppProps } from 'next/app';
 import { useTranslation } from 'react-i18next';
-import withRedux from 'next-redux-wrapper';
+import { createWrapper } from 'next-redux-wrapper';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 import { persistor } from 'store';
-import StoreProvider from 'store/StoreProvider';
-import { compose } from '@reduxjs/toolkit';
 import { makeStore } from 'store/store-hooks';
 import 'swiper/css';
 import './index.css';
 import './download/download.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+const wrapper = createWrapper(makeStore);
+
+function MyApp(props: AppProps) {
+  const { store, props: wrappedProps } = wrapper.useWrappedStore(props);
+  const { Component, pageProps } = wrappedProps;
   const {
     i18n: { language },
   } = useTranslation();
@@ -36,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <StoreProvider>
+    <Provider store={store}>
       <Head>
         <title>Fun studio</title>
         <meta charSet="utf-8" />
@@ -59,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <PersistGate loading={null} persistor={persistor}>
         {renderApp}
       </PersistGate>
-    </StoreProvider>
+    </Provider>
   );
 }
 
@@ -76,9 +79,4 @@ MyApp.getInitialProps = async (props: AppContext) => {
   };
 };
 
-const enhancedApp = compose(
-  withRedux(makeStore),
-  // withReduxSaga,
-);
-
-export default enhancedApp(MyApp);
+export default MyApp;

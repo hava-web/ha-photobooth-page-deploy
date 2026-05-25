@@ -199,7 +199,7 @@ body {
   --z-index-popup: 1400;
   --z-index-popover: 1400;
 
-  --height-of-header: 54px;
+  --height-of-header: 128px;
 }
 
 .no-select {
