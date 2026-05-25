@@ -33,5 +33,8 @@
   "doYouNeedMoreTime": "Bạn có cần thêm thời gian để tiếp tục sử dụng dịch vụ không?",
   "textRemindUseCamera": "Vui lòng dùng camera điện thoại để quét QR. \nKhông dùng Zalo để quét QR bạn nhé!",
   "time": "thời gian",
-  "device": "máy"
+  "device": "máy",
+  "pinModalTitle": "Nhập mã CODE để xem và tải ảnh của bạn",
+  "pinModalNote": "Lưu ý: Mã CODE nằm trên QR của ảnh in",
+  "pinModalExampleAlt": "Ví dụ mã pin trên ảnh in"
 }

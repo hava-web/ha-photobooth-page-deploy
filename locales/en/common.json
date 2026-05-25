@@ -33,5 +33,8 @@
   "doYouNeedMoreTime": "Do you need more time to continue using the service?",
   "textRemindUseCamera": "Please use your phone’s camera to scan the QR code. \nDo not use Zalo to scan the QR code!",
   "time": "time",
-  "device": "device"
+  "device": "device",
+  "pinModalTitle": "Enter the CODE to view and download your photos",
+  "pinModalNote": "Note: The CODE is located on the QR of the printed photo",
+  "pinModalExampleAlt": "Example of pin code on printed photo"
 }
