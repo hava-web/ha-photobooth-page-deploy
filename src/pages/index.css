@@ -8,7 +8,11 @@
     font-family: 'UTM Avo';
     font-style: normal;
     font-weight: 400;
-    src: local('UTM Avo'), local('UTMAvo'), local('UTM Avo Regular');
+    src:
+      local('UTM Avo'),
+      local('UTMAvo'),
+      local('UTM Avo Regular'),
+      url('../assets/fonts/utm-avo/UTM Avo.ttf') format('truetype');
     font-display: swap;
   }
 
@@ -16,7 +20,32 @@
     font-family: 'UTM Avo';
     font-style: normal;
     font-weight: 700;
-    src: local('UTM Avo Bold'), local('UTMAvo-Bold'), local('UTM Avo');
+    src:
+      local('UTM Avo Bold'),
+      local('UTMAvo-Bold'),
+      url('../assets/fonts/utm-avo/UTM AvoBold.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'UTM Avo';
+    font-style: italic;
+    font-weight: 400;
+    src:
+      local('UTM Avo Italic'),
+      local('UTMAvo-Italic'),
+      url('../assets/fonts/utm-avo/UTM AvoItalic.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'UTM Avo';
+    font-style: italic;
+    font-weight: 700;
+    src:
+      local('UTM Avo Bold Italic'),
+      local('UTMAvo-BoldItalic'),
+      url('../assets/fonts/utm-avo/UTM AvoBold_Italic.ttf') format('truetype');
     font-display: swap;
   }
 
