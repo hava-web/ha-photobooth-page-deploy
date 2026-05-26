@@ -3,12 +3,7 @@ import closeIcon from 'assets/icons/icon-close.png';
 import cx from 'classnames';
 import Image from 'components/image/Image';
 import { useTranslation } from 'hooks/useTranslation';
-import { map } from 'lodash';
-import NextLink from 'next/link';
-import {
-  MARKETING_CONTACT,
-  MARKETING_NAV_LINKS,
-} from 'store/static-data/marketing-pages.data';
+import { MarketingCtaLink, MarketingNavLinks } from './MarketingHeaderLinks';
 
 type MobileSidebarHeaderProps = {
   open?: boolean;
@@ -50,23 +45,10 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
         >
           <Image src={closeIcon} height={25} alt="close" />
         </button>
-        {map(MARKETING_NAV_LINKS, (item) => (
-          <NextLink
-            key={item.href}
-            href={item.href}
-            className="relative inline-flex min-h-13 items-center justify-start whitespace-nowrap border-b border-brand-mobile-line text-center text-lg font-normal leading-tight text-brand-text no-underline"
-            onClick={onClose}
-          >
-            {item.label}
-          </NextLink>
-        ))}
-        <NextLink
-          href={MARKETING_CONTACT.ctaHref}
-          className="mt-1.2 inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-full bg-brand-pink px-3 text-lg font-extrabold uppercase leading-none text-white no-underline"
-          onClick={onClose}
-        >
-          {MARKETING_CONTACT.ctaLabel}
-        </NextLink>
+        <MarketingNavLinks variant="mobile" onNavigate={onClose} />
+        <div className="mt-1.2">
+          <MarketingCtaLink onClick={onClose} />
+        </div>
       </div>
     </div>
   );

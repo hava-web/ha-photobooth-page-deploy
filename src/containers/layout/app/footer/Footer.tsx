@@ -22,7 +22,7 @@ const Footer: FC = () => (
         />
       </div>
       <div>
-        <h2 className="footer-heading-rule relative mb-8.5 mt-0 text-marketing-control font-extrabold uppercase leading-snug text-brand-pink after:absolute after:-bottom-1.2 after:left-0 after:h-0.4 after:w-6.4 after:rounded-full after:bg-brand-pink">
+        <h2 className="relative mb-8.5 mt-0 text-marketing-control font-extrabold uppercase leading-snug text-brand-pink after:absolute after:-bottom-1.2 after:left-0 after:h-0.4 after:w-6.4 after:rounded-full after:bg-brand-pink after:content-['']">
           {MARKETING_CONTACT.company}
         </h2>
         <div className="grid gap-1.4">
