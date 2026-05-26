@@ -18,6 +18,7 @@ import squareTiktokIcon from 'assets/icons/square_tiktok.png';
 
 import banner1Image from 'assets/images/banner-images/banner_1.webp';
 import banner2Image from 'assets/images/banner-images/banner_2.webp';
+import banner9Image from 'assets/images/banner-images/banner_9.webp';
 import banner10Image from 'assets/images/banner-images/banner_10.webp';
 import allStoreImage from 'assets/images/banner-images/all-store-in-vn.webp';
 import event2026Image from 'assets/images/banner-images/event-2026.webp';
@@ -187,16 +188,26 @@ export const DEVELOPMENT_TIMELINE = [
 ];
 
 export const CUSTOMER_LOGOS = [
+  { name: 'DOJI' },
   { name: 'Diana' },
   { name: 'FPT' },
   { name: 'NTT e-MOI' },
   { name: 'Xiaomi' },
   { name: 'MSB' },
   { name: 'MB' },
+  { name: 'DNSE' },
   { name: 'World Bank' },
   { name: 'EY' },
   { name: 'Almaz' },
+  { name: 'L7 Hotels' },
   { name: 'IDP' },
+  { name: 'Forevermark' },
+  { name: 'JW Marriott' },
+  { name: 'Cowell' },
+  { name: 'Upbase' },
+  { name: 'QD Stadium' },
+  { name: 'Facolos' },
+  { name: 'SOTA Tek' },
   { name: 'BUV' },
   { name: 'HUST' },
   { name: 'SmartOSC' },
@@ -205,6 +216,7 @@ export const CUSTOMER_LOGOS = [
   { name: 'Liên Quân', image: lienQuanLogoImage },
   { name: 'Casper' },
   { name: 'Nike' },
+  { name: 'Phuong Viet Nam' },
   { name: 'VTV1', image: vtvLogoImage },
   { name: 'CafeBiz', image: cafebizLogoImage },
   { name: 'Kênh14', image: kenh14LogoImage },
@@ -214,16 +226,16 @@ export const CUSTOMER_LOGOS = [
 ];
 
 export const FRANCHISE_TOP_IMAGES = [
-  nhuongQuyen1Image,
-  nhuongQuyen2Image,
+  cafebizImage,
+  services3Image,
   nhuongQuyen3Image,
 ];
 
 export const DIFFERENCE_IMAGES = [
-  services1Image,
-  services2Image,
+  banner10Image,
   '/images/generated/home-hero.jpg',
-  services3Image,
+  services2Image,
+  banner9Image,
 ];
 
 export const FRANCHISE_REASONS = [
@@ -274,6 +286,11 @@ export const FREE_SERVICE_CARDS = [
 
 export const PRODUCT_MACHINES = [
   {
+    image: event2026Image,
+    title: 'Fun Extra Premium (EP)',
+    text: 'Dòng máy cao cấp cho sự kiện, trung tâm thương mại và những điểm bán cần trải nghiệm nổi bật.',
+  },
+  {
     image: boothSsImage,
     title: 'Fun Super Star (SS)',
     text: 'Dòng máy tiêu chuẩn, nhỏ gọn, hiện đại, phù hợp cho quán cà phê, studio, cửa hàng hoặc mô hình kinh doanh tự động.',
@@ -290,7 +307,7 @@ export const PRODUCT_MACHINES = [
   },
   {
     image: boothDshImage,
-    title: 'Fun Double Super High (DSH)',
+    title: 'Fun Super High (SH)',
     text: 'Thiết kế góc cao, phù hợp với không gian cần hiệu ứng ảnh nổi bật và khác biệt.',
   },
   {
@@ -300,8 +317,18 @@ export const PRODUCT_MACHINES = [
   },
   {
     image: boothKiotImage,
-    title: 'Kiosk Concept',
+    title: 'Super Compact',
     text: 'Giải pháp kiosk linh hoạt cho sự kiện, thương mại và các mô hình vận hành ngắn hạn.',
+  },
+  {
+    image: services2Image,
+    title: 'StyleInMove',
+    text: 'Không gian chụp ảnh linh hoạt cho cửa hàng, sự kiện và điểm trải nghiệm thương hiệu.',
+  },
+  {
+    image: services3Image,
+    title: 'Red Velvet',
+    text: 'Concept nổi bật với màu sắc đặc trưng, phù hợp các chiến dịch cần hiệu ứng thị giác mạnh.',
   },
 ];
 
@@ -322,15 +349,46 @@ export const BUSINESS_FIT_CARDS = [
 
 export const SERVICE_MODELS = [
   {
-    image: services1Image,
-    title: 'Quán cà phê, cửa hàng',
-    text: 'Photo Booth tạo điểm nhấn trải nghiệm, giúp khách hàng tương tác với không gian và tăng khả năng chia sẻ trên mạng xã hội.',
+    image: services2Image,
+    title: 'Cửa hàng',
+    text: 'PhotoBooth tạo điểm nhấn trong cửa hàng giúp khách hàng ghi lại kỷ niệm sau khi mua sắm.',
   },
   {
-    image: services2Image,
-    title: 'Trung tâm thương mại / rạp chiếu phim',
-    text: 'Không gian đông khách có thể biến photobooth thành điểm dừng trải nghiệm, ghi lại kỷ niệm sau khi mua sắm hoặc xem phim.',
+    image: nhuongQuyen2Image,
+    title: 'Quán cà phê',
+    text: 'Quán cà phê có thể tăng tương tác với khách hàng bằng PhotoBooth, mang đến trải nghiệm thú vị khi chụp ảnh thư giãn.',
   },
+];
+
+export const SERVICE_IN_STORE_IMAGES = [
+  radioImage,
+  nhuongQuyen2Image,
+  nhuongQuyen3Image,
+  services2Image,
+  boothSsImage,
+  boothDshImage,
+];
+
+export const SERVICE_KIOSK_IMAGES = [
+  boothSfImage,
+  boothKiotImage,
+  event2026Image,
+];
+
+export const SERVICE_OTHER_PRODUCTS = [
+  { image: services3Image, title: 'Ảnh 2x6' },
+  { image: radioImage, title: 'Ảnh 4x6' },
+  { image: dianaEventImage, title: 'Card bo góc' },
+  { image: services1Image, title: 'Ảnh 30x20cm' },
+  { image: services2Image, title: 'Ảnh 20x10cm' },
+  { image: vcfCoverImage, title: 'Ảnh siêu to 15 x 50cm' },
+  { image: services1Image, title: 'Ảnh khổng lồ 20 x 80cm' },
+];
+
+export const SERVICE_RENTAL_IDOL_IMAGES = [
+  event5Image,
+  event6Image,
+  event7Image,
 ];
 
 export const RENTAL_SECTIONS = [
@@ -428,32 +486,30 @@ export const NEWS_CARDS = [
   {
     image: '/images/generated/news-1.jpg',
     title: 'Fun Studio tiên phong xu hướng chụp ảnh photobooth',
-    text: 'Fun Studio đưa công nghệ robot cabin vào mô hình photobooth tại Việt Nam, mang đến trải nghiệm chụp ảnh mới lạ.',
+    text: 'Fun Studio đưa công nghệ robot cabin vào mô hình photobooth tại Việt Nam, mang đến trải nghiệm chụp ảnh mới lạ, mở ra cơ hội kinh doanh cho đối tác,...',
   },
   {
     image: '/images/generated/news-2.jpg',
     title:
       'Fun Studio giải pháp kinh doanh photobooth chi phí thấp lợi nhuận cao',
-    text: 'Mô hình nhượng quyền đơn giản, chi phí đầu tư hợp lý và khả năng thu hồi vốn nhanh chóng.',
+    text: 'Với mô hình nhượng quyền đơn giản, chi phí đầu tư hợp lý và khả năng thu hồi vốn nhanh chóng, Fun Studio mang đến cơ hội kinh doanh hấp dẫn,...',
   },
   {
     image: '/images/generated/news-3.jpg',
     title:
       'Bật mí điểm hẹn của giới trẻ Hà Thành: cứ đến là rinh về vô vàn ảnh sống ảo',
-    text: 'Không gian photobooth sáng tạo, nhiều concept và phụ kiện giúp khách hàng dễ dàng có bộ ảnh độc đáo.',
+    text: 'Nếu bạn là tín đồ sống ảo, thích những tấm ảnh lung linh, độc đáo và chất lượng như chụp tại studio thì chắc chắn không thể bỏ qua Deluxe by Fun Studio,...',
   },
 ];
 
-const GALLERY_SOURCE_IMAGES = [dianaEventImage, lienQuanImage, vcfCoverImage];
+export const GALLERY_FALLBACK_IMAGE = '/images/generated/gallery-card-docs.jpg';
 
-export const GALLERY_ITEMS = Array.from({ length: 36 }, (_, index) => ({
+export const GALLERY_ITEMS = Array.from({ length: 108 }, (_, index) => ({
   id: `gallery-${index + 1}`,
-  image: GALLERY_SOURCE_IMAGES[index % GALLERY_SOURCE_IMAGES.length],
-  title: index % 2 === 0 ? 'Minh Anh & Thảo Lê Wedding' : 'Fun Studio Event',
+  image: GALLERY_FALLBACK_IMAGE,
+  title: 'Minh Anh & Thảo Lê Wedding',
   meta: '89 ảnh và 17 video - 9 lượt xem',
 }));
-
-export const GALLERY_FALLBACK_IMAGE = '/images/generated/gallery-card.jpg';
 
 export const PRESS_ITEMS = [
   { image: congluanImage, logo: congluanLogoImage, title: 'Công Luận' },

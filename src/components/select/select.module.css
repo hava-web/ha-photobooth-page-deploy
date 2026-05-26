@@ -5,27 +5,27 @@
     cursor: pointer;
     background-color: var(--sync-primary-color);
     color: var(--sync-text-color);
-    padding: 1rem;
+    padding: 10px;
     font-weight: 900;
     display: flex;
     align-items: center;
 
     .pb-typography {
-      font-size: 1.8rem;
+      font-size: 18px;
     }
   }
 
   .pb-select__input {
-    border-radius: 4rem;
+    border-radius: 40px;
 
     .pb-select__prefix-icon,
     .pb-select__surfix-icon {
       flex-shrink: 0;
-      margin-right: 1rem;
+      margin-right: 10px;
 
       & > * {
-        width: 3rem;
-        height: 3rem;
+        width: 30px;
+        height: 30px;
       }
     }
 
@@ -51,16 +51,16 @@
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
       border-top: 1px solid var(--sync-button-border-color);
       cursor: pointer;
-      padding: 1.8rem 2rem;
+      padding: 18px 20px;
 
       &:first-child {
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
       }
 
       &:last-child {
-        border-bottom-left-radius: 1rem;
-        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
       }
     }
   }

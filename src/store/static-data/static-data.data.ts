@@ -1142,7 +1142,7 @@ export const NEWS_MESSAGES = [
     href: 'https://lienquan.garena.vn/fun-studio-x-lien-quan-mobile-khi-photobooth-tro-thanh-diem-cham-moi-de-ket-noi/',
     image: lienQuanCoverImage,
     logo: lienQuanLogoImage,
-    style: { transform: 'scale(2.2)', marginTop: '0.5rem' },
+    style: { transform: 'scale(2.2)', marginTop: '5px' },
     alt: 'lien quan mobile',
   },
   {

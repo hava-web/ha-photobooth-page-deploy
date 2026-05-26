@@ -11,37 +11,37 @@ import {
 const isExternalHref = (href: string) => /^https?:\/\//.test(href);
 
 const Footer: FC = () => (
-  <footer className="w-full border-t border-[#d9d9d9] bg-white font-Montserrat text-[#f7b5b9]">
-    <Container className="grid max-w-[1400px] grid-cols-[220px_1fr] gap-[70px] px-[24px] pb-[88px] pt-[72px] [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[32px] [@media(max-width:768px)]:py-[48px]">
-      <div className="flex items-end justify-center border-r border-[#f4c5ca] [@media(max-width:768px)]:justify-start [@media(max-width:768px)]:border-r-0">
+  <footer className="w-full border-t border-brand-line bg-white font-UTMAVo text-brand-pink">
+    <Container className="grid max-w-marketing grid-cols-footer gap-7 px-2.4 pb-8.8 pt-7.2 phone:grid-cols-1 phone:gap-3.2 phone:py-4.8">
+      <div className="flex items-end justify-center border-r border-brand-soft-line phone:justify-start phone:border-r-0">
         <Image
           src={MARKETING_LOGO}
           width={150}
           alt="Fun Studio"
-          className="h-auto w-[150px]"
+          className="h-auto w-15"
         />
       </div>
       <div>
-        <h2 className="relative mb-[34px] mt-0 text-[22px] font-extrabold uppercase leading-[1.35] text-[#f7b5b9] after:absolute after:bottom-[-12px] after:left-0 after:h-[4px] after:w-[64px] after:rounded-full after:bg-[#f7b5b9] after:content-['']">
+        <h2 className="footer-heading-rule relative mb-8.5 mt-0 text-marketing-control font-extrabold uppercase leading-snug text-brand-pink after:absolute after:-bottom-1.2 after:left-0 after:h-0.4 after:w-6.4 after:rounded-full after:bg-brand-pink">
           {MARKETING_CONTACT.company}
         </h2>
-        <div className="grid gap-[14px]">
+        <div className="grid gap-1.4">
           {map(FOOTER_CONTACT_ROWS, (item) => (
             <p
               key={item.text}
-              className="m-0 grid grid-cols-[26px_1fr] items-start gap-[14px] text-[18px] font-normal leading-[1.45] text-[#f7b5b9] [@media(max-width:768px)]:text-[15px]"
+              className="m-0 grid grid-cols-footer-contact items-start gap-1.4 text-lg font-normal leading-normal text-brand-pink phone:text-brand-caption"
             >
               <Image
                 src={item.icon}
                 width={22}
                 height={22}
                 alt=""
-                className="h-[22px] w-[22px] object-contain"
+                className="h-2.2 w-2.2 object-contain"
               />
               {item.href ? (
                 <a
                   href={item.href}
-                  className="transition-colors hover:text-[#ec8e96]"
+                  className="transition-colors hover:text-brand-pink-hover"
                   {...(isExternalHref(item.href)
                     ? { target: '_blank', rel: 'noopener noreferrer' }
                     : {})}

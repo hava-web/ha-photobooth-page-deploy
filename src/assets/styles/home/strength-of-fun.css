@@ -1,30 +1,30 @@
 .strength-of-fun {
-  @apply flex w-full bg-gradient-pink border-t-[3rem] border-lp-lighter-primary-color;
+  @apply flex w-full bg-gradient-pink border-t-3 border-lp-lighter-primary-color;
 
   .strength-of-fun-container {
-    @apply flex flex-col py-[4rem] pb-[5rem] text-[2.5rem] text-white text-center;
+    @apply flex flex-col py-4 pb-5 text-brand-card-title text-white text-center;
 
     .section-title {
-      @apply mb-4 px-[4rem] text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
+      @apply mb-4 px-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
     }
   }
 
   .strength-of-fun-wrapper {
-    @apply mx-auto flex gap-0 my-[2rem] h-[50rem];
+    @apply mx-auto flex gap-0 my-2 h-50;
   }
 
   .strength-item-wrapper {
-    @apply whitespace-pre-line relative shadow-box flex items-center h-[48rem] w-[27rem] bg-white rounded-[1rem] mx-[0.75rem];
+    @apply whitespace-pre-line relative shadow-box flex items-center h-48 w-27 bg-white rounded-1 mx-0.75;
 
     .strength-item {
-      @apply relative bg-white w-full h-full z-[1] rounded-[3rem] p-[2rem] text-center;
+      @apply relative bg-white w-full h-full z-1 rounded-3 p-2 text-center;
 
       .strength-item-title {
         @apply text-lp-primary-color uppercase;
       }
 
       .strength-item-description {
-        @apply text-lp-primary-color text-[2rem] mt-[2rem];
+        @apply text-lp-primary-color text-brand-body-lg mt-2;
       }
     }
   }
@@ -36,99 +36,99 @@
   .strength-item-over::before {
     content: '""';
     position: absolute;
-    left: -1.5rem;
-    top: -1.5rem;
-    border: 1.5rem solid var(--lp-primary-color);
-    width: calc(100% + 3rem);
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
+    left: -15px;
+    top: -15px;
+    border: 15px solid var(--lp-primary-color);
+    width: calc(100% + 30px);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
     border-bottom: none;
-    height: 12rem;
+    height: 120px;
   }
 
   .triangle-border-left,
   .triangle-border-right {
     position: absolute;
-    left: -1.5rem;
-    top: 10.5rem;
+    left: -15px;
+    top: 105px;
     width: 0;
     height: 0;
-    border-top: 1.5rem solid var(--lp-primary-color);
+    border-top: 15px solid var(--lp-primary-color);
   }
 
   .triangle-border-left {
-    border-right: 1.5rem solid transparent;
+    border-right: 15px solid transparent;
   }
 
   .triangle-border-right {
-    border-left: 1.5rem solid transparent;
+    border-left: 15px solid transparent;
     left: unset;
-    right: -1.5rem;
+    right: -15px;
   }
 
   .strength-item-under::before {
     content: '""';
     position: absolute;
-    left: -1.5rem;
-    bottom: -1.5rem;
-    border: 1.5rem solid var(--lp-primary-color);
-    width: calc(100% + 3rem);
-    border-bottom-left-radius: 3rem;
-    border-bottom-right-radius: 3rem;
+    left: -15px;
+    bottom: -15px;
+    border: 15px solid var(--lp-primary-color);
+    width: calc(100% + 30px);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
     border-top: none;
-    height: 12rem;
+    height: 120px;
   }
 
   .strength-item-under .triangle-border-left,
   .strength-item-under .triangle-border-right {
-    bottom: 10.5rem;
+    bottom: 105px;
     top: unset;
     border-top: unset;
-    border-bottom: 1.5rem solid var(--lp-primary-color);
+    border-bottom: 15px solid var(--lp-primary-color);
   }
 
   .strength-item-under .triangle-border-left {
-    border-right: 1.5rem solid transparent;
+    border-right: 15px solid transparent;
     border-left: unset;
   }
 
   .strength-item-under .triangle-border-right {
-    border-left: 1.5rem solid transparent;
+    border-left: 15px solid transparent;
     border-right: unset;
     left: unset;
-    right: -1.5rem;
+    right: -15px;
   }
 
   .strength-index {
     position: absolute;
     display: block;
-    width: 10rem;
-    height: 10rem;
-    border: 1rem solid var(--lp-secondary-color);
+    width: 100px;
+    height: 100px;
+    border: 10px solid var(--lp-secondary-color);
     text-align: center;
-    font-size: 5.4rem;
-    line-height: 8rem;
+    font-size: 54px;
+    line-height: 80px;
     color: var(--lp-secondary-color);
     font-weight: 900;
     border-radius: 50%;
-    left: calc(50% - 5rem);
-    top: -5rem;
+    left: calc(50% - 50px);
+    top: -50px;
     background: white;
   }
 
   .strength-item-over .strength-index {
     top: unset;
-    bottom: -5rem;
+    bottom: -50px;
   }
 
   strong {
     display: block;
-    margin-top: 1rem;
+    margin-top: 10px;
   }
 
   .strength-item-under strong {
-    margin-top: 4rem;
-    line-height: 3rem;
+    margin-top: 40px;
+    line-height: 30px;
   }
 }
 
@@ -140,12 +140,12 @@
 
     .strength-of-fun-container {
       .section-title {
-        font-size: 3.6rem;
+        font-size: 36px;
       }
     }
 
     .strength-of-fun-swiper {
-      @apply p-[5rem];
+      @apply p-5;
     }
 
     .strength-of-fun-mobile-wrapper {
@@ -157,11 +157,11 @@
     }
 
     .swiper-left-arrow {
-      @apply absolute top-[calc(50%-3rem)] left-[2rem] z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-3 left-2 z-z-index-banner-dot;
     }
 
     .swiper-right-arrow {
-      @apply absolute top-[calc(50%-3rem)] right-[2rem] z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-3 right-2 z-z-index-banner-dot;
     }
   }
 }
@@ -173,7 +173,7 @@
     }
 
     .strength-of-fun-swiper {
-      @apply p-[5rem];
+      @apply p-5;
     }
 
     .strength-of-fun-mobile-wrapper {
@@ -185,21 +185,21 @@
     }
 
     .swiper-left-arrow {
-      @apply absolute top-[calc(50%-3rem)] left-[2rem] z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-3 left-2 z-z-index-banner-dot;
     }
 
     .swiper-right-arrow {
-      @apply absolute top-[calc(50%-3rem)] right-[2rem] z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-3 right-2 z-z-index-banner-dot;
     }
   }
 }
 
 @media screen('xl') {
   .strength-of-fun {
-    @apply flex w-full bg-gradient-pink border-t-[3rem] border-lp-lighter-primary-color;
+    @apply flex w-full bg-gradient-pink border-t-3 border-lp-lighter-primary-color;
 
     .strength-of-fun-container {
-      @apply flex flex-col py-[4rem] pb-[5rem] text-[2.5rem] text-white text-center;
+      @apply flex flex-col py-4 pb-5 text-brand-card-title text-white text-center;
 
       .section-title {
         @apply mb-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
@@ -207,21 +207,21 @@
     }
 
     .strength-of-fun-wrapper {
-      @apply mx-auto flex gap-0 my-[2rem] h-[50rem];
+      @apply mx-auto flex gap-0 my-2 h-50;
     }
 
     .strength-item-wrapper {
-      @apply whitespace-pre-line relative shadow-box flex items-center h-[45rem] w-[27rem] bg-white rounded-[1rem] mx-[0.75rem];
+      @apply whitespace-pre-line relative shadow-box flex items-center h-45 w-27 bg-white rounded-1 mx-0.75;
 
       .strength-item {
-        @apply relative bg-white w-full h-full z-[1] rounded-[3rem] p-[2rem] text-center;
+        @apply relative bg-white w-full h-full z-1 rounded-3 p-2 text-center;
 
         .strength-item-title {
           @apply text-lp-primary-color uppercase;
         }
 
         .strength-item-description {
-          @apply text-lp-primary-color text-[2rem] mt-[2rem];
+          @apply text-lp-primary-color text-brand-body-lg mt-2;
         }
       }
     }

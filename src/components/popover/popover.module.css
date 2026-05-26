@@ -16,35 +16,35 @@
   height: auto;
   max-height: 70vh;
   background-color: #fff;
-  border-radius: 0.4rem;
-  padding: 1.5rem;
-  border: 0.3rem solid white;
+  border-radius: 4px;
+  padding: 15px;
+  border: 3px solid white;
   text-align: center;
-  border-radius: 2rem;
-  box-shadow: 0.2rem 0.6rem 1.2rem 0.2rem #49494920;
+  border-radius: 20px;
+  box-shadow: 2px 6px 12px 2px #49494920;
 }
 
 .pb-popover-actions {
-  margin-top: 3rem;
+  margin-top: 30px;
 }
 
 .pb-popover-actions > *:not(:last-child) {
-  margin-right: 3rem;
+  margin-right: 30px;
 }
 
 .pb-popover-close-icon {
   position: absolute;
-  top: -2rem;
-  right: -2rem;
+  top: -20px;
+  right: -20px;
   cursor: pointer;
   background: white;
-  width: 5rem;
-  height: 5rem;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  line-height: 4rem;
+  line-height: 40px;
   text-align: center;
-  border: 0.3rem solid var(--lp-primary-color);
-  font-size: 4rem;
+  border: 3px solid var(--lp-primary-color);
+  font-size: 40px;
   color: var(--lp-primary-color);
   font-weight: 600;
 }
@@ -55,39 +55,39 @@
 
 .pb-popover .pb-popover-arrow {
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 20px;
+  height: 20px;
   background-color: white;
 }
 
 .pb-popover .pb-popover-arrow-al {
-  right: -0.1rem;
+  right: -1px;
   top: 50%;
-  border-right: 0.3rem solid white;
-  border-top: 0.3rem solid white;
+  border-right: 3px solid white;
+  border-top: 3px solid white;
   transform: translate(50%, -50%) rotate(45deg);
 }
 
 .pb-popover .pb-popover-arrow-ar {
-  left: -0.1rem;
+  left: -1px;
   top: 50%;
-  border-bottom: 0.3rem solid white;
-  border-left: 0.3rem solid white;
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .pb-popover .pb-popover-arrow-at {
-  bottom: -2.25rem;
+  bottom: -22.5px;
   left: 50%;
-  border-bottom: 0.3rem solid white;
-  border-right: 0.3rem solid white;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .pb-popover .pb-popover-arrow-ab {
   left: 50%;
   top: 0;
-  border-left: 0.3rem solid white;
-  border-top: 0.3rem solid white;
+  border-left: 3px solid white;
+  border-top: 3px solid white;
   transform: translate(-50%, -50%) rotate(45deg);
 }

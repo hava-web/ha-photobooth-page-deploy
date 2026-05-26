@@ -30,7 +30,7 @@ const Typography: FC<Props> = ({
     {...rest}
     className={cx(
       classes['pb-typography'],
-      'font-Inter',
+      'font-UTMAVo',
       {
         'normal-case': normalCase,
         uppercase: upperCase,

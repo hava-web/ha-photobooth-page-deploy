@@ -2,71 +2,71 @@
   @apply flex w-full bg-gradient-pink;
 
   .talk-about-us-section-container {
-    @apply py-[4rem] text-lp-body text-center mx-auto;
+    @apply py-4 text-lp-body text-center mx-auto;
   }
 
   .customer-swiper-wrapper {
-    @apply relative mx-auto mt-[4rem] w-[90rem];
+    @apply relative mx-auto mt-4 w-90;
 
     .customer-swiper-card-title {
-      @apply mb-[4rem] text-lp-section-title uppercase text-lp-secondary-color;
+      @apply mb-4 text-lp-section-title uppercase text-lp-secondary-color;
     }
 
     .customer-swiper-slide {
       @apply flex w-full h-full items-center justify-center text-center;
 
       .customer-swiper-card {
-        @apply flex h-[30rem] text-center items-center rounded-[1rem] p-[1rem];
+        @apply flex h-30 text-center items-center rounded-1 p-1;
 
         img {
           height: 250px;
           align-self: center;
           border-radius: 50%;
-          border: 1rem solid var(--lp-primary-color);
+          border: 10px solid var(--lp-primary-color);
           flex-shrink: 0;
           -o-object-fit: cover;
           object-fit: cover;
         }
 
         & > div {
-          margin-left: 5rem;
-          padding: 1rem;
+          margin-left: 50px;
+          padding: 10px;
           background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%23ef909b' stroke-width='5' stroke-dasharray='9%2c 19' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-          border-radius: 2rem;
+          border-radius: 20px;
         }
 
         .customer-swiper-item {
-          @apply text-left text-white py-[2.7rem] px-[1rem];
+          @apply text-left text-white py-2.7 px-1;
           position: relative;
           align-self: center;
           background-color: var(--lp-lighter-primary-color);
           border-radius: 20px;
 
           .customer-swiper-title {
-            @apply text-[3.5rem];
+            @apply text-brand-subtitle;
           }
 
           .customer-swiper-title-underline {
-            @apply w-[4rem] mt-[2rem] border-white border-b-[0.5rem];
+            @apply w-4 mt-2 border-white border-b-0.5;
           }
         }
       }
     }
 
     .customer-swiper-left-arrow {
-      @apply absolute top-[calc(50%+2rem)] -left-[8rem] z-z-index-banner-dot;
+      @apply absolute top-1/2 translate-y-2 -left-8 z-z-index-banner-dot;
     }
 
     .customer-swiper-right-arrow {
-      @apply absolute top-[calc(50%+2rem)] -right-[8rem] z-z-index-banner-dot;
+      @apply absolute top-1/2 translate-y-2 -right-8 z-z-index-banner-dot;
     }
   }
 
   .news-swiper-wrapper {
-    @apply mx-auto w-[90rem] relative;
+    @apply mx-auto w-90 relative;
 
     .news-swiper {
-      @apply w-[60rem];
+      @apply w-60;
     }
 
     .news-swiper-card-title {
@@ -75,7 +75,7 @@
 
     .news-swiper-slide {
       .news-swiper-card {
-        @apply flex flex-col rounded-[1rem] p-[1.2rem] bg-lp-lighter-primary-color w-full;
+        @apply flex flex-col rounded-1 p-1.2 bg-lp-lighter-primary-color w-full;
 
         .news-swiper-image {
           @apply border-image object-cover;
@@ -87,7 +87,7 @@
         }
 
         .news-swiper-title {
-          @apply text-white uppercase py-[2rem] text-lp-card-title h-[8rem] leading-[4rem];
+          @apply text-white uppercase py-2 text-lp-card-title h-8 leading-4;
 
           img {
             height: 100%;
@@ -98,23 +98,23 @@
     }
 
     .news-swiper-dots {
-      @apply mt-[2rem];
+      @apply mt-2;
     }
   }
 
   .news-swiper-left-arrow {
-    @apply absolute top-[calc(50%+2rem)] -left-[8rem] z-z-index-banner-dot;
+    @apply absolute top-1/2 translate-y-2 -left-8 z-z-index-banner-dot;
   }
 
   .news-swiper-right-arrow {
-    @apply absolute top-[calc(50%+2rem)] -right-[8rem] z-z-index-banner-dot;
+    @apply absolute top-1/2 translate-y-2 -right-8 z-z-index-banner-dot;
   }
 }
 
 @media screen('less-sm') {
   .talk-about-us-section {
     .talk-about-us-section-container {
-      @apply px-[4rem];
+      @apply px-4;
 
       .customer-swiper-wrapper {
         width: unset;
@@ -131,26 +131,26 @@
 
           & > div {
             margin-left: 0;
-            margin-top: 4rem;
+            margin-top: 40px;
           }
         }
       }
 
       .customer-swiper-left-arrow {
-        @apply -left-[3rem] top-[50%];
+        @apply -left-3 top-1/2;
       }
 
       .customer-swiper-right-arrow {
-        @apply -right-[3rem] top-[50%];
+        @apply -right-3 top-1/2;
       }
     }
   }
 
   .news-swiper-wrapper {
-    @apply mt-0 w-[unset] !important;
+    @apply mt-0 w-auto !important;
 
     .news-swiper {
-      @apply w-[unset] !important;
+      @apply w-auto !important;
     }
 
     .news-swiper-card-title {
@@ -158,11 +158,11 @@
     }
 
     .news-swiper-left-arrow {
-      @apply -left-[4rem] top-[50%];
+      @apply -left-4 top-1/2;
     }
 
     .news-swiper-right-arrow {
-      @apply -right-[4rem] top-[50%];
+      @apply -right-4 top-1/2;
     }
   }
 }
@@ -170,7 +170,7 @@
 @media screen('sm') {
   .talk-about-us-section {
     .talk-about-us-section-container {
-      @apply px-[4rem];
+      @apply px-4;
 
       .customer-swiper-wrapper {
         width: unset;
@@ -183,26 +183,26 @@
 
           & > div {
             margin-left: 0;
-            margin-top: 4rem;
+            margin-top: 40px;
           }
         }
       }
 
       .customer-swiper-left-arrow {
-        @apply -left-[3rem];
+        @apply -left-3;
       }
 
       .customer-swiper-right-arrow {
-        @apply -right-[3rem];
+        @apply -right-3;
       }
     }
   }
 
   .news-swiper-wrapper {
-    @apply mt-0 w-[unset] !important;
+    @apply mt-0 w-auto !important;
 
     .news-swiper {
-      @apply w-[unset];
+      @apply w-auto;
     }
 
     .news-swiper-card-title {
@@ -210,11 +210,11 @@
     }
 
     .news-swiper-left-arrow {
-      @apply -left-[3rem];
+      @apply -left-3;
     }
 
     .news-swiper-right-arrow {
-      @apply -right-[3rem];
+      @apply -right-3;
     }
   }
 }
@@ -224,21 +224,21 @@
     @apply flex w-full bg-gradient-pink;
 
     .talk-about-us-section-container {
-      @apply py-[4rem] text-lp-body text-center mx-auto;
+      @apply py-4 text-lp-body text-center mx-auto;
     }
 
     .customer-swiper-wrapper {
-      @apply relative mx-auto w-[90rem] !important;
+      @apply relative mx-auto w-90 !important;
 
       .customer-swiper-card-title {
-        @apply mb-[4rem] text-lp-section-title uppercase text-lp-secondary-color;
+        @apply mb-4 text-lp-section-title uppercase text-lp-secondary-color;
       }
 
       .customer-swiper-slide {
         @apply flex w-full h-full items-center justify-center text-center;
 
         .customer-swiper-card {
-          @apply flex flex-row h-[30rem] text-center items-center rounded-[1rem] p-[1rem];
+          @apply flex flex-row h-30 text-center items-center rounded-1 p-1;
 
           img {
             height: 250px;
@@ -251,45 +251,45 @@
           }
 
           & > div {
-            margin-left: 5rem;
-            margin-top: 0rem;
+            margin-left: 50px;
+            margin-top: 0px;
             padding: 10px;
             background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%23ef909b' stroke-width='5' stroke-dasharray='9%2c 19' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
             border-radius: 20px;
           }
 
           .customer-swiper-item {
-            @apply text-left text-white py-[2.7rem] px-[1rem];
+            @apply text-left text-white py-2.7 px-1;
             position: relative;
             align-self: center;
             background-color: var(--lp-lighter-primary-color);
             border-radius: 20px;
 
             .customer-swiper-title {
-              @apply text-[3.5rem];
+              @apply text-brand-subtitle;
             }
 
             .customer-swiper-title-underline {
-              @apply w-[4rem] mt-[2rem] border-white border-b-[0.5rem];
+              @apply w-4 mt-2 border-white border-b-0.5;
             }
           }
         }
       }
 
       .customer-swiper-left-arrow {
-        @apply absolute top-[calc(50%+2rem)] -left-[8rem] z-z-index-banner-dot;
+        @apply absolute top-1/2 translate-y-2 -left-8 z-z-index-banner-dot;
       }
 
       .customer-swiper-right-arrow {
-        @apply absolute top-[calc(50%+2rem)] -right-[8rem] z-z-index-banner-dot;
+        @apply absolute top-1/2 translate-y-2 -right-8 z-z-index-banner-dot;
       }
     }
 
     .news-swiper-wrapper {
-      @apply mx-auto mt-[4rem] w-[90rem] !important;
+      @apply mx-auto mt-4 w-90 !important;
 
       .news-swiper {
-        @apply w-[60rem];
+        @apply w-60;
       }
 
       .news-swiper-card-title {
@@ -298,7 +298,7 @@
 
       .news-swiper-slide {
         .news-swiper-card {
-          @apply flex flex-col rounded-[1rem] p-[1.2rem];
+          @apply flex flex-col rounded-1 p-1.2;
 
           .news-swiper-image {
             @apply border-image object-cover w-full;
@@ -310,13 +310,13 @@
           }
 
           .news-swiper-title {
-            @apply text-white uppercase py-[2rem] text-lp-card-title;
+            @apply text-white uppercase py-2 text-lp-card-title;
           }
         }
       }
 
       .news-swiper-dots {
-        @apply mt-[2rem];
+        @apply mt-2;
       }
     }
   }

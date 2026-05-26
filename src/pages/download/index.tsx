@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable react/jsx-no-useless-fragment */
+
 import { downloadFile, downloadSequential } from 'api/common.api';
 import {
   getDownloadData,
@@ -166,12 +166,10 @@ function DownloadFile({
   };
 
   const handleNewsPrev = () => {
-    // eslint-disable-next-line no-unused-expressions
     swiper && swiper.slidePrev();
   };
 
   const handleNewsNext = () => {
-    // eslint-disable-next-line no-unused-expressions
     swiper && swiper.slideNext();
   };
 
@@ -356,7 +354,7 @@ function DownloadFile({
                     {localDownloadData ? (
                       map(resourceChunks, (chunkItems, chunkIndex) => (
                         <SwiperSlide className="swiper-slide" key={chunkIndex}>
-                          <div className="grid grid-cols-3 grid-rows-3 gap-[0.4rem] w-full h-full">
+                          <div className="grid h-full w-full grid-cols-3 grid-rows-3 gap-0.4">
                             {map(chunkItems, (item, index) => (
                               <div
                                 key={index}
@@ -397,9 +395,7 @@ function DownloadFile({
                                     loop
                                     muted
                                     playsInline
-                                    // eslint-disable-next-line react/no-unknown-property
                                     webkit-playsinline="true"
-                                    // eslint-disable-next-line react/no-unknown-property
                                     x5-playsinline="true"
                                     preload="auto"
                                     onLoadedMetadata={(e) => {
@@ -456,17 +452,17 @@ function DownloadFile({
                       aria-label={`slide ${i + 1}`}
                       onClick={() => swiper?.slideToLoop(i)}
                       className={cx(
-                        'w-[1.2rem] h-[1.2rem] rounded-full transition-all duration-200',
+                        'h-1.2 w-1.2 rounded-full transition-all duration-200',
                         i === activeIndex
-                          ? 'bg-[var(--sync-primary-color)] scale-125'
-                          : 'bg-[var(--sync-primary-color)] opacity-40',
+                          ? 'scale-125 bg-sync-primary-color'
+                          : 'bg-sync-primary-color opacity-40',
                       )}
                     />
                   ))}
                 </div>
               )}
               {!isEmpty(localDownloadData?.resources) && (
-                <div className="bg-black bg-opacity-40 w-[8rem] rounded-lg my-1">
+                <div className="my-1 w-8 rounded-lg bg-black bg-opacity-40">
                   <Typography
                     variant={TYPOGRAPHY_VARIANTS.SMALL}
                     className="page-single__download-result-image"

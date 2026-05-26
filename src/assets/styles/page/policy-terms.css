@@ -1,18 +1,18 @@
 .policy-and-terms-section {
   * {
-    @apply font-Montserrat !important;
+    @apply font-UTMAVo !important;
     color: var(--sync-text-color);
   }
 }
 
 .faq-title {
   text-align: center;
-  font-size: 2.6rem;
+  font-size: 26px;
   font-weight: bold;
 }
 
 .faq-list {
-  margin-top: 2.6rem;
+  margin-top: 26px;
 }
 .faq-item {
   @apply p-2 mb-2 border-0;
@@ -22,8 +22,8 @@
   }
 
   * {
-    font-size: 1.8rem !important;
-    line-height: 2.9rem;
+    font-size: 18px !important;
+    line-height: 29px;
   }
 
   .faq-question-title {

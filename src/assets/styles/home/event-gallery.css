@@ -2,14 +2,14 @@
   @apply flex w-full bg-gradient-pink;
 
   .event-gallery-container {
-    @apply py-[4rem] text-center mx-auto;
+    @apply py-4 text-center mx-auto;
 
     .event-gallery-title {
-      @apply mb-[4rem] text-lp-section-title uppercase font-[800] text-lp-primary-color;
+      @apply mb-4 text-lp-section-title uppercase font-extrabold text-lp-primary-color;
     }
 
     .event-gallery-wrapper {
-      @apply relative mx-auto w-[90rem];
+      @apply relative mx-auto w-90;
 
       .event-gallery-swiper {
         @apply w-full;
@@ -19,7 +19,7 @@
         @apply flex w-full h-full items-center justify-center;
 
         .event-gallery-item {
-          @apply w-full h-[30rem] rounded-[1rem] overflow-hidden;
+          @apply w-full h-30 rounded-1 overflow-hidden;
 
           .event-gallery-image {
             @apply w-full h-full;
@@ -28,24 +28,24 @@
       }
 
       .event-gallery-left-arrow {
-        @apply absolute top-[calc(50%-2rem)] -left-[8rem] z-z-index-banner-dot;
+        @apply absolute top-1/2 -translate-y-2 -left-8 z-z-index-banner-dot;
       }
 
       .event-gallery-right-arrow {
-        @apply absolute top-[calc(50%-2rem)] -right-[8rem] z-z-index-banner-dot;
+        @apply absolute top-1/2 -translate-y-2 -right-8 z-z-index-banner-dot;
       }
     }
 
     .event-gallery-button-wrapper {
-      @apply mt-[4rem] flex justify-center;
+      @apply mt-4 flex justify-center;
 
       .event-gallery-button {
         @apply inline w-fit font-medium rounded bg-lp-second-primary-color text-white mx-auto text-lp-small;
-        padding-left: 1.4rem;
-        padding-right: 1.4rem;
-        padding-top: 0.4rem;
-        padding-bottom: 0.4rem;
-        border-radius: 2rem;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        border-radius: 20px;
       }
     }
   }
@@ -54,7 +54,7 @@
 @media screen('less-sm') {
   .event-gallery-section {
     .event-gallery-container {
-      @apply px-[2rem];
+      @apply px-2;
 
       .event-gallery-title {
         @apply text-lp-section-title-2;
@@ -65,16 +65,16 @@
 
         .event-gallery-slide {
           .event-gallery-item {
-            @apply h-[20rem] md:h-[25rem];
+            @apply h-20 md:h-25;
           }
         }
 
         .event-gallery-left-arrow {
-          @apply -left-[2.5rem] top-[50%];
+          @apply -left-2.5 top-1/2;
         }
 
         .event-gallery-right-arrow {
-          @apply -right-[2.5rem] top-[50%];
+          @apply -right-2.5 top-1/2;
         }
       }
     }
@@ -84,23 +84,23 @@
 @media screen('sm') {
   .event-gallery-section {
     .event-gallery-container {
-      @apply px-[4rem];
+      @apply px-4;
 
       .event-gallery-wrapper {
         width: unset;
 
         .event-gallery-slide {
           .event-gallery-item {
-            @apply h-[25rem];
+            @apply h-25;
           }
         }
 
         .event-gallery-left-arrow {
-          @apply -left-[3rem];
+          @apply -left-3;
         }
 
         .event-gallery-right-arrow {
-          @apply -right-[3rem];
+          @apply -right-3;
         }
       }
     }
@@ -115,16 +115,16 @@
 
         .event-gallery-slide {
           .event-gallery-item {
-            @apply h-[25rem];
+            @apply h-25;
           }
         }
 
         .event-gallery-left-arrow {
-          @apply -left-[3rem];
+          @apply -left-3;
         }
 
         .event-gallery-right-arrow {
-          @apply -right-[3rem];
+          @apply -right-3;
         }
       }
     }
@@ -136,20 +136,20 @@
     @apply flex w-full bg-gradient-pink;
 
     .event-gallery-container {
-      @apply py-[4rem] text-center mx-auto;
+      @apply py-4 text-center mx-auto;
 
       .event-gallery-title {
-        @apply mb-[4rem] text-lp-section-title uppercase font-[800] text-lp-primary-color;
+        @apply mb-4 text-lp-section-title uppercase font-extrabold text-lp-primary-color;
       }
 
       .event-gallery-wrapper {
-        @apply relative mx-auto w-[90rem];
+        @apply relative mx-auto w-90;
 
         .event-gallery-slide {
           @apply flex w-full h-full items-center justify-center;
 
           .event-gallery-item {
-            @apply w-full h-[30rem] rounded-[1rem] overflow-hidden;
+            @apply w-full h-30 rounded-1 overflow-hidden;
 
             .event-gallery-image {
               @apply w-full h-full;
@@ -158,11 +158,11 @@
         }
 
         .event-gallery-left-arrow {
-          @apply absolute top-[calc(50%-2rem)] -left-[8rem] z-z-index-banner-dot;
+          @apply absolute top-1/2 -translate-y-2 -left-8 z-z-index-banner-dot;
         }
 
         .event-gallery-right-arrow {
-          @apply absolute top-[calc(50%-2rem)] -right-[8rem] z-z-index-banner-dot;
+          @apply absolute top-1/2 -translate-y-2 -right-8 z-z-index-banner-dot;
         }
       }
     }

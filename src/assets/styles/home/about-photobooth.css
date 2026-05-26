@@ -1,13 +1,13 @@
 .about-photobooth {
   background-image: url('/images/background/cartoon_trang.png');
-  background-size: 230rem;
-  @apply flex w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color;
+  background-size: 2300px;
+  @apply flex w-full bg-lp-primary-color border-t-3 border-lp-lighter-primary-color;
 
   .about-photobooth-container {
-    @apply pt-[6rem] pb-[8rem] text-lp-body text-white text-center;
+    @apply pt-6 pb-8 text-lp-body text-white text-center;
 
     .section-title {
-      @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white whitespace-pre-line;
+      @apply mb-8 text-lp-section-title uppercase font-extrabold text-white whitespace-pre-line;
     }
 
     .about-photobooth-video-frame-wrapper {
@@ -22,8 +22,8 @@
   .about-photobooth-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 5rem;
-    width: 90rem;
+    gap: 50px;
+    width: 900px;
     @apply mx-auto;
 
     div:nth-child(1),
@@ -33,7 +33,7 @@
 
     div:not(:nth-child(1)):not(:nth-child(2)) {
       .about-photobooth-video-frame-wrapper {
-        @apply mx-auto border-image w-[45rem];
+        @apply mx-auto border-image w-45;
       }
 
       .about-photobooth-video-frame {
@@ -44,7 +44,7 @@
   }
 
   .about-photobooth-swiper-dots {
-    margin-top: 2rem;
+    margin-top: 20px;
 
     .dot-slider {
       @apply bg-lp-primary-color border-white;
@@ -60,12 +60,12 @@
   .about-photobooth {
     .about-photobooth-container {
       .section-title {
-        font-size: 3.2rem;
+        font-size: 32px;
       }
 
       .about-photobooth-grid {
-        width: calc(100% - 4rem);
-        gap: 1rem;
+        width: calc(100% - 40px);
+        gap: 10px;
       }
     }
   }
@@ -75,8 +75,8 @@
   .about-photobooth {
     .about-photobooth-container {
       .about-photobooth-grid {
-        width: calc(100% - 8rem);
-        gap: 3rem;
+        width: calc(100% - 80px);
+        gap: 30px;
       }
     }
   }
@@ -85,19 +85,19 @@
 @media screen('xl') {
   .about-photobooth {
     background-image: url('/images/background/cartoon_trang.png');
-    background-size: 230rem;
-    @apply flex w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color;
+    background-size: 2300px;
+    @apply flex w-full bg-lp-primary-color border-t-3 border-lp-lighter-primary-color;
 
     .about-photobooth-container {
-      @apply pt-[6rem] pb-[8rem] text-lp-body text-white text-center;
+      @apply pt-6 pb-8 text-lp-body text-white text-center;
 
       .section-title {
-        @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white whitespace-pre-line;
+        @apply mb-8 text-lp-section-title uppercase font-extrabold text-white whitespace-pre-line;
       }
 
       .about-photobooth-grid {
-        width: 90rem;
-        gap: 5rem;
+        width: 900px;
+        gap: 50px;
       }
     }
   }

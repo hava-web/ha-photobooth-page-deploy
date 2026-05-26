@@ -1,39 +1,39 @@
 .ensure-opportunity {
-  @apply flex flex-col w-full bg-lp-primary-color border-t-[3rem] border-lp-lighter-primary-color;
+  @apply flex flex-col w-full bg-lp-primary-color border-t-3 border-lp-lighter-primary-color;
   .ensure-opportunity-container {
-    @apply py-[4rem] text-lp-body text-white text-center;
+    @apply py-4 text-lp-body text-white text-center;
     .section-title {
-      @apply mb-4 text-lp-section-title-2 uppercase font-[800];
+      @apply mb-4 text-lp-section-title-2 uppercase font-extrabold;
     }
     .ensure-opportunity-grid {
-      @apply grid mx-auto gap-x-[4rem] gap-y-[2rem] grid-cols-2 grid-rows-2 grid-rows-[auto,_1fr] text-[2rem] w-[110rem];
+      @apply grid mx-auto gap-x-4 gap-y-2 grid-cols-2 grid-rows-2 grid-rows-opportunity text-brand-body-lg w-110;
     }
     .ensure-opportunity-item {
       @apply text-left;
       .ensure-opportunity-item-title {
-        @apply block my-[2rem];
+        @apply block my-2;
       }
       .ensure-opportunity-item-description {
         @apply text-justify;
       }
     }
     .ensure-opportunity-wrapper {
-      @apply flex flex-col items-center mx-auto mt-[4rem] h-[20rem];
+      @apply flex flex-col items-center mx-auto mt-4 h-20;
       .ensure-opportunity-image-wrapper {
         @apply flex;
         .ensure-opportunity-image {
-          @apply object-cover border-image w-[40rem] h-[40rem] z-[1];
+          @apply object-cover border-image w-40 h-40 z-1;
         }
       }
       .ensure-opportunity-description {
-        @apply text-lp-lighter-primary-color text-[2rem] mt-[2rem] z-[1];
+        @apply text-lp-lighter-primary-color text-brand-body-lg mt-2 z-1;
       }
     }
   }
   .ensure-opportunity-bottom-div {
     background-image: url('/images/background/cartoon_hong.png');
-    background-size: 230rem;
-    @apply bg-white h-[250px] w-full;
+    background-size: 2300px;
+    @apply bg-white h-25 w-full;
   }
   .ensure-opportunity-swiper-wrapper {
     @apply hidden;
@@ -43,31 +43,31 @@
 @media screen('less-sm') {
   .ensure-opportunity {
     .ensure-opportunity-container {
-      @apply px-[4rem] text-lp-body text-white text-center;
+      @apply px-4 text-lp-body text-white text-center;
       .ensure-opportunity-grid {
         @apply hidden;
       }
       .ensure-opportunity-wrapper {
-        @apply flex flex-col items-center mx-auto mt-[4rem] h-[20rem];
+        @apply flex flex-col items-center mx-auto mt-4 h-20;
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply relative object-cover border-image w-[40rem] h-[40rem] z-[1];
+            @apply relative object-cover border-image w-40 h-40 z-1;
             width: 33%;
           }
         }
         .ensure-opportunity-description {
-          @apply text-lp-lighter-primary-color text-[2rem] mt-[2rem] z-[1];
+          @apply text-lp-lighter-primary-color text-brand-body-lg mt-2 z-1;
         }
       }
     }
     .ensure-opportunity-bottom-div {
-      @apply bg-white h-[25rem] w-full;
+      @apply bg-white h-25 w-full;
     }
     .ensure-opportunity-swiper-wrapper {
       @apply block relative;
       .swiper-dots {
-        @apply mt-[2rem];
+        @apply mt-2;
         .dot-slider {
           @apply bg-lp-primary-color border-white;
         }
@@ -82,31 +82,31 @@
 @media screen('sm') {
   .ensure-opportunity {
     .ensure-opportunity-container {
-      @apply px-[4rem] text-lp-body text-white text-center;
+      @apply px-4 text-lp-body text-white text-center;
       .ensure-opportunity-grid {
         @apply hidden;
       }
       .ensure-opportunity-wrapper {
-        @apply flex flex-col items-center mx-auto mt-[4rem] h-[20rem];
+        @apply flex flex-col items-center mx-auto mt-4 h-20;
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply relative object-cover border-image w-[35rem] h-[40rem] z-[1];
+            @apply relative object-cover border-image w-35 h-40 z-1;
             width: 33%;
           }
         }
         .ensure-opportunity-description {
-          @apply text-lp-lighter-primary-color text-[2rem] mt-[2rem] z-[1];
+          @apply text-lp-lighter-primary-color text-brand-body-lg mt-2 z-1;
         }
       }
     }
     .ensure-opportunity-bottom-div {
-      @apply bg-white h-[25rem] w-full;
+      @apply bg-white h-25 w-full;
     }
     .ensure-opportunity-swiper-wrapper {
       @apply block relative;
       .swiper-dots {
-        @apply mt-[2rem];
+        @apply mt-2;
         .dot-slider {
           @apply bg-lp-primary-color border-white;
         }
@@ -120,39 +120,39 @@
 
 @media screen('xl') {
   .ensure-opportunity {
-    @apply border-t-[3rem];
+    @apply border-t-3;
     .ensure-opportunity-container {
-      @apply py-[4rem] text-lp-body text-white text-center;
+      @apply py-4 text-lp-body text-white text-center;
       .section-title {
-        @apply mb-4 text-lp-section-title-2 uppercase font-[800];
+        @apply mb-4 text-lp-section-title-2 uppercase font-extrabold;
       }
       .ensure-opportunity-grid {
-        @apply grid mx-auto gap-x-[4rem] gap-y-[2rem] grid-cols-2 grid-rows-2 grid-rows-[auto,_1fr] text-[2rem] w-[110rem];
+        @apply grid mx-auto gap-x-4 gap-y-2 grid-cols-2 grid-rows-2 grid-rows-opportunity text-brand-body-lg w-110;
       }
       .ensure-opportunity-item {
         @apply text-left;
         .ensure-opportunity-item-title {
-          @apply block my-[2rem];
+          @apply block my-2;
         }
         .ensure-opportunity-item-description {
           @apply text-justify;
         }
       }
       .ensure-opportunity-wrapper {
-        @apply flex flex-col items-center mx-auto mt-[4rem] h-[20rem];
+        @apply flex flex-col items-center mx-auto mt-4 h-20;
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply object-cover border-image w-[40rem] h-[40rem] z-[1];
+            @apply object-cover border-image w-40 h-40 z-1;
           }
         }
         .ensure-opportunity-description {
-          @apply text-[2rem] mt-[2rem] z-[1];
+          @apply text-brand-body-lg mt-2 z-1;
         }
       }
     }
     .ensure-opportunity-bottom-div {
-      @apply bg-white h-[250px] w-full;
+      @apply bg-white h-25 w-full;
     }
     .ensure-opportunity-swiper-wrapper {
       @apply hidden;

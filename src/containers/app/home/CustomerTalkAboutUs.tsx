@@ -59,6 +59,8 @@ const CustomerTalkAboutUs = () => {
             className="news-swiper"
             spaceBetween={50}
             scrollbar={{ draggable: true }}
+            allowTouchMove
+            simulateTouch
             autoplay={{ delay: 5000 }}
             onSwiper={setNewsSwiper}
             loop
@@ -138,6 +140,8 @@ const CustomerTalkAboutUs = () => {
             onSwiper={setCustomerSwiper}
             spaceBetween={50}
             scrollbar={{ draggable: true }}
+            allowTouchMove
+            simulateTouch
             autoplay={{ delay: 5000 }}
             loop
           >
@@ -159,7 +163,7 @@ const CustomerTalkAboutUs = () => {
                         Bạn <strong>{mess?.label}</strong>
                       </span>
                       <p className="customer-swiper-title-underline" />
-                      <p className="mt-[2rem]">{mess?.description}</p>
+                      <p className="mt-2">{mess?.description}</p>
                     </div>
                   </div>
                 </div>

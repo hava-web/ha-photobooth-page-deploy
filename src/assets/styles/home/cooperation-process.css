@@ -1,21 +1,21 @@
 .cooperation-process {
   background-image: url('/images/background/cartoon_trang.png');
-  background-size: 230rem;
+  background-size: 2300px;
   @apply flex w-full bg-lp-lighter-primary-color;
 
   .cooperation-process-container {
-    @apply py-[6rem] text-lp-body text-white text-center;
+    @apply py-6 text-lp-body text-white text-center;
 
     .section-title {
-      @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white;
+      @apply mb-8 text-lp-section-title uppercase font-extrabold text-white;
     }
 
     .cooperation-process-row {
-      @apply relative mb-[5rem] flex items-center justify-center;
+      @apply relative mb-5 flex items-center justify-center;
     }
 
     .cooperation-process-row-arrow {
-      @apply flex relative mb-[5rem] items-center justify-center;
+      @apply flex relative mb-5 items-center justify-center;
     }
 
     .cooperation-process-1-row-arrow {
@@ -23,7 +23,7 @@
     }
 
     .cooperation-process-arrow {
-      @apply h-[4rem] px-[4rem];
+      @apply h-4 px-4;
     }
   }
 }
@@ -39,7 +39,7 @@
       }
 
       .cooperation-process-arrow {
-        @apply h-[unset] m-[4rem] px-[4rem] rotate-90;
+        @apply h-auto m-4 px-4 rotate-90;
       }
 
       .cooperation-process-row-2 {
@@ -54,7 +54,7 @@
         @apply block;
 
         .cooperation-process-arrow {
-          @apply my-[4rem] mx-[auto];
+          @apply my-4 mx-auto;
         }
       }
     }
@@ -69,7 +69,7 @@
       }
 
       .cooperation-process-arrow {
-        @apply h-[unset] m-[4rem] px-[4rem] rotate-90;
+        @apply h-auto m-4 px-4 rotate-90;
       }
 
       .cooperation-process-row-2 {
@@ -84,7 +84,7 @@
         @apply block;
 
         .cooperation-process-arrow {
-          @apply my-[4rem] mx-[auto];
+          @apply my-4 mx-auto;
         }
       }
     }
@@ -96,14 +96,14 @@
     @apply flex w-full bg-lp-lighter-primary-color;
 
     .cooperation-process-container {
-      @apply py-[6rem] text-lp-body text-white text-center;
+      @apply py-6 text-lp-body text-white text-center;
 
       .section-title {
-        @apply mb-[8rem] text-lp-section-title uppercase font-[800] text-white;
+        @apply mb-8 text-lp-section-title uppercase font-extrabold text-white;
       }
 
       .cooperation-process-row {
-        @apply flex-row relative mb-[5rem] flex items-center justify-center;
+        @apply flex-row relative mb-5 flex items-center justify-center;
       }
 
       .cooperation-process-1-row-arrow {
@@ -111,14 +111,14 @@
       }
 
       .cooperation-process-arrow {
-        @apply h-[4rem] px-[4rem] rotate-[unset] m-[unset];
+        @apply h-4 px-4 rotate-0 m-0;
       }
 
       .cooperation-process-row-arrow {
-        @apply flex relative mb-[5rem] items-center justify-center;
+        @apply flex relative mb-5 items-center justify-center;
 
         .cooperation-process-arrow {
-          @apply h-[4rem] px-[4rem] rotate-90;
+          @apply h-4 px-4 rotate-90;
         }
       }
     }

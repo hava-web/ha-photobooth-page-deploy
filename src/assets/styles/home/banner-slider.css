@@ -22,7 +22,7 @@
       }
 
       .label-title {
-        @apply uppercase w-[50%] absolute bottom-[4rem] object-cover text-lp-primary-color text-[5.4rem] font-[800] z-[1] whitespace-pre-line;
+        @apply uppercase w-1/2 absolute bottom-4 object-cover text-lp-primary-color text-brand-display font-extrabold z-1 whitespace-pre-line;
         text-shadow:
           2px 0 #fff,
           -2px 0 #fff,
@@ -38,18 +38,18 @@
         @apply absolute bg-white;
         width: 80%;
         height: 80%;
-        border-radius: 148rem;
+        border-radius: 1480px;
         transform: rotate(15deg);
         bottom: -65%;
         left: -30%;
-        box-shadow: 4rem 5rem 4rem 14rem white;
+        box-shadow: 40px 50px 40px 140px white;
         opacity: 0.9;
       }
     }
   }
 
   .swiper-dot-wrapper {
-    @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+    @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
   }
 }
 
@@ -76,7 +76,7 @@
         }
 
         .label-title {
-          @apply text-[4rem] w-full bottom-[8rem];
+          @apply text-brand-title w-full bottom-8;
         }
 
         .shadow-white-bg {
@@ -87,14 +87,14 @@
           transform: rotate(0deg);
           bottom: -55%;
           left: 0;
-          box-shadow: 4rem 5rem 4rem 14rem white;
+          box-shadow: 40px 50px 40px 140px white;
           opacity: 0.9;
         }
       }
     }
 
     .swiper-dot-wrapper {
-      @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+      @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
     }
   }
 }
@@ -118,7 +118,7 @@
         }
 
         .label-title {
-          @apply w-[65%] text-[4rem] bottom-[8rem];
+          @apply w-13/20 text-brand-title bottom-8;
         }
 
         .shadow-white-bg {
@@ -129,14 +129,14 @@
           transform: rotate(0deg);
           bottom: -55%;
           left: 0;
-          box-shadow: 4rem 5rem 4rem 14rem white;
+          box-shadow: 40px 50px 40px 140px white;
           opacity: 0.9;
         }
       }
     }
 
     .swiper-dot-wrapper {
-      @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+      @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
     }
   }
 }
@@ -174,7 +174,7 @@
         }
 
         .label-title {
-          @apply uppercase w-[50%] absolute bottom-[4rem] object-cover text-lp-primary-color text-[5.4rem] font-[800] z-[1] whitespace-pre-line;
+          @apply uppercase w-1/2 absolute bottom-4 object-cover text-lp-primary-color text-brand-display font-extrabold z-1 whitespace-pre-line;
           text-shadow:
             2px 0 #fff,
             -2px 0 #fff,
@@ -190,18 +190,18 @@
           @apply absolute bg-white;
           width: 80%;
           height: 80%;
-          border-radius: 148rem;
+          border-radius: 1480px;
           transform: rotate(15deg);
           bottom: -65%;
           left: -30%;
-          box-shadow: 4rem 5rem 4rem 14rem white;
+          box-shadow: 40px 50px 40px 140px white;
           opacity: 0.9;
         }
       }
     }
 
     .swiper-dot-wrapper {
-      @apply absolute w-full bottom-[1rem] text-center z-z-index-banner-dot;
+      @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
     }
   }
 }

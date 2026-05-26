@@ -24,7 +24,7 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
   return (
     <div
       className={cx(
-        'fixed inset-0 z-z-index-backdrop hidden [@media(max-width:1180px)]:block',
+        'fixed inset-0 z-z-index-backdrop hidden tablet:block',
         open ? 'pointer-events-auto' : 'pointer-events-none',
       )}
     >
@@ -37,13 +37,13 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
       />
       <div
         className={cx(
-          'absolute top-0 flex h-full w-[min(320px,82vw)] flex-col gap-[8px] bg-white p-[24px] transition-[right] duration-200',
-          open ? 'right-0' : 'right-[-320px]',
+          'absolute top-0 flex h-full w-mobile-sidebar flex-col gap-0.8 bg-white p-2.4 transition-right duration-200',
+          open ? 'right-0' : '-right-32',
         )}
       >
         <button
           type="button"
-          className="h-[42px] w-[42px] self-end border-0 bg-transparent"
+          className="h-4.2 w-4.2 self-end border-0 bg-transparent"
           aria-label="more"
           title={T('close')}
           onClick={onClose}
@@ -54,7 +54,7 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
           <NextLink
             key={item.href}
             href={item.href}
-            className="relative inline-flex min-h-[52px] items-center justify-start whitespace-nowrap border-b border-[#f5d0d4] text-center text-[18px] font-normal leading-[1.2] text-[#606060] no-underline"
+            className="relative inline-flex min-h-13 items-center justify-start whitespace-nowrap border-b border-brand-mobile-line text-center text-lg font-normal leading-tight text-brand-text no-underline"
             onClick={onClose}
           >
             {item.label}
@@ -62,7 +62,7 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
         ))}
         <NextLink
           href={MARKETING_CONTACT.ctaHref}
-          className="mt-[12px] inline-flex min-h-[46px] items-center justify-center whitespace-nowrap rounded-full bg-[#f7b5b9] px-[30px] text-[18px] font-extrabold uppercase leading-none text-white no-underline"
+          className="mt-1.2 inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-full bg-brand-pink px-3 text-lg font-extrabold uppercase leading-none text-white no-underline"
           onClick={onClose}
         >
           {MARKETING_CONTACT.ctaLabel}

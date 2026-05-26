@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import storeIcon from 'assets/icons/store.png';
 import Image from 'components/image/Image';
@@ -23,7 +23,11 @@ import {
   PRODUCT_MACHINES,
   RENTAL_SECTIONS,
   SERVICE_GALLERY_IMAGES,
+  SERVICE_IN_STORE_IMAGES,
+  SERVICE_KIOSK_IMAGES,
   SERVICE_MODELS,
+  SERVICE_OTHER_PRODUCTS,
+  SERVICE_RENTAL_IDOL_IMAGES,
 } from 'store/static-data/marketing-pages.data';
 import {
   funStores,
@@ -50,13 +54,18 @@ const Media: React.FC<MediaProps> = ({
   imageClassName,
   sizes = '(max-width: 768px) 100vw, 50vw',
 }) => (
-  <div className={cx('relative overflow-hidden bg-[#f8f8f8]', className)}>
+  <div className={cx('relative overflow-hidden bg-brand-page', className)}>
     <Image
       src={src}
       alt={alt}
       fill
       sizes={sizes}
-      className={cx('object-cover', imageClassName)}
+      draggable={false}
+      onDragStart={(event) => event.preventDefault()}
+      className={cx(
+        'pointer-events-none select-none object-cover',
+        imageClassName,
+      )}
     />
   </div>
 );
@@ -68,8 +77,8 @@ const SectionTitle: React.FC<{
 }> = ({ children, className, muted }) => (
   <h1
     className={cx(
-      'mx-auto mb-[54px] max-w-[1240px] text-center font-Montserrat text-[clamp(28px,2.1vw,40px)] font-normal uppercase leading-[1.38] [@media(max-width:768px)]:mb-[36px] [@media(max-width:768px)]:text-[26px]',
-      muted ? 'text-white' : 'text-[#f7b5b9]',
+      'mx-auto mb-5.4 max-w-marketing-title text-center font-UTMAVo text-marketing-hero font-normal uppercase leading-snug phone:mb-3.6 phone:text-brand-card-title',
+      muted ? 'text-white' : 'text-brand-pink',
       className,
     )}
   >
@@ -88,8 +97,25 @@ const getPagedItems = <T,>(items: T[], page: number, pageSize: number) => {
 const getPageCount = (itemsLength: number, pageSize: number) =>
   Math.max(1, Math.ceil(itemsLength / pageSize));
 
-const useCarouselIndex = (count: number) => {
-  const [position, setPosition] = useState(0);
+const getRotatedPageItems = <T,>(
+  items: T[],
+  page: number,
+  pageSize: number,
+) => {
+  if (!items.length) {
+    return [];
+  }
+
+  const start = (page * 3) % items.length;
+
+  return Array.from(
+    { length: pageSize },
+    (_, index) => items[(start + index) % items.length],
+  );
+};
+
+const useCarouselIndex = (count: number, initialPosition = 0) => {
+  const [position, setPosition] = useState(initialPosition);
   const current = normalizeIndex(position, count);
   const setSlide = (index: number) => {
     setPosition((previousPosition) => {
@@ -160,48 +186,67 @@ const useResponsiveVisibleCount = ({
   return visibleCount;
 };
 
-const HOME_VIDEO_SLIDES = [
-  HOME_VIDEO,
-  ...PRESS_ITEMS.slice(0, 2).map((item) => ({
+type HomeVideoSlide = {
+  image: MarketingImage;
+  title: string;
+  video: string;
+};
+
+const HOME_VIDEO_EMBEDS = [
+  'https://www.youtube.com/embed/unyZnLKiWUw?si=UCcTrLZJO7K50aFl',
+  'https://www.youtube.com/embed/CnKDC4b1HTo?si=MeEzBoT1diw2gHP8',
+  'https://www.youtube.com/embed/nkewKtTuHts?si=fkPGFrjVnNQhaKP2',
+];
+
+const withAutoplay = (url: string) =>
+  `${url}${url.includes('?') ? '&' : '?'}autoplay=1`;
+
+const HOME_VIDEO_SLIDES: HomeVideoSlide[] = [
+  { ...HOME_VIDEO, video: HOME_VIDEO_EMBEDS[0] },
+  ...PRESS_ITEMS.slice(0, 2).map((item, index) => ({
     image: item.image,
     title: item.title,
+    video: HOME_VIDEO_EMBEDS[index + 1] ?? HOME_VIDEO_EMBEDS[0],
   })),
 ];
 
 const ARROW_CLASS =
-  'z-[2] inline-flex h-[44px] w-[44px] items-center justify-center rounded-full border border-[#f7b5b9] bg-white/85 text-[36px] leading-none text-[#f7b5b9] [@media(max-width:768px)]:h-[36px] [@media(max-width:768px)]:w-[36px] [@media(max-width:768px)]:text-[28px]';
+  'z-10 inline-flex h-4.4 w-4.4 items-center justify-center rounded-full border border-brand-pink bg-white/85 text-brand-title leading-none text-brand-pink phone:h-3.6 phone:w-3.6 phone:text-3xl';
 
 const SliderControls: React.FC<{
   count: number;
   current: number;
   light?: boolean;
+  showArrows?: boolean;
   onChange: (index: number) => void;
-}> = ({ count, current, light, onChange }) => {
+}> = ({ count, current, light, showArrows = true, onChange }) => {
   if (count <= 1) {
     return null;
   }
 
   const dotBaseClass = cx(
-    'h-[22px] w-[22px] rounded-full border',
-    light ? 'border-white' : 'border-[#f7b5b9]',
+    'h-2.2 w-2.2 rounded-full border',
+    light ? 'border-white' : 'border-brand-pink',
   );
-  const activeDotClass = light ? 'bg-white' : 'bg-[#f7b5b9]';
+  const activeDotClass = light ? 'bg-white' : 'bg-brand-pink';
 
   return (
-    <div className="mt-[34px] flex items-center justify-center gap-[18px]">
-      <button
-        type="button"
-        aria-label="previous"
-        className={cx(
-          'h-[22px] w-[22px] rounded-full border text-[22px] leading-[18px]',
-          light
-            ? 'border-white bg-transparent text-white'
-            : 'border-[#f7b5b9] bg-white text-[#f7b5b9]',
-        )}
-        onClick={() => onChange(current - 1)}
-      >
-        {'<'}
-      </button>
+    <div className="mt-3.4 flex items-center justify-center gap-1.8">
+      {showArrows && (
+        <button
+          type="button"
+          aria-label="previous"
+          className={cx(
+            'h-2.2 w-2.2 rounded-full border text-marketing-control leading-1.8',
+            light
+              ? 'border-white bg-transparent text-white'
+              : 'border-brand-pink bg-white text-brand-pink',
+          )}
+          onClick={() => onChange(current - 1)}
+        >
+          {'<'}
+        </button>
+      )}
       {Array.from({ length: count }, (_, index) => (
         <button
           key={index}
@@ -214,19 +259,21 @@ const SliderControls: React.FC<{
           onClick={() => onChange(index)}
         />
       ))}
-      <button
-        type="button"
-        aria-label="next"
-        className={cx(
-          'h-[22px] w-[22px] rounded-full border text-[22px] leading-[18px]',
-          light
-            ? 'border-white bg-transparent text-white'
-            : 'border-[#f7b5b9] bg-white text-[#f7b5b9]',
-        )}
-        onClick={() => onChange(current + 1)}
-      >
-        {'>'}
-      </button>
+      {showArrows && (
+        <button
+          type="button"
+          aria-label="next"
+          className={cx(
+            'h-2.2 w-2.2 rounded-full border text-marketing-control leading-1.8',
+            light
+              ? 'border-white bg-transparent text-white'
+              : 'border-brand-pink bg-white text-brand-pink',
+          )}
+          onClick={() => onChange(current + 1)}
+        >
+          {'>'}
+        </button>
+      )}
     </div>
   );
 };
@@ -246,15 +293,250 @@ const InlineArrow: React.FC<{
   </button>
 );
 
+type MarketingHeroSlide = {
+  image: MarketingImage;
+  title: string;
+};
+
+const getLoopItem = <T,>(items: T[], index: number) =>
+  items[normalizeIndex(index, items.length)];
+
+const HeroBannerMedia: React.FC<{
+  slide: MarketingHeroSlide;
+  variant: 'main' | 'side';
+}> = ({ slide, variant }) => (
+  <div className="relative">
+    <Media
+      src={slide.image}
+      alt={slide.title}
+      className={cx(
+        variant === 'main'
+          ? 'aspect-hero-main phone:aspect-hero-main-mobile'
+          : 'h-full w-full border-14 border-brand-pink',
+      )}
+      sizes={variant === 'main' ? '100vw' : '240px'}
+    />
+    {variant === 'main' && (
+      <h2 className="marketing-hero-title absolute bottom-8.5 left-7.5 right-7.5 m-0 text-center text-marketing-hero-overlay font-extrabold uppercase leading-tight text-white phone:bottom-5 phone:text-lg">
+        {slide.title}
+      </h2>
+    )}
+  </div>
+);
+
+const HeroBannerCarousel: React.FC<{
+  slides: MarketingHeroSlide[];
+  position: number;
+  current: number;
+  onChange: (index: number) => void;
+}> = ({ slides, position, current, onChange }) => {
+  const dragStateRef = useRef<CarouselDragState | null>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+
+  if (!slides.length) {
+    return null;
+  }
+
+  const previousSlide = getLoopItem(slides, position - 1);
+  const currentSlide = getLoopItem(slides, position);
+  const nextSlide = getLoopItem(slides, position + 1);
+  const canDrag = slides.length > 1;
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canDrag || (event.pointerType === 'mouse' && event.button !== 0)) {
+      return;
+    }
+
+    const target = event.target as HTMLElement;
+
+    if (target.closest('a, button, input, label, select, textarea')) {
+      return;
+    }
+
+    dragStateRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      lastX: event.clientX,
+      viewportWidth: event.currentTarget.clientWidth,
+    };
+    setIsDragging(true);
+    setDragOffset(0);
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const dragState = dragStateRef.current;
+
+    if (!dragState || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    dragState.lastX = event.clientX;
+    setDragOffset(event.clientX - dragState.startX);
+    event.preventDefault();
+  };
+
+  const finishDrag = (
+    event: React.PointerEvent<HTMLDivElement>,
+    shouldSlide: boolean,
+  ) => {
+    const dragState = dragStateRef.current;
+
+    if (!dragState || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    } catch {
+      // Pointer capture may already be released by the browser.
+    }
+
+    dragStateRef.current = null;
+    setIsDragging(false);
+    setDragOffset(0);
+
+    if (!shouldSlide) {
+      return;
+    }
+
+    const delta = dragState.lastX - dragState.startX;
+    const threshold = Math.min(
+      120,
+      Math.max(40, dragState.viewportWidth * 0.08),
+    );
+
+    if (Math.abs(delta) >= threshold) {
+      onChange(current + (delta < 0 ? 1 : -1));
+    }
+  };
+
+  return (
+    <div
+      className={cx(
+        'grid grid-cols-hero justify-center gap-6 overflow-hidden px-0 tablet:grid-cols-1 tablet:px-2.4 phone:px-1.6',
+        canDrag && 'cursor-grab touch-pan-y active:cursor-grabbing',
+      )}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={(event) => finishDrag(event, true)}
+      onPointerCancel={(event) => finishDrag(event, false)}
+    >
+      <button
+        type="button"
+        aria-label={`go to previous slide ${previousSlide.title}`}
+        className="h-hero-side-panel self-center overflow-hidden bg-brand-pink p-0 text-left tablet:hidden"
+        onClick={() => onChange(current - 1)}
+      >
+        <div
+          className={cx(
+            'h-full transition-transform duration-300',
+            isDragging ? 'transition-none' : '',
+          )}
+          style={{ transform: `translate3d(${dragOffset}px, 0, 0)` }}
+        >
+          <HeroBannerMedia slide={previousSlide} variant="side" />
+        </div>
+      </button>
+      <div className="relative">
+        <div
+          className={cx(
+            'transition-transform duration-300',
+            isDragging ? 'transition-none' : '',
+          )}
+          style={{ transform: `translate3d(${dragOffset}px, 0, 0)` }}
+        >
+          <HeroBannerMedia slide={currentSlide} variant="main" />
+        </div>
+        <InlineArrow
+          direction="previous"
+          className={HERO_LEFT_ARROW_CLASS}
+          onClick={() => onChange(current - 1)}
+        />
+        <InlineArrow
+          direction="next"
+          className={HERO_RIGHT_ARROW_CLASS}
+          onClick={() => onChange(current + 1)}
+        />
+      </div>
+      <button
+        type="button"
+        aria-label={`go to next slide ${nextSlide.title}`}
+        className="h-hero-side-panel self-center overflow-hidden bg-brand-pink p-0 text-left tablet:hidden"
+        onClick={() => onChange(current + 1)}
+      >
+        <div
+          className={cx(
+            'h-full transition-transform duration-300',
+            isDragging ? 'transition-none' : '',
+          )}
+          style={{ transform: `translate3d(${dragOffset}px, 0, 0)` }}
+        >
+          <HeroBannerMedia slide={nextSlide} variant="side" />
+        </div>
+      </button>
+    </div>
+  );
+};
+
+const HomeVideoCard: React.FC<{
+  slide: HomeVideoSlide;
+  isPlaying: boolean;
+  onPlay: () => void;
+}> = ({ slide, isPlaying, onPlay }) => (
+  <div className="relative aspect-video overflow-hidden rounded-3xl border-14 border-gray-100 bg-brand-text shadow-brand-outline phone:rounded-1.4 phone:border-8">
+    {isPlaying ? (
+      <iframe
+        className="h-full w-full"
+        src={withAutoplay(slide.video)}
+        title={slide.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    ) : (
+      <>
+        <Media
+          src={slide.image}
+          alt={slide.title}
+          className="h-full w-full"
+          sizes="(max-width: 768px) 90vw, 760px"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-black/15" />
+        <button
+          type="button"
+          aria-label={`play video ${slide.title}`}
+          className="absolute left-1/2 top-1/2 z-10 flex h-7.2 w-7.2 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-brand-pink shadow-lg transition-colors hover:bg-brand-pink-hover phone:h-5.6 phone:w-5.6"
+          onClick={onPlay}
+        >
+          <span
+            aria-hidden="true"
+            className="ml-0.5 h-0 w-0 border-y-8 border-l-14 border-y-transparent border-l-white"
+          />
+        </button>
+      </>
+    )}
+  </div>
+);
+
 type CarouselProps<T> = {
   items: T[];
   position: number;
   visibleCount?: number;
-  renderItem: (item: T, index: number) => React.ReactNode;
+  renderItem: (item: T, index: number, isCurrent: boolean) => React.ReactNode;
   getKey: (item: T, index: number) => string;
+  onDragSlide?: (direction: 1 | -1) => void;
   viewportClassName?: string;
   trackClassName?: string;
   itemClassName?: string;
+};
+
+type CarouselDragState = {
+  pointerId: number;
+  startX: number;
+  lastX: number;
+  viewportWidth: number;
 };
 
 const Carousel = <T,>({
@@ -263,11 +545,15 @@ const Carousel = <T,>({
   visibleCount = 1,
   renderItem,
   getKey,
+  onDragSlide,
   viewportClassName,
   trackClassName,
   itemClassName,
 }: CarouselProps<T>) => {
   const count = items.length;
+  const dragStateRef = useRef<CarouselDragState | null>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
 
   if (!count) {
     return null;
@@ -277,17 +563,101 @@ const Carousel = <T,>({
   const repeatBuffer = 2 + Math.ceil(Math.abs(position) / count);
   const totalItems = count * (repeatBuffer * 2 + 1);
   const offsetIndex = count * repeatBuffer + position;
+  const canDrag = Boolean(onDragSlide && count > 1);
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canDrag || (event.pointerType === 'mouse' && event.button !== 0)) {
+      return;
+    }
+
+    const target = event.target as HTMLElement;
+
+    if (target.closest('a, button, input, label, select, textarea')) {
+      return;
+    }
+
+    dragStateRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      lastX: event.clientX,
+      viewportWidth: event.currentTarget.clientWidth,
+    };
+    setIsDragging(true);
+    setDragOffset(0);
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const dragState = dragStateRef.current;
+
+    if (!dragState || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    dragState.lastX = event.clientX;
+    setDragOffset(event.clientX - dragState.startX);
+    event.preventDefault();
+  };
+
+  const finishDrag = (
+    event: React.PointerEvent<HTMLDivElement>,
+    shouldSlide: boolean,
+  ) => {
+    const dragState = dragStateRef.current;
+
+    if (!dragState || dragState.pointerId !== event.pointerId) {
+      return;
+    }
+
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    } catch {
+      // Pointer capture may already be released by the browser.
+    }
+
+    dragStateRef.current = null;
+    setIsDragging(false);
+    setDragOffset(0);
+
+    if (!shouldSlide || !onDragSlide) {
+      return;
+    }
+
+    const delta = dragState.lastX - dragState.startX;
+    const itemWidth = dragState.viewportWidth / safeVisibleCount;
+    const threshold = Math.min(120, Math.max(40, itemWidth * 0.18));
+
+    if (Math.abs(delta) >= threshold) {
+      onDragSlide(delta < 0 ? 1 : -1);
+    }
+  };
 
   return (
-    <div className={cx('overflow-hidden', viewportClassName)}>
+    <div
+      className={cx(
+        'overflow-hidden select-none',
+        canDrag && 'cursor-grab touch-pan-y active:cursor-grabbing',
+        viewportClassName,
+      )}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={(event) => finishDrag(event, true)}
+      onPointerCancel={(event) => finishDrag(event, false)}
+    >
       <div
         className={cx(
-          'flex transition-transform duration-500 ease-out will-change-transform',
+          'flex will-change-transform',
+          isDragging
+            ? 'transition-none'
+            : 'transition-transform duration-500 ease-out',
           trackClassName,
         )}
         style={{
           width: `${(totalItems / safeVisibleCount) * 100}%`,
-          transform: `translate3d(-${(offsetIndex / totalItems) * 100}%, 0, 0)`,
+          transform: `translate3d(calc(-${
+            (offsetIndex / totalItems) * 100
+          }% + ${dragOffset}px), 0, 0)`,
         }}
       >
         {Array.from({ length: totalItems }, (_, loopIndex) => {
@@ -297,10 +667,12 @@ const Carousel = <T,>({
           return (
             <div
               key={`${loopIndex}-${getKey(item, itemIndex)}`}
-              className={cx('shrink-0', itemClassName)}
+              className={cx('shrink-0 select-none', itemClassName)}
+              draggable={false}
+              onDragStart={(event) => event.preventDefault()}
               style={{ flexBasis: `${100 / totalItems}%` }}
             >
-              {renderItem(item, itemIndex)}
+              {renderItem(item, itemIndex, loopIndex === offsetIndex)}
             </div>
           );
         })}
@@ -315,37 +687,38 @@ const InfoCard: React.FC<{
   title?: string;
   text: string;
   compact?: boolean;
-}> = ({ index, icon, title, text, compact }) => (
+  variant?: 'default' | 'franchise-service';
+}> = ({ index, icon, title, text, compact, variant = 'default' }) => (
   <article
     className={cx(
-      'relative rounded-[8px] border border-[#bcbec0] bg-white text-[#606060]',
+      'relative rounded-lg border border-brand-muted bg-white text-brand-text',
       compact
-        ? 'min-h-[235px] px-[28px] pb-[28px] pt-[54px]'
-        : 'min-h-[300px] px-[36px] pb-[36px] pt-[66px]',
+        ? 'min-h-info-card-compact px-7 pb-7 pt-5.4'
+        : variant === 'franchise-service'
+          ? 'min-h-franchise-service-card px-7 pb-7 pt-16.5'
+          : 'min-h-info-card px-9 pb-9 pt-16.5',
     )}
   >
     {typeof index === 'number' && (
-      <div className="absolute left-1/2 top-[-34px] flex h-[76px] w-[76px] -translate-x-1/2 items-center justify-center rounded-full border border-[#d8dada] bg-white text-[34px] font-bold text-[#f7b5b9]">
+      <div className="absolute left-1/2 -top-3.4 flex h-7.6 w-7.6 -translate-x-1/2 items-center justify-center rounded-full border border-gray-300 bg-white text-brand-subtitle font-bold text-brand-pink">
         {index}
       </div>
     )}
     {icon && (
-      <div className="absolute left-1/2 top-[-34px] flex h-[76px] w-[76px] -translate-x-1/2 items-center justify-center rounded-full border border-[#d8dada] bg-[#f7b5b9]">
+      <div className="absolute left-1/2 -top-3.4 flex h-7.6 w-7.6 -translate-x-1/2 items-center justify-center rounded-full border border-gray-300 bg-brand-pink">
         <Image src={icon} alt="" width={42} height={42} />
       </div>
     )}
     {title && (
-      <h3 className="mb-[24px] mt-0 text-[20px] font-extrabold uppercase leading-[1.3] text-[#f7b5b9]">
+      <h3 className="mb-6 mt-0 text-xl font-extrabold uppercase leading-snug text-brand-pink">
         {title}
       </h3>
     )}
-    <p className="m-0 text-[18px] leading-[1.55] [@media(max-width:768px)]:text-[16px]">
-      {text}
-    </p>
+    <p className="m-0 text-lg leading-relaxed phone:text-base">{text}</p>
   </article>
 );
 
-const FooterSpacer: React.FC = () => <div className="h-[24px]" />;
+const FooterSpacer: React.FC = () => <div className="h-6" />;
 
 const getImageKey = (image: MarketingImage, fallback: string) =>
   typeof image === 'string' ? image : image.src || fallback;
@@ -362,30 +735,69 @@ const CONCEPT_CARDS = SERVICE_GALLERY_IMAGES.map((image, index) => ({
 }));
 
 const PAGE_CLASS =
-  'w-full overflow-hidden bg-white font-Montserrat text-[#606060]';
+  'w-full overflow-hidden bg-white font-UTMAVo text-brand-text';
 const CONTAINER_CLASS =
-  'mx-auto w-[min(1400px,calc(100%_-_48px))] [@media(max-width:768px)]:w-[min(100%_-_32px,640px)]';
-const GALLERY_PAGE_SIZE = 12;
-const SECTION_CLASS = 'py-[72px] [@media(max-width:768px)]:py-[48px]';
+  'mx-auto w-marketing-container phone:w-marketing-container-mobile';
+const STORE_MAP_IMAGE = '/images/generated/store-vietnam-map.svg';
+const PRODUCT_MACHINE_PAGE_COUNT = 4;
+const PRODUCT_MACHINE_PAGE_SIZE = 9;
+const GALLERY_PAGE_SIZE = 36;
+const SECTION_CLASS = 'py-7.2 phone:py-4.8';
 const LEFT_FLOAT_ARROW_CLASS =
-  'absolute left-[-30px] top-1/2 -translate-y-1/2 [@media(max-width:768px)]:left-[8px]';
+  'absolute -left-7.5 top-1/2 -translate-y-1/2 phone:left-2';
 const RIGHT_FLOAT_ARROW_CLASS =
-  'absolute right-[-30px] top-1/2 -translate-y-1/2 [@media(max-width:768px)]:right-[8px]';
+  'absolute -right-7.5 top-1/2 -translate-y-1/2 phone:right-2';
+const HERO_LEFT_ARROW_CLASS =
+  'absolute -left-2.4 top-1/2 -translate-y-1/2 phone:left-2';
+const HERO_RIGHT_ARROW_CLASS =
+  'absolute -right-4.4 top-1/2 -translate-y-1/2 phone:right-2';
+const VIDEO_LEFT_ARROW_CLASS =
+  'absolute left-8 top-1/2 -translate-y-1/2 phone:left-2';
+const VIDEO_RIGHT_ARROW_CLASS =
+  'absolute right-8 top-1/2 -translate-y-1/2 phone:right-2';
 const CARD_TITLE_CLASS =
-  'mx-[28px] mb-[18px] mt-[28px] text-[24px] font-extrabold uppercase leading-[1.35] text-[#f7b5b9]';
+  'mx-7 mb-4.5 mt-7 text-2xl font-extrabold uppercase leading-snug text-brand-pink';
 const CARD_TEXT_CLASS =
-  'mx-[28px] mb-[34px] mt-0 text-[18px] leading-[1.55] text-[#606060] [@media(max-width:768px)]:text-[16px]';
+  'mx-7 mb-8.5 mt-0 text-lg leading-relaxed text-brand-text phone:text-base';
 const LEAD_CLASS =
-  'mx-auto mb-[56px] mt-[32px] max-w-[1400px] text-left text-[20px] leading-[1.65] text-[#606060] [@media(max-width:768px)]:text-[16px]';
+  'mx-auto mb-14 mt-8 max-w-marketing text-left text-xl leading-relaxed text-brand-text phone:text-base';
 const STORE_REGION_ORDER = [
   RegionLocationType.NORTH,
   RegionLocationType.MIDDLE,
   RegionLocationType.SOUTH,
 ];
-const STORE_REGION_COLORS: Record<RegionLocationType, string> = {
-  [RegionLocationType.NORTH]: '#9da1a5',
-  [RegionLocationType.MIDDLE]: '#b9bdc1',
-  [RegionLocationType.SOUTH]: '#70777c',
+const STORE_REGION_PANEL_CLASS: Record<RegionLocationType, string> = {
+  [RegionLocationType.NORTH]: 'left-0 top-8 w-31.5',
+  [RegionLocationType.MIDDLE]: 'left-23.5 top-40 w-40',
+  [RegionLocationType.SOUTH]: 'left-0 top-80 w-31.5',
+};
+
+const STORE_REGION_DISPLAY_PROVINCES: Record<RegionLocationType, string[]> = {
+  [RegionLocationType.NORTH]: [
+    'Hà Nội',
+    'Tuyên Quang',
+    'Phú Thọ',
+    'Bắc Ninh',
+    'Hưng Yên',
+    'Hải Phòng',
+  ],
+  [RegionLocationType.MIDDLE]: [
+    'Thanh Hoá',
+    'Nghệ An',
+    'Hà Tĩnh',
+    'Thừa Thiên Huế',
+    'Đà Nẵng',
+    'Đắk Lắk',
+    'Khánh Hoà',
+    'Lâm Đồng',
+  ],
+  [RegionLocationType.SOUTH]: [
+    'TP. Hồ Chí Minh',
+    'Đồng Nai',
+    'Tây Ninh',
+    'An Giang',
+    'Cần Thơ',
+  ],
 };
 
 type StoreProvinceSummary = {
@@ -402,135 +814,11 @@ type StoreRegionData = {
   stores: StoreProvinceSummary[];
 };
 
-type StoreMapLabelPosition = {
-  markerX: number;
-  markerY: number;
-  labelX: number;
-  labelY: number;
-};
-
-type StoreMapLabel = StoreMapLabelPosition & {
-  provinceType: ProvinceTypes;
-  name: string;
-};
-
-const STORE_MAP_LABEL_POSITIONS: Partial<
-  Record<ProvinceTypes, StoreMapLabelPosition>
-> = {
-  [ProvinceTypes.TUYEN_QUANG]: {
-    markerX: 330,
-    markerY: 72,
-    labelX: 500,
-    labelY: 62,
-  },
-  [ProvinceTypes.PHU_THO]: {
-    markerX: 320,
-    markerY: 120,
-    labelX: 500,
-    labelY: 96,
-  },
-  [ProvinceTypes.BAC_NINH]: {
-    markerX: 372,
-    markerY: 142,
-    labelX: 500,
-    labelY: 130,
-  },
-  [ProvinceTypes.QUANG_NINH]: {
-    markerX: 425,
-    markerY: 122,
-    labelX: 500,
-    labelY: 164,
-  },
-  [ProvinceTypes.HAIPHONG]: {
-    markerX: 400,
-    markerY: 168,
-    labelX: 500,
-    labelY: 198,
-  },
-  [ProvinceTypes.HUNG_YEN]: {
-    markerX: 370,
-    markerY: 188,
-    labelX: 500,
-    labelY: 232,
-  },
-  [ProvinceTypes.HANOI]: {
-    markerX: 352,
-    markerY: 164,
-    labelX: 500,
-    labelY: 266,
-  },
-  [ProvinceTypes.NGHE_AN]: {
-    markerX: 348,
-    markerY: 320,
-    labelX: 500,
-    labelY: 330,
-  },
-  [ProvinceTypes.HA_TINH]: {
-    markerX: 366,
-    markerY: 372,
-    labelX: 500,
-    labelY: 374,
-  },
-  [ProvinceTypes.HUE]: {
-    markerX: 392,
-    markerY: 446,
-    labelX: 500,
-    labelY: 430,
-  },
-  [ProvinceTypes.DA_NANG]: {
-    markerX: 415,
-    markerY: 484,
-    labelX: 500,
-    labelY: 474,
-  },
-  [ProvinceTypes.LAM_DONG]: {
-    markerX: 405,
-    markerY: 612,
-    labelX: 500,
-    labelY: 590,
-  },
-  [ProvinceTypes.BINH_THUAN]: {
-    markerX: 440,
-    markerY: 650,
-    labelX: 500,
-    labelY: 634,
-  },
-  [ProvinceTypes.TAY_NINH]: {
-    markerX: 328,
-    markerY: 672,
-    labelX: 500,
-    labelY: 690,
-  },
-  [ProvinceTypes.DONG_NAI]: {
-    markerX: 392,
-    markerY: 690,
-    labelX: 500,
-    labelY: 724,
-  },
-  [ProvinceTypes.HCM]: {
-    markerX: 355,
-    markerY: 720,
-    labelX: 500,
-    labelY: 758,
-  },
-  [ProvinceTypes.LONG_AN]: {
-    markerX: 332,
-    markerY: 735,
-    labelX: 500,
-    labelY: 792,
-  },
-};
-
 const getProvinceName = (provinceType: ProvinceTypes) =>
   ProvinceNames[provinceType] || '';
 
 const getProvinceStores = (provinceType: ProvinceTypes) =>
   funStores.filter((store) => store.storeLocation === provinceType);
-
-const getProvinceRegionType = (provinceType: ProvinceTypes) =>
-  STORE_REGION_ORDER.find((regionType) =>
-    ProvinceOfRegions[regionType].includes(provinceType),
-  ) || RegionLocationType.NORTH;
 
 const STORE_REGIONS: StoreRegionData[] = STORE_REGION_ORDER.map(
   (regionType) => {
@@ -562,25 +850,8 @@ const STORE_REGIONS: StoreRegionData[] = STORE_REGION_ORDER.map(
   },
 );
 
-const STORE_MAP_LABELS: StoreMapLabel[] = STORE_REGION_ORDER.flatMap(
-  (regionType) => ProvinceOfRegions[regionType],
-)
-  .map((provinceType) => {
-    const position = STORE_MAP_LABEL_POSITIONS[provinceType];
-
-    if (!position) {
-      return null;
-    }
-
-    return {
-      provinceType,
-      name: getProvinceName(provinceType),
-      ...position,
-    };
-  })
-  .filter((label): label is StoreMapLabel => Boolean(label));
 const FORM_INPUT_CLASS =
-  'min-h-[52px] w-full rounded-[4px] border border-[#9a9a9a] bg-white px-[16px] text-[16px] leading-[1.4] text-[#606060] outline-none placeholder:text-[#b8b8b8] focus:border-[#f7b5b9] focus:ring-2 focus:ring-[#f7b5b9]/30 [@media(max-width:768px)]:text-[15px]';
+  'min-h-13 w-full rounded border border-brand-control bg-white px-4 text-base leading-normal text-brand-text outline-none placeholder:text-brand-placeholder focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/30 phone:text-brand-caption';
 const REGISTER_FORM_DEMAND_OPTIONS = ['Nhượng quyền', 'Thuê máy', 'Bán máy'];
 const REGISTER_FORM_LOCATION_OPTIONS = [
   'Đã có',
@@ -602,13 +873,13 @@ const RegisterOption: React.FC<{
   children: React.ReactNode;
   name: string;
 }> = ({ children, name }) => (
-  <label className="flex min-h-[34px] cursor-pointer items-center gap-[12px] text-[16px] leading-[1.35] text-[#606060] [@media(max-width:768px)]:text-[15px]">
+  <label className="flex min-h-3.4 cursor-pointer items-center gap-3 text-base leading-snug text-brand-text phone:text-brand-caption">
     <input
       aria-label={String(children)}
       type="checkbox"
       name={name}
       value={String(children)}
-      className="h-[22px] w-[22px] shrink-0 rounded-[4px] border-[#9a9a9a] accent-[#f7b5b9]"
+      className="h-2.2 w-2.2 shrink-0 rounded border-brand-control accent-brand-pink"
     />
     <span>{children}</span>
   </label>
@@ -618,113 +889,67 @@ const RegisterFieldGroup: React.FC<{
   children: React.ReactNode;
   label?: string;
 }> = ({ children, label }) => (
-  <fieldset className="m-0 rounded-[4px] border border-[#9a9a9a] px-[14px] pb-[12px] pt-[14px]">
+  <fieldset className="m-0 rounded border border-brand-control px-3.5 pb-3 pt-3.5">
     {label && (
-      <legend className="px-[2px] text-[16px] leading-[1.35] text-[#606060] [@media(max-width:768px)]:text-[15px]">
+      <legend className="px-0.5 text-base leading-snug text-brand-text phone:text-brand-caption">
         {label}
       </legend>
     )}
-    <div className="grid gap-[8px]">{children}</div>
+    <div className="grid gap-0.8">{children}</div>
   </fieldset>
 );
 
 export const MarketingHomePage: React.FC = () => {
   const heroCarousel = useCarouselIndex(HOME_HERO_SLIDES.length);
   const videoCarousel = useCarouselIndex(HOME_VIDEO_SLIDES.length);
-  const videoSlide = HOME_VIDEO_SLIDES[videoCarousel.current];
+  const [playingHomeVideo, setPlayingHomeVideo] = useState<string | null>(null);
 
   return (
     <main className={PAGE_CLASS}>
-      <section className="relative grid grid-cols-[210px_minmax(0,1320px)_250px] justify-center gap-[50px] px-[24px] pb-[34px] pt-[42px] [@media(max-width:1180px)]:grid-cols-1 [@media(max-width:768px)]:px-[16px] [@media(max-width:768px)]:pb-[20px] [@media(max-width:768px)]:pt-[24px]">
-        <div className="grid content-center gap-[16px] [@media(max-width:1180px)]:hidden">
-          {PRESS_ITEMS.slice(0, 2).map((item) => (
-            <Media
-              key={item.title}
-              src={item.image}
-              alt={item.title}
-              className="aspect-[1/0.74] border-[14px] border-[#f7b5b9]"
-            />
-          ))}
-        </div>
-        <div className="relative">
-          <Carousel
-            items={HOME_HERO_SLIDES}
-            position={heroCarousel.position}
-            getKey={(slide) => slide.title}
-            renderItem={(slide) => (
-              <div className="relative">
-                <Media
-                  src={slide.image}
-                  alt={slide.title}
-                  className="aspect-[1320/570] [@media(max-width:768px)]:aspect-[1/0.68]"
-                  sizes="100vw"
-                />
-                <h2 className="absolute bottom-[34px] left-[30px] right-[30px] m-0 text-center text-[clamp(22px,2vw,38px)] font-extrabold uppercase leading-[1.2] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] [@media(max-width:768px)]:bottom-[20px] [@media(max-width:768px)]:text-[18px]">
-                  {slide.title}
-                </h2>
-              </div>
-            )}
-          />
-          <InlineArrow
-            direction="previous"
-            className={LEFT_FLOAT_ARROW_CLASS}
-            onClick={() => heroCarousel.setSlide(heroCarousel.current - 1)}
-          />
-          <InlineArrow
-            direction="next"
-            className={RIGHT_FLOAT_ARROW_CLASS}
-            onClick={() => heroCarousel.setSlide(heroCarousel.current + 1)}
-          />
-        </div>
-        <div className="grid min-h-[315px] content-center gap-[16px] bg-[#f7b5b9] p-[36px] text-center text-[24px] font-extrabold uppercase leading-[1.35] text-white [@media(max-width:1180px)]:hidden">
-          <p>Hệ thống photobooth nhượng quyền của Hàn Quốc</p>
-        </div>
-        <div className="col-start-2 [@media(max-width:1180px)]:col-start-1">
-          <SliderControls
-            count={HOME_HERO_SLIDES.length}
-            current={heroCarousel.current}
-            onChange={heroCarousel.setSlide}
-          />
-        </div>
+      <section className="relative pb-3.4 pt-4.2 phone:pb-2 phone:pt-2.4">
+        <HeroBannerCarousel
+          slides={HOME_HERO_SLIDES}
+          position={heroCarousel.position}
+          current={heroCarousel.current}
+          onChange={heroCarousel.setSlide}
+        />
       </section>
 
-      <section className={SECTION_CLASS}>
+      <section className="pb-7.2 pt-3.4 phone:py-4.8">
         <div className={CONTAINER_CLASS}>
-          <SectionTitle>{videoSlide.title}</SectionTitle>
-          <div className="relative flex min-h-[560px] items-center justify-center [@media(max-width:768px)]:min-h-0">
+          <SectionTitle>{HOME_VIDEO.title}</SectionTitle>
+          <div className="relative flex min-h-video-section items-center justify-center phone:min-h-0">
             <InlineArrow
               direction="previous"
+              className={VIDEO_LEFT_ARROW_CLASS}
               onClick={() => videoCarousel.setSlide(videoCarousel.current - 1)}
             />
             <Carousel
               items={HOME_VIDEO_SLIDES}
               position={videoCarousel.position}
               getKey={(slide) => slide.title}
-              viewportClassName="w-[min(940px,86vw)] [@media(max-width:768px)]:w-full"
-              renderItem={(slide) => (
+              onDragSlide={(direction) =>
+                videoCarousel.setSlide(videoCarousel.current + direction)
+              }
+              viewportClassName="w-video-carousel phone:w-full"
+              renderItem={(slide, _index, isCurrent) => (
                 <div className="relative">
-                  <Media
-                    src={slide.image}
-                    alt={slide.title}
-                    className="aspect-[940/585] rounded-[24px] border-[14px] border-[#f6f6f6] shadow-[0_0_0_1px_#d9d9d9] [@media(max-width:768px)]:rounded-[14px] [@media(max-width:768px)]:border-[8px]"
-                    sizes="(max-width: 768px) 90vw, 760px"
+                  <HomeVideoCard
+                    slide={slide}
+                    isPlaying={playingHomeVideo === slide.video && isCurrent}
+                    onPlay={() => setPlayingHomeVideo(slide.video)}
                   />
-                  <button
-                    type="button"
-                    aria-label="play video"
-                    className="absolute left-1/2 top-1/2 flex h-[82px] w-[82px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-0 bg-[#ff0000] text-[32px] text-white [@media(max-width:768px)]:h-[58px] [@media(max-width:768px)]:w-[58px] [@media(max-width:768px)]:text-[22px]"
-                  >
-                    &#9654;
-                  </button>
                 </div>
               )}
             />
             <InlineArrow
               direction="next"
+              className={VIDEO_RIGHT_ARROW_CLASS}
               onClick={() => videoCarousel.setSlide(videoCarousel.current + 1)}
             />
           </div>
           <SliderControls
+            showArrows={false}
             count={HOME_VIDEO_SLIDES.length}
             current={videoCarousel.current}
             onChange={videoCarousel.setSlide}
@@ -737,21 +962,21 @@ export const MarketingHomePage: React.FC = () => {
           <SectionTitle>
             Fun Studio là thương hiệu chụp ảnh tự động theo phong cách Hàn Quốc
           </SectionTitle>
-          <div className="grid grid-cols-2 items-start gap-[80px] [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[28px]">
-            <div className="text-[20px] leading-[1.6] text-[#606060] [@media(max-width:768px)]:text-[16px]">
+          <div className="grid grid-cols-2 items-start gap-8 phone:grid-cols-1 phone:gap-7">
+            <div className="text-xl leading-relaxed text-brand-text phone:text-base">
               {ABOUT_COPY.map((paragraph) => (
-                <p key={paragraph} className="mb-[24px] mt-0">
+                <p key={paragraph} className="mb-6 mt-0">
                   {paragraph}
                 </p>
               ))}
             </div>
-            <div className="grid gap-[38px]">
+            <div className="grid gap-3.8">
               {ABOUT_IMAGES.map((image) => (
                 <Media
                   key={getImageKey(image, 'about-image')}
                   src={image}
                   alt="Fun Studio"
-                  className="aspect-[700/360]"
+                  className="aspect-about-image"
                   sizes="(max-width: 768px) 100vw, 520px"
                 />
               ))}
@@ -760,17 +985,19 @@ export const MarketingHomePage: React.FC = () => {
         </div>
       </section>
 
-      <section className="pb-[72px] pt-[36px] [@media(max-width:768px)]:py-[48px]">
+      <section className="pb-7.2 pt-9 phone:py-4.8">
         <div className={CONTAINER_CLASS}>
           <SectionTitle>Quá trình hình thành & phát triển</SectionTitle>
-          <div className="grid grid-cols-8 items-stretch gap-[18px] [@media(max-width:1180px)]:grid-cols-4 [@media(max-width:768px)]:grid-cols-2">
+          <div className="mx-auto grid max-w-marketing grid-cols-8 items-start gap-2 tablet:grid-cols-4 tablet:gap-y-7 phone:grid-cols-2 phone:gap-y-6">
             {DEVELOPMENT_TIMELINE.map(([date, text]) => (
               <article
                 key={date}
-                className="min-h-[240px] rounded-[14px] bg-[#f7b5b9] px-[14px] py-[24px] text-center text-white"
+                className="relative mt-5.8 flex min-h-28 items-center justify-center rounded-2 bg-brand-pink px-1.6 py-2 text-center text-white phone:mt-4 phone:min-h-24"
               >
-                <strong className="mb-[18px] block text-[18px]">{date}</strong>
-                <p className="m-0 text-[17px] font-bold leading-[1.35]">
+                <strong className="absolute -top-5.8 left-1/2 flex h-8.2 w-8.2 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-brand-muted font-UTMImpact text-brand-card-title font-normal leading-none text-white phone:-top-4 phone:h-7.2 phone:w-7.2 phone:text-lg">
+                  {date}
+                </strong>
+                <p className="m-0 text-brand-card-title font-extrabold leading-tight">
                   {text}
                 </p>
               </article>
@@ -779,20 +1006,20 @@ export const MarketingHomePage: React.FC = () => {
         </div>
       </section>
 
-      <section className={cx(SECTION_CLASS, 'bg-[#f7b5b9]')}>
-        <div className={cx(CONTAINER_CLASS, '[&>h1]:text-white')}>
-          <SectionTitle>Khách hàng của chúng tôi</SectionTitle>
-          <div className="grid grid-cols-6 gap-[22px] [@media(max-width:1180px)]:grid-cols-4 [@media(max-width:768px)]:grid-cols-2">
+      <section className="bg-brand-pink pb-20 pt-7.2 phone:py-4.8">
+        <div className={CONTAINER_CLASS}>
+          <SectionTitle muted>Khách hàng của chúng tôi</SectionTitle>
+          <div className="grid grid-cols-7 gap-x-1.8 gap-y-3.8 tablet:grid-cols-4 phone:grid-cols-2">
             {CUSTOMER_LOGOS.map((client) => (
               <div
                 key={client.name}
-                className="flex min-h-[95px] items-center justify-center bg-white p-[16px] text-center text-[18px] font-extrabold text-[#606060]"
+                className="flex min-h-customer-logo items-center justify-center bg-white p-2 text-center text-lg font-extrabold text-brand-text"
               >
                 {client.image ? (
                   <Image
                     src={client.image}
                     alt={client.name}
-                    className="max-h-[58px] max-w-[118px] object-contain"
+                    className="max-h-customer-logo max-w-customer-logo object-contain"
                   />
                 ) : (
                   <span>{client.name}</span>
@@ -808,32 +1035,32 @@ export const MarketingHomePage: React.FC = () => {
 
 export const FranchisePage: React.FC = () => (
   <main className={PAGE_CLASS}>
-    <section className={SECTION_CLASS}>
+    <section className="pb-8.5 pt-6 phone:py-4.8">
       <div className={CONTAINER_CLASS}>
-        <SectionTitle>
+        <h1 className="mx-auto mb-5 max-w-marketing-title text-center font-UTMAVo text-marketing-section font-normal uppercase leading-tight text-brand-pink phone:mb-3.6 phone:text-brand-card-title">
           Photobooth không chỉ là trào lưu còn là cơ hội để bạn bắt đầu câu
           chuyện thành công
-        </SectionTitle>
-        <div className="grid grid-cols-3 gap-[36px] [@media(max-width:768px)]:grid-cols-1">
+        </h1>
+        <div className="grid grid-cols-3 gap-4 phone:grid-cols-1">
           {FRANCHISE_TOP_IMAGES.map((image) => (
             <Media
               key={getImageKey(image, 'franchise-image')}
               src={image}
               alt="Nhượng quyền Fun Studio"
               sizes="(max-width: 768px) 100vw, 420px"
-              className="aspect-[450/310]"
+              className="aspect-franchise-top"
             />
           ))}
         </div>
-        <p className={LEAD_CLASS}>
+        <p className="mx-auto mb-15 mt-4 max-w-marketing text-left text-lg leading-relaxed text-brand-text phone:text-base">
           Photobooth không còn là xu hướng nhất thời, mà đã trở thành một mô
           hình kinh doanh hấp dẫn và sinh lời bền vững. Với Fun Studio, chuỗi
           photobooth nhượng quyền lớn nhất Việt Nam, đối tác được đồng hành từ
           A-Z trong vận hành và phát triển.
         </p>
 
-        <div className="mt-[64px] grid grid-cols-[1fr_1.45fr] items-stretch gap-[36px] [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[28px]">
-          <article className="border border-[#bcbec0] px-[56px] py-[70px] [@media(max-width:768px)]:px-[24px] [@media(max-width:768px)]:py-[32px] [&>h2]:mb-[48px] [&>h2]:mt-0 [&>h2]:text-[30px] [&>h2]:font-extrabold [&>h2]:uppercase [&>h2]:leading-[1.4] [&>h2]:text-[#f7b5b9] [&>p]:mb-[28px] [&>p]:mt-0 [&>p]:text-[20px] [&>p]:leading-[1.55] [@media(max-width:768px)]:[&>p]:text-[16px]">
+        <div className="mt-16 grid grid-cols-story-panel items-start gap-3 phone:grid-cols-1 phone:gap-7">
+          <article className="marketing-difference-copy">
             <h2>Điều gì khiến Fun Studio trở nên khác biệt</h2>
             <p>
               Tự phát triển phần mềm chụp ảnh và quản lý vận hành độc quyền,
@@ -844,8 +1071,21 @@ export const FranchisePage: React.FC = () => (
               thái truyền thông mạnh mẽ và nguồn lực vận hành phủ khắp thị
               trường.
             </p>
+            <p>
+              Hệ sinh thái truyền thông mạnh mẽ với hàng trăm nghìn lượt theo
+              dõi và nội dung viral trên các nền tảng TikTok, Facebook, Zalo OA.
+            </p>
+            <p>
+              Mạng lưới vận hành phủ khắp 16 tỉnh thành, giúp Fun Studio có lợi
+              thế lớn về logistics, đào tạo và chia sẻ kinh nghiệm thực tế.
+            </p>
+            <p>
+              Tầm nhìn thương hiệu rõ ràng: đưa photobooth trở thành điểm hẹn
+              cảm xúc, nơi mọi người đều có thể lưu giữ niềm vui và câu chuyện
+              riêng của mình.
+            </p>
           </article>
-          <div className="grid grid-cols-2 gap-[18px] [&>div]:aspect-square">
+          <div className="marketing-difference-grid grid grid-cols-difference gap-2">
             {DIFFERENCE_IMAGES.map((image) => (
               <Media
                 key={getImageKey(image, 'difference-image')}
@@ -858,13 +1098,13 @@ export const FranchisePage: React.FC = () => (
       </div>
     </section>
 
-    <section className={cx(SECTION_CLASS, 'bg-[#f7b5b9]')}>
+    <section className="bg-brand-pink pb-9 pt-6 phone:py-4.8">
       <div className={CONTAINER_CLASS}>
-        <SectionTitle muted>
+        <h1 className="mx-auto mb-5 max-w-marketing-title text-center font-UTMAVo text-marketing-section font-normal uppercase leading-tight text-white phone:mb-3.6 phone:text-brand-card-title">
           Lý do nên trở thành đối tác của Fun Studio chuỗi photobooth nhượng
           quyền lớn nhất Việt Nam
-        </SectionTitle>
-        <div className="grid grid-cols-4 gap-[38px] pt-[36px] [@media(max-width:1180px)]:grid-cols-2 [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-x-[20px] [@media(max-width:768px)]:gap-y-[56px]">
+        </h1>
+        <div className="grid grid-cols-4 gap-3.8 pt-5 tablet:grid-cols-2 phone:grid-cols-1 phone:gap-x-5 phone:gap-y-14">
           {FRANCHISE_REASONS.map((reason, index) => (
             <InfoCard
               key={reason.text}
@@ -878,18 +1118,19 @@ export const FranchisePage: React.FC = () => (
       </div>
     </section>
 
-    <section className={SECTION_CLASS}>
+    <section className="pb-10 pt-6 phone:py-4.8">
       <div className={CONTAINER_CLASS}>
-        <SectionTitle>
+        <h1 className="mx-auto mb-5 max-w-marketing text-center font-UTMAVo text-marketing-section font-normal uppercase leading-tight text-brand-pink phone:mb-3.6 phone:text-brand-card-title">
           6 dịch vụ miễn phí dành riêng cho đối tác của Fun Studio
-        </SectionTitle>
-        <div className="grid grid-cols-3 gap-x-[28px] gap-y-[72px] pt-[36px] [@media(max-width:1180px)]:grid-cols-2 [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-x-[20px] [@media(max-width:768px)]:gap-y-[56px]">
+        </h1>
+        <div className="grid grid-cols-3 gap-x-3 gap-y-7 pt-4 tablet:grid-cols-2 phone:grid-cols-1 phone:gap-x-5 phone:gap-y-14">
           {FREE_SERVICE_CARDS.map((card, index) => (
             <InfoCard
               key={card.title}
               index={index + 1}
               title={card.title}
               text={card.text}
+              variant="franchise-service"
             />
           ))}
         </div>
@@ -898,14 +1139,125 @@ export const FranchisePage: React.FC = () => (
   </main>
 );
 
+const ServiceSectionHeading: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  muted?: boolean;
+}> = ({ children, className, muted }) => (
+  <h1
+    className={cx(
+      'mx-auto mb-5 max-w-marketing-title text-center font-UTMAVo text-marketing-section font-normal uppercase leading-tight phone:text-brand-card-title',
+      muted ? 'text-white' : 'text-brand-pink',
+      className,
+    )}
+  >
+    {children}
+  </h1>
+);
+
+const ServicePillHeading: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+}> = ({ children, className }) => (
+  <h2
+    className={cx(
+      'mx-auto mb-6 flex min-h-5.8 w-video-carousel max-w-full items-center justify-center rounded-full bg-brand-pink px-6 text-center text-2xl font-extrabold uppercase leading-tight text-white phone:min-h-4.8 phone:text-lg',
+      className,
+    )}
+  >
+    {children}
+  </h2>
+);
+
+const ServiceMachineCard: React.FC<{
+  image: MarketingImage;
+  title: string;
+}> = ({ image, title }) => (
+  <article className="border border-brand-muted bg-white">
+    <Media src={image} alt={title} className="aspect-service-card" />
+    <h3 className="m-0 flex min-h-8 items-center border-b border-brand-muted px-3.5 text-brand-card-title font-extrabold uppercase leading-tight text-brand-pink phone:text-xl">
+      {title}
+    </h3>
+    <a
+      href={MARKETING_CONTACT.ctaHref}
+      className="flex min-h-5.8 items-center justify-center px-3 text-lg font-extrabold uppercase leading-tight text-brand-pink no-underline phone:text-base"
+    >
+      Nhận báo giá
+    </a>
+  </article>
+);
+
+const ServiceImageGrid: React.FC<{
+  images: MarketingImage[];
+  className?: string;
+  square?: boolean;
+}> = ({ images, className, square }) => (
+  <div
+    className={cx(
+      'grid grid-cols-3 gap-x-4.8 gap-y-4.8 phone:grid-cols-1 phone:gap-2.4',
+      className,
+    )}
+  >
+    {images.map((image, index) => (
+      <Media
+        key={getImageKey(image, `service-image-${index}`)}
+        src={image}
+        alt="Fun Studio service"
+        className={square ? 'aspect-square' : 'aspect-service-card'}
+      />
+    ))}
+  </div>
+);
+
+const ServiceSalesCircle: React.FC<{
+  icon?: MarketingImage;
+  text: string;
+}> = ({ icon, text }) => (
+  <article className="relative mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-brand-pink p-5 text-center text-xl font-extrabold leading-snug text-white phone:h-24 phone:w-24 phone:text-base">
+    {icon && (
+      <span className="absolute -left-1.2 -top-1.2 flex h-7.6 w-7.6 items-center justify-center rounded-full border border-white bg-brand-pink">
+        <Image src={icon} alt="" width={36} height={36} />
+      </span>
+    )}
+    {text}
+  </article>
+);
+
+const ServiceModelCard: React.FC<{
+  image: MarketingImage;
+  title: string;
+  text: string;
+}> = ({ image, title, text }) => (
+  <article className="border border-brand-muted bg-white">
+    <Media src={image} alt={title} className="aspect-service-model" />
+    <h3 className="mx-3.5 mb-2.4 mt-3 text-brand-card-title font-extrabold uppercase leading-tight text-brand-pink">
+      {title}
+    </h3>
+    <p className="mx-3.5 mb-5 mt-0 text-lg leading-relaxed text-brand-text phone:text-base">
+      {text}
+    </p>
+  </article>
+);
+
+const ServiceOtherProductCard: React.FC<{
+  image: MarketingImage;
+  title: string;
+}> = ({ image, title }) => (
+  <article className="mx-auto w-30 border border-brand-muted bg-white">
+    <Media src={image} alt={title} className="aspect-square" />
+    <h3 className="m-0 flex min-h-5.8 items-center justify-center px-2 text-center text-lg font-extrabold uppercase leading-tight text-brand-pink">
+      {title}
+    </h3>
+  </article>
+);
+
 export const ServicesPage: React.FC = () => {
-  const productCarousel = useCarouselIndex(PRODUCT_MACHINES.length);
+  const productCarousel = useCarouselIndex(PRODUCT_MACHINE_PAGE_COUNT);
+  const productPages = Array.from(
+    { length: PRODUCT_MACHINE_PAGE_COUNT },
+    (_, page) => page,
+  );
   const conceptCarousel = useCarouselIndex(CONCEPT_CARDS.length);
-  const productVisibleCount = useResponsiveVisibleCount({
-    desktop: 3,
-    tablet: 2,
-    mobile: 1,
-  });
   const conceptVisibleCount = useResponsiveVisibleCount({
     desktop: 3,
     tablet: 2,
@@ -914,89 +1266,92 @@ export const ServicesPage: React.FC = () => {
 
   return (
     <main className={PAGE_CLASS}>
-      <section className={SECTION_CLASS}>
+      <section className="pb-8 pt-6 phone:py-4.8">
         <div className={CONTAINER_CLASS}>
-          <SectionTitle>Dải dòng máy Fun Studio</SectionTitle>
+          <ServiceSectionHeading>
+            Đa dạng dòng máy tối ưu trải nghiệm
+          </ServiceSectionHeading>
           <Carousel
-            items={PRODUCT_MACHINES}
+            items={productPages}
             position={productCarousel.position}
-            visibleCount={productVisibleCount}
-            getKey={(machine) => machine.title}
-            viewportClassName="-mx-[18px] [@media(max-width:768px)]:mx-0"
-            itemClassName="px-[18px] [@media(max-width:768px)]:px-0"
-            renderItem={(machine) => (
-              <article className="border border-[#bcbec0] bg-white">
-                <Media
-                  src={machine.image}
-                  alt={machine.title}
-                  className="aspect-[1/0.72]"
-                />
-                <h3 className={CARD_TITLE_CLASS}>{machine.title}</h3>
-                <p className={CARD_TEXT_CLASS}>{machine.text}</p>
-              </article>
+            getKey={(page) => String(page)}
+            onDragSlide={(direction) =>
+              productCarousel.setSlide(productCarousel.current + direction)
+            }
+            renderItem={(page) => (
+              <div className="grid grid-cols-3 gap-x-4.8 gap-y-20 tablet:grid-cols-2 phone:grid-cols-1 phone:gap-y-7">
+                {getRotatedPageItems(
+                  PRODUCT_MACHINES,
+                  page,
+                  PRODUCT_MACHINE_PAGE_SIZE,
+                ).map((machine) => (
+                  <ServiceMachineCard
+                    key={`${page}-${machine.title}`}
+                    image={machine.image}
+                    title={machine.title}
+                  />
+                ))}
+              </div>
             )}
           />
           <SliderControls
-            count={PRODUCT_MACHINES.length}
+            count={PRODUCT_MACHINE_PAGE_COUNT}
             current={productCarousel.current}
             onChange={productCarousel.setSlide}
           />
         </div>
       </section>
 
-      <section className={SECTION_CLASS}>
+      <section className="pb-8 pt-3 phone:py-4.8">
         <div className={CONTAINER_CLASS}>
-          <SectionTitle>Dịch vụ bán máy</SectionTitle>
-          <h2 className="mb-[44px] mt-[-24px] text-center text-[clamp(22px,1.55vw,30px)] font-medium uppercase text-[#f7b5b9]">
-            Kinh doanh Photobooth phù hợp với
-          </h2>
-          <div className="mb-[78px] grid grid-cols-3 gap-[38px] pt-[36px] [@media(max-width:1180px)]:grid-cols-2 [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-x-[20px] [@media(max-width:768px)]:gap-y-[56px]">
-            {BUSINESS_FIT_CARDS.map((card) => (
-              <InfoCard
-                key={card.text}
-                icon={card.icon}
-                text={card.text}
-                compact
-              />
-            ))}
-          </div>
-          <h2 className="mb-[44px] mt-[-24px] text-center text-[clamp(22px,1.55vw,30px)] font-medium uppercase text-[#f7b5b9]">
-            Các mô hình kết hợp photobooth
-          </h2>
-          <div className="grid grid-cols-2 gap-[80px] [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[28px]">
-            {SERVICE_MODELS.map((model) => (
-              <article
-                key={model.title}
-                className="border border-[#bcbec0] bg-white"
-              >
-                <Media
-                  src={model.image}
-                  alt={model.title}
-                  className="aspect-[680/420]"
-                />
-                <h3 className={CARD_TITLE_CLASS}>{model.title}</h3>
-                <p className={CARD_TEXT_CLASS}>{model.text}</p>
-              </article>
-            ))}
-          </div>
+          <ServiceSectionHeading className="mb-4">
+            New trend: Photobooth in-store
+          </ServiceSectionHeading>
+          <p className="mx-auto mb-4.8 max-w-marketing text-lg leading-relaxed text-brand-text phone:text-base">
+            Mô hình photobooth in-store không chỉ giúp cửa hàng tạo điểm nhấn
+            khác biệt mà còn thu hút đúng tệp khách hàng trẻ yêu thích check-in,
+            thể hiện cá tính và chia sẻ lên mạng xã hội.
+          </p>
+          <ServiceImageGrid images={SERVICE_IN_STORE_IMAGES} square />
+
+          <ServiceSectionHeading className="mb-4 mt-8">
+            Mô hình kiosk tối ưu trải nghiệm & vận hành
+          </ServiceSectionHeading>
+          <p className="mx-auto mb-4.8 max-w-marketing text-lg leading-relaxed text-brand-text phone:text-base">
+            Thiết kế kiosk giúp tối ưu diện tích, vận hành gọn và phù hợp với
+            nhiều không gian như trung tâm thương mại, cửa hàng, sự kiện hoặc
+            điểm bán lưu động.
+          </p>
+          <ServiceImageGrid images={SERVICE_KIOSK_IMAGES} square />
         </div>
       </section>
 
-      <section className={cx(SECTION_CLASS, 'bg-[#f7b5b9]')}>
+      <section className="min-h-service-concept bg-brand-pink pb-10 pt-8 phone:min-h-0 phone:py-4.8">
         <div className={CONTAINER_CLASS}>
-          <SectionTitle muted>Concept phòng chụp</SectionTitle>
+          <ServiceSectionHeading muted>
+            Concept phòng chụp
+          </ServiceSectionHeading>
           <Carousel
             items={CONCEPT_CARDS}
             position={conceptCarousel.position}
             visibleCount={conceptVisibleCount}
             getKey={(concept) => getImageKey(concept.image, 'concept-image')}
-            viewportClassName="-mx-[18px] [@media(max-width:768px)]:mx-0"
-            itemClassName="px-[18px] [@media(max-width:768px)]:px-0"
+            onDragSlide={(direction) =>
+              conceptCarousel.setSlide(conceptCarousel.current + direction)
+            }
+            viewportClassName="-mx-4.5 phone:mx-0"
+            itemClassName="px-1.8 phone:px-0"
             renderItem={(concept) => (
-              <article className="bg-white [&>div]:aspect-[420/320]">
-                <Media src={concept.image} alt="Concept phòng chụp" />
-                <h3 className={CARD_TITLE_CLASS}>{concept.title}</h3>
-                <p className={CARD_TEXT_CLASS}>
+              <article className="bg-white">
+                <Media
+                  src={concept.image}
+                  alt="Concept phòng chụp"
+                  className="aspect-concept"
+                />
+                <h3 className="mx-3.5 mb-2 mt-3 text-xl font-extrabold uppercase leading-tight text-brand-pink">
+                  {concept.title}
+                </h3>
+                <p className="mx-3.5 mb-5 mt-0 text-base leading-relaxed text-brand-text">
                   Những concept được cập nhật thường xuyên giúp cửa hàng luôn
                   mới mẻ, dễ truyền thông và giữ chân khách hàng quay lại.
                 </p>
@@ -1012,155 +1367,151 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {RENTAL_SECTIONS.map((section) => (
-        <section key={section.title} className={SECTION_CLASS}>
-          <div className={CONTAINER_CLASS}>
-            <SectionTitle>{section.title}</SectionTitle>
-            <p className={LEAD_CLASS}>{section.intro}</p>
-            <div className="mb-[48px] grid grid-cols-3 gap-[34px] [@media(max-width:768px)]:grid-cols-1 [&>div]:aspect-[1/0.72]">
-              {section.images.map((image) => (
-                <Media
-                  key={getImageKey(image, section.title)}
-                  src={image}
-                  alt={section.title}
+      <section className="pb-8 pt-6 phone:py-4.8">
+        <div className={CONTAINER_CLASS}>
+          <ServiceSectionHeading>Các sản phẩm khác</ServiceSectionHeading>
+          <div className="mx-auto grid max-w-store-map grid-cols-3 gap-x-12.4 gap-y-7.2 phone:grid-cols-1 phone:gap-4">
+            {SERVICE_OTHER_PRODUCTS.map((product, index) => (
+              <div
+                key={product.title}
+                className={cx(
+                  index === 6 && 'col-start-2 phone:col-start-auto',
+                )}
+              >
+                <ServiceOtherProductCard
+                  image={product.image}
+                  title={product.title}
                 />
-              ))}
-            </div>
-            <div className="grid grid-cols-2 gap-[80px] [@media(max-width:768px)]:grid-cols-1 [@media(max-width:768px)]:gap-[28px]">
-              {section.cards.map((card) => (
-                <article
-                  key={card.title}
-                  className="border border-[#bcbec0] bg-white"
-                >
-                  <Media
-                    src={card.image}
-                    alt={card.title}
-                    className="aspect-[680/420]"
-                  />
-                  <h3 className={CARD_TITLE_CLASS}>{card.title}</h3>
-                  <p className={CARD_TEXT_CLASS}>{card.text}</p>
-                </article>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
+
+      <section className="border-t border-brand-line pb-8 pt-6 phone:py-4.8">
+        <div className={CONTAINER_CLASS}>
+          <ServiceSectionHeading>Dịch vụ bán máy</ServiceSectionHeading>
+          <ServicePillHeading>
+            Kinh doanh photobooth phù hợp với
+          </ServicePillHeading>
+          <div className="mx-auto mb-8 grid max-w-store-map grid-cols-3 gap-7.2 phone:grid-cols-1">
+            {BUSINESS_FIT_CARDS.map((card) => (
+              <ServiceSalesCircle
+                key={card.text}
+                icon={card.icon}
+                text={card.text}
+              />
+            ))}
+          </div>
+          <ServicePillHeading>Đặt photobooth ở bất kỳ đâu</ServicePillHeading>
+          <div className="mx-auto grid max-w-store-map grid-cols-2 gap-5 phone:grid-cols-1">
+            {SERVICE_MODELS.map((model) => (
+              <ServiceModelCard
+                key={model.title}
+                image={model.image}
+                title={model.title}
+                text={model.text}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-brand-line pb-8 pt-6 phone:py-4.8">
+        <div className={CONTAINER_CLASS}>
+          <ServiceSectionHeading>Dịch vụ thuê máy</ServiceSectionHeading>
+          <ServicePillHeading>{RENTAL_SECTIONS[0].title}</ServicePillHeading>
+          <p className="mx-auto mb-4.8 max-w-marketing text-lg leading-relaxed text-brand-text phone:text-base">
+            {RENTAL_SECTIONS[0].intro}
+          </p>
+          <ServiceImageGrid
+            images={RENTAL_SECTIONS[0].images}
+            className="mx-auto mb-8 max-w-store-map"
+          />
+
+          <ServicePillHeading>{RENTAL_SECTIONS[1].title}</ServicePillHeading>
+          <div className="mx-auto mb-8 grid max-w-store-map grid-cols-2 gap-5 phone:grid-cols-1">
+            {RENTAL_SECTIONS[1].cards.map((card) => (
+              <ServiceModelCard
+                key={card.title}
+                image={card.image}
+                title={card.title}
+                text={card.text}
+              />
+            ))}
+          </div>
+
+          <ServicePillHeading>Dịch vụ thuê máy sự kiện idol</ServicePillHeading>
+          <p className="mx-auto mb-4.8 max-w-marketing text-lg leading-relaxed text-brand-text phone:text-base">
+            Photobooth giúp fan meeting, concert và sự kiện thần tượng có thêm
+            điểm check-in, lưu giữ khoảnh khắc và lan tỏa nội dung trên mạng xã
+            hội.
+          </p>
+          <ServiceImageGrid
+            images={SERVICE_RENTAL_IDOL_IMAGES}
+            className="mx-auto max-w-store-map"
+          />
+        </div>
+      </section>
     </main>
   );
 };
 
 const VietnamStoreSvg: React.FC = () => (
-  <svg
-    viewBox="0 0 640 820"
-    role="img"
-    aria-label="Ban do he thong cua hang Fun Studio tai Viet Nam"
-    className="h-full w-full"
-  >
-    <defs>
-      <filter
-        id="store-map-shadow"
-        x="-20%"
-        y="-20%"
-        width="140%"
-        height="140%"
-      >
-        <feDropShadow
-          dx="0"
-          dy="6"
-          floodColor="#d4d4d4"
-          floodOpacity="0.6"
-          stdDeviation="4"
-        />
-      </filter>
-    </defs>
-    <rect width="640" height="820" fill="#ffffff" />
-    <g
-      filter="url(#store-map-shadow)"
-      stroke="#d6d8da"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    >
-      <path
-        d="M292 40C335 10 384 30 407 66C444 67 461 94 445 127C470 147 452 185 414 184C396 212 359 205 345 178C318 194 282 187 271 158C239 151 233 116 258 96C246 68 263 48 292 40Z"
-        fill="#e8eaec"
-      />
-      <path
-        d="M356 176C386 206 386 250 367 284C394 316 385 360 408 392C429 422 424 454 446 489C462 514 449 548 466 578C479 605 455 634 427 624C397 597 398 551 389 514C382 472 355 449 351 407C346 362 329 335 332 298C337 256 327 223 356 176Z"
-        fill="#dde0e3"
-      />
-      <path
-        d="M407 610C446 608 492 630 502 669C488 706 455 716 430 705C409 746 353 752 328 719C300 719 284 688 303 665C327 634 366 642 386 620C392 615 399 612 407 610Z"
-        fill="#e3e5e7"
-      />
-    </g>
-    <g>
-      {STORE_MAP_LABELS.map((label) => {
-        const lineEndX = label.labelX - 16;
-        const fill =
-          STORE_REGION_COLORS[getProvinceRegionType(label.provinceType)];
+  <img
+    src={STORE_MAP_IMAGE}
+    alt="Bản đồ hệ thống cửa hàng Fun Studio tại Việt Nam"
+    className="h-full w-full object-contain"
+  />
+);
 
-        return (
-          <React.Fragment key={label.provinceType}>
-            <path
-              d={`M ${label.markerX} ${label.markerY} L ${lineEndX} ${label.labelY}`}
-              fill="none"
-              stroke="#8b9095"
-              strokeDasharray="4 5"
-              strokeLinecap="round"
-              strokeWidth="1.5"
-            />
-            <circle
-              cx={label.markerX}
-              cy={label.markerY}
-              fill={fill}
-              r="9"
-              stroke="#ffffff"
-              strokeWidth="3"
-            />
-            <text
-              x={label.labelX}
-              y={label.labelY + 5}
-              fill="#606060"
-              fontFamily="Montserrat, sans-serif"
-              fontSize="18"
-              fontWeight="500"
-              textAnchor="end"
-            >
-              {label.name}
-            </text>
-          </React.Fragment>
-        );
-      })}
-    </g>
-  </svg>
+const StoreMapConnectors: React.FC = () => (
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 text-brand-pink map:hidden"
+  >
+    <span className="absolute left-31.5 top-24 h-1.8 w-1.8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-pink" />
+    <span className="absolute left-31.5 top-24 h-px w-9 bg-brand-pink" />
+    <span className="absolute left-40 top-24 h-12 w-px bg-brand-pink" />
+    <span className="absolute left-20 top-70 h-1.8 w-1.8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-pink" />
+    <span className="absolute left-10 top-70 h-px w-9 bg-brand-pink" />
+    <span className="absolute left-10 top-70 h-9.6 w-px bg-brand-pink" />
+  </div>
 );
 
 const StoreCoverageMap: React.FC = () => (
-  <div className="mx-auto grid max-w-[1180px] grid-cols-[360px_minmax(0,1fr)] items-center gap-[36px] [@media(max-width:900px)]:grid-cols-1 [@media(max-width:900px)]:gap-[28px]">
-    <div className="grid gap-[24px] [@media(max-width:900px)]:grid-cols-3 [@media(max-width:768px)]:grid-cols-1">
+  <div className="relative mx-auto h-store-coverage max-w-marketing map:grid map:h-auto map:max-w-store-map map:grid-cols-1 map:gap-7">
+    <div className="absolute -top-5 left-50 h-store-map-art w-store-map-art map:static map:h-62 map:w-full phone:h-40">
+      <VietnamStoreSvg />
+    </div>
+    <StoreMapConnectors />
+    <div className="contents map:grid map:grid-cols-3 map:gap-4 phone:grid-cols-1">
       {STORE_REGIONS.map((region) => (
         <article
           key={region.type}
-          className="rounded-[8px] bg-[#f7b5b9] p-[12px] text-white"
+          className={cx(
+            'absolute rounded-3 bg-brand-pink p-1 text-white map:static map:w-full',
+            STORE_REGION_PANEL_CLASS[region.type],
+          )}
         >
-          <h2 className="mb-[14px] mt-0 rounded-[4px] bg-white px-[16px] py-[8px] text-center text-[24px] font-extrabold uppercase text-[#f7b5b9] [@media(max-width:768px)]:text-[20px]">
+          <h2 className="m-0 flex h-6 items-center justify-center rounded-t-2 bg-white px-3 text-center text-marketing-section-sm font-extrabold uppercase text-brand-pink">
             {region.name}
           </h2>
-          <ul className="m-0 list-none px-[18px] pb-[14px] pt-[2px] text-[20px] leading-[1.75] [@media(max-width:768px)]:text-[18px]">
-            {region.provinces.map((provinceType) => (
-              <li key={provinceType} className="flex items-center gap-[12px]">
-                <span aria-hidden="true" className="text-[24px] leading-none">
+          <ul className="m-0 list-none px-3 pb-2.4 pt-1.8 text-brand-card-title font-normal leading-4">
+            {STORE_REGION_DISPLAY_PROVINCES[region.type].map((province) => (
+              <li key={province} className="flex items-center gap-1.4">
+                <span
+                  aria-hidden="true"
+                  className="text-brand-card-title leading-none"
+                >
                   *
                 </span>
-                <span>{getProvinceName(provinceType)}</span>
+                <span>{province}</span>
               </li>
             ))}
           </ul>
         </article>
       ))}
-    </div>
-    <div className="min-h-[620px] w-full [@media(max-width:900px)]:min-h-0">
-      <VietnamStoreSvg />
     </div>
   </div>
 );
@@ -1176,8 +1527,8 @@ const StoreRegionCarousel: React.FC<{ region: StoreRegionData }> = ({
   });
 
   return (
-    <div className="mt-[78px] [@media(max-width:768px)]:mt-[54px]">
-      <h2 className="mb-[48px] mt-0 text-center text-[28px] font-extrabold uppercase text-[#bcbec0]">
+    <div className="mt-7.8 phone:mt-5.4">
+      <h2 className="mb-12 mt-0 text-center text-3xl font-extrabold uppercase text-brand-muted">
         {region.name}
       </h2>
       <Carousel
@@ -1185,29 +1536,34 @@ const StoreRegionCarousel: React.FC<{ region: StoreRegionData }> = ({
         position={storeCarousel.position}
         visibleCount={storeVisibleCount}
         getKey={(store) => `${region.type}-${store.provinceType}`}
-        viewportClassName="-mx-[40px] [@media(max-width:768px)]:mx-0"
-        itemClassName="px-[40px] [@media(max-width:768px)]:px-0"
+        onDragSlide={(direction) =>
+          storeCarousel.setSlide(storeCarousel.current + direction)
+        }
+        viewportClassName="-mx-4 phone:mx-0"
+        itemClassName="px-4 phone:px-0"
         renderItem={(store) => (
-          <article className="border border-[#e0e0e0] text-center">
-            <h3 className="my-[24px] text-[26px] font-extrabold uppercase text-[#f7b5b9]">
-              {store.province}
-            </h3>
-            <Media
-              src={store.image}
-              alt={store.province}
-              className="aspect-square"
-            />
-            <p className="mb-[14px] mt-[24px] inline-flex items-center gap-[10px] text-[22px] text-[#f7b5b9]">
-              <Image src={storeIcon} alt="" width={24} height={24} />
-              <strong>{store.count} cửa hàng</strong>
-            </p>
+          <div className="text-center">
+            <article className="border border-neutral-200">
+              <h3 className="m-0 flex h-7 items-center justify-center text-brand-card-title font-extrabold uppercase text-brand-pink">
+                {store.province}
+              </h3>
+              <Media
+                src={store.image}
+                alt={store.province}
+                className="aspect-square"
+              />
+              <p className="m-0 flex h-7 items-center justify-center gap-2 text-marketing-control text-brand-pink">
+                <Image src={storeIcon} alt="" width={24} height={24} />
+                <strong>{store.count} cửa hàng</strong>
+              </p>
+            </article>
             <button
               type="button"
-              className="mb-[28px] rounded-full border border-[#f7b5b9] bg-white px-[26px] py-[8px] text-[#f7b5b9]"
+              className="mt-2.4 inline-flex min-h-4 items-center justify-center rounded-full border border-brand-pink bg-white px-4.8 text-brand-body text-brand-pink"
             >
-              Xem thÃªm
+              Xem thêm
             </button>
-          </article>
+          </div>
         )}
       />
       <SliderControls
@@ -1221,9 +1577,11 @@ const StoreRegionCarousel: React.FC<{ region: StoreRegionData }> = ({
 
 export const StoresPage: React.FC = () => (
   <main className={PAGE_CLASS}>
-    <section className={SECTION_CLASS}>
+    <section className="pb-7.2 pt-5.6 phone:py-4.8">
       <div className={CONTAINER_CLASS}>
-        <SectionTitle>Hệ thống 80 cửa hàng trên toàn quốc</SectionTitle>
+        <SectionTitle className="mb-3.6">
+          Hệ thống 80 cửa hàng trên toàn quốc
+        </SectionTitle>
         <StoreCoverageMap />
       </div>
     </section>
@@ -1249,9 +1607,9 @@ export const NewsPage: React.FC = () => {
 
   return (
     <main className={PAGE_CLASS}>
-      <section className={SECTION_CLASS}>
+      <section className="pb-6 pt-5.6 phone:py-4.8">
         <div className={CONTAINER_CLASS}>
-          <div className="relative pt-[36px]">
+          <div className="relative mx-auto max-w-news-list">
             <InlineArrow
               direction="previous"
               className={LEFT_FLOAT_ARROW_CLASS}
@@ -1262,20 +1620,25 @@ export const NewsPage: React.FC = () => {
               position={newsCarousel.position}
               visibleCount={newsVisibleCount}
               getKey={(card) => card.title}
-              viewportClassName="-mx-[18px] [@media(max-width:768px)]:mx-0"
-              itemClassName="px-[18px] [@media(max-width:768px)]:px-0"
+              onDragSlide={(direction) =>
+                newsCarousel.setSlide(newsCarousel.current + direction)
+              }
+              viewportClassName="-mx-2.4 phone:mx-0"
+              itemClassName="px-1.8 phone:px-0"
               renderItem={(card) => (
-                <article className="border border-[#606060] bg-white">
+                <article className="flex min-h-news-card flex-col border border-brand-text bg-white">
                   <Media
                     src={card.image}
                     alt={card.title}
                     className="aspect-square"
                   />
-                  <div>
-                    <h2 className={cx(CARD_TITLE_CLASS, 'min-h-[96px]')}>
+                  <div className="px-2.4 pb-2.4 pt-2.4">
+                    <h2 className="mb-2.8 mt-0 text-lg font-extrabold uppercase leading-snug text-brand-pink">
                       {card.title}
                     </h2>
-                    <p className={CARD_TEXT_CLASS}>{card.text}</p>
+                    <p className="m-0 text-brand-body-lg leading-snug text-brand-text phone:text-base">
+                      {card.text}
+                    </p>
                   </div>
                 </article>
               )}
@@ -1286,14 +1649,8 @@ export const NewsPage: React.FC = () => {
               onClick={() => newsCarousel.setSlide(newsCarousel.current + 1)}
             />
           </div>
-          <SliderControls
-            count={NEWS_CARDS.length}
-            current={newsCarousel.current}
-            onChange={newsCarousel.setSlide}
-          />
         </div>
       </section>
-      <FooterSpacer />
     </main>
   );
 };
@@ -1311,42 +1668,30 @@ export const GalleryPage: React.FC = () => {
 
   return (
     <main className={PAGE_CLASS}>
-      <section className={SECTION_CLASS}>
-        <div className={CONTAINER_CLASS}>
+      <section className="pb-3.4 pt-4.2 phone:py-4.8">
+        <div className="mx-auto w-full max-w-gallery-grid phone:w-marketing-container-mobile">
           <Carousel
             items={galleryPages}
             position={galleryCarousel.position}
             getKey={(page) => String(page)}
+            onDragSlide={(direction) =>
+              galleryCarousel.setSlide(galleryCarousel.current + direction)
+            }
             renderItem={(page) => (
-              <div className="grid grid-cols-6 gap-[18px] [@media(max-width:1180px)]:grid-cols-4 [@media(max-width:768px)]:grid-cols-2">
+              <div className="grid grid-cols-6 gap-1.4 tablet:grid-cols-4 phone:grid-cols-2">
                 {getPagedItems(GALLERY_ITEMS, page, GALLERY_PAGE_SIZE).map(
-                  (item, visibleIndex) => {
-                    const itemIndex = page * GALLERY_PAGE_SIZE + visibleIndex;
-
-                    return (
-                      <article
-                        key={item.id}
-                        className="group relative overflow-hidden bg-[#111]"
-                      >
-                        <Media
-                          src={
-                            itemIndex < 6 ? GALLERY_FALLBACK_IMAGE : item.image
-                          }
-                          alt={item.title}
-                          className="aspect-square bg-[#111]"
-                          imageClassName="transition-transform duration-200 group-hover:scale-[1.04]"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-black/80 px-[14px] pb-[14px] pt-[44px] text-white">
-                          <h2 className="mb-[8px] mt-0 text-[18px] font-medium leading-[1.2]">
-                            {item.title}
-                          </h2>
-                          <p className="m-0 text-[12px] leading-[1.3]">
-                            {item.meta}
-                          </p>
-                        </div>
-                      </article>
-                    );
-                  },
+                  (item) => (
+                    <article
+                      key={item.id}
+                      className="relative overflow-hidden bg-neutral-900"
+                    >
+                      <Media
+                        src={item.image || GALLERY_FALLBACK_IMAGE}
+                        alt={item.title}
+                        className="aspect-square bg-neutral-900"
+                      />
+                    </article>
+                  ),
                 )}
               </div>
             )}
@@ -1373,20 +1718,20 @@ export const FranchiseRegisterPage: React.FC = () => {
 
   return (
     <main className={PAGE_CLASS}>
-      <section className="pb-[72px] pt-[46px] [@media(max-width:768px)]:pb-[52px] [@media(max-width:768px)]:pt-[34px]">
+      <section className="pb-7.2 pt-4.6 phone:pb-5.2 phone:pt-3.4">
         <div className={CONTAINER_CLASS}>
-          <h1 className="mb-[44px] mt-0 text-center font-Montserrat text-[clamp(28px,2.25vw,42px)] font-normal uppercase leading-[1.25] text-[#f7b5b9] [@media(max-width:768px)]:mb-[30px] [@media(max-width:768px)]:text-[26px]">
+          <h1 className="mb-11 mt-0 text-center font-UTMAVo text-marketing-section-lg font-normal uppercase leading-tight text-brand-pink phone:mb-3 phone:text-brand-card-title">
             Form đăng ký tư vấn dịch vụ của Fun Studio
           </h1>
           <form
             noValidate
-            className="mx-auto w-[min(720px,100%)] rounded-[8px] border border-[#9a9a9a] bg-white px-[24px] pb-[28px] pt-[20px] shadow-[0_1px_0_rgba(0,0,0,0.04)] [@media(max-width:768px)]:px-[16px] [@media(max-width:768px)]:pb-[22px]"
+            className="mx-auto w-register-form rounded-lg border border-brand-control bg-white px-2.4 pb-7 pt-5 shadow-brand-hairline phone:px-1.6 phone:pb-2.5"
             onSubmit={handleSubmit}
           >
-            <h2 className="mb-[18px] mt-0 border-b border-[#9a9a9a] pb-[10px] text-[18px] font-extrabold uppercase leading-[1.35] text-[#f7b5b9] [@media(max-width:768px)]:text-[16px]">
+            <h2 className="mb-4.5 mt-0 border-b border-brand-control pb-2.5 text-lg font-extrabold uppercase leading-snug text-brand-pink phone:text-base">
               Form thông tin tư vấn nhượng quyền:
             </h2>
-            <div className="grid gap-[12px]">
+            <div className="grid gap-3">
               <div>
                 <label className="sr-only" htmlFor="franchise-register-name">
                   Họ tên
@@ -1413,7 +1758,7 @@ export const FranchiseRegisterPage: React.FC = () => {
                 />
               </div>
               <RegisterFieldGroup label="Email: (Nhận tài liệu và thông tin chi tiết về nhượng quyền)">
-                <p className="mb-[2px] mt-0 text-[16px] leading-[1.35] text-[#b8b8b8] [@media(max-width:768px)]:text-[15px]">
+                <p className="mb-0.5 mt-0 text-base leading-snug text-brand-placeholder phone:text-brand-caption">
                   Bạn muốn nhận tư vấn về dịch vụ nào (*Bắt buộc)
                 </p>
                 {REGISTER_FORM_DEMAND_OPTIONS.map((option) => (
@@ -1430,7 +1775,7 @@ export const FranchiseRegisterPage: React.FC = () => {
                 ))}
               </RegisterFieldGroup>
               <RegisterFieldGroup label="Địa chỉ: (đường, phường, thành phố) dự kiến mở cửa hàng:">
-                <p className="mb-[2px] mt-0 text-[16px] leading-[1.35] text-[#b8b8b8] [@media(max-width:768px)]:text-[15px]">
+                <p className="mb-0.5 mt-0 text-base leading-snug text-brand-placeholder phone:text-brand-caption">
                   Thời gian dự kiến nhượng quyền:
                 </p>
                 {REGISTER_FORM_TIMING_OPTIONS.map((option) => (
@@ -1455,35 +1800,35 @@ export const FranchiseRegisterPage: React.FC = () => {
                   id="franchise-register-note"
                   name="note"
                   rows={5}
-                  className={cx(FORM_INPUT_CLASS, 'resize-y py-[14px]')}
+                  className={cx(FORM_INPUT_CLASS, 'resize-y py-3.5')}
                   placeholder="Ghi chú thêm (nếu có):"
                 />
               </div>
             </div>
-            <div className="mt-[28px] flex flex-wrap items-center gap-x-[18px] gap-y-[12px] text-[15px] text-[#b8b8b8]">
+            <div className="mt-7 flex flex-wrap items-center gap-x-1.8 gap-y-3 text-brand-caption text-brand-placeholder">
               <button
                 type="submit"
-                className="inline-flex min-h-[58px] items-center justify-center rounded-[4px] border border-[#8f8f8f] bg-[#bcbec0] px-[18px] text-[16px] font-extrabold text-[#606060] transition-colors hover:bg-[#f7b5b9] hover:text-white"
+                className="inline-flex min-h-5.8 items-center justify-center rounded border border-brand-control-dark bg-brand-muted px-1.8 text-base font-extrabold text-brand-text transition-colors hover:bg-brand-pink hover:text-white"
               >
                 Gửi đi
               </button>
               <a
                 href={MARKETING_CONTACT.phoneHref}
-                className="text-[#b8b8b8] no-underline"
+                className="text-brand-placeholder no-underline"
               >
                 Hotline tư vấn: {MARKETING_CONTACT.phone}
               </a>
-              <span className="hidden h-[18px] w-px bg-[#d9d9d9] [@media(min-width:768px)]:inline-block" />
+              <span className="hidden h-1.8 w-px bg-brand-line md:inline-block" />
               <a
                 href="mailto:Sales@funstudio.com.vn"
-                className="text-[#b8b8b8] no-underline"
+                className="text-brand-placeholder no-underline"
               >
                 Sales@funstudio.com.vn
               </a>
             </div>
             {formMessage && (
               <p
-                className="mb-0 mt-[14px] text-[15px] font-medium text-[#f7b5b9]"
+                className="mb-0 mt-3.5 text-brand-caption font-medium text-brand-pink"
                 role="status"
               >
                 {formMessage}
