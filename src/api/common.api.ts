@@ -8,15 +8,37 @@ export async function downloadFile(
 ) {
   if (!fileUrl) return;
   try {
-    await fetch(fileUrl, {
+    const response = await fetch(fileUrl, {
       headers: {
         'Cache-Control': 'no-cache, no-store, max-age=0',
       },
-    })
-      .then((res) => res.blob())
-      .then((blob) => {
-        saveAs(blob, displayName);
+    });
+
+    const blob = await response.blob();
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const canUseShareApi =
+      typeof navigator !== 'undefined' &&
+      typeof navigator.share === 'function' &&
+      typeof navigator.canShare === 'function';
+
+    if (isIOS && canUseShareApi) {
+      const ext =
+        blob.type.split('/')[1]?.split(';')[0] ||
+        fileUrl.split('?')[0].split('.').pop() ||
+        'jpg';
+      const safeName =
+        displayName.replace(/\.[^/.]+$/, '') || FILE_NAME_DOWNLOAD;
+      const file = new File([blob], `${safeName}.${ext}`, {
+        type: blob.type || `image/${ext}`,
       });
+
+      if (navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: displayName });
+        return;
+      }
+    }
+
+    saveAs(blob, displayName);
   } catch {
     //
   }
@@ -65,8 +87,30 @@ export async function downloadSequential(
     }
   }
 
-  // Fallback: download each image individually
-  files.forEach((file) => saveAs(file, file.name));
+  // Fallback: pace downloads and pause after each batch of 10 files.
+  const FILES_PER_BATCH = 10;
+  const BETWEEN_FILE_DELAY_MS = 220;
+  const BETWEEN_BATCH_DELAY_MS = 1800;
+
+  for (let index = 0; index < files.length; index++) {
+    const file = files[index];
+    saveAs(file, file.name);
+
+    const isLastFile = index === files.length - 1;
+    const isBatchBoundary = (index + 1) % FILES_PER_BATCH === 0;
+
+    if (!isLastFile) {
+      if (isBatchBoundary) {
+        await new Promise((resolve) =>
+          setTimeout(resolve, BETWEEN_BATCH_DELAY_MS),
+        );
+      } else {
+        await new Promise((resolve) =>
+          setTimeout(resolve, BETWEEN_FILE_DELAY_MS),
+        );
+      }
+    }
+  }
 }
 
 export async function downloadFiles(
