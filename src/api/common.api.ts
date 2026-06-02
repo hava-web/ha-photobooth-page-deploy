@@ -1,24 +1,32 @@
-/* eslint-disable no-await-in-loop */
 import { saveAs } from 'file-saver';
 import JSZip from 'jszip';
 import { FILE_NAME_DOWNLOAD } from 'constants/file.const';
-import { isEmpty, size } from 'lodash';
+
+const NO_CACHE_HEADERS = {
+  'Cache-Control': 'no-cache, no-store, max-age=0',
+};
+
+async function fetchNoCacheBlob(fileUrl: string) {
+  const response = await fetch(fileUrl, {
+    headers: NO_CACHE_HEADERS,
+  });
+
+  return response.blob();
+}
+
+function getFileExtension(fileUrl: string) {
+  return fileUrl.split('?')[0].split('.').pop() || 'jpg';
+}
 
 export async function downloadFile(
   fileUrl: string | undefined,
   displayName: string = FILE_NAME_DOWNLOAD,
 ) {
   if (!fileUrl) return;
+
   try {
-    await fetch(fileUrl, {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, max-age=0',
-      },
-    })
-      .then((res) => res.blob())
-      .then((blob) => {
-        saveAs(blob, displayName);
-      });
+    const blob = await fetchNoCacheBlob(fileUrl);
+    saveAs(blob, displayName);
   } catch {
     //
   }
@@ -28,20 +36,16 @@ export async function downloadSequential(
   urls: string[],
   displayName: string = FILE_NAME_DOWNLOAD,
 ) {
-  if (!size(urls)) return;
+  if (!urls.length) return;
 
   const zip = new JSZip();
   const folder = zip.folder(displayName) ?? zip;
 
-  for (let i = 0; i < size(urls); i++) {
+  for (let i = 0; i < urls.length; i++) {
     const url = urls[i];
     try {
-      const res = await fetch(url, {
-        headers: { 'Cache-Control': 'no-cache, no-store, max-age=0' },
-      });
-      const blob = await res.blob();
-      const ext = url.split('?')[0].split('.').pop() || 'jpg';
-      folder.file(`photo_${i + 1}.${ext}`, blob);
+      const blob = await fetchNoCacheBlob(url);
+      folder.file(`photo_${i + 1}.${getFileExtension(url)}`, blob);
     } catch {
       //
     }
@@ -55,38 +59,29 @@ export async function downloadFiles(
   fileUrl: string[] | undefined,
   displayName: string = FILE_NAME_DOWNLOAD,
 ) {
-  if (!isEmpty(fileUrl)) {
-    try {
-      for (let index = 0; index < size(fileUrl); index++) {
-        // eslint-disable-next-line no-continue
-        if (!fileUrl?.[index]) continue;
+  if (!fileUrl?.length) return;
 
-        // eslint-disable-next-line no-await-in-loop
-        await fetch(fileUrl?.[index], {
-          headers: {
-            responseType: 'blob',
-            'Cache-Control': 'no-cache, no-store, max-age=0',
-          },
-        })
-          .then((res) => res.blob())
-          .then((blob) => {
-            saveAs(blob, displayName + Date.now());
-          });
+  try {
+    for (let index = 0; index < fileUrl.length; index++) {
+      const url = fileUrl[index];
+      if (url) {
+        const blob = await fetchNoCacheBlob(url);
+        saveAs(blob, displayName + Date.now());
       }
-    } catch (err) {
-      //
     }
+  } catch {
+    //
   }
 }
 
 export async function shareLink(fileUrl: string) {
-  if (fileUrl) {
-    try {
-      navigator.share({
-        url: fileUrl,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  if (!fileUrl || !navigator.share) return;
+
+  try {
+    await navigator.share({
+      url: fileUrl,
+    });
+  } catch {
+    //
   }
 }

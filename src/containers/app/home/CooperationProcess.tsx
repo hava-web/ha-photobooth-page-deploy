@@ -39,7 +39,7 @@ const CooperationProcess = () => {
           </div>
           <div className="cooperation-process-row-arrow">
             <Image
-              className="h-4 mr-72 px-4 -rotate-90 invisible"
+              className="h-10 mr-[45rem] px-10 -rotate-90 invisible"
               src={whiteRightArrowIcon}
               alt="right arrow"
             />

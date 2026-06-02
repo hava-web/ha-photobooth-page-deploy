@@ -13,7 +13,7 @@ type MarketingNavLinksProps = {
 };
 
 const DESKTOP_NAV_LINK_CLASS =
-  "relative inline-flex min-h-4.2 items-center whitespace-nowrap text-center text-lg font-normal leading-tight text-brand-text no-underline after:absolute after:bottom-0 after:h-0.8 after:rounded-full after:bg-brand-pink after:content-[''] after:transition-all after:duration-200 hover:after:left-0 hover:after:right-0";
+  "relative inline-flex min-h-10 items-center whitespace-nowrap text-center text-xl font-normal leading-6 text-brand-text no-underline after:absolute after:-bottom-2 after:h-2 after:rounded-full after:bg-brand-pink after:content-[''] after:transition-all after:duration-200 hover:after:left-0 hover:after:right-0";
 
 const MOBILE_NAV_LINK_CLASS =
   'relative inline-flex min-h-13 items-center justify-start whitespace-nowrap border-b border-brand-mobile-line text-center text-lg font-normal leading-tight text-brand-text no-underline';
@@ -63,7 +63,7 @@ export const MarketingCtaLink: React.FC<MarketingCtaLinkProps> = ({
   onClick,
 }) => (
   <NextLink
-    className="inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-full bg-brand-pink px-3 text-lg font-extrabold uppercase leading-none text-white no-underline"
+    className="inline-flex h-12 w-[21.875rem] items-center justify-center whitespace-nowrap rounded-full bg-brand-pink px-7 text-marketing-control font-extrabold uppercase text-white no-underline tablet:w-full tablet:text-base"
     href={MARKETING_CONTACT.ctaHref}
     onClick={onClick}
   >
@@ -73,7 +73,7 @@ export const MarketingCtaLink: React.FC<MarketingCtaLinkProps> = ({
 
 export const MarketingPhoneLink: React.FC = () => (
   <a
-    className="whitespace-nowrap text-base text-brand-text no-underline"
+    className="whitespace-nowrap text-xl leading-6 text-brand-text no-underline"
     href={MARKETING_CONTACT.phoneHref}
   >
     {MARKETING_CONTACT.phoneLabel}

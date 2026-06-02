@@ -28,7 +28,7 @@ const FunProducts: React.FC<FunProductsProps> = () => {
                 alt={item?.label}
                 className="product-item-image object-cover"
               />
-              <div className="p-1 flex flex-col gap-1">
+              <div className="p-2.5 flex flex-col gap-2.5">
                 <p className="fun-products__name">{item?.label}</p>
                 <a
                   className="fun-products__contact"

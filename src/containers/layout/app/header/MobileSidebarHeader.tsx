@@ -32,13 +32,13 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
       />
       <div
         className={cx(
-          'absolute top-0 flex h-full w-mobile-sidebar flex-col gap-0.8 bg-white p-2.4 transition-right duration-200',
-          open ? 'right-0' : '-right-32',
+          'absolute top-0 flex h-full w-mobile-sidebar flex-col gap-2 bg-white p-6 transition-right duration-200',
+          open ? 'right-0' : '-right-80',
         )}
       >
         <button
           type="button"
-          className="h-4.2 w-4.2 self-end border-0 bg-transparent"
+          className="h-10 w-10 self-end border-0 bg-transparent"
           aria-label="more"
           title={T('close')}
           onClick={onClose}
@@ -46,7 +46,7 @@ const MobileSidebarHeader: React.FC<MobileSidebarHeaderProps> = ({
           <Image src={closeIcon} height={25} alt="close" />
         </button>
         <MarketingNavLinks variant="mobile" onNavigate={onClose} />
-        <div className="mt-1.2">
+        <div className="mt-3">
           <MarketingCtaLink onClick={onClose} />
         </div>
       </div>

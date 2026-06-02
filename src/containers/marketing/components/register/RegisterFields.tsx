@@ -1,7 +1,7 @@
 import type React from 'react';
 
 export const FORM_INPUT_CLASS =
-  'min-h-13 w-full rounded border border-brand-control bg-white px-4 text-base leading-normal text-brand-text outline-none placeholder:text-brand-placeholder focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/30 phone:text-brand-caption';
+  'min-h-13 w-full rounded border border-brand-control bg-white px-[2.5rem] text-base leading-normal text-brand-text outline-none placeholder:text-brand-placeholder focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/30 phone:text-brand-caption';
 
 export const REGISTER_FORM_DEMAND_OPTIONS = [
   'Nhượng quyền',
@@ -31,13 +31,13 @@ export const RegisterOption: React.FC<{
   children: React.ReactNode;
   name: string;
 }> = ({ children, name }) => (
-  <label className="flex min-h-3.4 cursor-pointer items-center gap-3 text-base leading-snug text-brand-text phone:text-brand-caption">
+  <label className="flex min-h-[2.125rem] cursor-pointer items-center gap-[1.875rem] text-base leading-snug text-brand-text phone:text-brand-caption">
     <input
       aria-label={String(children)}
       type="checkbox"
       name={name}
       value={String(children)}
-      className="h-2.2 w-2.2 shrink-0 rounded border-brand-control accent-brand-pink"
+      className="h-[1.375rem] w-[1.375rem] shrink-0 rounded border-brand-control accent-brand-pink"
     />
     <span>{children}</span>
   </label>
@@ -47,12 +47,12 @@ export const RegisterFieldGroup: React.FC<{
   children: React.ReactNode;
   label?: string;
 }> = ({ children, label }) => (
-  <fieldset className="m-0 rounded border border-brand-control px-3.5 pb-3 pt-3.5">
+  <fieldset className="m-0 rounded border border-brand-control px-[2.1875rem] pb-[1.875rem] pt-[2.1875rem]">
     {label && (
-      <legend className="px-0.5 text-base leading-snug text-brand-text phone:text-brand-caption">
+      <legend className="px-[0.3125rem] text-base leading-snug text-brand-text phone:text-brand-caption">
         {label}
       </legend>
     )}
-    <div className="grid gap-0.8">{children}</div>
+    <div className="grid gap-[0.5rem]">{children}</div>
   </fieldset>
 );

@@ -178,11 +178,11 @@
 
 @layer components {
   .dot-slider {
-    @apply w-3 h-3 rounded-full border-lp-primary-color border-0.2 bg-white mx-1;
+    @apply w-7 h-7 rounded-full border-lp-primary-color border-0.2 bg-white mx-2.5;
   }
 
   .dot-slider-active {
-    @apply bg-lp-primary-color mx-1;
+    @apply bg-lp-primary-color mx-2.5;
   }
 
   .border-image {

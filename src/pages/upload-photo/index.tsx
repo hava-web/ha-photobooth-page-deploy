@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect } from 'react';
-import { NextSeo } from 'next-seo';
 import { compact, concat, get, map, size } from 'lodash';
 import { GetServerSideProps } from 'next';
 import { getUiTemplate } from 'api/ui-template/ui-template.api';
@@ -18,6 +16,7 @@ import Button from 'components/button/Button';
 import UploadMultiple from 'components/upload/UploadMultiple';
 import { uploadPrintingPhoto } from 'api/photo/upload-photo.api';
 import Loader from 'components/loader/Loader';
+import { NoIndexPageSeo } from 'components/seo/PageSeo';
 
 type UploadPhotoProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
@@ -61,7 +60,15 @@ export default function UploadPhotoFile({
 
   return (
     <>
-      {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
+      <NoIndexPageSeo
+        path="/upload-photo"
+        overrides={{
+          title: 'Tải ảnh lên Fun Studio',
+          description:
+            'Trang tải ảnh lên theo giao dịch dành cho khách hàng Fun Studio.',
+          ...seoMetaData,
+        }}
+      />
       <div className="page-single__layout">
         <Background />
         <Loader

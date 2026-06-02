@@ -1,4 +1,5 @@
 import Container from 'components/grid/Container';
+import { PageSeo } from 'components/seo/PageSeo';
 import { renderMainLayout } from 'containers/layout/app/AppLayout';
 import { PageWithLayout } from 'models/common.model';
 import { InferGetStaticPropsType, NextPage } from 'next';
@@ -6,7 +7,7 @@ import React from 'react';
 
 const TermsOfUse: PageWithLayout &
   NextPage<InferGetStaticPropsType<any>> = () => {
-  const htmlContent = `<p style="margin-top: 20pt; margin-bottom: 6pt; text-align: center;"><strong><span style="font-size: 20pt; font-family: 'UTM Avo', Arial, sans-serif;">ĐIỀU KHOẢN SỬ DỤNG</span></strong></p>
+  const htmlContent = `<h1 style="margin-top: 20pt; margin-bottom: 6pt; text-align: center;"><strong><span style="font-size: 20pt; font-family: 'UTM Avo', Arial, sans-serif;">ĐIỀU KHOẢN SỬ DỤNG</span></strong></h1>
 <p style="text-align: center; margin-top: 20pt; margin-bottom: 6pt; padding-left: 72px;">&nbsp;</p>
 <p style="margin-top: 0pt; margin-bottom: 0pt;"><span style="font-size: 13pt; font-family: 'UTM Avo', Arial, sans-serif;">Bằng việc sử dụng c&aacute;c dịch vụ, tiện &iacute;ch tr&ecirc;n Ứng dụng Fun Studio, tổ chức, c&aacute; nh&acirc;n sử dụng chấp nhận v&agrave; cam kết thực hiện c&aacute;c điều khoản v&agrave; điều kiện sử dụng sau đ&acirc;y:&nbsp;</span></p>
 <p style="text-align: center; margin-top: 0pt; margin-bottom: 3pt;">&nbsp;</p>
@@ -71,11 +72,14 @@ const TermsOfUse: PageWithLayout &
 </ul>`;
 
   return (
-    <section className="policy-and-terms-section">
-      <Container>
-        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-      </Container>
-    </section>
+    <>
+      <PageSeo path="/dieu-khoan-su-dung" />
+      <section className="policy-and-terms-section">
+        <Container>
+          <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        </Container>
+      </section>
+    </>
   );
 };
 

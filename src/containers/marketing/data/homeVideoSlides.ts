@@ -11,9 +11,8 @@ const HOME_VIDEO_EMBEDS = [
 ];
 
 export const HOME_VIDEO_SLIDES: HomeVideoSlide[] = [
-  { ...HOME_VIDEO, video: HOME_VIDEO_EMBEDS[0] },
+  { title: HOME_VIDEO.title, video: HOME_VIDEO_EMBEDS[0] },
   ...PRESS_ITEMS.slice(0, 2).map((item, index) => ({
-    image: item.image,
     title: item.title,
     video: HOME_VIDEO_EMBEDS[index + 1] ?? HOME_VIDEO_EMBEDS[0],
   })),

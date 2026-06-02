@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import { DefaultSeo, OrganizationJsonLd } from 'next-seo';
 import { NextComponentType } from 'next';
 import { NextPageContext } from 'next/types';
 import { ComponentStatic, PageWithLayout } from 'models/common.model';
@@ -10,6 +11,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { persistor } from 'store';
 import { makeStore } from 'store/store-hooks';
+import { SALE_PHONE_NUMBER } from 'constants/common.const';
+import {
+  SITE_NAME,
+  buildAbsoluteUrl,
+  getDefaultSeo,
+  getSiteUrl,
+} from 'seo/seo.config';
 import 'swiper/css';
 import './index.css';
 import './download/download.css';
@@ -40,24 +48,40 @@ function MyApp(props: AppProps) {
 
   return (
     <Provider store={store}>
+      <DefaultSeo {...getDefaultSeo()} />
+      <OrganizationJsonLd
+        type="Organization"
+        id={`${getSiteUrl()}/#organization`}
+        name={SITE_NAME}
+        legalName="Công ty TNHH Công nghệ Kết Nối Ý Nghĩa"
+        url={getSiteUrl()}
+        logo={buildAbsoluteUrl('/images/fun_studio_logo.png')}
+        address={{
+          streetAddress: 'Số 75 ngõ 381 Nguyễn Khang',
+          addressLocality: 'Cầu Giấy',
+          addressRegion: 'Hà Nội',
+          postalCode: '100000',
+          addressCountry: 'VN',
+        }}
+        contactPoint={[
+          {
+            contactType: 'customer support',
+            telephone: SALE_PHONE_NUMBER,
+            email: 'Sales@funstudio.com.vn',
+            areaServed: 'VN',
+            availableLanguage: ['vi', 'en'],
+          },
+        ]}
+        sameAs={[
+          'https://www.facebook.com/funatfunstudio',
+          'https://www.facebook.com/funstudionq',
+          'https://www.instagram.com/funstudio____',
+          'https://www.tiktok.com/@funstudio_',
+          'https://www.youtube.com/@funstudio_68',
+        ]}
+      />
       <Head>
-        <title>Fun studio</title>
         <meta charSet="utf-8" />
-        <link rel="shortcut icon" href="/fun_studio_logo.ico" />
-        <meta property="og:title" content="Fun Studio" />
-        <meta
-          property="og:description"
-          content="Studio tự chụp ảnh phong cách Hàn Quốc"
-        />
-        <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_APP_URL}/images/og_fun_studio_image.png`}
-        />
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_URL} />
-        <meta
-          name="keywords"
-          content="fun studio, funstudio, photobooth, korean style, fyp"
-        />
       </Head>
       <PersistGate loading={null} persistor={persistor}>
         {renderApp}

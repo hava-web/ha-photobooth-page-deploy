@@ -67,7 +67,6 @@ const Carousel = <T,>({
     setIsDragging(true);
     setDragOffset(0);
     event.currentTarget.setPointerCapture(event.pointerId);
-    event.preventDefault();
   };
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {

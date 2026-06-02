@@ -34,11 +34,11 @@ import {
 import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import moment from 'moment';
 import { GetServerSideProps } from 'next';
-import { NextSeo } from 'next-seo';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useTranslation } from 'hooks/useTranslation';
 import Select from 'components/select/Select';
+import { NoIndexPageSeo } from 'components/seo/PageSeo';
 import FloatingEarnPointButtons from './FloatingEarnPointButtons';
 import PinModal from './PinModal';
 import downloadI18n from '../../i18n/download';
@@ -57,7 +57,6 @@ function DownloadFile({
 }: DownloadFileProps) {
   const { t, T, i18n } = useTranslation();
   const [loading, setLoading] = useState(false);
-  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [resource, setResource] = useState<string[]>([]);
   const [language, setLanguage] = useState<string>('vi');
@@ -116,7 +115,7 @@ function DownloadFile({
         (lang) => ({
           value: lang?.code,
           label: (
-            <div className="flex items-center gap-3 language-option">
+            <div className="flex items-center gap-[1.875rem] language-option">
               <img src={lang?.imageUrl} alt="img" />
               {lang?.name}
             </div>
@@ -146,6 +145,10 @@ function DownloadFile({
     () => chunk(resourceWithoutQRphoto, 9),
     [resourceWithoutQRphoto],
   );
+  const carouselCounterTotal =
+    resourceChunks.length >= 2
+      ? resourceChunks.length
+      : resourceWithoutQRphoto?.length || 0;
 
   const handleAddResource = (url: string) => {
     setResource((item) =>
@@ -163,14 +166,6 @@ function DownloadFile({
     } else {
       setResource(map(resourceWithoutQRphoto, 'url'));
     }
-  };
-
-  const handleNewsPrev = () => {
-    swiper && swiper.slidePrev();
-  };
-
-  const handleNewsNext = () => {
-    swiper && swiper.slideNext();
   };
 
   const handleChangeLanguage = useCallback((language: any) => {
@@ -226,7 +221,15 @@ function DownloadFile({
 
   return (
     <>
-      {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
+      <NoIndexPageSeo
+        path="/download"
+        overrides={{
+          title: 'Tải ảnh Fun Studio',
+          description:
+            'Trang tải ảnh theo giao dịch dành cho khách hàng Fun Studio.',
+          ...seoMetaData,
+        }}
+      />
       <PinModal
         open={isPinModalOpen}
         onClose={() => setIsPinModalOpen(false)}
@@ -321,18 +324,6 @@ function DownloadFile({
           ) : (
             <>
               <div className="flex flex-1 items-center overflow-hidden min-h-0">
-                <button
-                  type="button"
-                  className="pb-carousel-arrow pb-carousel-arrow-left"
-                  aria-label="prev slide"
-                  onClick={handleNewsPrev}
-                  style={{
-                    visibility:
-                      resourceChunks.length < 2 ? 'hidden' : 'visible',
-                  }}
-                >
-                  <AssetIcons.LeftIcon width={40} height={40} />
-                </button>
                 <div className="images-swiper-container">
                   <div className="select-all-checkbox">
                     <input
@@ -346,7 +337,6 @@ function DownloadFile({
                     </label>
                   </div>
                   <Swiper
-                    onSwiper={setSwiper}
                     onSlideChange={(s) => setActiveIndex(s.realIndex)}
                     className="w-full h-full"
                     loop
@@ -354,7 +344,7 @@ function DownloadFile({
                     {localDownloadData ? (
                       map(resourceChunks, (chunkItems, chunkIndex) => (
                         <SwiperSlide className="swiper-slide" key={chunkIndex}>
-                          <div className="grid h-full w-full grid-cols-3 grid-rows-3 gap-0.4">
+                          <div className="grid h-full w-full grid-cols-3 grid-rows-3 gap-[0.25rem]">
                             {map(chunkItems, (item, index) => (
                               <div
                                 key={index}
@@ -430,45 +420,10 @@ function DownloadFile({
                     )}
                   </Swiper>
                 </div>
-                <button
-                  type="button"
-                  className="pb-carousel-arrow pb-carousel-arrow-right"
-                  aria-label="next slide"
-                  onClick={handleNewsNext}
-                  style={{
-                    visibility:
-                      resourceChunks.length < 2 ? 'hidden' : 'visible',
-                  }}
-                >
-                  <AssetIcons.RightIcon width={40} height={40} />
-                </button>
               </div>
-              {resourceChunks.length >= 2 && (
-                <div className="flex items-center justify-center gap-2 my-1">
-                  {map(resourceChunks, (_, i) => (
-                    <button
-                      key={i}
-                      type="button"
-                      aria-label={`slide ${i + 1}`}
-                      onClick={() => swiper?.slideToLoop(i)}
-                      className={cx(
-                        'h-1.2 w-1.2 rounded-full transition-all duration-200',
-                        i === activeIndex
-                          ? 'scale-125 bg-sync-primary-color'
-                          : 'bg-sync-primary-color opacity-40',
-                      )}
-                    />
-                  ))}
-                </div>
-              )}
-              {!isEmpty(localDownloadData?.resources) && (
-                <div className="my-1 w-8 rounded-lg bg-black bg-opacity-40">
-                  <Typography
-                    variant={TYPOGRAPHY_VARIANTS.SMALL}
-                    className="page-single__download-result-image"
-                  >
-                    {resource?.length}/{resourceWithoutQRphoto?.length}
-                  </Typography>
+              {carouselCounterTotal > 1 && (
+                <div className="download-carousel-counter" aria-live="polite">
+                  {activeIndex + 1}/{carouselCounterTotal}
                 </div>
               )}
 

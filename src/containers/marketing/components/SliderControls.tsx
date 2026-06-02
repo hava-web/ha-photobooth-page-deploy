@@ -1,19 +1,24 @@
 import type React from 'react';
 import cx from 'classnames';
+import MarketingIconButton from './MarketingIconButton';
 
 type SliderControlsProps = {
   count: number;
   current: number;
+  className?: string;
   light?: boolean;
   showArrows?: boolean;
+  tone?: 'brand' | 'muted';
   onChange: (index: number) => void;
 };
 
 const SliderControls: React.FC<SliderControlsProps> = ({
   count,
   current,
+  className,
   light,
   showArrows = true,
+  tone = 'brand',
   onChange,
 }) => {
   if (count <= 1) {
@@ -21,27 +26,34 @@ const SliderControls: React.FC<SliderControlsProps> = ({
   }
 
   const dotBaseClass = cx(
-    'h-2.2 w-2.2 rounded-full border',
-    light ? 'border-white' : 'border-brand-pink',
+    'h-5 w-5 rounded-full',
+    light
+      ? 'border border-white'
+      : tone === 'muted'
+        ? 'border-0'
+        : 'border border-brand-pink',
   );
-  const activeDotClass = light ? 'bg-white' : 'bg-brand-pink';
+  const activeDotClass = light
+    ? 'bg-white'
+    : tone === 'muted'
+      ? 'bg-brand-muted'
+      : 'bg-brand-pink';
+  const inactiveDotClass =
+    !light && tone === 'muted' ? 'bg-brand-line' : 'bg-transparent';
 
   return (
-    <div className="mt-3.4 flex items-center justify-center gap-1.8">
+    <div
+      className={cx('mt-8 flex items-center justify-center gap-4', className)}
+    >
       {showArrows && (
-        <button
-          type="button"
+        <MarketingIconButton
+          icon="chevron-left"
           aria-label="previous"
-          className={cx(
-            'h-2.2 w-2.2 rounded-full border text-marketing-control leading-1.8',
-            light
-              ? 'border-white bg-transparent text-white'
-              : 'border-brand-pink bg-white text-brand-pink',
-          )}
+          size="sm"
+          variant={light ? 'overlay' : 'outline'}
+          className={light ? 'bg-transparent' : undefined}
           onClick={() => onChange(current - 1)}
-        >
-          {'<'}
-        </button>
+        />
       )}
       {Array.from({ length: count }, (_, index) => (
         <button
@@ -50,25 +62,20 @@ const SliderControls: React.FC<SliderControlsProps> = ({
           aria-label={`go to slide ${index + 1}`}
           className={cx(
             dotBaseClass,
-            current === index ? activeDotClass : 'bg-transparent',
+            current === index ? activeDotClass : inactiveDotClass,
           )}
           onClick={() => onChange(index)}
         />
       ))}
       {showArrows && (
-        <button
-          type="button"
+        <MarketingIconButton
+          icon="chevron-right"
           aria-label="next"
-          className={cx(
-            'h-2.2 w-2.2 rounded-full border text-marketing-control leading-1.8',
-            light
-              ? 'border-white bg-transparent text-white'
-              : 'border-brand-pink bg-white text-brand-pink',
-          )}
+          size="sm"
+          variant={light ? 'overlay' : 'outline'}
+          className={light ? 'bg-transparent' : undefined}
           onClick={() => onChange(current + 1)}
-        >
-          {'>'}
-        </button>
+        />
       )}
     </div>
   );

@@ -20,7 +20,6 @@ import banner1Image from 'assets/images/banner-images/banner_1.webp';
 import banner2Image from 'assets/images/banner-images/banner_2.webp';
 import banner9Image from 'assets/images/banner-images/banner_9.webp';
 import banner10Image from 'assets/images/banner-images/banner_10.webp';
-import allStoreImage from 'assets/images/banner-images/all-store-in-vn.webp';
 import event2026Image from 'assets/images/banner-images/event-2026.webp';
 
 import boothDeImage from 'assets/images/fun-products/booth-de.webp';
@@ -39,18 +38,14 @@ import kenh14LogoImage from 'assets/images/home/kenh14_logo.png';
 import vnexpressImage from 'assets/images/home/bao_vnexpress.webp';
 import vnexpressLogoImage from 'assets/images/home/vnexpress_logo.png';
 import dianaEventImage from 'assets/images/home/diana_facebook_event.webp';
-import lienQuanImage from 'assets/images/home/lien_quan_cover_image.webp';
-import lienQuanLogoImage from 'assets/images/home/lien_quan.webp';
 import nuiTrucImage from 'assets/images/home/nui_truc2.webp';
 import radioImage from 'assets/images/home/radio_4_teen.webp';
 import services1Image from 'assets/images/home/services_1.webp';
 import services2Image from 'assets/images/home/services_2.webp';
 import services3Image from 'assets/images/home/services_3.webp';
 import vcfCoverImage from 'assets/images/home/vcf_fun_studio_cover.webp';
-import vcfLogoImage from 'assets/images/home/vcf_logo.webp';
 import vtvLogoImage from 'assets/images/home/vtv1_logo.png';
 import vtv24Image from 'assets/images/home/vtv24.webp';
-import nhuongQuyen1Image from 'assets/images/home/nhuong_quyen_1.webp';
 import nhuongQuyen2Image from 'assets/images/home/nhuong_quyen_2.webp';
 import nhuongQuyen3Image from 'assets/images/home/nhuong_quyen_3.webp';
 
@@ -62,6 +57,42 @@ import event5Image from 'assets/images/events/event_5.webp';
 import event6Image from 'assets/images/events/event_6.webp';
 import event7Image from 'assets/images/events/event_7.webp';
 import event8Image from 'assets/images/events/event_8.webp';
+
+import customerLogo01Image from 'assets/images/customer-logo/customer-logo-01.webp';
+import customerLogo02Image from 'assets/images/customer-logo/customer-logo-02.webp';
+import customerLogo03Image from 'assets/images/customer-logo/customer-logo-03.webp';
+import customerLogo04Image from 'assets/images/customer-logo/customer-logo-04.webp';
+import customerLogo05Image from 'assets/images/customer-logo/customer-logo-05.webp';
+import customerLogo06Image from 'assets/images/customer-logo/customer-logo-06.webp';
+import customerLogo07Image from 'assets/images/customer-logo/customer-logo-07.webp';
+import customerLogo08Image from 'assets/images/customer-logo/customer-logo-08.webp';
+import customerLogo09Image from 'assets/images/customer-logo/customer-logo-09.webp';
+import customerLogo10Image from 'assets/images/customer-logo/customer-logo-10.webp';
+import customerLogo11Image from 'assets/images/customer-logo/customer-logo-11.webp';
+import customerLogo12Image from 'assets/images/customer-logo/customer-logo-12.webp';
+import customerLogo13Image from 'assets/images/customer-logo/customer-logo-13.webp';
+import customerLogo14Image from 'assets/images/customer-logo/customer-logo-14.webp';
+import customerLogo15Image from 'assets/images/customer-logo/customer-logo-15.webp';
+import customerLogo16Image from 'assets/images/customer-logo/customer-logo-16.webp';
+import customerLogo17Image from 'assets/images/customer-logo/customer-logo-17.webp';
+import customerLogo18Image from 'assets/images/customer-logo/customer-logo-18.webp';
+import customerLogo19Image from 'assets/images/customer-logo/customer-logo-19.webp';
+import customerLogo20Image from 'assets/images/customer-logo/customer-logo-20.webp';
+import customerLogo21Image from 'assets/images/customer-logo/customer-logo-21.webp';
+import customerLogo22Image from 'assets/images/customer-logo/customer-logo-22.webp';
+import customerLogo23Image from 'assets/images/customer-logo/customer-logo-23.webp';
+import customerLogo24Image from 'assets/images/customer-logo/customer-logo-24.webp';
+import customerLogo25Image from 'assets/images/customer-logo/customer-logo-25.webp';
+import customerLogo26Image from 'assets/images/customer-logo/customer-logo-26.webp';
+import customerLogo27Image from 'assets/images/customer-logo/customer-logo-27.webp';
+import customerLogo28Image from 'assets/images/customer-logo/customer-logo-28.webp';
+import customerLogo29Image from 'assets/images/customer-logo/customer-logo-29.webp';
+import customerLogo30Image from 'assets/images/customer-logo/customer-logo-30.webp';
+import customerLogo31Image from 'assets/images/customer-logo/customer-logo-31.webp';
+import customerLogo32Image from 'assets/images/customer-logo/customer-logo-32.webp';
+import customerLogo33Image from 'assets/images/customer-logo/customer-logo-33.webp';
+import customerLogo34Image from 'assets/images/customer-logo/customer-logo-34.webp';
+import customerLogo35Image from 'assets/images/customer-logo/customer-logo-35.webp';
 
 import funNguyenTuanImage from 'assets/images/stores/fun_nguyen_tuan.webp';
 import funHaiDuongImage from 'assets/images/stores/fun_hai_duong.webp';
@@ -92,8 +123,8 @@ export const MARKETING_NAV_LINKS = [
 ];
 
 export const MARKETING_CONTACT = {
-  phoneLabel: 'Hotline: 012345678',
-  phoneHref: 'tel:012345678',
+  phoneLabel: 'Hotline: 0975 338 244',
+  phoneHref: `tel:${SALE_PHONE_NUMBER}`,
   ctaLabel: 'Đăng ký nhượng quyền',
   ctaHref: '/dang-ky-nhuong-quyen',
   company: 'Công ty TNHH Công nghệ Kết Nối Ý Nghĩa',
@@ -171,7 +202,8 @@ export const ABOUT_COPY = [
   'Thành lập từ năm 2023, Fun Studio là thương hiệu photobooth tự chụp phong cách Hàn Quốc với sứ mệnh mang đến trải nghiệm chụp ảnh hiện đại, sáng tạo và dễ tiếp cận cho khách hàng Việt Nam.',
   'Sở hữu hệ thống photobooth được phát triển hoàn toàn bởi người Việt, chúng tôi không ngừng nâng cấp công nghệ, sản phẩm và dịch vụ để đáp ứng nhu cầu ngày càng đa dạng của thị trường.',
   'Với hơn 80 cửa hàng trên toàn quốc, Fun Studio tiên phong đưa mô hình photobooth trở thành một phần trong đời sống giới trẻ khi liên tục ra mắt những concept sáng tạo nhằm nâng tầm trải nghiệm người dùng.',
-  'Bên cạnh đó, chúng tôi cũng là đối tác đáng tin cậy của các thương hiệu lớn trong việc triển khai giải pháp photobooth cho sự kiện và chiến dịch truyền thông.',
+  'Bên cạnh đấy, chúng tôi cũng là đối tác đáng tin cậy của các thương hiệu lớn như Diana, MB Bank, FPT, Esoft..., trong việc triển khai giải pháp photobooth cho các sự kiện và chiến dịch truyền thông.',
+  'Với đội ngũ trẻ trung, năng động và sáng tạo, Fun Studio đặt mục tiêu giữ vững vị trí dẫn đầu tại Việt Nam và khu vực, luôn đồng hành cùng khách hàng và đối tác trên hành trình phát triển bền vững.',
 ];
 
 export const ABOUT_IMAGES = [nuiTrucImage, services2Image];
@@ -188,41 +220,41 @@ export const DEVELOPMENT_TIMELINE = [
 ];
 
 export const CUSTOMER_LOGOS = [
-  { name: 'DOJI' },
-  { name: 'Diana' },
-  { name: 'FPT' },
-  { name: 'NTT e-MOI' },
-  { name: 'Xiaomi' },
-  { name: 'MSB' },
-  { name: 'MB' },
-  { name: 'DNSE' },
-  { name: 'World Bank' },
-  { name: 'EY' },
-  { name: 'Almaz' },
-  { name: 'L7 Hotels' },
-  { name: 'IDP' },
-  { name: 'Forevermark' },
-  { name: 'JW Marriott' },
-  { name: 'Cowell' },
-  { name: 'Upbase' },
-  { name: 'QD Stadium' },
-  { name: 'Facolos' },
-  { name: 'SOTA Tek' },
-  { name: 'BUV' },
-  { name: 'HUST' },
-  { name: 'SmartOSC' },
-  { name: 'Bemori' },
-  { name: 'Agribank' },
-  { name: 'Liên Quân', image: lienQuanLogoImage },
-  { name: 'Casper' },
-  { name: 'Nike' },
-  { name: 'Phuong Viet Nam' },
-  { name: 'VTV1', image: vtvLogoImage },
-  { name: 'CafeBiz', image: cafebizLogoImage },
-  { name: 'Kênh14', image: kenh14LogoImage },
-  { name: 'VnExpress', image: vnexpressLogoImage },
-  { name: 'VCF', image: vcfLogoImage },
-  { name: 'Công Luận', image: congluanLogoImage },
+  { name: 'DOJI', image: customerLogo11Image },
+  { name: 'Diana', image: customerLogo01Image },
+  { name: 'FPT', image: customerLogo03Image },
+  { name: 'NTT e-MOI', image: customerLogo04Image },
+  { name: 'Xiaomi', image: customerLogo32Image },
+  { name: 'MSB', image: customerLogo12Image },
+  { name: 'MB', image: customerLogo23Image },
+  { name: 'DNSE', image: customerLogo13Image },
+  { name: 'Woori Bank', image: customerLogo30Image },
+  { name: 'EY', image: customerLogo26Image },
+  { name: 'Almaz', image: customerLogo05Image },
+  { name: 'L7 Hotels', image: customerLogo27Image },
+  { name: 'IDP', image: customerLogo25Image },
+  { name: 'Forevermark', image: customerLogo24Image },
+  { name: 'JW Marriott', image: customerLogo07Image },
+  { name: 'Cowell', image: customerLogo33Image },
+  { name: 'Upbase', image: customerLogo28Image },
+  { name: 'QEG Stadium', image: customerLogo35Image },
+  { name: 'Facolos', image: customerLogo06Image },
+  { name: 'SOTA Tek', image: customerLogo15Image },
+  { name: 'BUV', image: customerLogo14Image },
+  { name: 'Trường Đại học Ngoại thương', image: customerLogo17Image },
+  { name: 'Vinschool', image: customerLogo16Image },
+  { name: 'HUST', image: customerLogo18Image },
+  { name: 'Đại học Kinh tế Quốc dân', image: customerLogo29Image },
+  { name: 'SmartOSC', image: customerLogo09Image },
+  { name: 'Bemori', image: customerLogo34Image },
+  { name: 'RUTOP', image: customerLogo08Image },
+  { name: 'MATHPRESSO', image: customerLogo19Image },
+  { name: 'Bệnh viện Phụ sản Hà Nội', image: customerLogo20Image },
+  { name: 'Agribank', image: customerLogo21Image },
+  { name: 'Liên Quân', image: customerLogo22Image },
+  { name: 'Casper', image: customerLogo10Image },
+  { name: 'Nike', image: customerLogo02Image },
+  { name: 'Piaggio Vietnam Co., Ltd', image: customerLogo31Image },
 ];
 
 export const FRANCHISE_TOP_IMAGES = [
@@ -245,7 +277,7 @@ export const FRANCHISE_REASONS = [
   },
   {
     icon: moneyIcon,
-    text: 'Hoàn vốn nhanh 6-8 tháng nhờ lượng khách ổn định, tệp khách hàng trung thành và tỷ lệ quay lại cao.',
+    text: 'Hoàn vốn nhanh (6-8 tháng) nhờ lượng khách ổn định, tệp khách hàng trung thành và tỷ lệ quay lại cao.',
   },
   {
     icon: settingIcon,
@@ -253,7 +285,7 @@ export const FRANCHISE_REASONS = [
   },
   {
     icon: growUpIcon,
-    text: 'Sản phẩm được cập nhật liên tục, tính năng mới đa dạng và luôn bắt kịp xu hướng photobooth.',
+    text: 'Sản phẩm được cập nhật liên tục, tính năng mới đa dạng và được update hàng tháng để luôn thu hút khách hàng mới và giữ chân khách hàng cũ bắt kịp xu hướng mới nhất trên thị trường photobooth.',
   },
 ];
 
@@ -264,23 +296,23 @@ export const FREE_SERVICE_CARDS = [
   },
   {
     title: 'Hỗ trợ',
-    text: 'Hỗ trợ setup cửa hàng, cài đặt phần mềm, hướng dẫn quản lý ban đầu và gợi ý truyền thông khai trương.',
+    text: 'Hỗ trợ vận hành: setup cửa hàng, cài đặt phần mềm và hướng dẫn quản lý ban đầu. Hỗ trợ truyền thông: gợi ý chương trình khai trương, giúp cửa hàng nhanh chóng tiếp cận khách hàng.',
   },
   {
     title: 'Đồng hành',
-    text: 'Đồng hành vận hành, truyền thông, cập nhật sản phẩm, concept mới và tư vấn tối ưu dài hạn.',
+    text: 'Đồng hành vận hành: hỗ trợ quy trình, phần mềm, doanh thu và xử lý tình huống. Đồng hành truyền thông: hỗ trợ nội dung, hình ảnh, layout và kế hoạch khai trương. Đồng hành phát triển: cập nhật sản phẩm, concept mới và tư vấn tối ưu dài hạn.',
   },
   {
     title: 'Đảm bảo',
-    text: 'Đảm bảo phần mềm ổn định, chất lượng máy móc, quy trình vận hành đồng bộ và hỗ trợ kỹ thuật khi cần.',
+    text: 'Đảm bảo phần mềm ổn định. Đảm bảo chất lượng máy móc. Đảm bảo quy trình vận hành đồng bộ. Đảm bảo hỗ trợ kỹ thuật khi cần.',
   },
   {
     title: 'Tối ưu',
-    text: 'Tối ưu chi phí đầu tư, diện tích vận hành, doanh thu trên từng lượt chụp và trải nghiệm khách hàng.',
+    text: 'Tối ưu chi phí đầu tư. Tối ưu diện tích vận hành. Tối ưu doanh thu trên từng lượt chụp. Tối ưu trải nghiệm khách hàng. Tối ưu hiệu quả kinh doanh dài hạn.',
   },
   {
     title: '6 miễn phí',
-    text: 'Thiết kế cửa hàng, cài đặt phần mềm, đào tạo vận hành, hỗ trợ khai trương, cập nhật layout và hỗ trợ kỹ thuật trọn đời.',
+    text: 'Thiết kế cửa hàng & nhận diện thương hiệu. Cài đặt và hướng dẫn vận hành phần mềm. Đào tạo, chuyển giao quy trình vận hành. Hỗ trợ truyền thông khai trương. Cập nhật layout & sản phẩm mới hằng tháng. Hỗ trợ kỹ thuật trọn đời.',
   },
 ];
 
@@ -312,7 +344,7 @@ export const PRODUCT_MACHINES = [
   },
   {
     image: boothSfImage,
-    title: 'Fun Super Fine (SF)',
+    title: 'Fun Super Flex (SF)',
     text: 'Thiết kế tinh gọn, phù hợp các mặt bằng nhỏ nhưng vẫn giữ trải nghiệm chụp ảnh đầy đủ.',
   },
   {
@@ -339,11 +371,11 @@ export const BUSINESS_FIT_CARDS = [
   },
   {
     icon: storeIcon,
-    text: 'Chủ mặt bằng, quán cà phê, rạp chiếu phim hoặc trung tâm thương mại muốn tăng trải nghiệm khách.',
+    text: 'Có sẵn mặt bằng, không gian để kết hợp Photobooth thu hút khách và gia tăng lợi nhuận.',
   },
   {
     icon: presentationIcon,
-    text: 'Cá nhân khởi nghiệp tìm kiếm mô hình lợi nhuận tốt với chi phí đầu tư phù hợp.',
+    text: 'Cá nhân khởi nghiệp tìm kiếm mô hình lợi nhuận cao, với chi phí đầu tư phù hợp với ngân sách nhỏ.',
   },
 ];
 
@@ -395,7 +427,7 @@ export const RENTAL_SECTIONS = [
   {
     title: 'Thuê máy phục vụ tiệc cưới',
     intro:
-      'Đám cưới không chỉ là ngày trọng đại của cô dâu chú rể, mà còn là nơi chứa đầy nụ cười, lời chúc và kỷ niệm khó quên.',
+      'Đám cưới không chỉ là ngày trọng đại của cô dâu chú rể, mà còn là nơi chứa đầy những nụ cười, lời chúc và kỷ niệm khó quên. Với dịch vụ thuê Photobooth nhà Fun Studio, mỗi vị khách đều có thể mang về một bức ảnh in liền tay - món quà kỷ niệm tinh tế và ý nghĩa nhất trong ngày vui.',
     images: [event1Image, event2Image, event3Image],
     cards: [
       {
@@ -411,20 +443,20 @@ export const RENTAL_SECTIONS = [
     ],
   },
   {
-    title: 'Thuê máy sự kiện doanh nghiệp',
+    title: 'Dịch vụ thuê máy sự kiện doanh nghiệp',
     intro:
       'Photobooth giúp sự kiện thương hiệu trở nên sinh động hơn, tạo điểm check-in và tăng tương tác với khách tham dự.',
     images: [event5Image, event6Image, event7Image],
     cards: [
       {
         image: event2026Image,
-        title: 'Event & activation',
-        text: 'Thiết kế frame, concept và trải nghiệm chụp ảnh theo nhận diện thương hiệu.',
+        title: 'Phục vụ sự kiện, tiệc / teambuilding công ty',
+        text: 'Sự kiện idol không chỉ là nơi gặp gỡ, giao lưu mà còn là dịp để mỗi fan lưu giữ cảm xúc đặc biệt bên cạnh cộng đồng của mình. Với dịch vụ thuê Photobooth nhà Fun Studio, bạn có thể biến không gian sự kiện trở nên rực rỡ - sôi động - đậm chất fandom, nơi mọi khoảnh khắc đều được lưu lại thật trọn vẹn.',
       },
       {
         image: event8Image,
-        title: 'Booth tại hội nghị',
-        text: 'Vận hành gọn, setup nhanh và hỗ trợ kỹ thuật trong suốt thời gian sự kiện.',
+        title: 'Phục vụ sự kiện brading/ ra mắt sản phẩm',
+        text: 'Trong mỗi sự kiện ra mắt sản phẩm hay chiến dịch branding, ấn tượng đầu tiên với khách hàng chính là chìa khóa tạo nên thành công. Với dịch vụ thuê Photobooth nhà Fun Studio, doanh nghiệp có thể mang đến trải nghiệm tương tác thú vị, đồng thời khuếch đại hình ảnh thương hiệu một cách tinh tế và tự nhiên nhất.',
       },
     ],
   },
@@ -482,26 +514,6 @@ export const STORE_REGIONS = [
   },
 ];
 
-export const NEWS_CARDS = [
-  {
-    image: '/images/generated/news-1.jpg',
-    title: 'Fun Studio tiên phong xu hướng chụp ảnh photobooth',
-    text: 'Fun Studio đưa công nghệ robot cabin vào mô hình photobooth tại Việt Nam, mang đến trải nghiệm chụp ảnh mới lạ, mở ra cơ hội kinh doanh cho đối tác,...',
-  },
-  {
-    image: '/images/generated/news-2.jpg',
-    title:
-      'Fun Studio giải pháp kinh doanh photobooth chi phí thấp lợi nhuận cao',
-    text: 'Với mô hình nhượng quyền đơn giản, chi phí đầu tư hợp lý và khả năng thu hồi vốn nhanh chóng, Fun Studio mang đến cơ hội kinh doanh hấp dẫn,...',
-  },
-  {
-    image: '/images/generated/news-3.jpg',
-    title:
-      'Bật mí điểm hẹn của giới trẻ Hà Thành: cứ đến là rinh về vô vàn ảnh sống ảo',
-    text: 'Nếu bạn là tín đồ sống ảo, thích những tấm ảnh lung linh, độc đáo và chất lượng như chụp tại studio thì chắc chắn không thể bỏ qua Deluxe by Fun Studio,...',
-  },
-];
-
 export const GALLERY_FALLBACK_IMAGE = '/images/generated/gallery-card-docs.jpg';
 
 export const GALLERY_ITEMS = Array.from({ length: 108 }, (_, index) => ({
@@ -521,12 +533,9 @@ export const PRESS_ITEMS = [
 ];
 
 export const SERVICE_GALLERY_IMAGES = [
-  allStoreImage,
+  boothDshImage,
+  cafebizImage,
   banner2Image,
-  event2026Image,
-  vcfCoverImage,
-  dianaEventImage,
-  lienQuanImage,
 ];
 
 export const SIMPLE_ICONS = {

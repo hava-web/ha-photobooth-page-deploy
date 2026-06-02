@@ -24,28 +24,42 @@ const InfoCard: React.FC<InfoCardProps> = ({
     className={cx(
       'relative rounded-lg border border-brand-muted bg-white text-brand-text',
       compact
-        ? 'min-h-info-card-compact px-7 pb-7 pt-5.4'
+        ? 'min-h-info-card-compact px-[4.375rem] pb-[4.375rem] pt-14'
         : variant === 'franchise-service'
-          ? 'min-h-franchise-service-card px-7 pb-7 pt-16.5'
-          : 'min-h-info-card px-9 pb-9 pt-16.5',
+          ? 'min-h-[21.25rem] px-14 pb-14 pt-[4.375rem] phone:min-h-0 phone:px-12 phone:pb-12 phone:pt-14'
+          : 'min-h-info-card px-[5.625rem] pb-[5.625rem] pt-[10.3125rem]',
     )}
   >
     {typeof index === 'number' && (
-      <div className="absolute left-1/2 -top-3.4 flex h-7.6 w-7.6 -translate-x-1/2 items-center justify-center rounded-full border border-gray-300 bg-white text-brand-subtitle font-bold text-brand-pink">
+      <div className="absolute left-1/2 -top-8 flex h-20 w-20 -translate-x-1/2 items-center justify-center rounded-full border border-gray-300 bg-white text-brand-subtitle font-bold text-brand-pink">
         {index}
       </div>
     )}
     {icon && (
-      <div className="absolute left-1/2 -top-3.4 flex h-7.6 w-7.6 -translate-x-1/2 items-center justify-center rounded-full border border-gray-300 bg-brand-pink">
+      <div className="absolute left-1/2 -top-8 flex h-20 w-20 -translate-x-1/2 items-center justify-center rounded-full border border-gray-300 bg-brand-pink">
         <Image src={icon} alt="" width={42} height={42} />
       </div>
     )}
     {title && (
-      <h3 className="mb-6 mt-0 text-xl font-extrabold uppercase leading-snug text-brand-pink">
+      <h3
+        className={cx(
+          'mt-0 font-extrabold uppercase leading-snug text-brand-pink',
+          variant === 'franchise-service' ? 'mb-7 text-lg' : 'mb-14 text-xl',
+        )}
+      >
         {title}
       </h3>
     )}
-    <p className="m-0 text-lg leading-relaxed phone:text-base">{text}</p>
+    <p
+      className={cx(
+        'm-0 phone:text-base',
+        compact || variant === 'franchise-service'
+          ? 'text-[1.25rem] leading-relaxed'
+          : 'text-lg leading-relaxed',
+      )}
+    >
+      {text}
+    </p>
   </article>
 );
 

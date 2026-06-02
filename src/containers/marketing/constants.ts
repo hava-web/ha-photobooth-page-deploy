@@ -4,7 +4,7 @@ export const PAGE_CLASS =
 export const CONTAINER_CLASS =
   'mx-auto w-marketing-container phone:w-marketing-container-mobile';
 
-export const SECTION_CLASS = 'py-7.2 phone:py-4.8';
+export const SECTION_CLASS = 'py-[4.5rem] phone:py-12';
 
 export const PRODUCT_MACHINE_PAGE_COUNT = 4;
 
@@ -13,22 +13,22 @@ export const PRODUCT_MACHINE_PAGE_SIZE = 9;
 export const GALLERY_PAGE_SIZE = 36;
 
 export const ARROW_CLASS =
-  'z-10 inline-flex h-4.4 w-4.4 items-center justify-center rounded-full border border-brand-pink bg-white/85 text-brand-title leading-none text-brand-pink phone:h-3.6 phone:w-3.6 phone:text-3xl';
+  'z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-pink bg-white/85 text-brand-title leading-none text-brand-pink transition-opacity duration-200 phone:h-9 phone:w-9 phone:text-3xl';
 
 export const LEFT_FLOAT_ARROW_CLASS =
-  'absolute -left-7.5 top-1/2 -translate-y-1/2 phone:left-2';
+  'absolute -left-[4.6875rem] top-1/2 -translate-y-1/2 phone:left-5';
 
 export const RIGHT_FLOAT_ARROW_CLASS =
-  'absolute -right-7.5 top-1/2 -translate-y-1/2 phone:right-2';
+  'absolute -right-[4.6875rem] top-1/2 -translate-y-1/2 phone:right-5';
 
 export const HERO_LEFT_ARROW_CLASS =
-  'absolute -left-2.4 top-1/2 -translate-y-1/2 phone:left-2';
+  'absolute left-1/2 top-1/2 z-30 -translate-x-[42.625rem] -translate-y-1/2 tablet:left-8 tablet:translate-x-0 phone:left-5';
 
 export const HERO_RIGHT_ARROW_CLASS =
-  'absolute -right-4.4 top-1/2 -translate-y-1/2 phone:right-2';
+  'absolute right-1/2 top-1/2 z-30 translate-x-[42.625rem] -translate-y-1/2 tablet:right-8 tablet:translate-x-0 phone:right-5';
 
 export const VIDEO_LEFT_ARROW_CLASS =
-  'absolute left-8 top-1/2 -translate-y-1/2 phone:left-2';
+  'absolute left-20 top-1/2 -translate-y-1/2 border-brand-muted text-brand-muted phone:left-5';
 
 export const VIDEO_RIGHT_ARROW_CLASS =
-  'absolute right-8 top-1/2 -translate-y-1/2 phone:right-2';
+  'absolute right-20 top-1/2 -translate-y-1/2 border-brand-muted text-brand-muted phone:right-5';

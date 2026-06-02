@@ -1,7 +1,7 @@
 .floating-social-buttons {
-  @apply flex items-end fixed flex-col right-2 bottom-3.5 pointer-events-none z-z-index-floating-button;
+  @apply flex items-end fixed flex-col right-5 bottom-9 pointer-events-none z-z-index-floating-button;
   .floating-button {
-    @apply mt-2 pointer-events-auto;
+    @apply mt-5 pointer-events-auto;
     transition: 0.3s all;
   }
   .zalo-popover {
@@ -27,7 +27,7 @@
       }
     }
     .floating-button {
-      @apply -translate-y-2;
+      @apply -translate-y-5;
       opacity: 0;
       pointer-events: none;
     }

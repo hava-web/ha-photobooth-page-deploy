@@ -1,39 +1,39 @@
 .ensure-opportunity {
   @apply flex flex-col w-full bg-lp-primary-color border-t-3 border-lp-lighter-primary-color;
   .ensure-opportunity-container {
-    @apply py-4 text-lp-body text-white text-center;
+    @apply py-10 text-lp-body text-white text-center;
     .section-title {
-      @apply mb-4 text-lp-section-title-2 uppercase font-extrabold;
+      @apply mb-10 text-lp-section-title-2 uppercase font-extrabold;
     }
     .ensure-opportunity-grid {
-      @apply grid mx-auto gap-x-4 gap-y-2 grid-cols-2 grid-rows-2 grid-rows-opportunity text-brand-body-lg w-110;
+      @apply grid mx-auto gap-x-10 gap-y-5 grid-cols-2 grid-rows-2 grid-rows-opportunity text-brand-body-lg w-[68.75rem];
     }
     .ensure-opportunity-item {
       @apply text-left;
       .ensure-opportunity-item-title {
-        @apply block my-2;
+        @apply block my-5;
       }
       .ensure-opportunity-item-description {
         @apply text-justify;
       }
     }
     .ensure-opportunity-wrapper {
-      @apply flex flex-col items-center mx-auto mt-4 h-20;
+      @apply flex flex-col items-center mx-auto mt-10 h-[12.5rem];
       .ensure-opportunity-image-wrapper {
         @apply flex;
         .ensure-opportunity-image {
-          @apply object-cover border-image w-40 h-40 z-1;
+          @apply object-cover border-image w-[25rem] h-[25rem] z-1;
         }
       }
       .ensure-opportunity-description {
-        @apply text-lp-lighter-primary-color text-brand-body-lg mt-2 z-1;
+        @apply text-lp-lighter-primary-color text-brand-body-lg mt-5 z-1;
       }
     }
   }
   .ensure-opportunity-bottom-div {
     background-image: url('/images/background/cartoon_hong.png');
     background-size: 2300px;
-    @apply bg-white h-25 w-full;
+    @apply bg-white h-[15.625rem] w-full;
   }
   .ensure-opportunity-swiper-wrapper {
     @apply hidden;
@@ -43,31 +43,31 @@
 @media screen('less-sm') {
   .ensure-opportunity {
     .ensure-opportunity-container {
-      @apply px-4 text-lp-body text-white text-center;
+      @apply px-10 text-lp-body text-white text-center;
       .ensure-opportunity-grid {
         @apply hidden;
       }
       .ensure-opportunity-wrapper {
-        @apply flex flex-col items-center mx-auto mt-4 h-20;
+        @apply flex flex-col items-center mx-auto mt-10 h-[12.5rem];
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply relative object-cover border-image w-40 h-40 z-1;
+            @apply relative object-cover border-image w-[25rem] h-[25rem] z-1;
             width: 33%;
           }
         }
         .ensure-opportunity-description {
-          @apply text-lp-lighter-primary-color text-brand-body-lg mt-2 z-1;
+          @apply text-lp-lighter-primary-color text-brand-body-lg mt-5 z-1;
         }
       }
     }
     .ensure-opportunity-bottom-div {
-      @apply bg-white h-25 w-full;
+      @apply bg-white h-[15.625rem] w-full;
     }
     .ensure-opportunity-swiper-wrapper {
       @apply block relative;
       .swiper-dots {
-        @apply mt-2;
+        @apply mt-5;
         .dot-slider {
           @apply bg-lp-primary-color border-white;
         }
@@ -82,31 +82,31 @@
 @media screen('sm') {
   .ensure-opportunity {
     .ensure-opportunity-container {
-      @apply px-4 text-lp-body text-white text-center;
+      @apply px-10 text-lp-body text-white text-center;
       .ensure-opportunity-grid {
         @apply hidden;
       }
       .ensure-opportunity-wrapper {
-        @apply flex flex-col items-center mx-auto mt-4 h-20;
+        @apply flex flex-col items-center mx-auto mt-10 h-[12.5rem];
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply relative object-cover border-image w-35 h-40 z-1;
+            @apply relative object-cover border-image w-[21.875rem] h-[25rem] z-1;
             width: 33%;
           }
         }
         .ensure-opportunity-description {
-          @apply text-lp-lighter-primary-color text-brand-body-lg mt-2 z-1;
+          @apply text-lp-lighter-primary-color text-brand-body-lg mt-5 z-1;
         }
       }
     }
     .ensure-opportunity-bottom-div {
-      @apply bg-white h-25 w-full;
+      @apply bg-white h-[15.625rem] w-full;
     }
     .ensure-opportunity-swiper-wrapper {
       @apply block relative;
       .swiper-dots {
-        @apply mt-2;
+        @apply mt-5;
         .dot-slider {
           @apply bg-lp-primary-color border-white;
         }
@@ -122,37 +122,37 @@
   .ensure-opportunity {
     @apply border-t-3;
     .ensure-opportunity-container {
-      @apply py-4 text-lp-body text-white text-center;
+      @apply py-10 text-lp-body text-white text-center;
       .section-title {
-        @apply mb-4 text-lp-section-title-2 uppercase font-extrabold;
+        @apply mb-10 text-lp-section-title-2 uppercase font-extrabold;
       }
       .ensure-opportunity-grid {
-        @apply grid mx-auto gap-x-4 gap-y-2 grid-cols-2 grid-rows-2 grid-rows-opportunity text-brand-body-lg w-110;
+        @apply grid mx-auto gap-x-10 gap-y-5 grid-cols-2 grid-rows-2 grid-rows-opportunity text-brand-body-lg w-[68.75rem];
       }
       .ensure-opportunity-item {
         @apply text-left;
         .ensure-opportunity-item-title {
-          @apply block my-2;
+          @apply block my-5;
         }
         .ensure-opportunity-item-description {
           @apply text-justify;
         }
       }
       .ensure-opportunity-wrapper {
-        @apply flex flex-col items-center mx-auto mt-4 h-20;
+        @apply flex flex-col items-center mx-auto mt-10 h-[12.5rem];
         .ensure-opportunity-image-wrapper {
           @apply flex;
           .ensure-opportunity-image {
-            @apply object-cover border-image w-40 h-40 z-1;
+            @apply object-cover border-image w-[25rem] h-[25rem] z-1;
           }
         }
         .ensure-opportunity-description {
-          @apply text-brand-body-lg mt-2 z-1;
+          @apply text-brand-body-lg mt-5 z-1;
         }
       }
     }
     .ensure-opportunity-bottom-div {
-      @apply bg-white h-25 w-full;
+      @apply bg-white h-[15.625rem] w-full;
     }
     .ensure-opportunity-swiper-wrapper {
       @apply hidden;

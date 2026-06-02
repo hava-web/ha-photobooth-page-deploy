@@ -1,5 +1,6 @@
 import type React from 'react';
 import cx from 'classnames';
+import NextLink from 'next/link';
 import Image from 'components/image/Image';
 import {
   MARKETING_CONTACT,
@@ -9,19 +10,33 @@ import { getImageKey } from '../../utils/images';
 import Media from '../Media';
 
 export const ServiceSectionHeading: React.FC<{
+  as?: 'h1' | 'h2' | 'h3';
   children: React.ReactNode;
   className?: string;
   muted?: boolean;
-}> = ({ children, className, muted }) => (
-  <h1
+  size?: 'section' | 'sectionLg' | 'sectionSm' | 'hero';
+}> = ({
+  as: HeadingTag = 'h2',
+  children,
+  className,
+  muted,
+  size = 'section',
+}) => (
+  <HeadingTag
     className={cx(
-      'mx-auto mb-5 max-w-marketing-title text-center font-UTMAVo text-marketing-section font-normal uppercase leading-tight phone:text-brand-card-title',
+      'mx-auto mb-12 max-w-marketing-title whitespace-pre-line text-center font-UTMAVo font-normal uppercase phone:whitespace-normal phone:text-brand-card-title',
+      {
+        'text-marketing-section': size === 'section',
+        'text-marketing-section-lg': size === 'sectionLg',
+        'text-marketing-section-sm': size === 'sectionSm',
+        'text-marketing-hero': size === 'hero',
+      },
       muted ? 'text-white' : 'text-brand-pink',
       className,
     )}
   >
     {children}
-  </h1>
+  </HeadingTag>
 );
 
 export const ServicePillHeading: React.FC<{
@@ -30,7 +45,7 @@ export const ServicePillHeading: React.FC<{
 }> = ({ children, className }) => (
   <h2
     className={cx(
-      'mx-auto mb-6 flex min-h-5.8 w-video-carousel max-w-full items-center justify-center rounded-full bg-brand-pink px-6 text-center text-2xl font-extrabold uppercase leading-tight text-white phone:min-h-4.8 phone:text-lg',
+      'mx-auto mb-14 flex min-h-14 w-video-carousel max-w-full items-center justify-center rounded-full bg-brand-pink px-14 text-center text-2xl font-extrabold uppercase leading-tight text-white phone:min-h-12 phone:text-lg',
       className,
     )}
   >
@@ -44,15 +59,15 @@ export const ServiceMachineCard: React.FC<{
 }> = ({ image, title }) => (
   <article className="border border-brand-muted bg-white">
     <Media src={image} alt={title} className="aspect-service-card" />
-    <h3 className="m-0 flex min-h-8 items-center border-b border-brand-muted px-3.5 text-brand-card-title font-extrabold uppercase leading-tight text-brand-pink phone:text-xl">
+    <h3 className="m-0 flex min-h-20 items-center border-b border-brand-muted px-9 text-brand-card-title font-extrabold uppercase text-brand-pink phone:text-xl">
       {title}
     </h3>
-    <a
+    <NextLink
       href={MARKETING_CONTACT.ctaHref}
-      className="flex min-h-5.8 items-center justify-center px-3 text-lg font-extrabold uppercase leading-tight text-brand-pink no-underline phone:text-base"
+      className="flex min-h-14 items-center justify-center px-7 text-lg font-extrabold uppercase leading-tight text-brand-pink no-underline phone:text-base"
     >
       Nhận báo giá
-    </a>
+    </NextLink>
   </article>
 );
 
@@ -63,7 +78,7 @@ export const ServiceImageGrid: React.FC<{
 }> = ({ images, className, square }) => (
   <div
     className={cx(
-      'grid grid-cols-3 gap-x-4.8 gap-y-4.8 phone:grid-cols-1 phone:gap-2.4',
+      'grid grid-cols-3 gap-x-12 gap-y-12 phone:grid-cols-1 phone:gap-6',
       className,
     )}
   >
@@ -71,7 +86,7 @@ export const ServiceImageGrid: React.FC<{
       <Media
         key={getImageKey(image, `service-image-${index}`)}
         src={image}
-        alt="Fun Studio service"
+        alt={`Dịch vụ photobooth Fun Studio ${index + 1}`}
         className={square ? 'aspect-square' : 'aspect-service-card'}
       />
     ))}
@@ -82,9 +97,9 @@ export const ServiceSalesCircle: React.FC<{
   icon?: MarketingImage;
   text: string;
 }> = ({ icon, text }) => (
-  <article className="relative mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-brand-pink p-5 text-center text-xl font-extrabold leading-snug text-white phone:h-24 phone:w-24 phone:text-base">
+  <article className="relative mx-auto flex h-80 w-80 items-center justify-center rounded-full bg-brand-pink p-12 text-center text-xl font-extrabold leading-snug text-white phone:h-60 phone:w-60 phone:text-base">
     {icon && (
-      <span className="absolute -left-1.2 -top-1.2 flex h-7.6 w-7.6 items-center justify-center rounded-full border border-white bg-brand-pink">
+      <span className="absolute -left-3 -top-3 flex h-20 w-20 items-center justify-center rounded-full border border-white bg-brand-pink">
         <Image src={icon} alt="" width={36} height={36} />
       </span>
     )}
@@ -96,13 +111,19 @@ export const ServiceModelCard: React.FC<{
   image: MarketingImage;
   title: string;
   text: string;
-}> = ({ image, title, text }) => (
+  bodyClassName?: string;
+}> = ({ image, title, text, bodyClassName }) => (
   <article className="border border-brand-muted bg-white">
     <Media src={image} alt={title} className="aspect-service-model" />
-    <h3 className="mx-3.5 mb-2.4 mt-3 text-brand-card-title font-extrabold uppercase leading-tight text-brand-pink">
+    <h3 className="mx-9 mb-6 mt-7 text-brand-card-title font-extrabold uppercase text-brand-pink">
       {title}
     </h3>
-    <p className="mx-3.5 mb-5 mt-0 text-lg leading-relaxed text-brand-text phone:text-base">
+    <p
+      className={cx(
+        'mx-9 mb-12 mt-0 leading-relaxed text-brand-text phone:text-base',
+        bodyClassName || 'text-lg',
+      )}
+    >
       {text}
     </p>
   </article>
@@ -112,9 +133,9 @@ export const ServiceOtherProductCard: React.FC<{
   image: MarketingImage;
   title: string;
 }> = ({ image, title }) => (
-  <article className="mx-auto w-30 border border-brand-muted bg-white">
+  <article className="mx-auto w-[18.75rem] border border-brand-muted bg-white">
     <Media src={image} alt={title} className="aspect-square" />
-    <h3 className="m-0 flex min-h-5.8 items-center justify-center px-2 text-center text-lg font-extrabold uppercase leading-tight text-brand-pink">
+    <h3 className="m-0 flex min-h-14 items-center justify-center px-5 text-center text-lg font-extrabold uppercase leading-tight text-brand-pink">
       {title}
     </h3>
   </article>

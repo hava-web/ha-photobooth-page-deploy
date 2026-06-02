@@ -1,5 +1,5 @@
 .upload-photo_preview-grid {
-  @apply grid grid-cols-2 gap-4 pb-4;
+  @apply grid grid-cols-2 gap-[2.5rem] pb-[2.5rem];
 
   img {
     @apply mx-auto;
@@ -15,12 +15,12 @@
 
 @media screen('md') {
   .upload-photo_preview-grid {
-    @apply grid grid-cols-4 gap-4;
+    @apply grid grid-cols-4 gap-[2.5rem];
   }
 }
 
 @media screen('xl') {
   .upload-photo_preview-grid {
-    @apply grid grid-cols-6 gap-4;
+    @apply grid grid-cols-6 gap-[2.5rem];
   }
 }
