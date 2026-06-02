@@ -36,8 +36,16 @@ export async function downloadSequential(
         });
         const blob = await res.blob();
         const ext = url.split('?')[0].split('.').pop() || 'jpg';
-        const mimeType = blob.type || `image/${ext}`;
-        return new File([blob], `photo_${i + 1}.${ext}`, { type: mimeType });
+        const mimeType = blob.type || `resource/${ext}`;
+        const safeName = (displayName || FILE_NAME_DOWNLOAD).replace(
+          /\.[^/.]+$/,
+          '',
+        );
+        const uniqueSuffix = `${Date.now()}_${i + 1}_${Math.random()
+          .toString(36)
+          .slice(2, 8)}`;
+        const fileName = `${safeName}_${uniqueSuffix}.${ext}`;
+        return new File([blob], fileName, { type: mimeType });
       } catch {
         return null;
       }
