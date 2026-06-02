@@ -46,7 +46,9 @@ export async function downloadSequential(
 
   if (!size(files)) return;
 
-  if (navigator.canShare && navigator.canShare({ files })) {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  if (isIOS && navigator.canShare && navigator.canShare({ files })) {
     try {
       await navigator.share({ files, title: displayName });
       return;
