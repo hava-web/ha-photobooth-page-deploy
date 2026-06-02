@@ -1,6 +1,4 @@
-/* eslint-disable no-await-in-loop */
 import { saveAs } from 'file-saver';
-import JSZip from 'jszip';
 import { FILE_NAME_DOWNLOAD } from 'constants/file.const';
 import { isEmpty, size } from 'lodash';
 
@@ -30,25 +28,35 @@ export async function downloadSequential(
 ) {
   if (!size(urls)) return;
 
-  const zip = new JSZip();
-  const folder = zip.folder(displayName) ?? zip;
+  const files: File[] = await Promise.all(
+    urls.map(async (url, i) => {
+      try {
+        const res = await fetch(url, {
+          headers: { 'Cache-Control': 'no-cache, no-store, max-age=0' },
+        });
+        const blob = await res.blob();
+        const ext = url.split('?')[0].split('.').pop() || 'jpg';
+        const mimeType = blob.type || `image/${ext}`;
+        return new File([blob], `photo_${i + 1}.${ext}`, { type: mimeType });
+      } catch {
+        return null;
+      }
+    }),
+  ).then((results) => results.filter((f): f is File => f !== null));
 
-  for (let i = 0; i < size(urls); i++) {
-    const url = urls[i];
+  if (!size(files)) return;
+
+  if (navigator.canShare && navigator.canShare({ files })) {
     try {
-      const res = await fetch(url, {
-        headers: { 'Cache-Control': 'no-cache, no-store, max-age=0' },
-      });
-      const blob = await res.blob();
-      const ext = url.split('?')[0].split('.').pop() || 'jpg';
-      folder.file(`photo_${i + 1}.${ext}`, blob);
+      await navigator.share({ files, title: displayName });
+      return;
     } catch {
       //
     }
   }
 
-  const zipBlob = await zip.generateAsync({ type: 'blob' });
-  saveAs(zipBlob, `${displayName}.zip`);
+  // Fallback: download each image individually
+  files.forEach((file) => saveAs(file, file.name));
 }
 
 export async function downloadFiles(
@@ -58,10 +66,8 @@ export async function downloadFiles(
   if (!isEmpty(fileUrl)) {
     try {
       for (let index = 0; index < size(fileUrl); index++) {
-        // eslint-disable-next-line no-continue
         if (!fileUrl?.[index]) continue;
 
-        // eslint-disable-next-line no-await-in-loop
         await fetch(fileUrl?.[index], {
           headers: {
             responseType: 'blob',
