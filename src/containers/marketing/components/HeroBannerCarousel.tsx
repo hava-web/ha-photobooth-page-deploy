@@ -39,7 +39,7 @@ const HeroBannerMedia: React.FC<{
       }
     />
     {active && (
-      <h2 className="absolute bottom-9 left-[4.6875rem] right-[4.6875rem] m-0 text-center text-marketing-hero-caption font-extrabold uppercase text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] phone:bottom-12 phone:text-lg">
+      <h2 className="absolute bottom-9 left-[4.6875rem] right-[4.6875rem] m-0 whitespace-pre-line text-center text-marketing-hero-caption font-extrabold uppercase leading-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.35)] phone:bottom-12 phone:whitespace-normal phone:text-lg">
         {slide.title}
       </h2>
     )}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import cx from 'classnames';
 import NextLink from 'next/link';
 import Image from 'components/image/Image';
-import type { NewsCardModel } from 'models/news/news.model';
+import type { NewsCardModel, NewsDetailModel } from 'models/news/news.model';
 import {
   ABOUT_COPY,
   ABOUT_IMAGES,
@@ -60,6 +60,7 @@ import {
   StoreRegionCarousel,
 } from './components/store/StoreSections';
 import {
+  ARROW_CLASS,
   CONTAINER_CLASS,
   GALLERY_PAGE_SIZE,
   LEFT_FLOAT_ARROW_CLASS,
@@ -81,6 +82,13 @@ import {
   getRotatedPageItems,
 } from './utils/carousel';
 import { getImageKey } from './utils/images';
+
+const DIFFERENCE_IMAGE_GRID_CLASSES = [
+  'col-span-2 col-start-1',
+  'col-start-3',
+  'col-start-1',
+  'col-span-2 col-start-2',
+];
 
 export const MarketingHomePage: React.FC = () => {
   const heroSlideCount = HOME_HERO_SLIDES.length;
@@ -190,7 +198,7 @@ export const MarketingHomePage: React.FC = () => {
       <section className="pb-20 pt-7 phone:py-12">
         <div className={CONTAINER_CLASS}>
           <SectionTitle className="mb-14">
-            Quá trình hình thành & phát triển
+            {'Quá trình hình thành\n& phát triển'}
           </SectionTitle>
           <div className="mx-auto grid max-w-marketing grid-cols-8 items-start gap-x-4 tablet:grid-cols-4 tablet:gap-y-[4.375rem] phone:grid-cols-2 phone:gap-y-14">
             {DEVELOPMENT_TIMELINE.map(([date, text]) => (
@@ -259,14 +267,19 @@ export const FranchisePage: React.FC = () => (
             />
           ))}
         </div>
-        <p className="mx-auto mb-[9.375rem] mt-10 max-w-marketing text-left text-[1.25rem] leading-relaxed text-brand-text phone:text-base">
-          Photobooth không còn là xu hướng nhất thời, mà đã trở thành một mô
-          hình kinh doanh hấp dẫn và sinh lời bền vững. Với Fun Studio – chuỗi
-          photobooth nhượng quyền lớn nhất Việt Nam, Fun Studio sẽ đồng hành
-          cùng bạn trên hành trình khởi tạo một không gian chụp ảnh được giới
-          trẻ yêu thích, đồng thời giúp bạn xây dựng hoạt động kinh doanh riêng
-          với hệ thống vận hành chuyên nghiệp và hỗ trợ toàn diện từ A-Z.
-        </p>
+        <div className="mx-auto mb-[9.375rem] mt-10 max-w-marketing text-left text-[1.25rem] leading-relaxed text-brand-text phone:text-base">
+          <p className="mb-5 mt-0">
+            Photobooth không còn là xu hướng nhất thời, mà đã trở thành một mô
+            hình kinh doanh hấp dẫn và sinh lời bền vững.
+          </p>
+          <p className="m-0">
+            Với vị thế chuỗi photobooth nhượng quyền lớn nhất Việt Nam, Fun
+            Studio sẽ đồng hành cùng bạn trên hành trình khởi tạo không gian
+            chụp ảnh được giới trẻ yêu thích, đồng thời giúp bạn xây dựng hoạt
+            động kinh doanh riêng với hệ thống vận hành chuyên nghiệp và hỗ trợ
+            toàn diện từ A-Z.
+          </p>
+        </div>
 
         <div className="mt-16 grid grid-cols-story-panel items-start gap-7 phone:grid-cols-1 phone:gap-[4.375rem]">
           <article className="min-h-difference-panel border border-brand-muted px-14 py-14 phone:min-h-0 phone:px-6 phone:py-8">
@@ -278,8 +291,8 @@ export const FranchisePage: React.FC = () => (
               giúp tối ưu trải nghiệm và giảm chi phí bảo trì.
             </p>
             <p className="mb-10 mt-0 text-[1.25rem] leading-normal phone:text-base">
-              Đội ngũ sáng tạo liên tục, phát triển concept độc quyền từ hiện
-              đại đến Vintage, đánh trúng xu hướng giới trẻ như 80’s Diner, The
+              Đội ngũ sáng tạo liên tục phát triển concept độc quyền từ hiện đại
+              đến Vintage, đánh trúng xu hướng giới trẻ như 80’s Diner, The
               Railway Station, Timeless,... đảm bảo mỗi cơ sở có dấu ấn riêng.
             </p>
             <p className="mb-10 mt-0 text-[1.25rem] leading-normal phone:text-base">
@@ -296,13 +309,16 @@ export const FranchisePage: React.FC = () => (
               riêng của mình.
             </p>
           </article>
-          <div className="grid grid-cols-difference gap-5">
+          <div className="grid grid-cols-[minmax(0,32fr)_minmax(0,11fr)_minmax(0,32fr)] gap-5 phone:grid-cols-1">
             {DIFFERENCE_IMAGES.map((image, index) => (
               <Media
                 key={getImageKey(image, 'difference-image')}
                 src={image}
                 alt={`Điểm khác biệt photobooth Fun Studio ${index + 1}`}
-                className="h-difference-tile phone:h-auto phone:aspect-square"
+                className={cx(
+                  'h-difference-tile phone:col-start-auto phone:col-span-1 phone:h-auto phone:aspect-square',
+                  DIFFERENCE_IMAGE_GRID_CLASSES[index],
+                )}
               />
             ))}
           </div>
@@ -310,18 +326,18 @@ export const FranchisePage: React.FC = () => (
       </div>
     </section>
 
-    <section className="bg-brand-pink pb-[5.625rem] pt-14 phone:py-12">
+    <section className="bg-brand-pink py-5">
       <div className={CONTAINER_CLASS}>
-        <h2 className="mx-auto mb-12 max-w-marketing-title whitespace-pre-line text-center font-UTMAVo text-marketing-section font-normal uppercase text-white phone:mb-9 phone:whitespace-normal phone:text-brand-card-title">
+        <h2 className="mx-auto mb-5 max-w-marketing-title whitespace-pre-line text-center font-UTMAVo text-marketing-section font-normal uppercase text-white phone:mb-5 phone:whitespace-normal phone:text-brand-card-title">
           {
-            'Lý do nên trở thành đối tác của Fun Studio\nchuỗi photobooth nhượng quyền lớn nhất Việt Nam'
+            'Lý do nên trở thành đối tác của Fun Studio\nchuỗi photobooth nhượng quyền\nlớn nhất Việt Nam'
           }
         </h2>
-        <div className="grid grid-cols-4 gap-9 pt-12 tablet:grid-cols-2 phone:grid-cols-1 phone:gap-x-12 phone:gap-y-36">
+        <div className="grid grid-cols-4 gap-x-5 gap-y-16 pt-8 tablet:grid-cols-2 phone:grid-cols-1 phone:gap-x-5 phone:gap-y-16">
           {FRANCHISE_REASONS.map((reason, index) => (
             <InfoCard
               key={reason.text}
-              icon={reason.icon}
+              assetIcon={reason.icon}
               text={reason.text}
               index={index + 1}
               compact
@@ -515,7 +531,7 @@ export const ServicesPage: React.FC = () => {
             {BUSINESS_FIT_CARDS.map((card) => (
               <ServiceSalesCircle
                 key={card.text}
-                icon={card.icon}
+                assetIcon={card.icon}
                 text={card.text}
               />
             ))}
@@ -634,27 +650,38 @@ export const NewsPage: React.FC<NewsPageProps> = ({ newsCards = [] }) => {
                 viewportClassName="-mx-6 phone:mx-0"
                 itemClassName="px-4 phone:px-0"
                 renderItem={(card) => (
-                  <article className="flex min-h-news-card flex-col border border-brand-text bg-white">
-                    <Media
-                      src={card.image}
-                      alt={card.title}
-                      className="aspect-square"
-                    />
-                    <div className="px-6 pb-6 pt-6">
-                      <h2 className="mb-7 mt-0 text-lg font-extrabold uppercase leading-snug text-brand-pink">
-                        {card.title}
-                      </h2>
-                      <p className="m-0 text-brand-body-lg leading-snug text-brand-text phone:text-base">
-                        {card.text}
-                      </p>
-                    </div>
-                  </article>
+                  <NextLink
+                    href={`/tin-tuc/${card.id}`}
+                    className="block h-full text-brand-text no-underline"
+                  >
+                    <article className="flex min-h-news-card flex-col border border-brand-text bg-white transition-transform duration-200 hover:-translate-y-1">
+                      <Media
+                        src={card.image}
+                        alt={card.title}
+                        className="aspect-square"
+                      />
+                      <div className="px-6 pb-6 pt-6">
+                        <h2 className="mb-7 mt-0 text-lg font-extrabold uppercase leading-snug text-brand-pink">
+                          {card.title}
+                        </h2>
+                        <p className="m-0 text-brand-body-lg leading-snug text-brand-text phone:text-base">
+                          {card.text}
+                        </p>
+                      </div>
+                    </article>
+                  </NextLink>
                 )}
               />
               <InlineArrow
                 direction="next"
                 className={RIGHT_FLOAT_ARROW_CLASS}
                 onClick={() => newsCarousel.setSlide(newsCarousel.current + 1)}
+              />
+              <SliderControls
+                showArrows={false}
+                count={newsCards.length}
+                current={newsCarousel.current}
+                onChange={newsCarousel.setSlide}
               />
             </div>
           ) : (
@@ -667,6 +694,48 @@ export const NewsPage: React.FC<NewsPageProps> = ({ newsCards = [] }) => {
     </main>
   );
 };
+
+export type NewsDetailPageProps = {
+  newsDetail: NewsDetailModel;
+};
+
+export const NewsDetailPage: React.FC<NewsDetailPageProps> = ({
+  newsDetail,
+}) => (
+  <main className={PAGE_CLASS}>
+    <article className="pb-20 pt-10 phone:py-12">
+      <div className={CONTAINER_CLASS}>
+        <NextLink
+          href="/tin-tuc"
+          className="mb-8 inline-flex min-h-11 items-center justify-center rounded-full border border-brand-pink px-6 text-base font-extrabold uppercase leading-none text-brand-pink no-underline transition-colors hover:bg-brand-pink hover:text-white"
+        >
+          Quay lại tin tức
+        </NextLink>
+        <div className="mx-auto max-w-marketing">
+          <Media
+            src={newsDetail.image}
+            alt={newsDetail.title}
+            className="aspect-[16/9] bg-brand-page"
+            sizes="(max-width: 768px) 100vw, 1180px"
+          />
+          <h1 className="mb-8 mt-10 font-UTMAVo text-marketing-section font-normal uppercase leading-tight text-brand-pink phone:text-brand-card-title">
+            {newsDetail.title}
+          </h1>
+          <p className="mb-10 mt-0 text-brand-body-lg font-bold leading-relaxed text-brand-text phone:text-base">
+            {newsDetail.text}
+          </p>
+          <div className="grid gap-6 text-brand-body-lg leading-relaxed text-brand-text phone:text-base">
+            {newsDetail.content.map((paragraph) => (
+              <p key={paragraph} className="m-0">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+);
 
 export const GalleryPage: React.FC = () => {
   const [previewIndex, setPreviewIndex] = useState<number | null>(null);
@@ -807,8 +876,7 @@ export const GalleryPage: React.FC = () => {
               icon="chevron-left"
               aria-label="previous image"
               size="lg"
-              variant="overlay"
-              className="absolute left-6 top-1/2 h-14 w-14 -translate-y-1/2 bg-brand-pink phone:h-12 phone:w-12"
+              className={`${ARROW_CLASS} absolute left-6 top-1/2 -translate-y-1/2 phone:left-4`}
               onClick={showPreviewPrevious}
             />
             <Image
@@ -823,8 +891,7 @@ export const GalleryPage: React.FC = () => {
               icon="chevron-right"
               aria-label="next image"
               size="lg"
-              variant="overlay"
-              className="absolute right-6 top-1/2 h-14 w-14 -translate-y-1/2 bg-brand-pink phone:h-12 phone:w-12"
+              className={`${ARROW_CLASS} absolute right-6 top-1/2 -translate-y-1/2 phone:right-4`}
               onClick={showPreviewNext}
             />
             <MarketingIconButton

@@ -4,7 +4,7 @@ import Image from 'components/image/Image';
 import { useTranslation } from 'hooks/useTranslation';
 import NextLink from 'next/link';
 import React, { useCallback, useState } from 'react';
-import { MARKETING_LOGO } from 'store/static-data/marketing-pages.data';
+import { MARKETING_HEADER_LOGO } from 'store/static-data/marketing-pages.data';
 import {
   MarketingCtaLink,
   MarketingNavLinks,
@@ -32,17 +32,17 @@ const AppHeader: React.FC<AppHeaderProps> = ({ showNav = true }) => {
   return (
     <header className="font-UTMAVo text-brand-text">
       <div className="fixed left-0 top-0 z-z-index-header w-full border-b border-brand-line bg-white">
-        <Container className="grid h-[11.5625rem] max-w-header grid-cols-header grid-rows-[95px_90px] items-center gap-x-9 px-6 tablet:h-20 tablet:grid-cols-header-tablet tablet:grid-rows-single phone:grid-cols-header-phone phone:px-4">
+        <Container className="grid h-[10rem] max-w-header grid-cols-header items-center gap-x-9 px-6 tablet:h-20 tablet:grid-cols-header-tablet tablet:grid-rows-single phone:grid-cols-header-phone phone:px-4">
           <NextLink
             href="/"
             className="row-span-2 inline-flex items-center tablet:row-span-1"
             aria-label="Fun Studio"
           >
             <Image
-              src={MARKETING_LOGO}
-              width={136}
+              src={MARKETING_HEADER_LOGO}
+              width={130}
               alt="Fun Studio"
-              className="h-auto w-[8.5rem] phone:w-28"
+              className="h-auto w-[8.125rem] phone:w-20"
             />
           </NextLink>
           {showNav && (
@@ -76,7 +76,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ showNav = true }) => {
           )}
         </Container>
       </div>
-      <div className="h-[11.5625rem] tablet:h-20" />
+      <div className="h-[10rem] tablet:h-20" />
     </header>
   );
 };

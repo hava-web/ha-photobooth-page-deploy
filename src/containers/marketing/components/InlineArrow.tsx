@@ -17,6 +17,7 @@ const InlineArrow: React.FC<InlineArrowProps> = ({
   <MarketingIconButton
     icon={direction === 'previous' ? 'chevron-left' : 'chevron-right'}
     aria-label={direction}
+    size="lg"
     className={cx(ARROW_CLASS, className)}
     onClick={onClick}
   />

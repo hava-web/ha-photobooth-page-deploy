@@ -13,7 +13,12 @@ import MarketingIconButton from './components/MarketingIconButton';
 import Media from './components/Media';
 import SectionTitle from './components/SectionTitle';
 import SliderControls from './components/SliderControls';
-import { CONTAINER_CLASS, GALLERY_PAGE_SIZE, PAGE_CLASS } from './constants';
+import {
+  ARROW_CLASS,
+  CONTAINER_CLASS,
+  GALLERY_PAGE_SIZE,
+  PAGE_CLASS,
+} from './constants';
 import { useCarouselIndex } from './hooks/useCarouselIndex';
 import { getPageCount, getPagedItems } from './utils/carousel';
 
@@ -312,8 +317,7 @@ function GalleryPhotoPreview({
           icon="chevron-left"
           aria-label="previous image"
           size="lg"
-          variant="overlay"
-          className="absolute left-6 top-1/2 z-10 h-14 w-14 -translate-y-1/2 bg-brand-pink phone:h-12 phone:w-12"
+          className={`${ARROW_CLASS} absolute left-6 top-1/2 -translate-y-1/2 phone:left-4`}
           onClick={onPrevious}
         />
         <Image
@@ -328,8 +332,7 @@ function GalleryPhotoPreview({
           icon="chevron-right"
           aria-label="next image"
           size="lg"
-          variant="overlay"
-          className="absolute right-6 top-1/2 z-10 h-14 w-14 -translate-y-1/2 bg-brand-pink phone:h-12 phone:w-12"
+          className={`${ARROW_CLASS} absolute right-6 top-1/2 -translate-y-1/2 phone:right-4`}
           onClick={onNext}
         />
         <MarketingIconButton

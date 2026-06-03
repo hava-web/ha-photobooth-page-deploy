@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type React from 'react';
 import cx from 'classnames';
-import storeIcon from 'assets/icons/store.png';
+import { AssetIcons } from 'assets/icons/AssetIcons';
 import Image from 'components/image/Image';
 import {
   funStores,
@@ -162,47 +162,43 @@ const StoreListPopup: React.FC<StoreListPopupProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative flex max-h-[86vh] w-full max-w-[72rem] flex-col overflow-hidden rounded-lg bg-white shadow-brand-hairline"
+        className="relative flex max-h-[86vh] w-full max-w-[52.75rem] flex-col overflow-hidden rounded-[10px] bg-white"
         onClick={(event) => event.stopPropagation()}
         role="presentation"
       >
-        <header className="flex items-start justify-between gap-6 border-b border-brand-soft-line px-8 py-6 phone:px-5 phone:py-4">
+        <header className="shrink-0 px-8 pt-3 phone:px-5">
           <h2
             id={titleId}
-            className="m-0 text-brand-card-title font-extrabold uppercase text-brand-pink phone:text-lg"
+            className="mx-auto my-0 flex min-h-[3.625rem] min-w-[11.375rem] max-w-max items-center justify-center rounded-full bg-brand-pink px-10 text-center text-xl font-extrabold uppercase leading-none text-white phone:min-h-12 phone:min-w-0 phone:px-8 phone:text-lg"
           >
-            Danh sách cửa hàng {province.province}
+            {province.province}
           </h2>
-          <button
-            type="button"
-            aria-label="Đóng danh sách cửa hàng"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-brand-soft-line bg-white text-2xl leading-none text-brand-pink transition-colors hover:border-brand-pink-hover hover:text-brand-pink-hover"
-            onClick={onClose}
-          >
-            <span aria-hidden="true">&times;</span>
-          </button>
         </header>
-        <div className="overflow-y-auto px-8 py-8 phone:px-5 phone:py-5">
+        <div className="overflow-y-auto px-[3.75rem] pb-10 pt-7 tablet:px-10 phone:px-5 phone:pb-6 phone:pt-6">
           {stores.length ? (
-            <div className="grid grid-cols-3 gap-6 tablet:grid-cols-2 phone:grid-cols-1">
+            <div className="grid grid-cols-3 justify-items-center gap-x-[5.75rem] gap-y-8 tablet:grid-cols-2 tablet:gap-x-10 phone:grid-cols-1 phone:gap-y-8">
               {stores.map((store) => (
                 <article
                   key={`${store.storeLocation}-${store.value}`}
-                  className="overflow-hidden rounded-lg border border-brand-soft-line/70 bg-white text-left"
+                  className="w-full max-w-[10rem] text-center"
                 >
                   <Media
                     src={store.image}
                     alt={store.alt || store.labelIndex}
-                    className="aspect-square"
-                    sizes="(max-width: 768px) 100vw, 360px"
+                    className="mx-auto aspect-square w-[9.375rem] bg-white"
+                    sizes="150px"
                     loading="eager"
                     fetchPriority="low"
                   />
-                  <div className="px-5 pb-5 pt-4">
-                    <h3 className="mb-3 mt-0 text-lg font-extrabold uppercase leading-snug text-brand-pink phone:text-base">
+                  <div className="pt-3">
+                    <h3 className="mb-1.5 mt-0 flex items-start justify-center gap-1 text-center text-[0.875rem] font-extrabold leading-tight text-brand-pink">
+                      <AssetIcons.PinkStoreIcon
+                        className="mt-0.5 h-[1.125rem] w-[1.125rem] shrink-0"
+                        aria-hidden="true"
+                      />
                       {store.labelIndex}
                     </h3>
-                    <p className="m-0 text-brand-body leading-relaxed text-brand-text phone:text-sm">
+                    <p className="m-0 text-center text-[0.8125rem] leading-[1.35] text-brand-pink/70">
                       {store.label}
                     </p>
                   </div>
@@ -322,7 +318,10 @@ export const StoreRegionCarousel: React.FC<{ region: StoreRegionData }> = ({
                 fetchPriority="low"
               />
               <p className="m-0 flex h-[4.375rem] items-center justify-center gap-5 text-marketing-control text-brand-pink">
-                <Image src={storeIcon} alt="" width={24} height={24} />
+                <AssetIcons.PinkStoreIcon
+                  className="h-7 w-7 shrink-0"
+                  aria-hidden="true"
+                />
                 <strong>{store.count} cửa hàng</strong>
               </p>
             </article>

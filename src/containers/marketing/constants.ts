@@ -13,7 +13,7 @@ export const PRODUCT_MACHINE_PAGE_SIZE = 9;
 export const GALLERY_PAGE_SIZE = 36;
 
 export const ARROW_CLASS =
-  'z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-pink bg-white/85 text-brand-title leading-none text-brand-pink transition-opacity duration-200 phone:h-9 phone:w-9 phone:text-3xl';
+  'z-10 h-14 w-14 border border-brand-pink bg-white p-0 text-brand-pink transition duration-200 phone:h-10 phone:w-10';
 
 export const LEFT_FLOAT_ARROW_CLASS =
   'absolute -left-[4.6875rem] top-1/2 -translate-y-1/2 phone:left-5';

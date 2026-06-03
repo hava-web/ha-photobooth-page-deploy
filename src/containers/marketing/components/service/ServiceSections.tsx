@@ -1,6 +1,7 @@
 import type React from 'react';
 import cx from 'classnames';
 import NextLink from 'next/link';
+import { AssetIcons, type AssetIconName } from 'assets/icons/AssetIcons';
 import Image from 'components/image/Image';
 import {
   MARKETING_CONTACT,
@@ -95,17 +96,27 @@ export const ServiceImageGrid: React.FC<{
 
 export const ServiceSalesCircle: React.FC<{
   icon?: MarketingImage;
+  assetIcon?: AssetIconName;
   text: string;
-}> = ({ icon, text }) => (
-  <article className="relative mx-auto flex h-80 w-80 items-center justify-center rounded-full bg-brand-pink p-12 text-center text-xl font-extrabold leading-snug text-white phone:h-60 phone:w-60 phone:text-base">
-    {icon && (
-      <span className="absolute -left-3 -top-3 flex h-20 w-20 items-center justify-center rounded-full border border-white bg-brand-pink">
-        <Image src={icon} alt="" width={36} height={36} />
-      </span>
-    )}
-    {text}
-  </article>
-);
+}> = ({ icon, assetIcon, text }) => {
+  const Icon = assetIcon ? AssetIcons[assetIcon] : null;
+
+  return (
+    <article className="relative mx-auto flex h-80 w-80 items-center justify-center rounded-full bg-brand-pink p-12 text-center text-xl font-extrabold leading-snug text-white phone:h-60 phone:w-60 phone:text-base">
+      {Icon && (
+        <span className="absolute -left-3 -top-3 flex h-20 w-20 items-center justify-center rounded-full border border-white bg-brand-pink text-white">
+          <Icon className="h-12 w-12" aria-hidden="true" />
+        </span>
+      )}
+      {!Icon && icon && (
+        <span className="absolute -left-3 -top-3 flex h-20 w-20 items-center justify-center rounded-full border border-white bg-brand-pink">
+          <Image src={icon} alt="" width={36} height={36} />
+        </span>
+      )}
+      {text}
+    </article>
+  );
+};
 
 export const ServiceModelCard: React.FC<{
   image: MarketingImage;

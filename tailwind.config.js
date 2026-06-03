@@ -201,7 +201,7 @@ module.exports = {
         'store-map': '360px minmax(0, 1fr)',
       },
       gridTemplateRows: {
-        header: '86px 90px',
+        header: '90px 70px',
         single: '1fr',
         opportunity: 'auto 1fr',
       },

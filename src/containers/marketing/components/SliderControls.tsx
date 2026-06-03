@@ -26,20 +26,18 @@ const SliderControls: React.FC<SliderControlsProps> = ({
   }
 
   const dotBaseClass = cx(
-    'h-5 w-5 rounded-full',
-    light
-      ? 'border border-white'
-      : tone === 'muted'
-        ? 'border-0'
-        : 'border border-brand-pink',
+    'h-3.5 w-3.5 transform-gpu rounded-full border-0 transition duration-200 ease-out',
   );
   const activeDotClass = light
     ? 'bg-white'
     : tone === 'muted'
-      ? 'bg-brand-muted'
+      ? 'bg-brand-control-dark'
       : 'bg-brand-pink';
-  const inactiveDotClass =
-    !light && tone === 'muted' ? 'bg-brand-line' : 'bg-transparent';
+  const inactiveDotClass = light
+    ? 'bg-white/45'
+    : tone === 'muted'
+      ? 'bg-brand-line'
+      : 'bg-brand-soft-line';
 
   return (
     <div
@@ -51,7 +49,7 @@ const SliderControls: React.FC<SliderControlsProps> = ({
           aria-label="previous"
           size="sm"
           variant={light ? 'overlay' : 'outline'}
-          className={light ? 'bg-transparent' : undefined}
+          className={light ? 'bg-transparent text-white' : undefined}
           onClick={() => onChange(current - 1)}
         />
       )}
@@ -60,9 +58,12 @@ const SliderControls: React.FC<SliderControlsProps> = ({
           key={index}
           type="button"
           aria-label={`go to slide ${index + 1}`}
+          aria-current={current === index ? 'true' : undefined}
           className={cx(
             dotBaseClass,
-            current === index ? activeDotClass : inactiveDotClass,
+            current === index
+              ? [activeDotClass, 'scale-[1.35]']
+              : [inactiveDotClass, 'scale-90 opacity-80'],
           )}
           onClick={() => onChange(index)}
         />
@@ -73,7 +74,7 @@ const SliderControls: React.FC<SliderControlsProps> = ({
           aria-label="next"
           size="sm"
           variant={light ? 'overlay' : 'outline'}
-          className={light ? 'bg-transparent' : undefined}
+          className={light ? 'bg-transparent text-white' : undefined}
           onClick={() => onChange(current + 1)}
         />
       )}
