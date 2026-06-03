@@ -2,6 +2,21 @@ import { saveAs } from 'file-saver';
 import { FILE_NAME_DOWNLOAD } from 'constants/file.const';
 import { isEmpty, size } from 'lodash';
 
+function isShareCancelled(error: unknown) {
+  if (!error || typeof error !== 'object') return false;
+
+  const shareError = error as { name?: string; message?: string };
+  const name = (shareError.name || '').toLowerCase();
+  const message = (shareError.message || '').toLowerCase();
+
+  return (
+    name === 'aborterror' ||
+    name === 'notallowederror' ||
+    message.includes('cancel') ||
+    message.includes('dismiss')
+  );
+}
+
 export async function downloadFile(
   fileUrl: string | undefined,
   displayName: string = FILE_NAME_DOWNLOAD,
@@ -33,8 +48,13 @@ export async function downloadFile(
       });
 
       if (navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], title: displayName });
-        return;
+        try {
+          await navigator.share({ files: [file], title: displayName });
+          return;
+        } catch (error) {
+          // User cancelled share sheet: do not fallback to auto download.
+          if (isShareCancelled(error)) return;
+        }
       }
     }
 
@@ -82,8 +102,9 @@ export async function downloadSequential(
     try {
       await navigator.share({ files, title: displayName });
       return;
-    } catch {
-      //
+    } catch (error) {
+      // User cancelled share sheet: stop here to avoid triggering many downloads.
+      if (isShareCancelled(error)) return;
     }
   }
 
