@@ -4,10 +4,10 @@
   border-color: var(--lp-lighter-primary-color);
 
   .fun-products-container {
-    @apply py-4 pb-6 text-center text-lp-small;
+    @apply py-10 pb-14 text-center text-lp-small;
 
     .section-title {
-      @apply mb-4 text-lp-section-title uppercase font-extrabold text-lp-primary-color;
+      @apply mb-10 text-lp-section-title uppercase font-extrabold text-lp-primary-color;
     }
 
     .fun-products__name {
@@ -28,11 +28,11 @@
     }
 
     .fun-products__grid-item {
-      @apply w-30 bg-white mx-auto text-center;
+      @apply w-[18.75rem] bg-white mx-auto text-center;
     }
 
     .product-item-image {
-      @apply w-30 h-30;
+      @apply w-[18.75rem] h-[18.75rem];
     }
   }
 }
@@ -44,11 +44,11 @@
     }
 
     .fun-products__grid-item {
-      @apply w-28;
+      @apply w-[17.5rem];
     }
 
     .product-item-image {
-      @apply w-28 h-28;
+      @apply w-[17.5rem] h-[17.5rem];
     }
   }
 }

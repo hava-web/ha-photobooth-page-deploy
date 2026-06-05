@@ -2,23 +2,23 @@
   @apply flex w-full bg-lp-lighter-primary-color;
 
   .service-container {
-    @apply py-4 text-lp-body text-white text-center;
+    @apply py-10 text-lp-body text-white text-center;
 
     .section-title {
-      @apply mb-4 text-lp-section-title whitespace-pre-line uppercase text-white;
+      @apply mb-10 text-lp-section-title whitespace-pre-line uppercase text-white;
     }
 
     .service-grid {
-      @apply mx-auto gap-4 grid-cols-2 grid-rows-opportunity w-115;
+      @apply mx-auto gap-10 grid-cols-2 grid-rows-opportunity w-[71.875rem];
 
       .service-description-grid {
-        @apply gap-y-4;
+        @apply gap-y-10;
 
         .service-description-item {
           @apply flex items-center;
 
           .service-description-item-title {
-            @apply text-justify ml-2;
+            @apply text-justify ml-5;
           }
         }
       }
@@ -27,15 +27,15 @@
         @apply mx-auto relative;
 
         .service-image-primary {
-          @apply object-cover border-image top-0 h-50 w-50;
+          @apply object-cover border-image top-0 h-[31.25rem] w-[31.25rem];
         }
 
         .service-image-secondary-1 {
-          @apply object-cover absolute border-image left-3.5 h-20 w-21 bottom-3;
+          @apply object-cover absolute border-image left-9 h-[12.5rem] w-52 bottom-7;
         }
 
         .service-image-secondary-2 {
-          @apply object-cover absolute border-image left-26 h-20 w-21 bottom-3;
+          @apply object-cover absolute border-image left-64 h-[12.5rem] w-52 bottom-7;
         }
       }
     }
@@ -45,7 +45,7 @@
 @media screen('less-sm') {
   .service-section {
     .service-container {
-      @apply px-4;
+      @apply px-10;
 
       .section-title {
         font-size: 36px;
@@ -56,13 +56,13 @@
         width: unset !important;
 
         .service-description-grid {
-          @apply gap-y-4;
+          @apply gap-y-10;
 
           .service-description-item {
             @apply flex items-center;
 
             .service-description-item-title {
-              @apply text-justify ml-2;
+              @apply text-justify ml-5;
             }
           }
         }
@@ -71,7 +71,7 @@
           @apply mx-auto relative;
 
           .service-image-primary {
-            @apply object-cover top-0 h-35 w-full;
+            @apply object-cover top-0 h-[21.875rem] w-full;
           }
 
           .service-image-secondary-1 {
@@ -94,7 +94,7 @@
 @media screen('sm') {
   .service-section {
     .service-container {
-      @apply px-4;
+      @apply px-10;
 
       .section-title {
       }
@@ -104,13 +104,13 @@
         width: unset !important;
 
         .service-description-grid {
-          @apply gap-y-4;
+          @apply gap-y-10;
 
           .service-description-item {
             @apply flex items-center;
 
             .service-description-item-title {
-              @apply text-justify ml-2;
+              @apply text-justify ml-5;
             }
           }
         }
@@ -119,7 +119,7 @@
           @apply mx-auto relative;
 
           .service-image-primary {
-            @apply object-cover top-0 h-50 w-full;
+            @apply object-cover top-0 h-[31.25rem] w-full;
           }
 
           .service-image-secondary-1 {
@@ -144,23 +144,23 @@
     @apply flex w-full bg-lp-lighter-primary-color;
 
     .service-container {
-      @apply py-4 text-lp-body text-white text-center;
+      @apply py-10 text-lp-body text-white text-center;
 
       .section-title {
-        @apply mb-4 text-lp-section-title whitespace-pre-line uppercase text-white;
+        @apply mb-10 text-lp-section-title whitespace-pre-line uppercase text-white;
       }
 
       .service-grid {
-        @apply mx-auto gap-4 grid-cols-2 grid-rows-opportunity w-115;
+        @apply mx-auto gap-10 grid-cols-2 grid-rows-opportunity w-[71.875rem];
 
         .service-description-grid {
-          @apply gap-y-4;
+          @apply gap-y-10;
 
           .service-description-item {
             @apply flex items-center;
 
             .service-description-item-title {
-              @apply text-justify ml-2;
+              @apply text-justify ml-5;
             }
           }
         }
@@ -169,15 +169,15 @@
           @apply mx-auto relative;
 
           .service-image-primary {
-            @apply object-cover border-image top-0 h-50 w-50;
+            @apply object-cover border-image top-0 h-[31.25rem] w-[31.25rem];
           }
 
           .service-image-secondary-1 {
-            @apply object-cover absolute border-image left-3.5 h-20 w-21 bottom-3;
+            @apply object-cover absolute border-image left-9 h-[12.5rem] w-52 bottom-7;
           }
 
           .service-image-secondary-2 {
-            @apply object-cover absolute border-image left-26 h-20 w-21 bottom-3;
+            @apply object-cover absolute border-image left-64 h-[12.5rem] w-52 bottom-7;
           }
         }
       }

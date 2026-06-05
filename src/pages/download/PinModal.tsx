@@ -20,7 +20,7 @@ const PinModalContent: FC<PinModalContentProps> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <div className="bg-white rounded-2xl p-8 mx-4 w-full max-w-[80vw] sm:max-w-[30vw] flex flex-col items-center gap-2 shadow-xl pin-popup">
+    <div className="bg-white rounded-2xl p-[5rem] mx-[2.5rem] w-full max-w-[80vw] sm:max-w-[30vw] flex flex-col items-center gap-[1.25rem] shadow-xl pin-popup">
       <Typography
         variant="none"
         className="text-center font-bold text-gray-800 leading-snug text-xl"
@@ -34,12 +34,12 @@ const PinModalContent: FC<PinModalContentProps> = ({
         maxLength={6}
         onChange={(e) => onPinChange(e.target.value)}
         placeholder="Nhập mã PIN"
-        className="w-full border-2 border-[var(--sync-primary-color)] rounded-lg px-4 py-1 text-center text-lg outline-none focus:border-[var(--sync-secondary-color)] transition placeholder:text-lg"
+        className="w-full border-2 border-[var(--sync-primary-color)] rounded-lg px-[2.5rem] py-[0.625rem] text-center text-lg outline-none focus:border-[var(--sync-secondary-color)] transition placeholder:text-lg"
       />
-      <div className="flex flex-col items-center w-full my-2">
+      <div className="flex flex-col items-center w-full my-[1.25rem]">
         <Typography
           variant="none"
-          className="text-lg text-red-600 text-center mb-2"
+          className="text-lg text-red-600 text-center mb-[1.25rem]"
         >
           {t('common:pinModalNote')}
         </Typography>

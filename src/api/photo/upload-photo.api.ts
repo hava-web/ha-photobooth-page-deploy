@@ -1,4 +1,4 @@
-import adminRequest from 'api/request/adminRequest';
+import { apiPost } from 'api/request/adminRequest';
 import { getFormData } from 'helpers/file.helper';
 import {
   UploadPrintingPhotoRequestModel,
@@ -8,10 +8,11 @@ import {
 export function uploadPrintingPhoto(payload: UploadPrintingPhotoRequestModel) {
   const formDataPayload = getFormData(payload);
 
-  return adminRequest.post<
-    UploadPrintingPhotoResponseModel,
-    UploadPrintingPhotoResponseModel
-  >(`/general/printing`, formDataPayload, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  });
+  return apiPost<UploadPrintingPhotoResponseModel, FormData>(
+    '/general/printing',
+    formDataPayload,
+    {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    },
+  );
 }

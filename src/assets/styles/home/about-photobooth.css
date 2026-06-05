@@ -4,10 +4,10 @@
   @apply flex w-full bg-lp-primary-color border-t-3 border-lp-lighter-primary-color;
 
   .about-photobooth-container {
-    @apply pt-6 pb-8 text-lp-body text-white text-center;
+    @apply pt-14 pb-20 text-lp-body text-white text-center;
 
     .section-title {
-      @apply mb-8 text-lp-section-title uppercase font-extrabold text-white whitespace-pre-line;
+      @apply mb-20 text-lp-section-title uppercase font-extrabold text-white whitespace-pre-line;
     }
 
     .about-photobooth-video-frame-wrapper {
@@ -33,7 +33,7 @@
 
     div:not(:nth-child(1)):not(:nth-child(2)) {
       .about-photobooth-video-frame-wrapper {
-        @apply mx-auto border-image w-45;
+        @apply mx-auto border-image w-[28.125rem];
       }
 
       .about-photobooth-video-frame {
@@ -89,10 +89,10 @@
     @apply flex w-full bg-lp-primary-color border-t-3 border-lp-lighter-primary-color;
 
     .about-photobooth-container {
-      @apply pt-6 pb-8 text-lp-body text-white text-center;
+      @apply pt-14 pb-20 text-lp-body text-white text-center;
 
       .section-title {
-        @apply mb-8 text-lp-section-title uppercase font-extrabold text-white whitespace-pre-line;
+        @apply mb-20 text-lp-section-title uppercase font-extrabold text-white whitespace-pre-line;
       }
 
       .about-photobooth-grid {

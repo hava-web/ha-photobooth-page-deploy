@@ -22,7 +22,7 @@
       }
 
       .label-title {
-        @apply uppercase w-1/2 absolute bottom-4 object-cover text-lp-primary-color text-brand-display font-extrabold z-1 whitespace-pre-line;
+        @apply uppercase w-1/2 absolute bottom-10 object-cover text-lp-primary-color text-brand-display font-extrabold z-1 whitespace-pre-line;
         text-shadow:
           2px 0 #fff,
           -2px 0 #fff,
@@ -49,7 +49,7 @@
   }
 
   .swiper-dot-wrapper {
-    @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
+    @apply absolute w-full bottom-2.5 text-center z-z-index-banner-dot;
   }
 }
 
@@ -76,7 +76,7 @@
         }
 
         .label-title {
-          @apply text-brand-title w-full bottom-8;
+          @apply text-brand-title w-full bottom-20;
         }
 
         .shadow-white-bg {
@@ -94,7 +94,7 @@
     }
 
     .swiper-dot-wrapper {
-      @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
+      @apply absolute w-full bottom-2.5 text-center z-z-index-banner-dot;
     }
   }
 }
@@ -118,7 +118,7 @@
         }
 
         .label-title {
-          @apply w-13/20 text-brand-title bottom-8;
+          @apply w-13/20 text-brand-title bottom-20;
         }
 
         .shadow-white-bg {
@@ -136,7 +136,7 @@
     }
 
     .swiper-dot-wrapper {
-      @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
+      @apply absolute w-full bottom-2.5 text-center z-z-index-banner-dot;
     }
   }
 }
@@ -174,7 +174,7 @@
         }
 
         .label-title {
-          @apply uppercase w-1/2 absolute bottom-4 object-cover text-lp-primary-color text-brand-display font-extrabold z-1 whitespace-pre-line;
+          @apply uppercase w-1/2 absolute bottom-10 object-cover text-lp-primary-color text-brand-display font-extrabold z-1 whitespace-pre-line;
           text-shadow:
             2px 0 #fff,
             -2px 0 #fff,
@@ -201,7 +201,7 @@
     }
 
     .swiper-dot-wrapper {
-      @apply absolute w-full bottom-1 text-center z-z-index-banner-dot;
+      @apply absolute w-full bottom-2.5 text-center z-z-index-banner-dot;
     }
   }
 }

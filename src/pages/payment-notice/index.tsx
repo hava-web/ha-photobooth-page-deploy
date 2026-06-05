@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect } from 'react';
-import { NextSeo } from 'next-seo';
-import { get, size, split } from 'lodash';
+import { get, split } from 'lodash';
 import { GetServerSideProps } from 'next';
 import { getUiTemplate } from 'api/ui-template/ui-template.api';
 import Background from 'components/background/Background';
@@ -14,6 +12,7 @@ import funLogoImage from 'assets/images/fun_studio_logo.png';
 import { DownloadDataStateModel } from 'models/download.model';
 import { UiTemplateModel } from 'models/ui-template/ui-template.model';
 import { jsonParse } from 'helpers/string.helper';
+import { NoIndexPageSeo } from 'components/seo/PageSeo';
 
 type PaymentNoticeProps = DownloadDataStateModel & {
   uiTemplateData: UiTemplateModel;
@@ -43,7 +42,15 @@ export default function PaymentNoticeFile({
 
   return (
     <>
-      {!!size(seoMetaData) && <NextSeo {...seoMetaData} />}
+      <NoIndexPageSeo
+        path="/payment-notice"
+        overrides={{
+          title: 'Thông báo thanh toán Fun Studio',
+          description:
+            'Trang thông báo trạng thái thanh toán dành cho khách hàng Fun Studio.',
+          ...seoMetaData,
+        }}
+      />
       <div className="page-single__layout">
         <Background />
         <div className="page-single__grid">

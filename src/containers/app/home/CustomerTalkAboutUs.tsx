@@ -163,7 +163,7 @@ const CustomerTalkAboutUs = () => {
                         Bạn <strong>{mess?.label}</strong>
                       </span>
                       <p className="customer-swiper-title-underline" />
-                      <p className="mt-2">{mess?.description}</p>
+                      <p className="mt-5">{mess?.description}</p>
                     </div>
                   </div>
                 </div>

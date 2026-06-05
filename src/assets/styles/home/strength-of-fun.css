@@ -2,29 +2,29 @@
   @apply flex w-full bg-gradient-pink border-t-3 border-lp-lighter-primary-color;
 
   .strength-of-fun-container {
-    @apply flex flex-col py-4 pb-5 text-brand-card-title text-white text-center;
+    @apply flex flex-col py-10 pb-12 text-brand-card-title text-white text-center;
 
     .section-title {
-      @apply mb-4 px-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
+      @apply mb-10 px-10 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
     }
   }
 
   .strength-of-fun-wrapper {
-    @apply mx-auto flex gap-0 my-2 h-50;
+    @apply mx-auto flex gap-0 my-5 h-[31.25rem];
   }
 
   .strength-item-wrapper {
-    @apply whitespace-pre-line relative shadow-box flex items-center h-48 w-27 bg-white rounded-1 mx-0.75;
+    @apply whitespace-pre-line relative shadow-box flex items-center h-[30rem] w-[16.875rem] bg-white rounded-lg mx-2;
 
     .strength-item {
-      @apply relative bg-white w-full h-full z-1 rounded-3 p-2 text-center;
+      @apply relative bg-white w-full h-full z-1 rounded-3xl p-5 text-center;
 
       .strength-item-title {
         @apply text-lp-primary-color uppercase;
       }
 
       .strength-item-description {
-        @apply text-lp-primary-color text-brand-body-lg mt-2;
+        @apply text-lp-primary-color text-brand-body-lg mt-5;
       }
     }
   }
@@ -145,7 +145,7 @@
     }
 
     .strength-of-fun-swiper {
-      @apply p-5;
+      @apply p-12;
     }
 
     .strength-of-fun-mobile-wrapper {
@@ -157,11 +157,11 @@
     }
 
     .swiper-left-arrow {
-      @apply absolute top-1/2 -translate-y-3 left-2 z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-7 left-5 z-z-index-banner-dot;
     }
 
     .swiper-right-arrow {
-      @apply absolute top-1/2 -translate-y-3 right-2 z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-7 right-5 z-z-index-banner-dot;
     }
   }
 }
@@ -173,7 +173,7 @@
     }
 
     .strength-of-fun-swiper {
-      @apply p-5;
+      @apply p-12;
     }
 
     .strength-of-fun-mobile-wrapper {
@@ -185,11 +185,11 @@
     }
 
     .swiper-left-arrow {
-      @apply absolute top-1/2 -translate-y-3 left-2 z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-7 left-5 z-z-index-banner-dot;
     }
 
     .swiper-right-arrow {
-      @apply absolute top-1/2 -translate-y-3 right-2 z-z-index-banner-dot;
+      @apply absolute top-1/2 -translate-y-7 right-5 z-z-index-banner-dot;
     }
   }
 }
@@ -199,29 +199,29 @@
     @apply flex w-full bg-gradient-pink border-t-3 border-lp-lighter-primary-color;
 
     .strength-of-fun-container {
-      @apply flex flex-col py-4 pb-5 text-brand-card-title text-white text-center;
+      @apply flex flex-col py-10 pb-12 text-brand-card-title text-white text-center;
 
       .section-title {
-        @apply mb-4 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
+        @apply mb-10 text-lp-section-title text-lp-primary-color whitespace-pre-line uppercase;
       }
     }
 
     .strength-of-fun-wrapper {
-      @apply mx-auto flex gap-0 my-2 h-50;
+      @apply mx-auto flex gap-0 my-5 h-[31.25rem];
     }
 
     .strength-item-wrapper {
-      @apply whitespace-pre-line relative shadow-box flex items-center h-45 w-27 bg-white rounded-1 mx-0.75;
+      @apply whitespace-pre-line relative shadow-box flex items-center h-[28.125rem] w-[16.875rem] bg-white rounded-lg mx-2;
 
       .strength-item {
-        @apply relative bg-white w-full h-full z-1 rounded-3 p-2 text-center;
+        @apply relative bg-white w-full h-full z-1 rounded-3xl p-5 text-center;
 
         .strength-item-title {
           @apply text-lp-primary-color uppercase;
         }
 
         .strength-item-description {
-          @apply text-lp-primary-color text-brand-body-lg mt-2;
+          @apply text-lp-primary-color text-brand-body-lg mt-5;
         }
       }
     }

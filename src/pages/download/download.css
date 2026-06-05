@@ -118,6 +118,22 @@
   top: 20px;
 }
 
+.download-carousel-counter {
+  display: flex;
+  min-width: 84px;
+  height: 28px;
+  margin: 10px auto 0;
+  padding: 0 12px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: rgba(80, 80, 80, 0.78);
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
 .popup-download {
   display: flex;
   align-self: center;

@@ -8,7 +8,11 @@
     font-family: 'UTM Avo';
     font-style: normal;
     font-weight: 400;
-    src: local('UTM Avo'), local('UTMAvo'), local('UTM Avo Regular');
+    src:
+      local('UTM Avo'),
+      local('UTMAvo'),
+      local('UTM Avo Regular'),
+      url('../assets/fonts/utm-avo/UTM Avo.ttf') format('truetype');
     font-display: swap;
   }
 
@@ -16,7 +20,32 @@
     font-family: 'UTM Avo';
     font-style: normal;
     font-weight: 700;
-    src: local('UTM Avo Bold'), local('UTMAvo-Bold'), local('UTM Avo');
+    src:
+      local('UTM Avo Bold'),
+      local('UTMAvo-Bold'),
+      url('../assets/fonts/utm-avo/UTM AvoBold.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'UTM Avo';
+    font-style: italic;
+    font-weight: 400;
+    src:
+      local('UTM Avo Italic'),
+      local('UTMAvo-Italic'),
+      url('../assets/fonts/utm-avo/UTM AvoItalic.ttf') format('truetype');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'UTM Avo';
+    font-style: italic;
+    font-weight: 700;
+    src:
+      local('UTM Avo Bold Italic'),
+      local('UTMAvo-BoldItalic'),
+      url('../assets/fonts/utm-avo/UTM AvoBold_Italic.ttf') format('truetype');
     font-display: swap;
   }
 
@@ -148,52 +177,12 @@
 }
 
 @layer components {
-  .footer-heading-rule::after,
-  .header-nav-link::after {
-    content: '';
-  }
-
-  .marketing-difference-copy {
-    @apply min-h-difference-panel border border-brand-muted px-5.6 py-6;
-  }
-
-  .marketing-difference-copy h2 {
-    @apply mb-6 mt-0 text-marketing-section-sm font-extrabold uppercase leading-normal text-brand-pink;
-  }
-
-  .marketing-difference-copy p {
-    @apply mb-4 mt-0 text-base leading-normal;
-  }
-
-  .marketing-difference-grid > div {
-    @apply h-difference-tile;
-  }
-
-  .marketing-hero-title {
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
-  }
-
-  @media screen('phone') {
-    .marketing-difference-copy {
-      @apply min-h-0 px-2.4 py-3.2;
-    }
-
-    .marketing-difference-copy p {
-      @apply text-base;
-    }
-
-    .marketing-difference-grid > div {
-      @apply h-auto;
-      aspect-ratio: 1 / 1;
-    }
-  }
-
   .dot-slider {
-    @apply w-3 h-3 rounded-full border-lp-primary-color border-0.2 bg-white mx-1;
+    @apply w-7 h-7 rounded-full border-lp-primary-color border-0.2 bg-white mx-2.5;
   }
 
   .dot-slider-active {
-    @apply bg-lp-primary-color mx-1;
+    @apply bg-lp-primary-color mx-2.5;
   }
 
   .border-image {
