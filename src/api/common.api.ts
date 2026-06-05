@@ -1,4 +1,9 @@
 import { saveAs } from 'file-saver';
+import {
+  BETWEEN_BATCH_DELAY_MS,
+  BETWEEN_FILE_DELAY_MS,
+  FILES_PER_BATCH,
+} from 'constants/api.const';
 import { FILE_NAME_DOWNLOAD } from 'constants/file.const';
 import { isEmpty, size } from 'lodash';
 
@@ -107,11 +112,6 @@ export async function downloadSequential(
       if (isShareCancelled(error)) return;
     }
   }
-
-  // Fallback: pace downloads and pause after each batch of 10 files.
-  const FILES_PER_BATCH = 10;
-  const BETWEEN_FILE_DELAY_MS = 220;
-  const BETWEEN_BATCH_DELAY_MS = 1800;
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index];
